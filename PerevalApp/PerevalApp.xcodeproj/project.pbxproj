@@ -72,9 +72,8 @@
 			children = (
 				3A1D4F3A282FCF36003C57D9 /* Application */,
 				3A1D4F3B282FCF4F003C57D9 /* Controllers */,
+				3A9BCE3328301BAF00C510FD /* Extensions */,
 				3A1D4F3C282FCF6B003C57D9 /* Resources */,
-				3A1D4F43282FD227003C57D9 /* UIColor + Extensions.swift */,
-				3A1D4F48282FFDF1003C57D9 /* UIFont + Extensions.swift */,
 			);
 			path = PerevalApp;
 			sourceTree = "<group>";
@@ -118,6 +117,15 @@
 				3A1D4F46282FFC2B003C57D9 /* PTSans-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3A9BCE3328301BAF00C510FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D4F43282FD227003C57D9 /* UIColor + Extensions.swift */,
+				3A1D4F48282FFDF1003C57D9 /* UIFont + Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
