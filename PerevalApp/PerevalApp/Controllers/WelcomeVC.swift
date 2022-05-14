@@ -7,7 +7,7 @@ class WelcomeVC: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
         imageView.contentMode = .scaleAspectFit
-
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -16,7 +16,7 @@ class WelcomeVC: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "adventure")
         imageView.contentMode = .scaleAspectFit
-
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -59,8 +59,9 @@ class WelcomeVC: UIViewController {
         let title = "Войти"
         button.setTitle(title.uppercased(), for: .normal)
         
-        button.backgroundColor = .systemPink
-
+        button.backgroundColor = .white
+        button.clipsToBounds = true
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(didTapEnterButton), for: .touchUpInside)
         return button
@@ -74,6 +75,10 @@ class WelcomeVC: UIViewController {
         
         setupViews()
         setConstraints()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        enterButton.layer.cornerRadius = enterButton.frame.height / 2
     }
     
     // MARK: - Actions
@@ -135,9 +140,9 @@ extension WelcomeVC {
         ])
         
         NSLayoutConstraint.activate([
-            enterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            enterButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-            enterButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            enterButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70),
+            enterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            enterButton.widthAnchor.constraint(equalToConstant: 300),
             enterButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
