@@ -12,6 +12,9 @@
 		3A1D4F2B282FCC61003C57D9 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F2A282FCC61003C57D9 /* WelcomeVC.swift */; };
 		3A1D4F30282FCC64003C57D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D4F2F282FCC64003C57D9 /* Assets.xcassets */; };
 		3A1D4F33282FCC64003C57D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D4F31282FCC64003C57D9 /* LaunchScreen.storyboard */; };
+		3A1D4F3E282FCFC3003C57D9 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F3D282FCFC3003C57D9 /* RegistrationVC.swift */; };
+		3A1D4F40282FD013003C57D9 /* MountainPassListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F3F282FD013003C57D9 /* MountainPassListVC.swift */; };
+		3A1D4F42282FD02D003C57D9 /* AddNewMountainPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F41282FD02D003C57D9 /* AddNewMountainPassVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		3A1D4F2F282FCC64003C57D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A1D4F32282FCC64003C57D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A1D4F34282FCC64003C57D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A1D4F3D282FCFC3003C57D9 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		3A1D4F3F282FD013003C57D9 /* MountainPassListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPassListVC.swift; sourceTree = "<group>"; };
+		3A1D4F41282FD02D003C57D9 /* AddNewMountainPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMountainPassVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,41 @@
 		3A1D4F25282FCC61003C57D9 /* PerevalApp */ = {
 			isa = PBXGroup;
 			children = (
+				3A1D4F3A282FCF36003C57D9 /* Application */,
+				3A1D4F3B282FCF4F003C57D9 /* Controllers */,
+				3A1D4F3C282FCF6B003C57D9 /* Resources */,
+			);
+			path = PerevalApp;
+			sourceTree = "<group>";
+		};
+		3A1D4F3A282FCF36003C57D9 /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				3A1D4F26282FCC61003C57D9 /* AppDelegate.swift */,
 				3A1D4F28282FCC61003C57D9 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		3A1D4F3B282FCF4F003C57D9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				3A1D4F2A282FCC61003C57D9 /* WelcomeVC.swift */,
+				3A1D4F3D282FCFC3003C57D9 /* RegistrationVC.swift */,
+				3A1D4F3F282FD013003C57D9 /* MountainPassListVC.swift */,
+				3A1D4F41282FD02D003C57D9 /* AddNewMountainPassVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3A1D4F3C282FCF6B003C57D9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				3A1D4F2F282FCC64003C57D9 /* Assets.xcassets */,
 				3A1D4F31282FCC64003C57D9 /* LaunchScreen.storyboard */,
 				3A1D4F34282FCC64003C57D9 /* Info.plist */,
 			);
-			path = PerevalApp;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +168,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A1D4F2B282FCC61003C57D9 /* WelcomeVC.swift in Sources */,
+				3A1D4F40282FD013003C57D9 /* MountainPassListVC.swift in Sources */,
 				3A1D4F27282FCC61003C57D9 /* AppDelegate.swift in Sources */,
 				3A1D4F29282FCC61003C57D9 /* SceneDelegate.swift in Sources */,
+				3A1D4F3E282FCFC3003C57D9 /* RegistrationVC.swift in Sources */,
+				3A1D4F42282FD02D003C57D9 /* AddNewMountainPassVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +313,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8J73Q43L2S;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PerevalApp/Info.plist;
+				INFOPLIST_FILE = PerevalApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -304,7 +340,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8J73Q43L2S;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PerevalApp/Info.plist;
+				INFOPLIST_FILE = PerevalApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
