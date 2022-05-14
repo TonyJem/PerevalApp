@@ -43,10 +43,10 @@ class WelcomeVC: UIViewController {
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .white
-        
         let text = "Наполняем каталог перевалов вместе"
         label.text = text
+        label.font = .ptSans16()
+        label.textColor = .white
         label.textAlignment = .center
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,8 +56,9 @@ class WelcomeVC: UIViewController {
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .system)
         
-        let title = "Войти"
-        button.setTitle(title.uppercased(), for: .normal)
+        button.tintColor = .black
+        button.titleLabel?.font = .ptSans22()
+        button.setTitle("Войти".uppercased(), for: .normal)
         
         button.backgroundColor = .white
         button.clipsToBounds = true
@@ -134,7 +135,7 @@ extension WelcomeVC {
         
         NSLayoutConstraint.activate([
             descriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 22),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             descriptionLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
