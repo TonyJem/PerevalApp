@@ -28,11 +28,11 @@ class MountainPassListVC: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapAddButton() {
-        print("🟢 didTapAddButton in MainViewController")
+        print("🟢 didTapAddButton in MountainPassListVC")
         
-        let addNewNekVC = AddNewMountainPassVC()
-        addNewNekVC.modalPresentationStyle = .fullScreen
-        present(addNewNekVC, animated: true)
+        let addNewMountainPassVC = AddNewMountainPassVC()
+        addNewMountainPassVC.modalPresentationStyle = .fullScreen
+        present(addNewMountainPassVC, animated: true)
     }
     
     // MARK: - Private Methods

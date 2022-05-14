@@ -28,11 +28,11 @@ class RegistrationVC: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapEnterButton() {
-        print("🟢 didTapEnterButton in WelcomeViewController")
+        print("🟢 didTapEnterButton in RegistrationVC")
         
-        let mainVC = MountainPassListVC()
-        mainVC.modalPresentationStyle = .fullScreen
-        present(mainVC, animated: true)
+        let mountainPassListVC = MountainPassListVC()
+        mountainPassListVC.modalPresentationStyle = .fullScreen
+        present(mountainPassListVC, animated: true)
     }
     
     // MARK: - Private Methods

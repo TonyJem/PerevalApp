@@ -81,11 +81,11 @@ class WelcomeVC: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapEnterButton() {
-        print("🟢 didTapEnterButton in LoginViewController")
+        print("🟢 didTapEnterButton in WelcomeVC")
         
-        let welcomeVC = RegistrationVC()
-        welcomeVC.modalPresentationStyle = .fullScreen
-        present(welcomeVC, animated: true)
+        let registrationVC = RegistrationVC()
+        registrationVC.modalPresentationStyle = .fullScreen
+        present(registrationVC, animated: true)
     }
     
     // MARK: - Private Methods
