@@ -5,6 +5,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>PTSans-Regular.ttf</string>
+		<string>PTSans-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

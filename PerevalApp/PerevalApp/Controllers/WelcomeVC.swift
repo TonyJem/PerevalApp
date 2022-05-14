@@ -31,10 +31,10 @@ class WelcomeVC: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .white
-        
         let text = "Опиши перевал"
         label.text = text.uppercased()
+        label.font = .ptSansBold40()
+        label.textColor = .white
         label.textAlignment = .center
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -130,12 +130,12 @@ extension WelcomeVC {
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             titleLabel.topAnchor.constraint(equalTo: tagContainer.bottomAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            titleLabel.heightAnchor.constraint(equalToConstant: 30)
+            titleLabel.heightAnchor.constraint(equalToConstant: 42)
         ])
         
         NSLayoutConstraint.activate([
             descriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 22),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             descriptionLabel.heightAnchor.constraint(equalToConstant: 30)
         ])

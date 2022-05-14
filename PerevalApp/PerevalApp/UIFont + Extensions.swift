@@ -13,4 +13,9 @@ extension UIFont {
     static func ptSans22() -> UIFont? {
         return UIFont.init(name: "PTSans-Regular", size: 22)
     }
+    
+    //MARK: - Bold
+    static func ptSansBold40() -> UIFont? {
+        return UIFont.init(name: "PTSans-Bold", size: 40)
+    }
 }
