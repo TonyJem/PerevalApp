@@ -45,19 +45,7 @@ class WelcomeVC: UIViewController {
         let label = UILabel()
         label.backgroundColor = .white
         
-        let text = "Наполняем каталог перевалов вместе!"
-        label.text = text
-        label.textAlignment = .center
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let buttonLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .white
-        
-        let text = "Добавь название, фото и координаты"
+        let text = "Наполняем каталог перевалов вместе"
         label.text = text
         label.textAlignment = .center
         
@@ -104,7 +92,6 @@ class WelcomeVC: UIViewController {
         view.addSubview(tagContainer)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
-        view.addSubview(buttonLabel)
         view.addSubview(enterButton)
     }
 }
@@ -148,15 +135,8 @@ extension WelcomeVC {
         ])
         
         NSLayoutConstraint.activate([
-            buttonLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            buttonLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-            buttonLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            buttonLabel.heightAnchor.constraint(equalToConstant: 30)
-        ])
-        
-        NSLayoutConstraint.activate([
             enterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            enterButton.topAnchor.constraint(equalTo: buttonLabel.bottomAnchor, constant: 20),
+            enterButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
             enterButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             enterButton.heightAnchor.constraint(equalToConstant: 50)
         ])
