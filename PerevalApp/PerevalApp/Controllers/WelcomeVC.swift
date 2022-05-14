@@ -45,7 +45,7 @@ class WelcomeVC: UIViewController {
         let label = UILabel()
         let text = "Наполняем каталог перевалов вместе"
         label.text = text
-        label.font = .ptSans16()
+        label.font = .ptSans18()
         label.textColor = .white
         label.textAlignment = .center
         

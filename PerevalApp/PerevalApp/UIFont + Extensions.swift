@@ -6,8 +6,8 @@ extension UIFont {
 
     //MARK: - Regular
     
-    static func ptSans16() -> UIFont? {
-        return UIFont.init(name: "PTSans-Regular", size: 16)
+    static func ptSans18() -> UIFont? {
+        return UIFont.init(name: "PTSans-Regular", size: 18)
     }
     
     static func ptSans22() -> UIFont? {
