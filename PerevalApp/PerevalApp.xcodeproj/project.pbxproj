@@ -15,6 +15,7 @@
 		3A1D4F3E282FCFC3003C57D9 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F3D282FCFC3003C57D9 /* RegistrationVC.swift */; };
 		3A1D4F40282FD013003C57D9 /* MountainPassListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F3F282FD013003C57D9 /* MountainPassListVC.swift */; };
 		3A1D4F42282FD02D003C57D9 /* AddNewMountainPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F41282FD02D003C57D9 /* AddNewMountainPassVC.swift */; };
+		3A1D4F44282FD227003C57D9 /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F43282FD227003C57D9 /* UIColor + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3A1D4F3D282FCFC3003C57D9 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		3A1D4F3F282FD013003C57D9 /* MountainPassListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPassListVC.swift; sourceTree = "<group>"; };
 		3A1D4F41282FD02D003C57D9 /* AddNewMountainPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMountainPassVC.swift; sourceTree = "<group>"; };
+		3A1D4F43282FD227003C57D9 /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				3A1D4F3A282FCF36003C57D9 /* Application */,
 				3A1D4F3B282FCF4F003C57D9 /* Controllers */,
 				3A1D4F3C282FCF6B003C57D9 /* Resources */,
+				3A1D4F43282FD227003C57D9 /* UIColor + Extensions.swift */,
 			);
 			path = PerevalApp;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				3A1D4F2B282FCC61003C57D9 /* WelcomeVC.swift in Sources */,
 				3A1D4F40282FD013003C57D9 /* MountainPassListVC.swift in Sources */,
 				3A1D4F27282FCC61003C57D9 /* AppDelegate.swift in Sources */,
+				3A1D4F44282FD227003C57D9 /* UIColor + Extensions.swift in Sources */,
 				3A1D4F29282FCC61003C57D9 /* SceneDelegate.swift in Sources */,
 				3A1D4F3E282FCFC3003C57D9 /* RegistrationVC.swift in Sources */,
 				3A1D4F42282FD02D003C57D9 /* AddNewMountainPassVC.swift in Sources */,
