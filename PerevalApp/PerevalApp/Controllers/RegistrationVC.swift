@@ -14,6 +14,18 @@ class RegistrationVC: UIViewController {
         return label
     }()
     
+    private let textLabel: UILabel = {
+        let label = UILabel()
+        label.text = "textLabel here"
+//        label.font = .ptSans32()
+//        label.textColor = .mainBlue
+        label.textAlignment = .justified
+        label.backgroundColor = .lightGray
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .system)
         
@@ -69,6 +81,7 @@ class RegistrationVC: UIViewController {
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(topLabel)
+        view.addSubview(textLabel)
         view.addSubview(enterButton)
         view.addSubview(bottomLabel)
     }
@@ -83,6 +96,13 @@ extension RegistrationVC {
             topLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             topLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             topLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            textLabel.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 15),
+            textLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            textLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            textLabel.heightAnchor.constraint(equalToConstant: 145)
         ])
         
         NSLayoutConstraint.activate([
