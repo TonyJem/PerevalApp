@@ -21,12 +21,28 @@ class WelcomeVC: UIViewController {
         return imageView
     }()
     
-    private let tagContainer: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
+    private let topTagLabel: UILabel = {
+        let label = UILabel()
+        let text = "#ПОХОДЫ #СВОБОДА"
+        label.text = text.uppercased()
+//        label.font = .ptSansBold40()
+        label.textColor = .white
+        label.textAlignment = .center
         
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let bottomTagLabel: UILabel = {
+        let label = UILabel()
+        let text = "#ПРЕОДОЛЕНИЯ #ОТКРЫТИЯ"
+        label.text = text.uppercased()
+//        label.font = .ptSansBold40()
+        label.textColor = .white
+        label.textAlignment = .center
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     private let titleLabel: UILabel = {
@@ -95,7 +111,8 @@ class WelcomeVC: UIViewController {
     private func setupViews() {
         view.addSubview(logoImageView)
         view.addSubview(heroImageView)
-        view.addSubview(tagContainer)
+        view.addSubview(topTagLabel)
+        view.addSubview(bottomTagLabel)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(enterButton)
@@ -120,15 +137,22 @@ extension WelcomeVC {
         ])
         
         NSLayoutConstraint.activate([
-            tagContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            tagContainer.topAnchor.constraint(equalTo: heroImageView.bottomAnchor, constant: 20),
-            tagContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            tagContainer.heightAnchor.constraint(equalToConstant: 60)
+            topTagLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            topTagLabel.topAnchor.constraint(equalTo: heroImageView.bottomAnchor, constant: 20),
+            topTagLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            topTagLabel.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            bottomTagLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            bottomTagLabel.topAnchor.constraint(equalTo: topTagLabel.bottomAnchor, constant: 20),
+            bottomTagLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            bottomTagLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            titleLabel.topAnchor.constraint(equalTo: tagContainer.bottomAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: bottomTagLabel.bottomAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             titleLabel.heightAnchor.constraint(equalToConstant: 42)
         ])
