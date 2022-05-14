@@ -106,8 +106,6 @@ class WelcomeVC: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapEnterButton() {
-        print("🟢 didTapEnterButton in WelcomeVC")
-        
         let registrationVC = RegistrationVC()
         registrationVC.modalPresentationStyle = .fullScreen
         present(registrationVC, animated: true)
@@ -144,34 +142,34 @@ extension WelcomeVC {
         
         NSLayoutConstraint.activate([
             topTagLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            topTagLabel.topAnchor.constraint(equalTo: heroImageView.bottomAnchor, constant: 20),
+            topTagLabel.topAnchor.constraint(equalTo: heroImageView.bottomAnchor, constant: 37),
             topTagLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            topTagLabel.heightAnchor.constraint(equalToConstant: 40)
+            topTagLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
             bottomTagLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            bottomTagLabel.topAnchor.constraint(equalTo: topTagLabel.bottomAnchor, constant: 20),
+            bottomTagLabel.topAnchor.constraint(equalTo: topTagLabel.bottomAnchor, constant: 6),
             bottomTagLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            bottomTagLabel.heightAnchor.constraint(equalToConstant: 40)
+            bottomTagLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            titleLabel.topAnchor.constraint(equalTo: bottomTagLabel.bottomAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: bottomTagLabel.bottomAnchor, constant: 30),
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             titleLabel.heightAnchor.constraint(equalToConstant: 42)
         ])
         
         NSLayoutConstraint.activate([
             descriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             descriptionLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
-            enterButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70),
+            enterButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -90),
             enterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             enterButton.widthAnchor.constraint(equalToConstant: 300),
             enterButton.heightAnchor.constraint(equalToConstant: 50)
