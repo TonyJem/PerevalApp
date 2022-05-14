@@ -34,7 +34,7 @@ class RegistrationVC: UIViewController {
         
         label.numberOfLines = 0
         label.font = .ptSans16()
-        label.textColor = .darkText
+        label.textColor = .darkBlue
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.text = "Используя приложение, вы даёте согласие ФСТР\nна обработку персональных данных"
