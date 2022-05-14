@@ -13,6 +13,10 @@ extension UIFont {
         return UIFont.init(name: "PTSans-Regular", size: 22)
     }
     
+    static func ptSans32() -> UIFont? {
+        return UIFont.init(name: "PTSans-Regular", size: 32)
+    }
+    
     //MARK: - Medium
     static func dinProMedium24() -> UIFont? {
         return UIFont.init(name: "DINPro-Medium", size: 24)

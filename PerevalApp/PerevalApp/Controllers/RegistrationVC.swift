@@ -7,7 +7,7 @@ class RegistrationVC: UIViewController {
         let label = UILabel()
         let text = "Давайте знакомиться"
         label.text = text
-        label.font = .dinProMedium24()
+        label.font = .ptSans32()
         label.textColor = .mainBlue
         label.textAlignment = .center
         
