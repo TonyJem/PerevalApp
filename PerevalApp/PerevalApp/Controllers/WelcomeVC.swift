@@ -12,6 +12,15 @@ class WelcomeVC: UIViewController {
         return imageView
     }()
     
+    private let heroImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "adventure")
+        imageView.contentMode = .scaleAspectFit
+
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private let tagContainer: UIView = {
         let view = UIView()
         view.backgroundColor = .blue
@@ -91,6 +100,7 @@ class WelcomeVC: UIViewController {
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(logoImageView)
+        view.addSubview(heroImageView)
         view.addSubview(tagContainer)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
@@ -110,8 +120,15 @@ extension WelcomeVC {
         ])
         
         NSLayoutConstraint.activate([
+            heroImageView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 24),
+            heroImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            heroImageView.widthAnchor.constraint(equalToConstant: 246 * 1.15),
+            heroImageView.heightAnchor.constraint(equalToConstant: 191 * 1.15)
+        ])
+        
+        NSLayoutConstraint.activate([
             tagContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            tagContainer.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
+            tagContainer.topAnchor.constraint(equalTo: heroImageView.bottomAnchor, constant: 20),
             tagContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             tagContainer.heightAnchor.constraint(equalToConstant: 60)
         ])
