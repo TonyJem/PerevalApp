@@ -25,7 +25,7 @@ class WelcomeVC: UIViewController {
         let label = UILabel()
         let text = "#ПОХОДЫ #СВОБОДА"
         label.text = text.uppercased()
-//        label.font = .ptSansBold40()
+        label.font = .dinProMedium24()
         label.textColor = .white
         label.textAlignment = .center
         
@@ -37,7 +37,7 @@ class WelcomeVC: UIViewController {
         let label = UILabel()
         let text = "#ПРЕОДОЛЕНИЯ #ОТКРЫТИЯ"
         label.text = text.uppercased()
-//        label.font = .ptSansBold40()
+        label.font = .dinProMedium24()
         label.textColor = .white
         label.textAlignment = .center
         
@@ -92,6 +92,12 @@ class WelcomeVC: UIViewController {
         
         setupViews()
         setConstraints()
+        
+        /// print All Font names:
+//        for family in UIFont.familyNames.sorted() {
+//            let names = UIFont.fontNames(forFamilyName: family)
+//            print("Family: \(family) Font names: \(names)")
+//        }
     }
     
     override func viewDidLayoutSubviews() {
