@@ -102,8 +102,8 @@ extension WelcomeVC {
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 161 * 1.5),
-            logoImageView.heightAnchor.constraint(equalToConstant: 97 * 1.5)
+            logoImageView.widthAnchor.constraint(equalToConstant: 161 * 1.2),
+            logoImageView.heightAnchor.constraint(equalToConstant: 97 * 1.2)
         ])
         
         NSLayoutConstraint.activate([
