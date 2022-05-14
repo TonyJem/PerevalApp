@@ -18,10 +18,12 @@ class RegistrationVC: UIViewController {
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .system)
         
-        let title = "Войти"
-        button.setTitle(title, for: .normal)
+        button.tintColor = .white
+        button.titleLabel?.font = .ptSans22()
+        button.setTitle("Войти", for: .normal)
         
-        button.backgroundColor = .blue
+        button.backgroundColor = .dimedBlue
+        button.clipsToBounds = true
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(didTapEnterButton), for: .touchUpInside)
@@ -36,6 +38,10 @@ class RegistrationVC: UIViewController {
         
         setupViews()
         setConstraints()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        enterButton.layer.cornerRadius = enterButton.frame.height / 2
     }
     
     // MARK: - Actions
@@ -59,18 +65,19 @@ extension RegistrationVC {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            enterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            enterButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
-            enterButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            enterButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        NSLayoutConstraint.activate([
             topLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             topLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             topLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             topLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
-
+        
+        
+        
+        NSLayoutConstraint.activate([
+            enterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            enterButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+            enterButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            enterButton.heightAnchor.constraint(equalToConstant: 56)
+        ])
     }
 }
