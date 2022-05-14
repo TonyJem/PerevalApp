@@ -6,7 +6,6 @@
 	<array>
 		<string>PTSans-Regular.ttf</string>
 		<string>PTSans-Bold.ttf</string>
-		<string>DINPro-Medium.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
