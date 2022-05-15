@@ -22,6 +22,7 @@
 		3A1D4F4F28301294003C57D9 /* DINPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D4F4E28301294003C57D9 /* DINPro-Medium.otf */; };
 		3A2ED0CC2830E3A300285746 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0CB2830E3A300285746 /* InputField.swift */; };
 		3A2ED0CE283114D600285746 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0CD283114D600285746 /* UITextField + Extensions.swift */; };
+		3A2ED0D028311FCA00285746 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0CF28311FCA00285746 /* UILabel + Extensions.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		3A1D4F4E28301294003C57D9 /* DINPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Medium.otf"; sourceTree = "<group>"; };
 		3A2ED0CB2830E3A300285746 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		3A2ED0CD283114D600285746 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
+		3A2ED0CF28311FCA00285746 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				3A1D4F48282FFDF1003C57D9 /* UIFont + Extensions.swift */,
 				3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */,
 				3A2ED0CD283114D600285746 /* UITextField + Extensions.swift */,
+				3A2ED0CF28311FCA00285746 /* UILabel + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				3A1D4F2B282FCC61003C57D9 /* WelcomeVC.swift in Sources */,
 				3A1D4F40282FD013003C57D9 /* MountainPassListVC.swift in Sources */,
+				3A2ED0D028311FCA00285746 /* UILabel + Extensions.swift in Sources */,
 				3A1D4F27282FCC61003C57D9 /* AppDelegate.swift in Sources */,
 				3A2ED0CC2830E3A300285746 /* InputField.swift in Sources */,
 				3A1D4F44282FD227003C57D9 /* UIColor + Extensions.swift in Sources */,
