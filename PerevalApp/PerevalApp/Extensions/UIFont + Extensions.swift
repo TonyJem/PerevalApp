@@ -6,7 +6,7 @@ extension UIFont {
 
     //MARK: - Regular
     
-    static func ptSans16() -> UIFont? {
+    static func ptSans12() -> UIFont? {
         return UIFont.init(name: "PTSans-Regular", size: 12)
     }
     
@@ -25,6 +25,10 @@ extension UIFont {
     //MARK: - Medium
     static func dinProMedium24() -> UIFont? {
         return UIFont.init(name: "DINPro-Medium", size: 24)
+    }
+    
+    static func dinProMedium60() -> UIFont? {
+        return UIFont.init(name: "DINPro-Medium", size: 60)
     }
     
     //MARK: - Bold

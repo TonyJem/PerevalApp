@@ -53,7 +53,7 @@ class RegistrationVC: UIViewController {
         let label = UILabel()
         
         label.numberOfLines = 0
-        label.font = .ptSans16()
+        label.font = .ptSans12()
         label.textColor = .darkBlue
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
