@@ -16,7 +16,7 @@ class InputField: UIView {
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Фамилия"
+        label.text = ""
         label.font = .ptSans11()
         label.textColor = .specialGray
         label.textAlignment = .left
@@ -44,6 +44,11 @@ class InputField: UIView {
         
         addSubview(textField)
         addSubview(descriptionLabel)
+    }
+    
+    // MARK: - Public Methods
+    func setTitle(_ title: String) {
+        descriptionLabel.text = title
     }
 }
 

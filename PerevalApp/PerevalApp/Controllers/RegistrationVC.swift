@@ -92,6 +92,9 @@ class RegistrationVC: UIViewController {
         view.addSubview(topLabel)
         view.addSubview(textLabel)
         view.addSubview(containerView)
+        
+        dataEntryView.setTitle("Фамилия")
+        
         containerView.addSubview(dataEntryView)
         view.addSubview(enterButton)
         view.addSubview(bottomLabel)
