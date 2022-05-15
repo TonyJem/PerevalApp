@@ -1,4 +1,5 @@
 import UIKit
+import SafariServices
 
 class MountainPassListVC: UIViewController {
     
@@ -75,7 +76,9 @@ class MountainPassListVC: UIViewController {
     }
     
     @objc private func didTapLinkButton() {
-        print("🟢 didTapLinkButton in MountainPassListVC")
+        guard let url = URL(string: "https://tssr.ru/pereval") else { return }
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
