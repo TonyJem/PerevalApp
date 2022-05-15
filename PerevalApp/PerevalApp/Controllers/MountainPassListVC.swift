@@ -12,6 +12,19 @@ class MountainPassListVC: UIViewController {
         return imageView
     }()
     
+    private let callToActionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Нажмите на +\nчтобы добавить перевал"
+        label.numberOfLines = 0
+        label.font = .ptSans28()
+        label.textColor = .black
+        label.textAlignment = .center
+        label.lineBreakMode = .byWordWrapping
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -51,6 +64,7 @@ class MountainPassListVC: UIViewController {
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(imageView)
+        view.addSubview(callToActionLabel)
         view.addSubview(addButton)
     }
 }
@@ -64,6 +78,13 @@ extension MountainPassListVC {
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 300 * 1.15),
             imageView.heightAnchor.constraint(equalToConstant: 206 * 1.15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            callToActionLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
+            callToActionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            callToActionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            callToActionLabel.heightAnchor.constraint(equalToConstant: 100)
         ])
         
         NSLayoutConstraint.activate([

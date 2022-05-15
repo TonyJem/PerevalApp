@@ -18,6 +18,10 @@ extension UIFont {
         return UIFont.init(name: "PTSans-Regular", size: 22)
     }
     
+    static func ptSans28() -> UIFont? {
+        return UIFont.init(name: "PTSans-Regular", size: 28)
+    }
+    
     static func ptSans32() -> UIFont? {
         return UIFont.init(name: "PTSans-Regular", size: 32)
     }
