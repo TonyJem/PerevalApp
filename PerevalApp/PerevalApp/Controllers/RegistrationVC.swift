@@ -28,13 +28,12 @@ class RegistrationVC: UIViewController {
     
     private let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray4
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let textFieldView = InputField()
+    private let dataEntryView = InputField()
     
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .system)
@@ -93,7 +92,7 @@ class RegistrationVC: UIViewController {
         view.addSubview(topLabel)
         view.addSubview(textLabel)
         view.addSubview(containerView)
-        containerView.addSubview(textFieldView)
+        containerView.addSubview(dataEntryView)
         view.addSubview(enterButton)
         view.addSubview(bottomLabel)
     }
@@ -125,10 +124,10 @@ extension RegistrationVC {
         ])
         
         NSLayoutConstraint.activate([
-            textFieldView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5),
-            textFieldView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 5),
-            textFieldView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
-            textFieldView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -5)
+            dataEntryView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            dataEntryView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            dataEntryView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            dataEntryView.heightAnchor.constraint(equalToConstant: 54)
         ])
         
         NSLayoutConstraint.activate([

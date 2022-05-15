@@ -5,11 +5,24 @@ class InputField: UIView {
     // MARK: - Views
     private let textField: UITextField = {
         let textField = UITextField()
-        
-        textField.backgroundColor = .green
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 3
+        textField.backgroundColor = .white
+        textField.layer.borderColor = UIColor.specialGray.cgColor
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
+    }()
+    
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Фамилия"
+        label.font = .ptSans11()
+        label.textColor = .specialGray
+        label.textAlignment = .left
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     
@@ -27,12 +40,10 @@ class InputField: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        backgroundColor = .systemPink
-//        layer.cornerRadius = 10
-        
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(textField)
+        addSubview(descriptionLabel)
     }
 }
 
@@ -41,10 +52,17 @@ extension InputField {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
-            textField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 5),
-            textField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -5),
-            textField.heightAnchor.constraint(equalToConstant: 30)
+            textField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            textField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            textField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            textField.heightAnchor.constraint(equalToConstant: 35)
+        ])
+        
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 4),
+            descriptionLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 15)
         ])
     }
 }

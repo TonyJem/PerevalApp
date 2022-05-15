@@ -6,6 +6,10 @@ extension UIFont {
 
     //MARK: - Regular
     
+    static func ptSans11() -> UIFont? {
+        return UIFont.init(name: "PTSans-Regular", size: 11)
+    }
+    
     static func ptSans12() -> UIFont? {
         return UIFont.init(name: "PTSans-Regular", size: 12)
     }
