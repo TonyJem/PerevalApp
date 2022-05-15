@@ -1,8 +1,7 @@
 import UIKit
 
 extension UILabel {
-    func add(header: String,
-             stringList: [String],
+    func add(stringList: [String],
              font: UIFont,
              bullet: String = "\u{2022}",
              indentation: CGFloat = 15,
@@ -16,8 +15,6 @@ extension UILabel {
         }
         
         let bulletList = NSMutableAttributedString()
-        
-        bulletList.append(NSMutableAttributedString(string: "\(header)\n"))
         
         let textAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font,
                                                              NSAttributedString.Key.foregroundColor: textColor]
@@ -37,8 +34,8 @@ extension UILabel {
         paragraphStyle.paragraphSpacing = paragraphSpacing
         paragraphStyle.headIndent = indentation
         
-        for string in stringList {
-            let formattedString = "\t\(bullet)\t\(string)\n"
+        for (index, string) in stringList.enumerated() {
+            let formattedString = index == 0 ? "\(string)\n" : "\t\(bullet)\t\(string)\n"
             let attributedString = NSMutableAttributedString(string: formattedString)
             
             attributedString.addAttributes(

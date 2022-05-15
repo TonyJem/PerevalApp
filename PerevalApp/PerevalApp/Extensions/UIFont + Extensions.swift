@@ -6,7 +6,7 @@ extension UIFont {
 
     //MARK: - Light (300)
     static func MontserratLight18() -> UIFont? {
-        return UIFont.init(name: "Montserrat-Light", size: 18)
+        return UIFont.init(name: "Montserrat-Light", size: 19)
     }
     
     //MARK: - Regular (400)

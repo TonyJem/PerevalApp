@@ -14,20 +14,19 @@ class RegistrationVC: UIViewController {
         return label
     }()
     
-    private let textLabel: UILabel = {
+    private let bulletLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .MontserratLight18()
         
-        let header = "Запишем вас:"
         let arrayString = [
+            "Запишем вас:",
             "в список помогавших наполнять базу перевалов",
             "в качестве первопроходителей перевала, если он новый",
             "в базу туристов ФСТР"
         ]
         
-        label.attributedText = label.add(header: header,
-                                         stringList: arrayString,
+        label.attributedText = label.add(stringList: arrayString,
                                          font: label.font,
                                          textColor: .brownGray,
                                          bulletColor: .brownGray)
@@ -114,7 +113,7 @@ class RegistrationVC: UIViewController {
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(topLabel)
-        view.addSubview(textLabel)
+        view.addSubview(bulletLabel)
         view.addSubview(stackView)
         view.addSubview(enterButton)
         view.addSubview(bottomLabel)
@@ -133,14 +132,14 @@ extension RegistrationVC {
         ])
         
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 15),
-            textLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            textLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-            textLabel.heightAnchor.constraint(equalToConstant: 145)
+            bulletLabel.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 15),
+            bulletLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            bulletLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            bulletLabel.heightAnchor.constraint(equalToConstant: 160)
         ])
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 18),
+            stackView.topAnchor.constraint(equalTo: bulletLabel.bottomAnchor, constant: 18),
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             stackView.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -18)
