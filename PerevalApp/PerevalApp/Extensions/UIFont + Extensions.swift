@@ -4,8 +4,12 @@ extension UIFont {
     
     //label.font = UIFont(name: "PTSans-Regular", size: 16)
 
-    //MARK: - Regular
+    //MARK: - Light (300)
+    static func MontserratLight18() -> UIFont? {
+        return UIFont.init(name: "Montserrat-Light", size: 18)
+    }
     
+    //MARK: - Regular (400)
     static func ptSans11() -> UIFont? {
         return UIFont.init(name: "PTSans-Regular", size: 11)
     }
@@ -30,7 +34,7 @@ extension UIFont {
         return UIFont.init(name: "PTSans-Regular", size: 32)
     }
     
-    //MARK: - Medium
+    //MARK: - Medium (500)
     static func dinProMedium19() -> UIFont? {
         return UIFont.init(name: "DINPro-Medium", size: 19)
     }
@@ -43,7 +47,7 @@ extension UIFont {
         return UIFont.init(name: "DINPro-Medium", size: 60)
     }
     
-    //MARK: - Bold
+    //MARK: - Bold (700)
     static func ptSansBold40() -> UIFont? {
         return UIFont.init(name: "PTSans-Bold", size: 40)
     }

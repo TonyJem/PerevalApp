@@ -17,8 +17,7 @@ class RegistrationVC: UIViewController {
     private let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .ptSans12()
-        label.textColor = .brownGray
+        label.font = .MontserratLight18()
         
         let header = "Запишем вас:"
         let arrayString = [
@@ -27,9 +26,11 @@ class RegistrationVC: UIViewController {
             "в базу туристов ФСТР"
         ]
         
-        label.backgroundColor = .systemGray4
-        label.attributedText = label.add(header: header, stringList: arrayString, font: label.font)
-        
+        label.attributedText = label.add(header: header,
+                                         stringList: arrayString,
+                                         font: label.font,
+                                         textColor: .brownGray,
+                                         bulletColor: .brownGray)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

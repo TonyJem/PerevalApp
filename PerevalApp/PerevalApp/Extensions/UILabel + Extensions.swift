@@ -7,7 +7,7 @@ extension UILabel {
              bullet: String = "\u{2022}",
              indentation: CGFloat = 15,
              lineSpacing: CGFloat = 2,
-             paragraphSpacing: CGFloat = 12,
+             paragraphSpacing: CGFloat = 0,
              textColor: UIColor = .gray,
              bulletColor: UIColor = .red) -> NSAttributedString {
         
