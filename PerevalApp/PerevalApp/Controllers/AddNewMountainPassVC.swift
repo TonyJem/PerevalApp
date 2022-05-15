@@ -45,6 +45,24 @@ class AddNewMountainPassVC: UIViewController {
         return label
     }()
     
+    private lazy var categoryButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.tintColor = .darkBlue
+        button.titleLabel?.font = .ptSans18()
+        button.setTitle("Н/К", for: .normal)
+        button.clipsToBounds = true
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 8
+        button.backgroundColor = .white
+        button.layer.borderColor = UIColor.mainBlue.cgColor
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
+        button.addTarget(self, action: #selector(didTapCategoryButton), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,11 +82,16 @@ class AddNewMountainPassVC: UIViewController {
         print("🟢 didTapInfoButton in AddNewMountainPassVC")
     }
     
+    @objc private func didTapCategoryButton() {
+        print("🟢 didTapCategoryButton in AddNewMountainPassVC")
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(textField)
         view.addSubview(infoButton)
         view.addSubview(categoryLabel)
+        view.addSubview(categoryButton)
     }
 }
 
@@ -95,6 +118,13 @@ extension AddNewMountainPassVC {
             categoryLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             categoryLabel.trailingAnchor.constraint(equalTo: infoButton.leadingAnchor, constant: 0),
             categoryLabel.heightAnchor.constraint(equalToConstant: 35)
+        ])
+        
+        NSLayoutConstraint.activate([
+            categoryButton.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 25),
+            categoryButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            categoryButton.widthAnchor.constraint(equalToConstant: 65),
+            categoryButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
