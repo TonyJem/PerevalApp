@@ -17,7 +17,7 @@ class MountainPassListVC: UIViewController {
         let label = UILabel()
         label.text = "Нажмите на +\nчтобы добавить перевал"
         label.numberOfLines = 0
-        label.font = .ptSans28()
+        label.font = .ptSans27()
         label.textColor = .black
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
