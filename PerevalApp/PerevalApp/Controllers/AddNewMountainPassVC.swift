@@ -33,6 +33,18 @@ class AddNewMountainPassVC: UIViewController {
         return button
     }()
     
+    private let categoryLabel: UILabel = {
+        let label = UILabel()
+//        label.backgroundColor = .systemGray6
+        label.font = .ptSans22()
+        label.textColor = .black
+        label.textAlignment = .left
+        label.text = "Категория перевала"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +68,7 @@ class AddNewMountainPassVC: UIViewController {
     private func setupViews() {
         view.addSubview(textField)
         view.addSubview(infoButton)
+        view.addSubview(categoryLabel)
     }
 }
 
@@ -71,10 +84,17 @@ extension AddNewMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20),
+            infoButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 25),
             infoButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             infoButton.widthAnchor.constraint(equalToConstant: 20),
             infoButton.heightAnchor.constraint(equalTo: infoButton.widthAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            categoryLabel.centerYAnchor.constraint(equalTo: infoButton.centerYAnchor),
+            categoryLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            categoryLabel.trailingAnchor.constraint(equalTo: infoButton.leadingAnchor, constant: 0),
+            categoryLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
 }
