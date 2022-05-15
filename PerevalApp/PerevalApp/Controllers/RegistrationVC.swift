@@ -26,14 +26,29 @@ class RegistrationVC: UIViewController {
         return label
     }()
     
-    private let containerView: UIView = {
-        let view = UIView()
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
         
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let titles = ["Фамилия",
+                      "Имя",
+                      "Отчество",
+                      "E-mail будет логином и основным средством связи с вами",
+                      "По желанию",
+                      "По желанию"]
+        
+        for title in titles {
+            let inputView = InputField()
+            inputView.setTitle(title)
+            stackView.addArrangedSubview(inputView)
+        }
+        
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
-    
-    private let dataEntryView = InputField()
     
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .system)
@@ -91,11 +106,7 @@ class RegistrationVC: UIViewController {
     private func setupViews() {
         view.addSubview(topLabel)
         view.addSubview(textLabel)
-        view.addSubview(containerView)
-        
-        dataEntryView.setTitle("Фамилия")
-        
-        containerView.addSubview(dataEntryView)
+        view.addSubview(stackView)
         view.addSubview(enterButton)
         view.addSubview(bottomLabel)
     }
@@ -120,17 +131,10 @@ extension RegistrationVC {
         ])
         
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 18),
-            containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-            containerView.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -18)
-        ])
-        
-        NSLayoutConstraint.activate([
-            dataEntryView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            dataEntryView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            dataEntryView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            dataEntryView.heightAnchor.constraint(equalToConstant: 54)
+            stackView.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 18),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            stackView.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -18)
         ])
         
         NSLayoutConstraint.activate([
