@@ -44,7 +44,7 @@ class AddNewMountainPassVC: UIViewController {
         return label
     }()
     
-    private let stackView: UIStackView = {
+    private let stackView1: UIStackView = {
         let stackView = UIStackView()
         
         let titles = ["Н/К",
@@ -59,7 +59,29 @@ class AddNewMountainPassVC: UIViewController {
         
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        //        stackView.alignment = .fill
+        stackView.spacing = 80
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private let stackView2: UIStackView = {
+        let stackView = UIStackView()
+        
+        let titles = ["2A",
+                      "2Б",
+                      "3A",
+                      "3Б"]
+        
+        for title in titles {
+            let button = CategoryButton()
+            button.setTitleWith(title)
+            stackView.addArrangedSubview(button)
+        }
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 30
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -93,7 +115,8 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(textField)
         view.addSubview(infoButton)
         view.addSubview(categoryLabel)
-        view.addSubview(stackView)
+        view.addSubview(stackView1)
+        view.addSubview(stackView2)
     }
 }
 
@@ -123,10 +146,17 @@ extension AddNewMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 20),
-            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-            stackView.heightAnchor.constraint(equalToConstant: 40)
+            stackView1.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 20),
+            stackView1.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            stackView1.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            stackView1.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            stackView2.topAnchor.constraint(equalTo: stackView1.bottomAnchor, constant: 30),
+            stackView2.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            stackView2.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            stackView2.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
