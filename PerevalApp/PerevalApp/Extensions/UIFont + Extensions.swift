@@ -51,4 +51,8 @@ extension UIFont {
     static func ptSansBold40() -> UIFont? {
         return UIFont.init(name: "PTSans-Bold", size: 40)
     }
+    
+    static func ptMonoBold() -> UIFont? {
+        return UIFont.init(name: "PTMono-Bold", size: 14)
+    }
 }

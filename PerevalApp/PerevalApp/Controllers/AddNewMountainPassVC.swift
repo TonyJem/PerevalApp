@@ -17,6 +17,22 @@ class AddNewMountainPassVC: UIViewController {
         return textField
     }()
     
+    private lazy var infoButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.tintColor = .white
+        button.titleLabel?.font = .ptMonoBold()
+        button.setTitle("i", for: .normal)
+        
+        button.backgroundColor = .mainBlue
+        button.clipsToBounds = true
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 0)
+        button.addTarget(self, action: #selector(didTapInfoButton), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +43,19 @@ class AddNewMountainPassVC: UIViewController {
         setConstraints()
     }
     
+    override func viewDidLayoutSubviews() {
+        infoButton.layer.cornerRadius = infoButton.frame.height / 2
+    }
+    
+    // MARK: - Actions
+    @objc private func didTapInfoButton() {
+        print("🟢 didTapInfoButton in AddNewMountainPassVC")
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(textField)
+        view.addSubview(infoButton)
     }
 }
 
@@ -44,5 +70,11 @@ extension AddNewMountainPassVC {
             textField.heightAnchor.constraint(equalToConstant: 60)
         ])
         
+        NSLayoutConstraint.activate([
+            infoButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20),
+            infoButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            infoButton.widthAnchor.constraint(equalToConstant: 20),
+            infoButton.heightAnchor.constraint(equalTo: infoButton.widthAnchor)
+        ])
     }
 }

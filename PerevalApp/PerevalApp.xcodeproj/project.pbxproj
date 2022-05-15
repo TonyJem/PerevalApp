@@ -24,6 +24,7 @@
 		3A2ED0CE283114D600285746 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0CD283114D600285746 /* UITextField + Extensions.swift */; };
 		3A2ED0D028311FCA00285746 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0CF28311FCA00285746 /* UILabel + Extensions.swift */; };
 		3A2ED0D228312AA900285746 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2ED0D128312AA900285746 /* Montserrat-Light.ttf */; };
+		3A2ED0D4283150E600285746 /* ptMono-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2ED0D3283150E500285746 /* ptMono-bold.ttf */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		3A2ED0CD283114D600285746 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
 		3A2ED0CF28311FCA00285746 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		3A2ED0D128312AA900285746 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		3A2ED0D3283150E500285746 /* ptMono-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptMono-bold.ttf"; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				3A2ED0D128312AA900285746 /* Montserrat-Light.ttf */,
 				3A1D4F4A28300451003C57D9 /* PTSans-Bold.ttf */,
 				3A1D4F46282FFC2B003C57D9 /* PTSans-Regular.ttf */,
+				3A2ED0D3283150E500285746 /* ptMono-bold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			files = (
 				3A2ED0D228312AA900285746 /* Montserrat-Light.ttf in Resources */,
 				3A1D4F47282FFC2B003C57D9 /* PTSans-Regular.ttf in Resources */,
+				3A2ED0D4283150E600285746 /* ptMono-bold.ttf in Resources */,
 				3A1D4F33282FCC64003C57D9 /* LaunchScreen.storyboard in Resources */,
 				3A1D4F4B28300451003C57D9 /* PTSans-Bold.ttf in Resources */,
 				3A1D4F30282FCC64003C57D9 /* Assets.xcassets in Resources */,
