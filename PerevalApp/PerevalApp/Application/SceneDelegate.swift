@@ -10,8 +10,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
 //        window?.rootViewController = WelcomeVC()
-//        window?.rootViewController = RegistrationVC()
-        window?.rootViewController = MountainPassListVC()
+        window?.rootViewController = RegistrationVC()
+//        window?.rootViewController = MountainPassListVC()
         window?.makeKeyAndVisible()
         window?.overrideUserInterfaceStyle = .light
     }
