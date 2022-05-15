@@ -1,21 +1,30 @@
 import UIKit
 
 extension UILabel {
-    func add(stringList: [String],
+    func add(header: String,
+             stringList: [String],
              font: UIFont,
              bullet: String = "\u{2022}",
-             indentation: CGFloat = 40,
+             indentation: CGFloat = 15,
              lineSpacing: CGFloat = 2,
              paragraphSpacing: CGFloat = 12,
              textColor: UIColor = .gray,
              bulletColor: UIColor = .red) -> NSAttributedString {
+        
+        guard !stringList.isEmpty else {
+            return NSMutableAttributedString(string: "")
+        }
+        
+        let bulletList = NSMutableAttributedString()
+        
+        bulletList.append(NSMutableAttributedString(string: "\(header)\n"))
         
         let textAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font,
                                                              NSAttributedString.Key.foregroundColor: textColor]
         let bulletAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font,
                                                                NSAttributedString.Key.foregroundColor: bulletColor]
         let nonOptions = [NSTextTab.OptionKey: Any]()
-        let bulletList = NSMutableAttributedString()
+        
         let paragraphStyle = NSMutableParagraphStyle()
         
         paragraphStyle.tabStops = [
@@ -28,9 +37,8 @@ extension UILabel {
         paragraphStyle.paragraphSpacing = paragraphSpacing
         paragraphStyle.headIndent = indentation
         
-        for (index, string) in stringList.enumerated() {
-            
-            let formattedString = index == 0 ? "\(string)\n" : "\(bullet)\t\(string)\n"
+        for string in stringList {
+            let formattedString = "\t\(bullet)\t\(string)\n"
             let attributedString = NSMutableAttributedString(string: formattedString)
             
             attributedString.addAttributes(

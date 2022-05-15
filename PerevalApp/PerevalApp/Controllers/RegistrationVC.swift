@@ -14,41 +14,21 @@ class RegistrationVC: UIViewController {
         return label
     }()
     
-    /*
-     
-     let label = UILabel()
-     label.frame = CGRect(x: 40, y: 100, width: 280, height: 600)
-     label.textColor = UIColor.lightGray
-     label.numberOfLines = 0
-
-     let arrayString = [
-         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-         "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-         "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-     ]
-
-     label.attributedText = add(stringList: arrayString, font: label.font, bullet: "")
-
-     self.view.addSubview(label)
-     */
-    
     private let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .ptSans12()
         label.textColor = .brownGray
         
+        let header = "Запишем вас:"
         let arrayString = [
-            "Запишем вас:",
             "в список помогавших наполнять базу перевалов",
             "в качестве первопроходителей перевала, если он новый",
             "в базу туристов ФСТР"
         ]
         
         label.backgroundColor = .systemGray4
-        
-        label.attributedText = label.add(stringList: arrayString, font: label.font)
+        label.attributedText = label.add(header: header, stringList: arrayString, font: label.font)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
