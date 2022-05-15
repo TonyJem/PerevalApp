@@ -20,6 +20,7 @@
 		3A1D4F49282FFDF1003C57D9 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F48282FFDF1003C57D9 /* UIFont + Extensions.swift */; };
 		3A1D4F4B28300451003C57D9 /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D4F4A28300451003C57D9 /* PTSans-Bold.ttf */; };
 		3A1D4F4F28301294003C57D9 /* DINPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D4F4E28301294003C57D9 /* DINPro-Medium.otf */; };
+		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		3A1D4F48282FFDF1003C57D9 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		3A1D4F4A28300451003C57D9 /* PTSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Bold.ttf"; sourceTree = "<group>"; };
 		3A1D4F4E28301294003C57D9 /* DINPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Medium.otf"; sourceTree = "<group>"; };
+		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				3A1D4F43282FD227003C57D9 /* UIColor + Extensions.swift */,
 				3A1D4F48282FFDF1003C57D9 /* UIFont + Extensions.swift */,
+				3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				3A1D4F49282FFDF1003C57D9 /* UIFont + Extensions.swift in Sources */,
 				3A1D4F29282FCC61003C57D9 /* SceneDelegate.swift in Sources */,
 				3A1D4F3E282FCFC3003C57D9 /* RegistrationVC.swift in Sources */,
+				3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */,
 				3A1D4F42282FD02D003C57D9 /* AddNewMountainPassVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,6 +31,7 @@ class MountainPassListVC: UIViewController {
         button.titleLabel?.font = .dinProMedium19()
         button.setTitle("Посмотреть базу перевалов", for: .normal)
         button.backgroundColor = .clear
+        button.underline()
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(didTapLinkButton), for: .touchUpInside)
