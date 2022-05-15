@@ -27,6 +27,10 @@ extension UIFont {
     }
     
     //MARK: - Medium
+    static func dinProMedium19() -> UIFont? {
+        return UIFont.init(name: "DINPro-Medium", size: 19)
+    }
+    
     static func dinProMedium24() -> UIFont? {
         return UIFont.init(name: "DINPro-Medium", size: 24)
     }

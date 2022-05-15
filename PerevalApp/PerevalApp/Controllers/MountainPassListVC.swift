@@ -25,6 +25,18 @@ class MountainPassListVC: UIViewController {
         return label
     }()
     
+    private lazy var linkButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .mainBlue
+        button.titleLabel?.font = .dinProMedium19()
+        button.setTitle("Посмотреть базу перевалов", for: .normal)
+        button.backgroundColor = .clear
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapLinkButton), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -61,10 +73,15 @@ class MountainPassListVC: UIViewController {
         present(addNewMountainPassVC, animated: true)
     }
     
+    @objc private func didTapLinkButton() {
+        print("🟢 didTapLinkButton in MountainPassListVC")
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(imageView)
         view.addSubview(callToActionLabel)
+        view.addSubview(linkButton)
         view.addSubview(addButton)
     }
 }
@@ -85,6 +102,13 @@ extension MountainPassListVC {
             callToActionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             callToActionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             callToActionLabel.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
+            linkButton.topAnchor.constraint(equalTo: callToActionLabel.bottomAnchor, constant: 15),
+            linkButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            linkButton.widthAnchor.constraint(equalToConstant: 270),
+            linkButton.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         NSLayoutConstraint.activate([
