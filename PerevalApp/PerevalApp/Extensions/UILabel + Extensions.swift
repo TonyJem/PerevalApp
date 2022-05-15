@@ -28,8 +28,9 @@ extension UILabel {
         paragraphStyle.paragraphSpacing = paragraphSpacing
         paragraphStyle.headIndent = indentation
         
-        for string in stringList {
-            let formattedString = "\(bullet)\t\(string)\n"
+        for (index, string) in stringList.enumerated() {
+            
+            let formattedString = index == 0 ? "\(string)\n" : "\(bullet)\t\(string)\n"
             let attributedString = NSMutableAttributedString(string: formattedString)
             
             attributedString.addAttributes(
