@@ -3,6 +3,15 @@ import UIKit
 class MountainPassListVC: UIViewController {
     
     // MARK: - Views
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "explore")
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -41,6 +50,7 @@ class MountainPassListVC: UIViewController {
     
     // MARK: - Private Methods
     private func setupViews() {
+        view.addSubview(imageView)
         view.addSubview(addButton)
     }
 }
@@ -48,6 +58,13 @@ class MountainPassListVC: UIViewController {
 // MARK: - SetConstraints
 extension MountainPassListVC {
     private func setConstraints() {
+        
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 300 * 1.15),
+            imageView.heightAnchor.constraint(equalToConstant: 206 * 1.15)
+        ])
         
         NSLayoutConstraint.activate([
             addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -90),
