@@ -38,6 +38,11 @@ class CategoryButton: UIButton {
         print("🟢🟢🟢 didTapCategoryButton in CategoryButton class!")
     }
     
+    // MARK: - Public Methods
+    func setTitleWith(_ title: String) {
+        customButton.setTitle(title, for: .normal)
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         translatesAutoresizingMaskIntoConstraints = false

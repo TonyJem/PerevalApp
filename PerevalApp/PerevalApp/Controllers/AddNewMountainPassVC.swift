@@ -35,7 +35,6 @@ class AddNewMountainPassVC: UIViewController {
     
     private let categoryLabel: UILabel = {
         let label = UILabel()
-//        label.backgroundColor = .systemGray6
         label.font = .ptSans22()
         label.textColor = .black
         label.textAlignment = .left
@@ -45,22 +44,25 @@ class AddNewMountainPassVC: UIViewController {
         return label
     }()
     
-    private lazy var categoryButton: UIButton = {
-        let button = UIButton(type: .system)
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
         
-        button.tintColor = .darkBlue
-        button.titleLabel?.font = .ptSans18()
-        button.setTitle("Н/К", for: .normal)
-        button.clipsToBounds = true
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 8
-        button.backgroundColor = .white
-        button.layer.borderColor = UIColor.mainBlue.cgColor
+        let titles = ["Н/К",
+                      "1A",
+                      "1Б"]
         
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
-        button.addTarget(self, action: #selector(didTapCategoryButton), for: .touchUpInside)
-        return button
+        for title in titles {
+            let button = CategoryButton()
+            button.setTitleWith(title)
+            stackView.addArrangedSubview(button)
+        }
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        //        stackView.alignment = .fill
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     
     // MARK: - LifeCycle
@@ -91,7 +93,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(textField)
         view.addSubview(infoButton)
         view.addSubview(categoryLabel)
-        view.addSubview(categoryButton)
+        view.addSubview(stackView)
     }
 }
 
@@ -121,10 +123,10 @@ extension AddNewMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            categoryButton.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 25),
-            categoryButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            categoryButton.widthAnchor.constraint(equalToConstant: 65),
-            categoryButton.heightAnchor.constraint(equalToConstant: 40)
+            stackView.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            stackView.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
