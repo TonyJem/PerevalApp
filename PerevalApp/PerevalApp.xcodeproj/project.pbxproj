@@ -20,6 +20,7 @@
 		3A1D4F49282FFDF1003C57D9 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D4F48282FFDF1003C57D9 /* UIFont + Extensions.swift */; };
 		3A1D4F4B28300451003C57D9 /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D4F4A28300451003C57D9 /* PTSans-Bold.ttf */; };
 		3A1D4F4F28301294003C57D9 /* DINPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D4F4E28301294003C57D9 /* DINPro-Medium.otf */; };
+		3A2ED0CC2830E3A300285746 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0CB2830E3A300285746 /* InputField.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		3A1D4F48282FFDF1003C57D9 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		3A1D4F4A28300451003C57D9 /* PTSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Bold.ttf"; sourceTree = "<group>"; };
 		3A1D4F4E28301294003C57D9 /* DINPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Medium.otf"; sourceTree = "<group>"; };
+		3A2ED0CB2830E3A300285746 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				3A1D4F3A282FCF36003C57D9 /* Application */,
+				3A2ED0CA2830E34E00285746 /* Views */,
 				3A1D4F3B282FCF4F003C57D9 /* Controllers */,
 				3A9BCE3328301BAF00C510FD /* Extensions */,
 				3A1D4F3C282FCF6B003C57D9 /* Resources */,
@@ -119,6 +122,14 @@
 				3A1D4F46282FFC2B003C57D9 /* PTSans-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3A2ED0CA2830E34E00285746 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A2ED0CB2830E3A300285746 /* InputField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3A9BCE3328301BAF00C510FD /* Extensions */ = {
@@ -207,6 +218,7 @@
 				3A1D4F2B282FCC61003C57D9 /* WelcomeVC.swift in Sources */,
 				3A1D4F40282FD013003C57D9 /* MountainPassListVC.swift in Sources */,
 				3A1D4F27282FCC61003C57D9 /* AppDelegate.swift in Sources */,
+				3A2ED0CC2830E3A300285746 /* InputField.swift in Sources */,
 				3A1D4F44282FD227003C57D9 /* UIColor + Extensions.swift in Sources */,
 				3A1D4F49282FFDF1003C57D9 /* UIFont + Extensions.swift in Sources */,
 				3A1D4F29282FCC61003C57D9 /* SceneDelegate.swift in Sources */,

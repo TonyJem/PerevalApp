@@ -34,6 +34,8 @@ class RegistrationVC: UIViewController {
         return view
     }()
     
+    private let textFieldView = InputField()
+    
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .system)
         
@@ -91,6 +93,7 @@ class RegistrationVC: UIViewController {
         view.addSubview(topLabel)
         view.addSubview(textLabel)
         view.addSubview(containerView)
+        containerView.addSubview(textFieldView)
         view.addSubview(enterButton)
         view.addSubview(bottomLabel)
     }
@@ -119,6 +122,13 @@ extension RegistrationVC {
             containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             containerView.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -18)
+        ])
+        
+        NSLayoutConstraint.activate([
+            textFieldView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5),
+            textFieldView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 5),
+            textFieldView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
+            textFieldView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -5)
         ])
         
         NSLayoutConstraint.activate([
