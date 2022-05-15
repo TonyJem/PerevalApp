@@ -21,6 +21,7 @@
 		3A1D4F4B28300451003C57D9 /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D4F4A28300451003C57D9 /* PTSans-Bold.ttf */; };
 		3A1D4F4F28301294003C57D9 /* DINPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D4F4E28301294003C57D9 /* DINPro-Medium.otf */; };
 		3A2ED0CC2830E3A300285746 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0CB2830E3A300285746 /* InputField.swift */; };
+		3A2ED0CE283114D600285746 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0CD283114D600285746 /* UITextField + Extensions.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		3A1D4F4A28300451003C57D9 /* PTSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Bold.ttf"; sourceTree = "<group>"; };
 		3A1D4F4E28301294003C57D9 /* DINPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Medium.otf"; sourceTree = "<group>"; };
 		3A2ED0CB2830E3A300285746 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
+		3A2ED0CD283114D600285746 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 				3A1D4F43282FD227003C57D9 /* UIColor + Extensions.swift */,
 				3A1D4F48282FFDF1003C57D9 /* UIFont + Extensions.swift */,
 				3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */,
+				3A2ED0CD283114D600285746 /* UITextField + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				3A2ED0CC2830E3A300285746 /* InputField.swift in Sources */,
 				3A1D4F44282FD227003C57D9 /* UIColor + Extensions.swift in Sources */,
 				3A1D4F49282FFDF1003C57D9 /* UIFont + Extensions.swift in Sources */,
+				3A2ED0CE283114D600285746 /* UITextField + Extensions.swift in Sources */,
 				3A1D4F29282FCC61003C57D9 /* SceneDelegate.swift in Sources */,
 				3A1D4F3E282FCFC3003C57D9 /* RegistrationVC.swift in Sources */,
 				3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */,

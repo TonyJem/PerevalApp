@@ -9,6 +9,7 @@ class InputField: UIView {
         textField.layer.cornerRadius = 3
         textField.backgroundColor = .white
         textField.layer.borderColor = UIColor.specialGray.cgColor
+        textField.setHorizontalInsets(10)
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
