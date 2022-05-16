@@ -126,6 +126,8 @@ class AddNewMountainPassVC: UIViewController {
         return stackView
     }()
     
+    private let separatorView = SeparatorView()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,6 +160,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(stackView2)
         view.addSubview(additionLabel)
         view.addSubview(additionStackView)
+        view.addSubview(separatorView)
     }
 }
 
@@ -211,7 +214,14 @@ extension AddNewMountainPassVC {
             additionStackView.topAnchor.constraint(equalTo: additionLabel.bottomAnchor, constant: 3),
             additionStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             additionStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-            additionStackView.heightAnchor.constraint(equalToConstant: 180)
+            additionStackView.heightAnchor.constraint(equalToConstant: 190)
+        ])
+        
+        NSLayoutConstraint.activate([
+            separatorView.topAnchor.constraint(equalTo: additionStackView.bottomAnchor),
+            separatorView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
 }
