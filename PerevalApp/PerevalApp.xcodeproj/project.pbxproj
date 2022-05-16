@@ -29,6 +29,7 @@
 		3A2ED0D92832253500285746 /* AdditionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0D82832253300285746 /* AdditionButton.swift */; };
 		3A2ED0DB2832612800285746 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0DA2832612800285746 /* SeparatorView.swift */; };
 		3A2ED0DF28326A4E00285746 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0DE28326A4E00285746 /* CalendarView.swift */; };
+		3A2ED0E1283287D200285746 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0E0283287D200285746 /* TodayView.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		3A2ED0D82832253300285746 /* AdditionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionButton.swift; sourceTree = "<group>"; };
 		3A2ED0DA2832612800285746 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		3A2ED0DE28326A4E00285746 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		3A2ED0E0283287D200285746 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 				3A2ED0D82832253300285746 /* AdditionButton.swift */,
 				3A2ED0DA2832612800285746 /* SeparatorView.swift */,
 				3A2ED0DE28326A4E00285746 /* CalendarView.swift */,
+				3A2ED0E0283287D200285746 /* TodayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				3A2ED0CC2830E3A300285746 /* InputField.swift in Sources */,
 				3A1D4F44282FD227003C57D9 /* UIColor + Extensions.swift in Sources */,
 				3A2ED0D6283178D300285746 /* CategoryButton.swift in Sources */,
+				3A2ED0E1283287D200285746 /* TodayView.swift in Sources */,
 				3A2ED0D92832253500285746 /* AdditionButton.swift in Sources */,
 				3A1D4F49282FFDF1003C57D9 /* UIFont + Extensions.swift in Sources */,
 				3A2ED0CE283114D600285746 /* UITextField + Extensions.swift in Sources */,
