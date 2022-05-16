@@ -295,7 +295,7 @@ extension AddNewMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            coordinatesView.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 10),
+            coordinatesView.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 15),
             coordinatesView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             coordinatesView.widthAnchor.constraint(equalToConstant: 200),
             coordinatesView.heightAnchor.constraint(equalToConstant: 55)
