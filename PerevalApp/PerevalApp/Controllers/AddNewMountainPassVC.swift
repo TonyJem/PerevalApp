@@ -102,8 +102,8 @@ class AddNewMountainPassVC: UIViewController {
         let stackView = UIStackView()
         
         let butonTitles = ["*",
-                      "не уверен",
-                      "оценочно"]
+                           "не уверен",
+                           "оценочно"]
         
         let labelTexts = ["Сложность существенно увеличится в зависимости от погодных условий (снегопад, внезапное облединение склонов и пр.)",
                           "Если вы не уверены в оценке категории",
@@ -120,7 +120,6 @@ class AddNewMountainPassVC: UIViewController {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 31
-//        stackView.backgroundColor = .systemPink
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -170,6 +169,14 @@ class AddNewMountainPassVC: UIViewController {
         return label
     }()
     
+    private let attachPhotoView: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = .green
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -211,6 +218,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(coordinatesView)
         view.addSubview(altitudeView)
         view.addSubview(photoLabel)
+        view.addSubview(attachPhotoView)
     }
 }
 
@@ -328,6 +336,13 @@ extension AddNewMountainPassVC {
             photoLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             photoLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             photoLabel.heightAnchor.constraint(equalToConstant: 35)
+        ])
+        
+        NSLayoutConstraint.activate([
+            attachPhotoView.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 20),
+            attachPhotoView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            attachPhotoView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            attachPhotoView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 }
