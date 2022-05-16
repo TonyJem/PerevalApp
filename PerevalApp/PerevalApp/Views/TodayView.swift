@@ -17,7 +17,7 @@ class TodayView: UIView {
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.text = "(22.05.2022)"
-        label.font = .ptSans18()
+        label.font = .ptSans12()
         label.textColor = .white
         label.textAlignment = .center
         
@@ -59,17 +59,17 @@ extension TodayView {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            todayLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -5),
+            todayLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10),
             todayLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            todayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 60),
-            todayLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 60)
+            todayLabel.widthAnchor.constraint(equalToConstant: 100),
+            todayLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         NSLayoutConstraint.activate([
-            dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 5),
+            dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 10),
             dateLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            dateLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 60),
-            dateLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 60)
+            dateLabel.widthAnchor.constraint(equalToConstant: 100),
+            dateLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 }

@@ -258,7 +258,7 @@ extension AddNewMountainPassVC {
         NSLayoutConstraint.activate([
             todayView.topAnchor.constraint(equalTo: calendarView.topAnchor),
             todayView.leadingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: 25),
-            dateLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            todayView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             todayView.heightAnchor.constraint(equalTo: calendarView.heightAnchor)
         ])
     }
