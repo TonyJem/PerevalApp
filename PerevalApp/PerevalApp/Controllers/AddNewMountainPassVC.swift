@@ -98,6 +98,35 @@ class AddNewMountainPassVC: UIViewController {
         return label
     }()
     
+    private let additionStackView: UIStackView = {
+        let stackView = UIStackView()
+        
+        let butonTitles = ["*",
+                      "не уверен",
+                      "оценочно"]
+        
+        let labelTexts = ["Сложность существенно увеличится в зависимости от погодных условий (снегопад, внезапное облединение склонов и пр.)",
+                          "Если вы не уверены в оценке категории",
+                          "Если вы не прошли этот перевал"
+        ]
+        
+        for (index, title) in butonTitles.enumerated() {
+            let view = AdditionButton()
+            view.setButtonTitle(title)
+            view.setLabelTitle(labelTexts[index])
+            stackView.addArrangedSubview(view)
+        }
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 30
+        
+        stackView.backgroundColor = .systemPink
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,6 +158,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(stackView1)
         view.addSubview(stackView2)
         view.addSubview(additionLabel)
+        view.addSubview(additionStackView)
     }
 }
 
@@ -176,6 +206,13 @@ extension AddNewMountainPassVC {
             additionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             additionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             additionLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            additionStackView.topAnchor.constraint(equalTo: additionLabel.bottomAnchor, constant: 30),
+            additionStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            additionStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            additionStackView.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
 }
