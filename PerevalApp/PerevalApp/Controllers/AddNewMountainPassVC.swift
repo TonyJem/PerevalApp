@@ -139,6 +139,8 @@ class AddNewMountainPassVC: UIViewController {
         return label
     }()
     
+    private let calendarView = CalendarView()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,6 +175,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(additionStackView)
         view.addSubview(separatorView)
         view.addSubview(dateLabel)
+        view.addSubview(calendarView)
     }
 }
 
@@ -241,6 +244,13 @@ extension AddNewMountainPassVC {
             dateLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             dateLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             dateLabel.heightAnchor.constraint(equalToConstant: 35)
+        ])
+        
+        NSLayoutConstraint.activate([
+            calendarView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
+            calendarView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            calendarView.widthAnchor.constraint(equalToConstant: 200),
+            calendarView.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
 }

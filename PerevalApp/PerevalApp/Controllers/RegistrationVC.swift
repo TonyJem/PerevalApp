@@ -17,7 +17,7 @@ class RegistrationVC: UIViewController {
     private let bulletLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .MontserratLight18()
+        label.font = .montserratLight19()
         
         let arrayString = [
             "Запишем вас:",
