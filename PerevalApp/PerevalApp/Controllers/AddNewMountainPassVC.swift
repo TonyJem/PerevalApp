@@ -2,7 +2,29 @@ import UIKit
 
 class AddNewMountainPassVC: UIViewController {
     
+    // MARK: - Properties
+    private var contentSize: CGSize {
+        CGSize(width: view.frame.width, height: view.frame.height + 200)
+    }
+    
     // MARK: - Views
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+        scrollView.frame = self.view.bounds
+        scrollView.contentSize = contentSize
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        return scrollView
+    }()
+    
+    private lazy var contentView: UIView = {
+        let contentView = UIView()
+        contentView.backgroundColor = .white
+        contentView.frame.size = contentSize
+        return contentView
+    }()
+    
     private let textField: UITextField = {
         let textField = UITextField()
         textField.layer.borderWidth = 1
@@ -153,9 +175,7 @@ class AddNewMountainPassVC: UIViewController {
     }()
     
     private let separatorView2 = SeparatorView()
-    
     private let coordinatesView = CoordinatesView()
-    
     private let altitudeView = AltitudeView()
     
     private let photoLabel: UILabel = {
@@ -202,23 +222,25 @@ class AddNewMountainPassVC: UIViewController {
     
     // MARK: - Private Methods
     private func setupViews() {
-        view.addSubview(textField)
-        view.addSubview(infoButton)
-        view.addSubview(categoryLabel)
-        view.addSubview(stackView1)
-        view.addSubview(stackView2)
-        view.addSubview(additionLabel)
-        view.addSubview(additionStackView)
-        view.addSubview(separatorView1)
-        view.addSubview(dateLabel)
-        view.addSubview(calendarView)
-        view.addSubview(todayView)
-        view.addSubview(coordintatesLabel)
-        view.addSubview(separatorView2)
-        view.addSubview(coordinatesView)
-        view.addSubview(altitudeView)
-        view.addSubview(photoLabel)
-        view.addSubview(attachPhotoView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(textField)
+        contentView.addSubview(infoButton)
+        contentView.addSubview(categoryLabel)
+        contentView.addSubview(stackView1)
+        contentView.addSubview(stackView2)
+        contentView.addSubview(additionLabel)
+        contentView.addSubview(additionStackView)
+        contentView.addSubview(separatorView1)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(calendarView)
+        contentView.addSubview(todayView)
+        contentView.addSubview(coordintatesLabel)
+        contentView.addSubview(separatorView2)
+        contentView.addSubview(coordinatesView)
+        contentView.addSubview(altitudeView)
+        contentView.addSubview(photoLabel)
+        contentView.addSubview(attachPhotoView)
     }
 }
 
@@ -227,121 +249,121 @@ extension AddNewMountainPassVC {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            textField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            textField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             textField.heightAnchor.constraint(equalToConstant: 60)
         ])
         
         NSLayoutConstraint.activate([
             infoButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 25),
-            infoButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            infoButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             infoButton.widthAnchor.constraint(equalToConstant: 20),
             infoButton.heightAnchor.constraint(equalTo: infoButton.widthAnchor)
         ])
-        
+
         NSLayoutConstraint.activate([
             categoryLabel.centerYAnchor.constraint(equalTo: infoButton.centerYAnchor),
-            categoryLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            categoryLabel.trailingAnchor.constraint(equalTo: infoButton.leadingAnchor, constant: 0),
+            categoryLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            categoryLabel.trailingAnchor.constraint(equalTo: infoButton.leadingAnchor),
             categoryLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
-        
+
         NSLayoutConstraint.activate([
             stackView1.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 20),
-            stackView1.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            stackView1.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            stackView1.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            stackView1.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             stackView1.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         NSLayoutConstraint.activate([
             stackView2.topAnchor.constraint(equalTo: stackView1.bottomAnchor, constant: 30),
-            stackView2.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            stackView2.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            stackView2.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            stackView2.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             stackView2.heightAnchor.constraint(equalToConstant: 40)
         ])
-        
+
         NSLayoutConstraint.activate([
             additionLabel.topAnchor.constraint(equalTo: stackView2.bottomAnchor, constant: 20),
-            additionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            additionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            additionLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            additionLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             additionLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
-        
+
         NSLayoutConstraint.activate([
             additionStackView.topAnchor.constraint(equalTo: additionLabel.bottomAnchor, constant: 3),
-            additionStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            additionStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            additionStackView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            additionStackView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             additionStackView.heightAnchor.constraint(equalToConstant: 190)
         ])
-        
+
         NSLayoutConstraint.activate([
             separatorView1.topAnchor.constraint(equalTo: additionStackView.bottomAnchor),
-            separatorView1.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            separatorView1.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            separatorView1.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: -25),
+            separatorView1.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: 25),
             separatorView1.heightAnchor.constraint(equalToConstant: 1)
         ])
         
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: separatorView1.bottomAnchor, constant: 10),
-            dateLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            dateLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            dateLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            dateLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             dateLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
-        
+
         NSLayoutConstraint.activate([
             calendarView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
-            calendarView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            calendarView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             calendarView.widthAnchor.constraint(equalToConstant: 200),
             calendarView.heightAnchor.constraint(equalToConstant: 55)
         ])
-        
+
         NSLayoutConstraint.activate([
             todayView.topAnchor.constraint(equalTo: calendarView.topAnchor),
             todayView.leadingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: 25),
-            todayView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            todayView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             todayView.heightAnchor.constraint(equalTo: calendarView.heightAnchor)
         ])
-        
+
         NSLayoutConstraint.activate([
             coordintatesLabel.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 20),
-            coordintatesLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            coordintatesLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            coordintatesLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            coordintatesLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             coordintatesLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
-        
+
         NSLayoutConstraint.activate([
             separatorView2.topAnchor.constraint(equalTo: coordintatesLabel.bottomAnchor, constant: 10),
-            separatorView2.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            separatorView2.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            separatorView2.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: -25),
+            separatorView2.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: 25),
             separatorView2.heightAnchor.constraint(equalToConstant: 1)
         ])
-        
+
         NSLayoutConstraint.activate([
             coordinatesView.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 15),
-            coordinatesView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            coordinatesView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             coordinatesView.widthAnchor.constraint(equalToConstant: 200),
             coordinatesView.heightAnchor.constraint(equalToConstant: 55)
         ])
-        
+
         NSLayoutConstraint.activate([
             altitudeView.topAnchor.constraint(equalTo: coordinatesView.topAnchor),
             altitudeView.leadingAnchor.constraint(equalTo: coordinatesView.trailingAnchor, constant: 25),
-            altitudeView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            altitudeView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             altitudeView.heightAnchor.constraint(equalTo: coordinatesView.heightAnchor)
         ])
-        
+
         NSLayoutConstraint.activate([
             photoLabel.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
-            photoLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            photoLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            photoLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            photoLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             photoLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
-        
+
         NSLayoutConstraint.activate([
-            attachPhotoView.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 20),
-            attachPhotoView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            attachPhotoView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            attachPhotoView.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
+            attachPhotoView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            attachPhotoView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             attachPhotoView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
