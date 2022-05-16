@@ -128,6 +128,17 @@ class AddNewMountainPassVC: UIViewController {
     
     private let separatorView = SeparatorView()
     
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .ptSans22()
+        label.textColor = .black
+        label.textAlignment = .left
+        label.text = "Дата прохождения"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,6 +172,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(additionLabel)
         view.addSubview(additionStackView)
         view.addSubview(separatorView)
+        view.addSubview(dateLabel)
     }
 }
 
@@ -222,6 +234,13 @@ extension AddNewMountainPassVC {
             separatorView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 1)
+        ])
+        
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 10),
+            dateLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            dateLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            dateLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
 }
