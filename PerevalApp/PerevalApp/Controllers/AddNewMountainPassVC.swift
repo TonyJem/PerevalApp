@@ -142,6 +142,17 @@ class AddNewMountainPassVC: UIViewController {
     private let calendarView = CalendarView()
     private let todayView = TodayView()
     
+    private let coordintatesLabel: UILabel = {
+        let label = UILabel()
+        label.font = .ptSans22()
+        label.textColor = .black
+        label.textAlignment = .left
+        label.text = "Координаты"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,6 +189,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(dateLabel)
         view.addSubview(calendarView)
         view.addSubview(todayView)
+        view.addSubview(coordintatesLabel)
     }
 }
 
@@ -260,6 +272,13 @@ extension AddNewMountainPassVC {
             todayView.leadingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: 25),
             todayView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             todayView.heightAnchor.constraint(equalTo: calendarView.heightAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            coordintatesLabel.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 20),
+            coordintatesLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            coordintatesLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            coordintatesLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
 }
