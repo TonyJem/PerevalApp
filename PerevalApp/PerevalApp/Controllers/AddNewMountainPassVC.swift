@@ -87,6 +87,17 @@ class AddNewMountainPassVC: UIViewController {
         return stackView
     }()
     
+    private let addLabel: UILabel = {
+        let label = UILabel()
+        label.font = .dinProMedium14()
+        label.textColor = .darkBlue
+        label.textAlignment = .left
+        label.text = "Добавить"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +128,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(categoryLabel)
         view.addSubview(stackView1)
         view.addSubview(stackView2)
+        view.addSubview(addLabel)
     }
 }
 
@@ -157,6 +169,13 @@ extension AddNewMountainPassVC {
             stackView2.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             stackView2.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             stackView2.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            addLabel.topAnchor.constraint(equalTo: stackView2.bottomAnchor, constant: 20),
+            addLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            addLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            addLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
 }
