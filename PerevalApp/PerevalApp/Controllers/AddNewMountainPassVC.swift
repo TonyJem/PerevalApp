@@ -157,6 +157,8 @@ class AddNewMountainPassVC: UIViewController {
     
     private let coordinatesView = CoordinatesView()
     
+    private let altitudeView = AltitudeView()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -196,6 +198,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(coordintatesLabel)
         view.addSubview(separatorView2)
         view.addSubview(coordinatesView)
+        view.addSubview(altitudeView)
     }
 }
 
@@ -299,6 +302,13 @@ extension AddNewMountainPassVC {
             coordinatesView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             coordinatesView.widthAnchor.constraint(equalToConstant: 200),
             coordinatesView.heightAnchor.constraint(equalToConstant: 55)
+        ])
+        
+        NSLayoutConstraint.activate([
+            altitudeView.topAnchor.constraint(equalTo: coordinatesView.topAnchor),
+            altitudeView.leadingAnchor.constraint(equalTo: coordinatesView.trailingAnchor, constant: 25),
+            altitudeView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            altitudeView.heightAnchor.constraint(equalTo: coordinatesView.heightAnchor)
         ])
     }
 }

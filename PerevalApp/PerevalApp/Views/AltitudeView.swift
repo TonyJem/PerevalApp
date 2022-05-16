@@ -60,8 +60,8 @@ extension AltitudeView {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            descriptionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
+            descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
             descriptionLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 20)
         ])
