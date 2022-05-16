@@ -159,6 +159,17 @@ class AddNewMountainPassVC: UIViewController {
     
     private let altitudeView = AltitudeView()
     
+    private let photoLabel: UILabel = {
+        let label = UILabel()
+        label.font = .ptSans22()
+        label.textColor = .black
+        label.textAlignment = .left
+        label.text = "Фото"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,6 +210,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(separatorView2)
         view.addSubview(coordinatesView)
         view.addSubview(altitudeView)
+        view.addSubview(photoLabel)
     }
 }
 
@@ -309,6 +321,13 @@ extension AddNewMountainPassVC {
             altitudeView.leadingAnchor.constraint(equalTo: coordinatesView.trailingAnchor, constant: 25),
             altitudeView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             altitudeView.heightAnchor.constraint(equalTo: coordinatesView.heightAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            photoLabel.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
+            photoLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            photoLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            photoLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
 }
