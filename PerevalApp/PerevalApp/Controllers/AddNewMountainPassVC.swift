@@ -126,7 +126,7 @@ class AddNewMountainPassVC: UIViewController {
         return stackView
     }()
     
-    private let separatorView = SeparatorView()
+    private let separatorView1 = SeparatorView()
     
     private let dateLabel: UILabel = {
         let label = UILabel()
@@ -152,6 +152,8 @@ class AddNewMountainPassVC: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private let separatorView2 = SeparatorView()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -185,11 +187,12 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(stackView2)
         view.addSubview(additionLabel)
         view.addSubview(additionStackView)
-        view.addSubview(separatorView)
+        view.addSubview(separatorView1)
         view.addSubview(dateLabel)
         view.addSubview(calendarView)
         view.addSubview(todayView)
         view.addSubview(coordintatesLabel)
+        view.addSubview(separatorView2)
     }
 }
 
@@ -247,14 +250,14 @@ extension AddNewMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: additionStackView.bottomAnchor),
-            separatorView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 1)
+            separatorView1.topAnchor.constraint(equalTo: additionStackView.bottomAnchor),
+            separatorView1.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            separatorView1.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            separatorView1.heightAnchor.constraint(equalToConstant: 1)
         ])
         
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 10),
+            dateLabel.topAnchor.constraint(equalTo: separatorView1.bottomAnchor, constant: 10),
             dateLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             dateLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             dateLabel.heightAnchor.constraint(equalToConstant: 35)
@@ -279,6 +282,13 @@ extension AddNewMountainPassVC {
             coordintatesLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             coordintatesLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             coordintatesLabel.heightAnchor.constraint(equalToConstant: 35)
+        ])
+        
+        NSLayoutConstraint.activate([
+            separatorView2.topAnchor.constraint(equalTo: coordintatesLabel.bottomAnchor, constant: 10),
+            separatorView2.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            separatorView2.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            separatorView2.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
 }
