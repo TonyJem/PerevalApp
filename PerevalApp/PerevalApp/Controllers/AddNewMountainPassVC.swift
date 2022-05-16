@@ -119,9 +119,8 @@ class AddNewMountainPassVC: UIViewController {
         
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.spacing = 30
-        
-        stackView.backgroundColor = .systemPink
+        stackView.spacing = 31
+//        stackView.backgroundColor = .systemPink
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -209,10 +208,10 @@ extension AddNewMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            additionStackView.topAnchor.constraint(equalTo: additionLabel.bottomAnchor, constant: 30),
+            additionStackView.topAnchor.constraint(equalTo: additionLabel.bottomAnchor, constant: 3),
             additionStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             additionStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-            additionStackView.heightAnchor.constraint(equalToConstant: 250)
+            additionStackView.heightAnchor.constraint(equalToConstant: 180)
         ])
     }
 }

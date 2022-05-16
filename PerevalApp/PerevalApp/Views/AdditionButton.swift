@@ -8,7 +8,7 @@ class AdditionButton: UIView {
         
         button.tintColor = .darkBlue
         button.titleLabel?.font = .ptSans18()
-        button.setTitle("*", for: .normal)
+        button.setTitle("", for: .normal)
         button.clipsToBounds = true
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 8
@@ -23,11 +23,12 @@ class AdditionButton: UIView {
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Сложность существенно увеличится в зависимости от погодных условий (снегопад, внезапное облединение склонов и пр.)"
+        label.text = ""
         label.numberOfLines = 0
         label.font = .ptSans11()
         label.textColor = .darkBlue
-        label.textAlignment = .justified
+        label.textAlignment = .left
+//        label.backgroundColor = .green
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -81,10 +82,10 @@ extension AdditionButton {
         ])
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: customButton.bottomAnchor, constant: 4),
+            descriptionLabel.topAnchor.constraint(equalTo: customButton.bottomAnchor, constant: 10),
             descriptionLabel.leadingAnchor.constraint(equalTo: customButton.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: customButton.trailingAnchor),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 200)
+            descriptionLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 130)
         ])
     }
 }
