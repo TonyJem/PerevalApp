@@ -1,6 +1,6 @@
 import UIKit
 
-final class GaleryView: UIView {
+final class PhotoView: UIView {
     
     // MARK: - Views
     private let imageView: UIImageView = {
@@ -13,6 +13,17 @@ final class GaleryView: UIView {
     }()
     
     private let label: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.font = .ptSans20()
+        label.textColor = .darkBlue
+        label.textAlignment = .center
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let countLabel: UILabel = {
         let label = UILabel()
         label.text = ""
         label.font = .ptSans20()
@@ -42,11 +53,12 @@ final class GaleryView: UIView {
         
         addSubview(imageView)
         addSubview(label)
+        addSubview(countLabel)
     }
 }
 
 // MARK: - SetConstraints
-extension GaleryView {
+extension PhotoView {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
@@ -57,10 +69,17 @@ extension GaleryView {
         ])
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            label.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 10),
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            countLabel.topAnchor.constraint(equalTo: imageView.topAnchor),
+            countLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            countLabel.widthAnchor.constraint(equalToConstant: 10),
+            countLabel.heightAnchor.constraint(equalToConstant: 10)
         ])
     }
 }

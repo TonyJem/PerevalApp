@@ -34,6 +34,7 @@
 		3A2ED0E52832A04A00285746 /* AltitudeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0E42832A04A00285746 /* AltitudeView.swift */; };
 		3A2ED0E72832B43800285746 /* AttachPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0E62832B43800285746 /* AttachPhotoView.swift */; };
 		3A2ED0EA2832C4F500285746 /* GaleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0E92832C4F500285746 /* GaleryView.swift */; };
+		3A2ED0EC2832C7E800285746 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0EB2832C7E800285746 /* PhotoView.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		3A2ED0E42832A04A00285746 /* AltitudeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltitudeView.swift; sourceTree = "<group>"; };
 		3A2ED0E62832B43800285746 /* AttachPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachPhotoView.swift; sourceTree = "<group>"; };
 		3A2ED0E92832C4F500285746 /* GaleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaleryView.swift; sourceTree = "<group>"; };
+		3A2ED0EB2832C7E800285746 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +175,7 @@
 			children = (
 				3A2ED0E62832B43800285746 /* AttachPhotoView.swift */,
 				3A2ED0E92832C4F500285746 /* GaleryView.swift */,
+				3A2ED0EB2832C7E800285746 /* PhotoView.swift */,
 			);
 			path = AttachPhotoView;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				3A2ED0EA2832C4F500285746 /* GaleryView.swift in Sources */,
 				3A2ED0E72832B43800285746 /* AttachPhotoView.swift in Sources */,
 				3A2ED0E32832991600285746 /* CoordinatesView.swift in Sources */,
+				3A2ED0EC2832C7E800285746 /* PhotoView.swift in Sources */,
 				3A2ED0DF28326A4E00285746 /* CalendarView.swift in Sources */,
 				3A2ED0D028311FCA00285746 /* UILabel + Extensions.swift in Sources */,
 				3A1D4F27282FCC61003C57D9 /* AppDelegate.swift in Sources */,
