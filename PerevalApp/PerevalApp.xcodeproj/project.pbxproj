@@ -27,6 +27,7 @@
 		3A2ED0D4283150E600285746 /* ptMono-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2ED0D3283150E500285746 /* ptMono-bold.ttf */; };
 		3A2ED0D6283178D300285746 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0D5283178D200285746 /* CategoryButton.swift */; };
 		3A2ED0D92832253500285746 /* AdditionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0D82832253300285746 /* AdditionButton.swift */; };
+		3A2ED0DB2832612800285746 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0DA2832612800285746 /* SeparatorView.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		3A2ED0D3283150E500285746 /* ptMono-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptMono-bold.ttf"; sourceTree = "<group>"; };
 		3A2ED0D5283178D200285746 /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		3A2ED0D82832253300285746 /* AdditionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionButton.swift; sourceTree = "<group>"; };
+		3A2ED0DA2832612800285746 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +146,7 @@
 				3A2ED0CB2830E3A300285746 /* InputField.swift */,
 				3A2ED0D5283178D200285746 /* CategoryButton.swift */,
 				3A2ED0D82832253300285746 /* AdditionButton.swift */,
+				3A2ED0DA2832612800285746 /* SeparatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				3A2ED0CE283114D600285746 /* UITextField + Extensions.swift in Sources */,
 				3A1D4F29282FCC61003C57D9 /* SceneDelegate.swift in Sources */,
 				3A1D4F3E282FCFC3003C57D9 /* RegistrationVC.swift in Sources */,
+				3A2ED0DB2832612800285746 /* SeparatorView.swift in Sources */,
 				3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */,
 				3A1D4F42282FD02D003C57D9 /* AddNewMountainPassVC.swift in Sources */,
 			);
