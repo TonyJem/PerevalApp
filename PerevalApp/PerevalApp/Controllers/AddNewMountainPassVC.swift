@@ -155,6 +155,8 @@ class AddNewMountainPassVC: UIViewController {
     
     private let separatorView2 = SeparatorView()
     
+    private let coordinatesView = CoordinatesView()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -193,6 +195,7 @@ class AddNewMountainPassVC: UIViewController {
         view.addSubview(todayView)
         view.addSubview(coordintatesLabel)
         view.addSubview(separatorView2)
+        view.addSubview(coordinatesView)
     }
 }
 
@@ -289,6 +292,13 @@ extension AddNewMountainPassVC {
             separatorView2.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             separatorView2.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             separatorView2.heightAnchor.constraint(equalToConstant: 1)
+        ])
+        
+        NSLayoutConstraint.activate([
+            coordinatesView.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 10),
+            coordinatesView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            coordinatesView.widthAnchor.constraint(equalToConstant: 200),
+            coordinatesView.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
 }
