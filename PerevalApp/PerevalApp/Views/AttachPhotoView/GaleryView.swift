@@ -5,7 +5,7 @@ final class GaleryView: UIView {
     // MARK: - Views
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "")
+        imageView.image = UIImage(named: "staple")
         imageView.contentMode = .scaleAspectFit
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -14,9 +14,9 @@ final class GaleryView: UIView {
     
     private let label: UILabel = {
         let label = UILabel()
-        label.text = ""
-        label.font = .ptSans20()
-        label.textColor = .darkBlue
+        label.text = "из галереи"
+        label.font = .dinCondensed19()
+        label.textColor = .borderGray
         label.textAlignment = .center
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +37,6 @@ final class GaleryView: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(imageView)
@@ -52,8 +51,8 @@ extension GaleryView {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 51),
-            imageView.heightAnchor.constraint(equalToConstant: 51)
+            imageView.widthAnchor.constraint(equalToConstant: 57),
+            imageView.heightAnchor.constraint(equalToConstant: 57)
         ])
         
         NSLayoutConstraint.activate([

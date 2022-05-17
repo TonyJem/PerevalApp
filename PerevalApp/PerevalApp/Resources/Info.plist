@@ -9,6 +9,8 @@
 		<string>DINPro-Medium.otf</string>
 		<string>Montserrat-Light.ttf</string>
 		<string>ptMono-bold.ttf</string>
+		<string>Montserrat-Italic.ttf</string>
+		<string>DIN-Condensed.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

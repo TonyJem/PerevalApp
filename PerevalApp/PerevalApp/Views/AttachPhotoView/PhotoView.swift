@@ -5,7 +5,7 @@ final class PhotoView: UIView {
     // MARK: - Views
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "")
+        imageView.image = UIImage(named: "camera")
         imageView.contentMode = .scaleAspectFit
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -14,20 +14,9 @@ final class PhotoView: UIView {
     
     private let label: UILabel = {
         let label = UILabel()
-        label.text = ""
-        label.font = .ptSans20()
-        label.textColor = .darkBlue
-        label.textAlignment = .center
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let countLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.font = .ptSans20()
-        label.textColor = .darkBlue
+        label.text = "с камеры"
+        label.font = .dinCondensed19()
+        label.textColor = .borderGray
         label.textAlignment = .center
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,12 +37,10 @@ final class PhotoView: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(imageView)
         addSubview(label)
-        addSubview(countLabel)
     }
 }
 
@@ -64,22 +51,15 @@ extension PhotoView {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 51),
-            imageView.heightAnchor.constraint(equalToConstant: 51)
+            imageView.widthAnchor.constraint(equalToConstant: 74),
+            imageView.heightAnchor.constraint(equalToConstant: 57)
         ])
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 10),
+            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            countLabel.topAnchor.constraint(equalTo: imageView.topAnchor),
-            countLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-            countLabel.widthAnchor.constraint(equalToConstant: 10),
-            countLabel.heightAnchor.constraint(equalToConstant: 10)
         ])
     }
 }

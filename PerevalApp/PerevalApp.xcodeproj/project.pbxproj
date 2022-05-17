@@ -35,6 +35,8 @@
 		3A2ED0E72832B43800285746 /* AttachPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0E62832B43800285746 /* AttachPhotoView.swift */; };
 		3A2ED0EA2832C4F500285746 /* GaleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0E92832C4F500285746 /* GaleryView.swift */; };
 		3A2ED0EC2832C7E800285746 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0EB2832C7E800285746 /* PhotoView.swift */; };
+		3A2ED0F02833F46600285746 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2ED0EF2833F46500285746 /* Montserrat-Italic.ttf */; };
+		3A2ED0F22833F8B500285746 /* DIN-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2ED0F12833F8B500285746 /* DIN-Condensed.ttf */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		3A2ED0E62832B43800285746 /* AttachPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachPhotoView.swift; sourceTree = "<group>"; };
 		3A2ED0E92832C4F500285746 /* GaleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaleryView.swift; sourceTree = "<group>"; };
 		3A2ED0EB2832C7E800285746 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		3A2ED0EF2833F46500285746 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		3A2ED0F12833F8B500285746 /* DIN-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-Condensed.ttf"; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,8 +149,10 @@
 		3A1D4F45282FFBF2003C57D9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3A2ED0F12833F8B500285746 /* DIN-Condensed.ttf */,
 				3A1D4F4E28301294003C57D9 /* DINPro-Medium.otf */,
 				3A2ED0D128312AA900285746 /* Montserrat-Light.ttf */,
+				3A2ED0EF2833F46500285746 /* Montserrat-Italic.ttf */,
 				3A1D4F4A28300451003C57D9 /* PTSans-Bold.ttf */,
 				3A1D4F46282FFC2B003C57D9 /* PTSans-Regular.ttf */,
 				3A2ED0D3283150E500285746 /* ptMono-bold.ttf */,
@@ -253,8 +259,10 @@
 				3A2ED0D228312AA900285746 /* Montserrat-Light.ttf in Resources */,
 				3A1D4F47282FFC2B003C57D9 /* PTSans-Regular.ttf in Resources */,
 				3A2ED0D4283150E600285746 /* ptMono-bold.ttf in Resources */,
+				3A2ED0F02833F46600285746 /* Montserrat-Italic.ttf in Resources */,
 				3A1D4F33282FCC64003C57D9 /* LaunchScreen.storyboard in Resources */,
 				3A1D4F4B28300451003C57D9 /* PTSans-Bold.ttf in Resources */,
+				3A2ED0F22833F8B500285746 /* DIN-Condensed.ttf in Resources */,
 				3A1D4F30282FCC64003C57D9 /* Assets.xcassets in Resources */,
 				3A1D4F4F28301294003C57D9 /* DINPro-Medium.otf in Resources */,
 			);

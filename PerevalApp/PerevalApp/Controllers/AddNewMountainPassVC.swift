@@ -189,13 +189,7 @@ class AddNewMountainPassVC: UIViewController {
         return label
     }()
     
-    private let attachPhotoView: UIView = {
-        let view = UIView()
-        
-        view.backgroundColor = .green
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let attachPhotoView = AttachPhotoView()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -361,10 +355,10 @@ extension AddNewMountainPassVC {
         ])
 
         NSLayoutConstraint.activate([
-            attachPhotoView.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
+            attachPhotoView.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 20),
             attachPhotoView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             attachPhotoView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            attachPhotoView.heightAnchor.constraint(equalToConstant: 200)
+            attachPhotoView.heightAnchor.constraint(equalToConstant: 140)
         ])
     }
 }

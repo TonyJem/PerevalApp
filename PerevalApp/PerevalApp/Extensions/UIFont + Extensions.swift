@@ -59,6 +59,11 @@ extension UIFont {
         return UIFont.init(name: "DINPro-Medium", size: 60)
     }
     
+    //MARK: - Regular Italic (400)
+    static func montserratItalic22() -> UIFont? {
+        return UIFont.init(name: "Montserrat-Italic", size: 22)
+    }
+    
     //MARK: - Bold (700)
     static func ptSansBold40() -> UIFont? {
         return UIFont.init(name: "PTSans-Bold", size: 40)
@@ -66,5 +71,9 @@ extension UIFont {
     
     static func ptMonoBold() -> UIFont? {
         return UIFont.init(name: "PTMono-Bold", size: 14)
+    }
+    
+    static func dinCondensed19() -> UIFont? {
+        return UIFont.init(name: "DINCondensed-Bold", size: 19)
     }
 }

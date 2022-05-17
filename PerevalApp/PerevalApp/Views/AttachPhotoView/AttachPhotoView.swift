@@ -5,8 +5,8 @@ class AttachPhotoView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Добавьте фото"
-
-        label.font = .ptSans20()
+        
+        label.font = .montserratItalic22()
         label.textColor = .borderGray
         label.textAlignment = .center
         
@@ -14,20 +14,9 @@ class AttachPhotoView: UIView {
         return label
     }()
     
-    private let galeryView: UIView = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let galeryView = GaleryView()
     
-    private let photoView: UIView = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
+    private let photoView = PhotoView()
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -63,17 +52,17 @@ extension AttachPhotoView {
         ])
         
         NSLayoutConstraint.activate([
-            galeryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            galeryView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            galeryView.widthAnchor.constraint(equalToConstant: 60),
-            galeryView.heightAnchor.constraint(equalToConstant: 60)
+            galeryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
+            galeryView.trailingAnchor.constraint(equalTo: self.centerXAnchor, constant: -30),
+            galeryView.widthAnchor.constraint(equalToConstant: 90),
+            galeryView.heightAnchor.constraint(equalTo: galeryView.widthAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            photoView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            photoView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            photoView.widthAnchor.constraint(equalToConstant: 60),
-            photoView.heightAnchor.constraint(equalToConstant: 60)
+            photoView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
+            photoView.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: 30),
+            photoView.widthAnchor.constraint(equalToConstant: 90),
+            photoView.heightAnchor.constraint(equalTo: photoView.widthAnchor)
         ])
     }
 }
