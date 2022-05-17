@@ -9,10 +9,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-//        window?.rootViewController = WelcomeVC()
+        window?.rootViewController = WelcomeVC()
 //        window?.rootViewController = RegistrationVC()
 //        window?.rootViewController = MountainPassListVC()
-        window?.rootViewController = AddNewMountainPassVC()
+//        window?.rootViewController = AddNewMountainPassVC()
         window?.makeKeyAndVisible()
         window?.overrideUserInterfaceStyle = .light
     }
