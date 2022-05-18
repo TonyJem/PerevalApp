@@ -37,6 +37,7 @@
 		3A2ED0EC2832C7E800285746 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0EB2832C7E800285746 /* PhotoView.swift */; };
 		3A2ED0F02833F46600285746 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2ED0EF2833F46500285746 /* Montserrat-Italic.ttf */; };
 		3A2ED0F22833F8B500285746 /* DIN-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2ED0F12833F8B500285746 /* DIN-Condensed.ttf */; };
+		3A2ED0F52835435600285746 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0F42835435600285746 /* User.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		3A2ED0EB2832C7E800285746 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		3A2ED0EF2833F46500285746 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		3A2ED0F12833F8B500285746 /* DIN-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-Condensed.ttf"; sourceTree = "<group>"; };
+		3A2ED0F42835435600285746 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				3A1D4F3A282FCF36003C57D9 /* Application */,
+				3A2ED0F32835433D00285746 /* Models */,
 				3A2ED0CA2830E34E00285746 /* Views */,
 				3A1D4F3B282FCF4F003C57D9 /* Controllers */,
 				3A9BCE3328301BAF00C510FD /* Extensions */,
@@ -184,6 +187,14 @@
 				3A2ED0EB2832C7E800285746 /* PhotoView.swift */,
 			);
 			path = AttachPhotoView;
+			sourceTree = "<group>";
+		};
+		3A2ED0F32835433D00285746 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A2ED0F42835435600285746 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		3A9BCE3328301BAF00C510FD /* Extensions */ = {
@@ -283,6 +294,7 @@
 				3A2ED0EC2832C7E800285746 /* PhotoView.swift in Sources */,
 				3A2ED0DF28326A4E00285746 /* CalendarView.swift in Sources */,
 				3A2ED0D028311FCA00285746 /* UILabel + Extensions.swift in Sources */,
+				3A2ED0F52835435600285746 /* User.swift in Sources */,
 				3A1D4F27282FCC61003C57D9 /* AppDelegate.swift in Sources */,
 				3A2ED0CC2830E3A300285746 /* InputField.swift in Sources */,
 				3A1D4F44282FD227003C57D9 /* UIColor + Extensions.swift in Sources */,
