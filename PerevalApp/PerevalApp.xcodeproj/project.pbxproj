@@ -38,7 +38,7 @@
 		3A2ED0F02833F46600285746 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2ED0EF2833F46500285746 /* Montserrat-Italic.ttf */; };
 		3A2ED0F22833F8B500285746 /* DIN-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2ED0F12833F8B500285746 /* DIN-Condensed.ttf */; };
 		3A2ED0F52835435600285746 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0F42835435600285746 /* User.swift */; };
-		3A2ED0F72835489F00285746 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0F62835489F00285746 /* UserDefaultsManager.swift */; };
+		3A2ED0F72835489F00285746 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2ED0F62835489F00285746 /* UserSettings.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +76,7 @@
 		3A2ED0EF2833F46500285746 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		3A2ED0F12833F8B500285746 /* DIN-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-Condensed.ttf"; sourceTree = "<group>"; };
 		3A2ED0F42835435600285746 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		3A2ED0F62835489F00285746 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		3A2ED0F62835489F00285746 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,7 +203,7 @@
 		3A2ED0F8283548A700285746 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				3A2ED0F62835489F00285746 /* UserDefaultsManager.swift */,
+				3A2ED0F62835489F00285746 /* UserSettings.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 				3A1D4F44282FD227003C57D9 /* UIColor + Extensions.swift in Sources */,
 				3A2ED0D6283178D300285746 /* CategoryButton.swift in Sources */,
 				3A2ED0E1283287D200285746 /* TodayView.swift in Sources */,
-				3A2ED0F72835489F00285746 /* UserDefaultsManager.swift in Sources */,
+				3A2ED0F72835489F00285746 /* UserSettings.swift in Sources */,
 				3A2ED0D92832253500285746 /* AdditionButton.swift in Sources */,
 				3A2ED0E52832A04A00285746 /* AltitudeView.swift in Sources */,
 				3A1D4F49282FFDF1003C57D9 /* UIFont + Extensions.swift in Sources */,

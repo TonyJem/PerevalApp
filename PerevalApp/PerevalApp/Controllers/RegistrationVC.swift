@@ -133,6 +133,8 @@ class RegistrationVC: UIViewController {
     @objc private func didTapEnterButton() {
         print("🟢 didTapEnterButton in RegistrationVC")
         
+        saveCurentUser()
+        
         let mountainPassListVC = MountainPassListVC()
         mountainPassListVC.modalPresentationStyle = .fullScreen
         present(mountainPassListVC, animated: true)
@@ -151,7 +153,7 @@ class RegistrationVC: UIViewController {
     
     private func saveCurentUser() {
         let surname = "testSurname"
-        let name = "testNurname"
+        let name = "testName"
         let patronymic = "testPatronymic"
         let email = "testEmail"
         let phone = "testPhone"
@@ -163,7 +165,7 @@ class RegistrationVC: UIViewController {
                         email: email,
                         phone: phone,
                         mediaLink: mediaLink)
-        UserDefaultsManager.currentAccount = user
+        UserSettings.currentAccount = user
     }
 }
 
