@@ -148,6 +148,23 @@ class RegistrationVC: UIViewController {
         contentView.addSubview(enterButton)
         contentView.addSubview(bottomLabel)
     }
+    
+    private func saveCurentUser() {
+        let surname = "testSurname"
+        let name = "testNurname"
+        let patronymic = "testPatronymic"
+        let email = "testEmail"
+        let phone = "testPhone"
+        let mediaLink = "testMediaLink"
+        
+        let user = User(surname: surname,
+                        name: name,
+                        patronymic: patronymic,
+                        email: email,
+                        phone: phone,
+                        mediaLink: mediaLink)
+        UserDefaultsManager.currentAccount = user
+    }
 }
 
 // MARK: - SetConstraints

@@ -21,8 +21,4 @@ struct UserDefaultsManager {
             userDefaults.set(currentAccount, forKey: UserDefaultsManagerKey.currentAccount)
         }
     }
-    
-    static func saveUser(_ user: User) {
-        currentAccount = user
-    }
 }
