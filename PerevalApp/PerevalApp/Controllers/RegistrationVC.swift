@@ -116,10 +116,17 @@ class RegistrationVC: UIViewController {
         
         setupViews()
         setConstraints()
+        
+        registerForKeyboardNotifications()
+        initializeHideKeyboard()
     }
     
     override func viewDidLayoutSubviews() {
         enterButton.layer.cornerRadius = enterButton.frame.height / 2
+    }
+    
+    deinit {
+        removeKeyboardNotifications()
     }
     
     // MARK: - Actions
@@ -181,5 +188,51 @@ extension RegistrationVC {
             bottomLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             bottomLabel.heightAnchor.constraint(equalToConstant: 36)
         ])
+    }
+}
+
+// MARK: - Handle Keyboard Show and Hide
+extension RegistrationVC {
+    
+    private func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    private func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentSize = CGSize(width: view.frame.width, height: view.frame.height - keyboardSize.height)
+            contentView.frame.size = contentSize
+        }
+    }
+    
+    @objc private func keyboardWillHide() {
+        let contentSize = CGSize(width: view.frame.width, height: view.frame.height)
+        contentView.frame.size = contentSize
+    }
+    
+    private func initializeHideKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func dismissMyKeyboard(){
+        view.endEditing(true)
     }
 }
