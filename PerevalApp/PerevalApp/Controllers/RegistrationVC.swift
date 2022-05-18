@@ -4,7 +4,7 @@ class RegistrationVC: UIViewController {
     
     // MARK: - Properties
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 1)
+        CGSize(width: view.frame.width, height: view.frame.height)
     }
     
     // MARK: - Views
