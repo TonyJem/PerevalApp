@@ -215,16 +215,15 @@ extension RegistrationVC {
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {
-        
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentSize = CGSize(width: view.frame.width, height: view.frame.height - keyboardSize.height)
-            contentView.frame.size = contentSize
+            let visibleSize = CGSize(width: view.frame.width, height: view.frame.height - keyboardSize.height)
+            scrollView.frame.size = visibleSize
         }
     }
     
     @objc private func keyboardWillHide() {
-        let contentSize = CGSize(width: view.frame.width, height: view.frame.height)
-        contentView.frame.size = contentSize
+        let visibleSize = CGSize(width: view.frame.width, height: view.frame.height)
+        scrollView.frame.size = visibleSize
     }
     
     private func initializeHideKeyboard() {
