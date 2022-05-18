@@ -1,5 +1,31 @@
 import UIKit
 
+enum InputFieldType {
+    case surname
+    case name
+    case patronymic
+    case email
+    case phone
+    case mediaLink
+    
+    var title: String {
+        switch self {
+        case .surname:
+            return "Фамилия"
+        case .name:
+            return "Имя"
+        case .patronymic:
+            return "Отчество"
+        case .email:
+            return "E-mail будет логином и основным средством связи с вами"
+        case .phone:
+            return "По желанию"
+        case .mediaLink:
+            return "По желанию"
+        }
+    }
+}
+
 class RegistrationVC: UIViewController {
     
     // MARK: - Properties
@@ -58,16 +84,16 @@ class RegistrationVC: UIViewController {
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         
-        let titles = ["Фамилия",
-                      "Имя",
-                      "Отчество",
-                      "E-mail будет логином и основным средством связи с вами",
-                      "По желанию",
-                      "По желанию"]
-        
-        for title in titles {
+        let inputFieldTypes: [InputFieldType] = [.surname,
+                                        .name,
+                                        .patronymic,
+                                        .email,
+                                        .phone,
+                                        .mediaLink ]
+        for inputFieldType in inputFieldTypes {
             let inputView = InputField()
-            inputView.setTitle(title)
+            inputView.type = inputFieldType
+            inputView.setTitle(inputFieldType.title)
             stackView.addArrangedSubview(inputView)
         }
         
@@ -133,8 +159,6 @@ class RegistrationVC: UIViewController {
     @objc private func didTapEnterButton() {
         print("🟢 didTapEnterButton in RegistrationVC")
         
-        saveCurentUser()
-        
         let mountainPassListVC = MountainPassListVC()
         mountainPassListVC.modalPresentationStyle = .fullScreen
         present(mountainPassListVC, animated: true)
@@ -151,22 +175,6 @@ class RegistrationVC: UIViewController {
         contentView.addSubview(bottomLabel)
     }
     
-    private func saveCurentUser() {
-        let surname = "testSurname"
-        let name = "testName"
-        let patronymic = "testPatronymic"
-        let email = "testEmail"
-        let phone = "testPhone"
-        let mediaLink = "testMediaLink"
-        
-        let user = User(surname: surname,
-                        name: name,
-                        patronymic: patronymic,
-                        email: email,
-                        phone: phone,
-                        mediaLink: mediaLink)
-        UserSettings.currentAccount = user
-    }
 }
 
 // MARK: - SetConstraints

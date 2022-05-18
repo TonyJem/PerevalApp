@@ -2,6 +2,8 @@ import UIKit
 
 class InputField: UIView {
     
+    var type: InputFieldType?
+    
     // MARK: - Views
     private let textField: UITextField = {
         let textField = UITextField()
