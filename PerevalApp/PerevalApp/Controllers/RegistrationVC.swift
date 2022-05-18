@@ -2,7 +2,28 @@ import UIKit
 
 class RegistrationVC: UIViewController {
     
+    // MARK: - Properties
+    private var contentSize: CGSize {
+        CGSize(width: view.frame.width, height: view.frame.height + 1)
+    }
+    
     // MARK: - Views
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+        scrollView.frame = self.view.bounds
+        scrollView.contentSize = contentSize
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        return scrollView
+    }()
+    
+    private lazy var contentView: UIView = {
+        let contentView = UIView()
+        contentView.frame.size = contentSize
+        return contentView
+    }()
+    
     private let topLabel: UILabel = {
         let label = UILabel()
         label.text = "Давайте знакомиться"
@@ -112,11 +133,13 @@ class RegistrationVC: UIViewController {
     
     // MARK: - Private Methods
     private func setupViews() {
-        view.addSubview(topLabel)
-        view.addSubview(bulletLabel)
-        view.addSubview(stackView)
-        view.addSubview(enterButton)
-        view.addSubview(bottomLabel)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(topLabel)
+        contentView.addSubview(bulletLabel)
+        contentView.addSubview(stackView)
+        contentView.addSubview(enterButton)
+        contentView.addSubview(bottomLabel)
     }
 }
 
@@ -125,37 +148,37 @@ extension RegistrationVC {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            topLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            topLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            topLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            topLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            topLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            topLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             topLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
             bulletLabel.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 15),
-            bulletLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            bulletLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            bulletLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            bulletLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             bulletLabel.heightAnchor.constraint(equalToConstant: 160)
         ])
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: bulletLabel.bottomAnchor, constant: 18),
-            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             stackView.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -18)
         ])
         
         NSLayoutConstraint.activate([
-            enterButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
-            enterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            enterButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            enterButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100),
+            enterButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            enterButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             enterButton.heightAnchor.constraint(equalToConstant: 56)
         ])
         
         NSLayoutConstraint.activate([
             bottomLabel.topAnchor.constraint(equalTo: enterButton.bottomAnchor, constant: 5),
-            bottomLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            bottomLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            bottomLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            bottomLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             bottomLabel.heightAnchor.constraint(equalToConstant: 36)
         ])
     }
