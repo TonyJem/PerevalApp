@@ -1,8 +1,40 @@
 import UIKit
 
+enum InputFieldType {
+    case surname
+    case name
+    case patronymic
+    case email
+    case phone
+    case mediaLink
+    
+    var title: String {
+        switch self {
+        case .surname:
+            return "Фамилия"
+        case .name:
+            return "Имя"
+        case .patronymic:
+            return "Отчество"
+        case .email:
+            return "E-mail будет логином и основным средством связи с вами"
+        case .phone:
+            return "По желанию"
+        case .mediaLink:
+            return "По желанию"
+        }
+    }
+}
+
+protocol InputFieldDelegate: AnyObject {
+    func inputFieldDidEndEditing(_ type: InputFieldType, text: String?)
+}
+
 class InputField: UIView {
     
     var type: InputFieldType?
+    
+    weak var delegate: InputFieldDelegate?
     
     // MARK: - Views
     private let textField: UITextField = {
@@ -81,5 +113,8 @@ extension InputField {
 extension InputField: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("🟢 textFieldDidEndEditing in InputField")
+        
+        guard let type = self.type else { return }
+        delegate?.inputFieldDidEndEditing(type, text: textField.text)
     }
 }

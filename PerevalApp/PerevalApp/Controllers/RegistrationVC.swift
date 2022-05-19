@@ -1,31 +1,5 @@
 import UIKit
 
-enum InputFieldType {
-    case surname
-    case name
-    case patronymic
-    case email
-    case phone
-    case mediaLink
-    
-    var title: String {
-        switch self {
-        case .surname:
-            return "Фамилия"
-        case .name:
-            return "Имя"
-        case .patronymic:
-            return "Отчество"
-        case .email:
-            return "E-mail будет логином и основным средством связи с вами"
-        case .phone:
-            return "По желанию"
-        case .mediaLink:
-            return "По желанию"
-        }
-    }
-}
-
 class RegistrationVC: UIViewController {
     
     // MARK: - Properties
@@ -142,6 +116,7 @@ class RegistrationVC: UIViewController {
         
         setupViews()
         setConstraints()
+        setupDelegates()
         
         registerForKeyboardNotifications()
         initializeHideKeyboard()
@@ -173,6 +148,14 @@ class RegistrationVC: UIViewController {
         contentView.addSubview(stackView)
         contentView.addSubview(enterButton)
         contentView.addSubview(bottomLabel)
+    }
+    
+    private func setupDelegates() {
+        for view in stackView.arrangedSubviews {
+            if let inputField = view as? InputField {
+                inputField.delegate = self
+            }
+        }
     }
     
 }
@@ -260,5 +243,24 @@ extension RegistrationVC {
     
     @objc private func dismissMyKeyboard(){
         view.endEditing(true)
+    }
+}
+
+extension RegistrationVC: InputFieldDelegate {
+    func inputFieldDidEndEditing(_ type: InputFieldType, text: String?) {
+        switch type {
+        case .surname:
+            UserSettings.userSurname = text
+        case .name:
+            UserSettings.userName = text
+        case .patronymic:
+            UserSettings.userPatronymic = text
+        case .email:
+            UserSettings.userEmail = text
+        case .phone:
+            UserSettings.userPhone = text
+        case .mediaLink:
+            UserSettings.userMediaLink = text
+        }
     }
 }

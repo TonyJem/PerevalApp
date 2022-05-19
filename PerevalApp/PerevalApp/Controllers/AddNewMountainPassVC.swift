@@ -199,6 +199,14 @@ class AddNewMountainPassVC: UIViewController {
         
         setupViews()
         setConstraints()
+        
+        /// TestPrints... Remeber to delete it later!
+        print("Surname: \(String(describing: UserSettings.userSurname))")
+        print("Name: \(String(describing: UserSettings.userName))")
+        print("Patronymic: \(String(describing: UserSettings.userPatronymic))")
+        print("Email: \(String(describing: UserSettings.userEmail))")
+        print("Phone: \(String(describing: UserSettings.userPhone))")
+        print("MediaLink: \(String(describing: UserSettings.userMediaLink))")
     }
     
     override func viewDidLayoutSubviews() {
