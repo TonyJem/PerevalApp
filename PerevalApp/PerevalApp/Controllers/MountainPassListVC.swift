@@ -58,7 +58,7 @@ class MountainPassListVC: UIViewController {
         
         view.backgroundColor = .white
         
-        title = "Name Surname"
+        title = "Лоханкин Васисуалий"
         let logoutButton = UIBarButtonItem(title: "Remove User", style: .plain, target: self, action: #selector(didTapRemoveUser))
         navigationItem.setRightBarButton(logoutButton, animated: true)
         
