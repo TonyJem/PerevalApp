@@ -86,8 +86,11 @@ struct UserSettings {
             }
             return try? JSONDecoder().decode(User.self, from: currentUser)
         } set {
-            let currentUser = try? JSONEncoder().encode(newValue)
-            userDefaults.set(currentUser, forKey: SettingsKeys.currentUser.rawValue)
+            if let currentUser = try? JSONEncoder().encode(newValue) {
+                userDefaults.set(currentUser, forKey: SettingsKeys.currentUser.rawValue)
+            } else {
+                userDefaults.removeObject(forKey: SettingsKeys.currentUser.rawValue)
+            }
         }
     }
 }
@@ -109,5 +112,9 @@ extension UserSettings {
                                         email: email,
                                         phone: UserSettings.userPhone,
                                         mediaLink: UserSettings.userMediaLink)
+    }
+    
+    static func removeUser() {
+        UserSettings.currentUser = nil
     }
 }
