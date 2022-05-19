@@ -41,17 +41,19 @@ class InputField: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    func setTitle(_ title: String) {
+        descriptionLabel.text = title
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(textField)
         addSubview(descriptionLabel)
-    }
-    
-    // MARK: - Public Methods
-    func setTitle(_ title: String) {
-        descriptionLabel.text = title
+        
+        textField.delegate = self
     }
 }
 
@@ -72,5 +74,12 @@ extension InputField {
             descriptionLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             descriptionLabel.heightAnchor.constraint(equalToConstant: 15)
         ])
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension InputField: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("🟢 textFieldDidEndEditing in InputField")
     }
 }
