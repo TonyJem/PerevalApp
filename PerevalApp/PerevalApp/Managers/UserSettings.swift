@@ -9,6 +9,7 @@ struct UserSettings {
         case userEmail
         case userPhone
         case userMediaLink
+        case currentUser
     }
     
     private static var userDefaults: UserDefaults {
@@ -76,5 +77,37 @@ struct UserSettings {
         } else {
             userDefaults.removeObject(forKey: key)
         }
+    }
+    
+    static var currentUser: User? {
+        get {
+            guard let currentUser = userDefaults.object(forKey: SettingsKeys.currentUser.rawValue) as? Data else {
+                return nil
+            }
+            return try? JSONDecoder().decode(User.self, from: currentUser)
+        } set {
+            let currentUser = try? JSONEncoder().encode(newValue)
+            userDefaults.set(currentUser, forKey: SettingsKeys.currentUser.rawValue)
+        }
+    }
+}
+
+// MARK: - Public methods
+extension UserSettings {
+    
+    static func saveUser() {
+        guard let surname = UserSettings.userSurname,
+              let name = UserSettings.userName,
+              let patronymic = UserSettings.userPatronymic,
+              let email = UserSettings.userEmail else {
+            return
+        }
+        
+        UserSettings.currentUser = User(surname: surname,
+                                        name: name,
+                                        patronymic: patronymic,
+                                        email: email,
+                                        phone: UserSettings.userPhone,
+                                        mediaLink: UserSettings.userMediaLink)
     }
 }

@@ -59,11 +59,11 @@ class RegistrationVC: UIViewController {
         let stackView = UIStackView()
         
         let inputFieldTypes: [InputFieldType] = [.surname,
-                                        .name,
-                                        .patronymic,
-                                        .email,
-                                        .phone,
-                                        .mediaLink ]
+                                                 .name,
+                                                 .patronymic,
+                                                 .email,
+                                                 .phone,
+                                                 .mediaLink ]
         for inputFieldType in inputFieldTypes {
             let inputView = InputField()
             inputView.type = inputFieldType
@@ -134,6 +134,8 @@ class RegistrationVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapEnterButton() {
         print("🟢 didTapEnterButton in RegistrationVC")
+        
+        UserSettings.saveUser()
         
         let mountainPassListVC = MountainPassListVC()
         mountainPassListVC.modalPresentationStyle = .fullScreen
