@@ -21,7 +21,7 @@ class SplashViewController: UIViewController {
             if UserSettings.currentUser != nil {
                 SceneDelegate.shared.rootViewController.switchToMountainPassListScreen()
             } else {
-                SceneDelegate.shared.rootViewController.showWelcomeScreen()
+                SceneDelegate.shared.rootViewController.switchToShowWelcomeScreen()
             }
         }
     }

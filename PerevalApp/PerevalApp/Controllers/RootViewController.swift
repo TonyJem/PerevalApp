@@ -28,7 +28,7 @@ class RootViewController: UIViewController {
         animateFadeTransition(to: mountainPassListScreen)
     }
     
-    func showWelcomeScreen() {
+    func switchToShowWelcomeScreen() {
         let welcomeScreen = UINavigationController(rootViewController: WelcomeVC())
         
         addChild(welcomeScreen)

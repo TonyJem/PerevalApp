@@ -86,7 +86,7 @@ class MountainPassListVC: UIViewController {
     
     @objc private func didTapRemoveUser() {
         UserSettings.removeUser()
-        SceneDelegate.shared.rootViewController.showWelcomeScreen()
+        SceneDelegate.shared.rootViewController.switchToShowWelcomeScreen()
     }
     
     // MARK: - Private Methods
