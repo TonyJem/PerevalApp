@@ -68,6 +68,7 @@ class RegistrationVC: UIViewController {
             let inputView = InputField()
             inputView.type = inputFieldType
             inputView.setTitle(inputFieldType.title)
+            inputView.update(inputFieldType.userSettingsText)
             stackView.addArrangedSubview(inputView)
         }
         

@@ -24,6 +24,23 @@ enum InputFieldType {
             return "По желанию"
         }
     }
+    
+    var userSettingsText: String? {
+        switch self {
+        case .surname:
+            return UserSettings.userSurname
+        case .name:
+            return UserSettings.userName
+        case .patronymic:
+            return UserSettings.userPatronymic
+        case .email:
+            return UserSettings.userEmail
+        case .phone:
+            return UserSettings.userPhone
+        case .mediaLink:
+            return UserSettings.userMediaLink
+        }
+    }
 }
 
 protocol InputFieldDelegate: AnyObject {
@@ -76,6 +93,10 @@ class InputField: UIView {
     // MARK: - Public Methods
     func setTitle(_ title: String) {
         descriptionLabel.text = title
+    }
+    
+    func update(_ text: String?) {
+        textField.text = text
     }
     
     // MARK: - Private Methods
