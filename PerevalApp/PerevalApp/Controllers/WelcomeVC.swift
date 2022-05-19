@@ -126,7 +126,7 @@ class WelcomeVC: UIViewController {
 extension WelcomeVC {
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 161 * 1.2),
             logoImageView.heightAnchor.constraint(equalToConstant: 97 * 1.2)

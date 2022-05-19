@@ -113,6 +113,8 @@ class RegistrationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Добро пожаловать"
+        
         view.backgroundColor = .white
         
         setupViews()
