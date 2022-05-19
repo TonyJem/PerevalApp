@@ -133,13 +133,8 @@ class RegistrationVC: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapEnterButton() {
-        print("🟢 didTapEnterButton in RegistrationVC")
-        
         UserSettings.saveUser()
-        
-        let mountainPassListVC = MountainPassListVC()
-        mountainPassListVC.modalPresentationStyle = .fullScreen
-        present(mountainPassListVC, animated: true)
+        SceneDelegate.shared.rootViewController.switchToMountainPassListScreen()
     }
     
     // MARK: - Private Methods
@@ -160,7 +155,6 @@ class RegistrationVC: UIViewController {
             }
         }
     }
-    
 }
 
 // MARK: - SetConstraints
@@ -250,6 +244,7 @@ extension RegistrationVC {
 }
 
 extension RegistrationVC: InputFieldDelegate {
+    
     func inputFieldDidEndEditing(_ type: InputFieldType, text: String?) {
         switch type {
         case .surname:

@@ -107,8 +107,7 @@ class WelcomeVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapEnterButton() {
         let registrationVC = RegistrationVC()
-        registrationVC.modalPresentationStyle = .fullScreen
-        present(registrationVC, animated: true)
+        self.navigationController?.pushViewController(registrationVC, animated: true)
     }
     
     // MARK: - Private Methods

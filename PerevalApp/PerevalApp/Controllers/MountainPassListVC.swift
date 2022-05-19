@@ -58,6 +58,10 @@ class MountainPassListVC: UIViewController {
         
         view.backgroundColor = .white
         
+        title = "Name Surname"
+        let logoutButton = UIBarButtonItem(title: "Remove User", style: .plain, target: self, action: #selector(didTapRemoveUser))
+        navigationItem.setRightBarButton(logoutButton, animated: true)
+        
         setupViews()
         setConstraints()
     }
@@ -71,14 +75,18 @@ class MountainPassListVC: UIViewController {
         print("🟢 didTapAddButton in MountainPassListVC")
         
         let addNewMountainPassVC = AddNewMountainPassVC()
-        addNewMountainPassVC.modalPresentationStyle = .fullScreen
-        present(addNewMountainPassVC, animated: true)
+        self.navigationController?.pushViewController(addNewMountainPassVC, animated: true)
     }
     
     @objc private func didTapLinkButton() {
         guard let url = URL(string: "https://tssr.ru/pereval") else { return }
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true, completion: nil)
+    }
+    
+    @objc private func didTapRemoveUser() {
+        UserSettings.removeUser()
+        SceneDelegate.shared.rootViewController.showWelcomeScreen()
     }
     
     // MARK: - Private Methods
