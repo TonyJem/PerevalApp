@@ -201,12 +201,12 @@ class AddNewMountainPassVC: UIViewController {
         setConstraints()
         
         /// TestPrints... Remeber to delete it later!
-        print("Surname: \(String(describing: UserSettings.userSurname))")
-        print("Name: \(String(describing: UserSettings.userName))")
-        print("Patronymic: \(String(describing: UserSettings.userPatronymic))")
-        print("Email: \(String(describing: UserSettings.userEmail))")
-        print("Phone: \(String(describing: UserSettings.userPhone))")
-        print("MediaLink: \(String(describing: UserSettings.userMediaLink))")
+//        print("Surname: \(String(describing: UserSettings.userSurname))")
+//        print("Name: \(String(describing: UserSettings.userName))")
+//        print("Patronymic: \(String(describing: UserSettings.userPatronymic))")
+//        print("Email: \(String(describing: UserSettings.userEmail))")
+//        print("Phone: \(String(describing: UserSettings.userPhone))")
+//        print("MediaLink: \(String(describing: UserSettings.userMediaLink))")
     }
     
     override func viewDidLayoutSubviews() {
@@ -216,6 +216,7 @@ class AddNewMountainPassVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in AddNewMountainPassVC")
+        postMountainPass()
     }
     
     @objc private func didTapCategoryButton() {
@@ -244,6 +245,78 @@ class AddNewMountainPassVC: UIViewController {
         contentView.addSubview(photoLabel)
         contentView.addSubview(attachPhotoView)
     }
+    
+    private func postMountainPass() {
+        
+        let coordinates = Coords(latitude: "45.3842",
+                                 longitude: "7.1525",
+                                 height: "1200")
+        
+        let level = Level(winter: "",
+                          summer: "1A",
+                          autumn: "1A",
+                          spring: "")
+        
+        let image1 = Image(url: "http://...1",
+                           title: "Подъём. Фото №1")
+        let image2 = Image(url: "http://...2",
+                           title: "Подъём. Фото №2")
+        let image3 = Image(url: "http://...3",
+                           title: "Подъём. Фото №3")
+        
+        let images = [image1, image2, image3]
+        
+        let user = User(id: 0,
+                        email: "email@example.com",
+                        phone: "8-987-654-43-21",
+                        fam: "Schwarzenegger",
+                        name: "Arnold")
+        
+        let newMountainPass = MountainPass(beautyTitle: "пер.",
+                                           title: "MonkeyHere",
+                                           otherTitles: "Триев",
+                                           connect: "",
+                                           addTime: "2021-09-22 13:18:13",
+                                           user: user,
+                                           coords: coordinates,
+                                           type: "pass",
+                                           level: level,
+                                           images: images)
+        
+        let url = URL(string: "https://pereval2602.herokuapp.com/api/v1/pereval/")
+        guard let requestUrl = url else { return }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let jsonData = try? JSONEncoder().encode(newMountainPass) else { return }
+        
+        request.httpBody = jsonData
+        
+        let session = URLSession.shared
+        
+        
+        session.dataTask(with: request) { (data, response, error) in
+            
+            if let response = response {
+                print("🟢 Response: \(response)")
+            }
+            
+            guard let data = data else {return}
+            
+            do {
+                let mountainPass = try JSONDecoder().decode(MountainPass.self, from: data)
+                print("🟢🟢🟢 Response data:\n \(mountainPass)")
+                
+            } catch {
+                print("🔴 Error: \(error)")
+            }
+        }.resume()
+    }
 }
 
 // MARK: - SetConstraints
@@ -263,14 +336,14 @@ extension AddNewMountainPassVC {
             infoButton.widthAnchor.constraint(equalToConstant: 20),
             infoButton.heightAnchor.constraint(equalTo: infoButton.widthAnchor)
         ])
-
+        
         NSLayoutConstraint.activate([
             categoryLabel.centerYAnchor.constraint(equalTo: infoButton.centerYAnchor),
             categoryLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             categoryLabel.trailingAnchor.constraint(equalTo: infoButton.leadingAnchor),
             categoryLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
-
+        
         NSLayoutConstraint.activate([
             stackView1.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 20),
             stackView1.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
@@ -284,21 +357,21 @@ extension AddNewMountainPassVC {
             stackView2.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             stackView2.heightAnchor.constraint(equalToConstant: 40)
         ])
-
+        
         NSLayoutConstraint.activate([
             additionLabel.topAnchor.constraint(equalTo: stackView2.bottomAnchor, constant: 20),
             additionLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             additionLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             additionLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
-
+        
         NSLayoutConstraint.activate([
             additionStackView.topAnchor.constraint(equalTo: additionLabel.bottomAnchor, constant: 3),
             additionStackView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             additionStackView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             additionStackView.heightAnchor.constraint(equalToConstant: 190)
         ])
-
+        
         NSLayoutConstraint.activate([
             separatorView1.topAnchor.constraint(equalTo: additionStackView.bottomAnchor),
             separatorView1.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: -25),
@@ -312,56 +385,56 @@ extension AddNewMountainPassVC {
             dateLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             dateLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
-
+        
         NSLayoutConstraint.activate([
             calendarView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
             calendarView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             calendarView.widthAnchor.constraint(equalToConstant: 200),
             calendarView.heightAnchor.constraint(equalToConstant: 55)
         ])
-
+        
         NSLayoutConstraint.activate([
             todayView.topAnchor.constraint(equalTo: calendarView.topAnchor),
             todayView.leadingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: 25),
             todayView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             todayView.heightAnchor.constraint(equalTo: calendarView.heightAnchor)
         ])
-
+        
         NSLayoutConstraint.activate([
             coordintatesLabel.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 20),
             coordintatesLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             coordintatesLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             coordintatesLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
-
+        
         NSLayoutConstraint.activate([
             separatorView2.topAnchor.constraint(equalTo: coordintatesLabel.bottomAnchor, constant: 10),
             separatorView2.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: -25),
             separatorView2.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: 25),
             separatorView2.heightAnchor.constraint(equalToConstant: 1)
         ])
-
+        
         NSLayoutConstraint.activate([
             coordinatesView.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 15),
             coordinatesView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             coordinatesView.widthAnchor.constraint(equalToConstant: 200),
             coordinatesView.heightAnchor.constraint(equalToConstant: 55)
         ])
-
+        
         NSLayoutConstraint.activate([
             altitudeView.topAnchor.constraint(equalTo: coordinatesView.topAnchor),
             altitudeView.leadingAnchor.constraint(equalTo: coordinatesView.trailingAnchor, constant: 25),
             altitudeView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             altitudeView.heightAnchor.constraint(equalTo: coordinatesView.heightAnchor)
         ])
-
+        
         NSLayoutConstraint.activate([
             photoLabel.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
             photoLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             photoLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             photoLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
-
+        
         NSLayoutConstraint.activate([
             attachPhotoView.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 20),
             attachPhotoView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
