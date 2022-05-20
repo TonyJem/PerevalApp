@@ -5,6 +5,8 @@ class AddNewMountainPassVC: UIViewController {
     // MARK: - Properties
     private let apiService = APIService()
     
+    private var mountainPassModel: MountainPassModel?
+    
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
     }

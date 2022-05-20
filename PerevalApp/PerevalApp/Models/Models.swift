@@ -2,7 +2,15 @@ import Foundation
 
 struct MountainPassModel {
     var title: String
-    var addTime: String
+    var date: String
+    
+    mutating func setupTitle(_ title: String) {
+        self.title = title
+    }
+    
+    mutating func setupDate(_ date: String) {
+        self.date = date
+    }
 }
 
 // MARK: - Coords
