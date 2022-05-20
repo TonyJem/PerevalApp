@@ -79,12 +79,12 @@ struct UserSettings {
         }
     }
     
-    static var currentUser: User? {
+    static var currentUser: UserModel? {
         get {
             guard let currentUser = userDefaults.object(forKey: SettingsKeys.currentUser.rawValue) as? Data else {
                 return nil
             }
-            return try? JSONDecoder().decode(User.self, from: currentUser)
+            return try? JSONDecoder().decode(UserModel.self, from: currentUser)
         } set {
             if let currentUser = try? JSONEncoder().encode(newValue) {
                 userDefaults.set(currentUser, forKey: SettingsKeys.currentUser.rawValue)
@@ -106,7 +106,7 @@ extension UserSettings {
             return
         }
         
-        UserSettings.currentUser = User(surname: surname,
+        UserSettings.currentUser = UserModel(surname: surname,
                                         name: name,
                                         patronymic: patronymic,
                                         email: email,

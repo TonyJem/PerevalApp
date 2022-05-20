@@ -1,6 +1,6 @@
 import Foundation
 
-struct User: Codable {
+struct UserModel: Codable {
     
     var surname: String
     var name: String
