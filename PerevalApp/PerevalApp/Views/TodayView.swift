@@ -6,7 +6,7 @@ class TodayView: UIView {
     private let todayLabel: UILabel = {
         let label = UILabel()
         label.text = "Сегодня"
-        label.font = .ptSans18()
+        label.font = .ptSans14()
         label.textColor = .white
         label.textAlignment = .center
         
@@ -16,8 +16,8 @@ class TodayView: UIView {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "(22.05.2022)"
-        label.font = .ptSans12()
+        label.text = "22.05.2022"
+        label.font = .ptSans11()
         label.textColor = .white
         label.textAlignment = .center
         

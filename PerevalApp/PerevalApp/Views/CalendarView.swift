@@ -14,6 +14,7 @@ class CalendarView: UIView {
     private let datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.timeZone = NSTimeZone.local
+        picker.locale = NSLocale(localeIdentifier: "ru") as Locale
         picker.backgroundColor = UIColor.white
         picker.translatesAutoresizingMaskIntoConstraints = false
         return picker
@@ -57,8 +58,8 @@ extension CalendarView {
         
         NSLayoutConstraint.activate([
             datePicker.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: calendarImageView.trailingAnchor, constant: 12),
-            datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12)
+            datePicker.leadingAnchor.constraint(equalTo: calendarImageView.trailingAnchor, constant: 4),
+            datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4)
         ])
     }
 }

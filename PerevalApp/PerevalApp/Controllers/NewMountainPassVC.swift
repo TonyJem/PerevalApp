@@ -312,13 +312,13 @@ extension NewMountainPassVC {
         NSLayoutConstraint.activate([
             calendarView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
             calendarView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-            calendarView.widthAnchor.constraint(equalToConstant: 200),
+            calendarView.widthAnchor.constraint(equalToConstant: 300),
             calendarView.heightAnchor.constraint(equalToConstant: 55)
         ])
         
         NSLayoutConstraint.activate([
             todayView.topAnchor.constraint(equalTo: calendarView.topAnchor),
-            todayView.leadingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: 25),
+            todayView.leadingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: 5),
             todayView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             todayView.heightAnchor.constraint(equalTo: calendarView.heightAnchor)
         ])
