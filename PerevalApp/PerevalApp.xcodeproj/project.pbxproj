@@ -44,6 +44,7 @@
 		3AC8A02F28365238005CEBFD /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A02E28365238005CEBFD /* RootViewController.swift */; };
 		3AC8A0362836C75F005CEBFD /* MountainPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A0352836C75F005CEBFD /* MountainPass.swift */; };
 		3AC8A0392837ED18005CEBFD /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A0382837ED18005CEBFD /* APIService.swift */; };
+		3AC8A03B2837F414005CEBFD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A03A2837F414005CEBFD /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		3AC8A02E28365238005CEBFD /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		3AC8A0352836C75F005CEBFD /* MountainPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPass.swift; sourceTree = "<group>"; };
 		3AC8A0382837ED18005CEBFD /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		3AC8A03A2837F414005CEBFD /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				3A2ED0F42835435600285746 /* UserModel.swift */,
+				3AC8A03A2837F414005CEBFD /* Models.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				3AC8A0392837ED18005CEBFD /* APIService.swift in Sources */,
 				3A1D4F29282FCC61003C57D9 /* SceneDelegate.swift in Sources */,
 				3A1D4F3E282FCFC3003C57D9 /* RegistrationVC.swift in Sources */,
+				3AC8A03B2837F414005CEBFD /* Models.swift in Sources */,
 				3A2ED0DB2832612800285746 /* SeparatorView.swift in Sources */,
 				3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */,
 				3A1D4F42282FD02D003C57D9 /* AddNewMountainPassVC.swift in Sources */,
