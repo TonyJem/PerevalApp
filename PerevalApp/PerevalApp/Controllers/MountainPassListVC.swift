@@ -72,8 +72,8 @@ class MountainPassListVC: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapAddButton() {
-        let addNewMountainPassVC = AddNewMountainPassVC()
-        self.navigationController?.pushViewController(addNewMountainPassVC, animated: true)
+        let newMountainPassVC = NewMountainPassVC()
+        self.navigationController?.pushViewController(newMountainPassVC, animated: true)
     }
     
     @objc private func didTapLinkButton() {

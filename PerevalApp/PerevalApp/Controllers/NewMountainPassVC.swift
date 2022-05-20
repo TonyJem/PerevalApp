@@ -1,6 +1,6 @@
 import UIKit
 
-class AddNewMountainPassVC: UIViewController {
+class NewMountainPassVC: UIViewController {
     
     // MARK: - Properties
     private let apiService = APIService()
@@ -212,13 +212,13 @@ class AddNewMountainPassVC: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapInfoButton() {
-        print("🟢 didTapInfoButton in AddNewMountainPassVC")
+        print("🟢 didTapInfoButton in NewMountainPassVC")
         
         apiService.postMountainPass()
     }
     
     @objc private func didTapCategoryButton() {
-        print("🟢 didTapCategoryButton in AddNewMountainPassVC")
+        print("🟢 didTapCategoryButton in NewMountainPassVC")
     }
     
     // MARK: - Private Methods
@@ -247,7 +247,7 @@ class AddNewMountainPassVC: UIViewController {
 }
 
 // MARK: - SetConstraints
-extension AddNewMountainPassVC {
+extension NewMountainPassVC {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
