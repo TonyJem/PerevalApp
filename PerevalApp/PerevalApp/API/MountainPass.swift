@@ -1,6 +1,5 @@
 import Foundation
 
-// MARK: - MountainPass
 struct MountainPass: Codable {
     let beautyTitle: String
     let title: String

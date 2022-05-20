@@ -3,6 +3,8 @@ import UIKit
 class AddNewMountainPassVC: UIViewController {
     
     // MARK: - Properties
+    private let apiService = APIService()
+    
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
     }
@@ -200,13 +202,6 @@ class AddNewMountainPassVC: UIViewController {
         setupViews()
         setConstraints()
         
-        /// TestPrints... Remeber to delete it later!
-//        print("Surname: \(String(describing: UserSettings.userSurname))")
-//        print("Name: \(String(describing: UserSettings.userName))")
-//        print("Patronymic: \(String(describing: UserSettings.userPatronymic))")
-//        print("Email: \(String(describing: UserSettings.userEmail))")
-//        print("Phone: \(String(describing: UserSettings.userPhone))")
-//        print("MediaLink: \(String(describing: UserSettings.userMediaLink))")
     }
     
     override func viewDidLayoutSubviews() {
@@ -216,7 +211,8 @@ class AddNewMountainPassVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in AddNewMountainPassVC")
-        postMountainPass()
+        
+        apiService.postMountainPass()
     }
     
     @objc private func didTapCategoryButton() {
@@ -246,77 +242,6 @@ class AddNewMountainPassVC: UIViewController {
         contentView.addSubview(attachPhotoView)
     }
     
-    private func postMountainPass() {
-        
-        let coordinates = Coords(latitude: "45.3842",
-                                 longitude: "7.1525",
-                                 height: "1200")
-        
-        let level = Level(winter: "",
-                          summer: "1A",
-                          autumn: "1A",
-                          spring: "")
-        
-        let image1 = Image(url: "http://...1",
-                           title: "Подъём. Фото №1")
-        let image2 = Image(url: "http://...2",
-                           title: "Подъём. Фото №2")
-        let image3 = Image(url: "http://...3",
-                           title: "Подъём. Фото №3")
-        
-        let images = [image1, image2, image3]
-        
-        let user = User(id: 0,
-                        email: "email@example.com",
-                        phone: "8-987-654-43-21",
-                        fam: "Schwarzenegger",
-                        name: "Arnold")
-        
-        let newMountainPass = MountainPass(beautyTitle: "пер.",
-                                           title: "MonkeyHere",
-                                           otherTitles: "Триев",
-                                           connect: "",
-                                           addTime: "2021-09-22 13:18:13",
-                                           user: user,
-                                           coords: coordinates,
-                                           type: "pass",
-                                           level: level,
-                                           images: images)
-        
-        let url = URL(string: "https://pereval2602.herokuapp.com/api/v1/pereval/")
-        guard let requestUrl = url else { return }
-        
-        var request = URLRequest(url: requestUrl)
-        request.httpMethod = "POST"
-        
-        // Set HTTP Request Header
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        guard let jsonData = try? JSONEncoder().encode(newMountainPass) else { return }
-        
-        request.httpBody = jsonData
-        
-        let session = URLSession.shared
-        
-        
-        session.dataTask(with: request) { (data, response, error) in
-            
-            if let response = response {
-                print("🟢 Response: \(response)")
-            }
-            
-            guard let data = data else {return}
-            
-            do {
-                let mountainPass = try JSONDecoder().decode(MountainPass.self, from: data)
-                print("🟢🟢🟢 Response data:\n \(mountainPass)")
-                
-            } catch {
-                print("🔴 Error: \(error)")
-            }
-        }.resume()
-    }
 }
 
 // MARK: - SetConstraints
