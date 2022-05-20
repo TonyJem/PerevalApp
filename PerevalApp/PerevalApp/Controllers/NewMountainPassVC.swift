@@ -5,6 +5,8 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Properties
     private let apiService = APIService()
     
+    private let customAlert = CalendarModal()
+    
     private var date = "" {
         didSet {
             calendarView.setDateTitle(with: date)
@@ -382,5 +384,10 @@ extension NewMountainPassVC {
 extension NewMountainPassVC: CalendarViewDelegate {
     func didTap() {
         print("🟢 didTap CalendarViewDelegate in NewMountainPassVC")
+        
+        customAlert.alertCustom(viewController: self, repsOrTimer: "Reps") { _, _ in
+            
+        }
     }
 }
+
