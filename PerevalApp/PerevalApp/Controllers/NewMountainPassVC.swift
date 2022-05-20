@@ -5,7 +5,11 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Properties
     private let apiService = APIService()
     
-    private var mountainPassModel: MountainPassModel?
+    private var date = "" {
+        didSet {
+            calendarView.setDateTitle(with: date)
+        }
+    }
     
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
@@ -203,7 +207,7 @@ class NewMountainPassVC: UIViewController {
         
         setupViews()
         setConstraints()
-        
+        setupDelegates()
     }
     
     override func viewDidLayoutSubviews() {
@@ -244,6 +248,9 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(attachPhotoView)
     }
     
+    private func setupDelegates() {
+        calendarView.delegate = self
+    }
 }
 
 // MARK: - SetConstraints
@@ -368,5 +375,12 @@ extension NewMountainPassVC {
             attachPhotoView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             attachPhotoView.heightAnchor.constraint(equalToConstant: 140)
         ])
+    }
+}
+
+// MARK: - CalendarViewDelegate
+extension NewMountainPassVC: CalendarViewDelegate {
+    func didTap() {
+        print("🟢 didTap CalendarViewDelegate in NewMountainPassVC")
     }
 }

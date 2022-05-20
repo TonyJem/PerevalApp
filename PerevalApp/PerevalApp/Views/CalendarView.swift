@@ -1,6 +1,12 @@
 import UIKit
 
+protocol CalendarViewDelegate: AnyObject {
+    func didTap()
+}
+
 class CalendarView: UIView {
+    
+    weak var delegate: CalendarViewDelegate?
     
     // MARK: - Views
     private let calendarImageView: UIImageView = {
@@ -35,6 +41,16 @@ class CalendarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Actions
+    @objc private func didTapCalendarView() {
+        delegate?.didTap()
+    }
+    
+    // MARK: - Public Methods
+    func setDateTitle(with title: String) {
+        dateLabel.text = title
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         layer.borderColor = UIColor.mainBlue.cgColor
@@ -43,14 +59,12 @@ class CalendarView: UIView {
         backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(didTapCalendarView))
+        addGestureRecognizer(tap)
         
         addSubview(calendarImageView)
         addSubview(dateLabel)
-    }
-    
-    // MARK: - Public Methods
-    func setDateTitle(_ title: String) {
-        dateLabel.text = title
     }
 }
 
