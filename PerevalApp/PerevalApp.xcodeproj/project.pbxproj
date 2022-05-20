@@ -45,7 +45,6 @@
 		3AC8A0362836C75F005CEBFD /* MountainPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A0352836C75F005CEBFD /* MountainPass.swift */; };
 		3AC8A0392837ED18005CEBFD /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A0382837ED18005CEBFD /* APIService.swift */; };
 		3AC8A03B2837F414005CEBFD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A03A2837F414005CEBFD /* Models.swift */; };
-		3AC8A03D283807DA005CEBFD /* CalendarModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A03C283807DA005CEBFD /* CalendarModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +88,6 @@
 		3AC8A0352836C75F005CEBFD /* MountainPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPass.swift; sourceTree = "<group>"; };
 		3AC8A0382837ED18005CEBFD /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		3AC8A03A2837F414005CEBFD /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		3AC8A03C283807DA005CEBFD /* CalendarModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +120,6 @@
 		3A1D4F25282FCC61003C57D9 /* PerevalApp */ = {
 			isa = PBXGroup;
 			children = (
-				3AC8A03C283807DA005CEBFD /* CalendarModal.swift */,
 				3A1D4F3A282FCF36003C57D9 /* Application */,
 				3AC8A0372837EC5A005CEBFD /* API */,
 				3A2ED0F8283548A700285746 /* Managers */,
@@ -332,7 +329,6 @@
 				3A2ED0EC2832C7E800285746 /* PhotoView.swift in Sources */,
 				3A2ED0DF28326A4E00285746 /* CalendarView.swift in Sources */,
 				3A2ED0D028311FCA00285746 /* UILabel + Extensions.swift in Sources */,
-				3AC8A03D283807DA005CEBFD /* CalendarModal.swift in Sources */,
 				3A2ED0F52835435600285746 /* UserModel.swift in Sources */,
 				3AC8A02D283651CE005CEBFD /* SplashViewController.swift in Sources */,
 				3A1D4F27282FCC61003C57D9 /* AppDelegate.swift in Sources */,

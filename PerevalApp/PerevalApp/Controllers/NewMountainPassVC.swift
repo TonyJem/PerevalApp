@@ -5,14 +5,6 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Properties
     private let apiService = APIService()
     
-    private let customAlert = CalendarModal()
-    
-    private var date = "" {
-        didSet {
-            calendarView.setDateTitle(with: date)
-        }
-    }
-    
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
     }
@@ -209,7 +201,6 @@ class NewMountainPassVC: UIViewController {
         
         setupViews()
         setConstraints()
-        setupDelegates()
     }
     
     override func viewDidLayoutSubviews() {
@@ -248,10 +239,6 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(altitudeView)
         contentView.addSubview(photoLabel)
         contentView.addSubview(attachPhotoView)
-    }
-    
-    private func setupDelegates() {
-        calendarView.delegate = self
     }
 }
 
@@ -379,15 +366,3 @@ extension NewMountainPassVC {
         ])
     }
 }
-
-// MARK: - CalendarViewDelegate
-extension NewMountainPassVC: CalendarViewDelegate {
-    func didTap() {
-        print("🟢 didTap CalendarViewDelegate in NewMountainPassVC")
-        
-        customAlert.alertCustom(viewController: self, repsOrTimer: "Reps") { _, _ in
-            
-        }
-    }
-}
-

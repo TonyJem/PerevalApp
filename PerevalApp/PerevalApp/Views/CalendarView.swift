@@ -1,32 +1,22 @@
 import UIKit
 
-protocol CalendarViewDelegate: AnyObject {
-    func didTap()
-}
-
 class CalendarView: UIView {
-    
-    weak var delegate: CalendarViewDelegate?
     
     // MARK: - Views
     private let calendarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "calendar")
         imageView.contentMode = .scaleAspectFit
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private let dateLabel: UILabel = {
-        let label = UILabel()
-        label.text = "12.04.1961"
-        label.font = .ptSans20()
-        label.textColor = .darkBlue
-        label.textAlignment = .center
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private let datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.timeZone = NSTimeZone.local
+        picker.backgroundColor = UIColor.white
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
     }()
     
     // MARK: - Init
@@ -41,16 +31,6 @@ class CalendarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Actions
-    @objc private func didTapCalendarView() {
-        delegate?.didTap()
-    }
-    
-    // MARK: - Public Methods
-    func setDateTitle(with title: String) {
-        dateLabel.text = title
-    }
-    
     // MARK: - Private Methods
     private func setupViews() {
         layer.borderColor = UIColor.mainBlue.cgColor
@@ -59,12 +39,8 @@ class CalendarView: UIView {
         backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         
-        let tap = UITapGestureRecognizer(target: self,
-                                         action: #selector(didTapCalendarView))
-        addGestureRecognizer(tap)
-        
         addSubview(calendarImageView)
-        addSubview(dateLabel)
+        addSubview(datePicker)
     }
 }
 
@@ -80,11 +56,9 @@ extension CalendarView {
         ])
         
         NSLayoutConstraint.activate([
-            dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            dateLabel.leadingAnchor.constraint(equalTo: calendarImageView.trailingAnchor, constant: 12),
-            dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
-            dateLabel.heightAnchor.constraint(equalToConstant: 20)
+            datePicker.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            datePicker.leadingAnchor.constraint(equalTo: calendarImageView.trailingAnchor, constant: 12),
+            datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12)
         ])
     }
 }
-
