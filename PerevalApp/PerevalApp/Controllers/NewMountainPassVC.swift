@@ -294,7 +294,18 @@ class NewMountainPassVC: UIViewController {
     }
     
     private func sendNewPostRequest() {
-        apiService.newTestPostMountainPass()
+        
+        guard let currentUser = UserSettings.currentUser else {
+            print("🔴 Providing data is stopped, due CurrentUser is Nil")
+            return
+        }
+        let user = User(id: 888,
+                        email: currentUser.email,
+                        phone: currentUser.phone,
+                        fam: currentUser.surname,
+                        name: currentUser.name)
+        
+        apiService.newTestPostMountainPass(user: user)
     }
 }
 

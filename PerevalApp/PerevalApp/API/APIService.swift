@@ -132,7 +132,8 @@ class APIService {
         }.resume()
     }
     
-    func newTestPostMountainPass() {
+    // MARK: New post functionality prepared step by step:
+    func newTestPostMountainPass(user: User) {
         let coordinates = Coords(latitude: "test45.3842",
                                  longitude: "7.1525",
                                  height: "1200")
@@ -151,11 +152,11 @@ class APIService {
         
         let images = [image1, image2, image3]
         
-        let user = User(id: 0,
-                        email: "email@example.com",
-                        phone: "8-987-654-43-21",
-                        fam: "testSchwarzenegger",
-                        name: "01Arnold")
+//        let user = User(id: 0,
+//                        email: "email@example.com",
+//                        phone: "8-987-654-43-21",
+//                        fam: "testSchwarzenegger",
+//                        name: "01Arnold")
         
         let newMountainPass = MountainPass(beautyTitle: "пер.",
                                            title: "MonkeyHereTest",
