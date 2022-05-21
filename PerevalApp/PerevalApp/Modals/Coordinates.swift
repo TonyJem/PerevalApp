@@ -18,6 +18,13 @@ extension Coordinates {
             iconView.heightAnchor.constraint(equalToConstant: 20)
         ])
         
+        NSLayoutConstraint.activate([
+            titleLabel.bottomAnchor.constraint(equalTo: iconView.bottomAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 15),
+            titleLabel.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -25),
+            titleLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        
     }
 }
 
@@ -39,10 +46,22 @@ class Coordinates {
         return iconView
     }()
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Координаты"
+        label.font = .ptSans18()
+        label.textColor = .darkGray
+        label.textAlignment = .left
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - Private Methods
     private func setupViews() {
         modalView.addSubview(separatorView)
         modalView.addSubview(iconView)
+        modalView.addSubview(titleLabel)
     }
     
     

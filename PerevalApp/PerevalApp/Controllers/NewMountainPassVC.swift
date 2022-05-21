@@ -37,7 +37,7 @@ class NewMountainPassVC: UIViewController {
         textField.backgroundColor = .white
         textField.placeholder = "Название перевала"
         textField.font = .ptSans18()
-        textField.layer.borderColor = UIColor.borderGray.cgColor
+        textField.layer.borderColor = UIColor.darkGray.cgColor
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField

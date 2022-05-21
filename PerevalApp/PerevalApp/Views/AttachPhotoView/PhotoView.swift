@@ -16,7 +16,7 @@ final class PhotoView: UIView {
         let label = UILabel()
         label.text = "с камеры"
         label.font = .dinCondensed19()
-        label.textColor = .borderGray
+        label.textColor = .darkGray
         label.textAlignment = .center
         
         label.translatesAutoresizingMaskIntoConstraints = false

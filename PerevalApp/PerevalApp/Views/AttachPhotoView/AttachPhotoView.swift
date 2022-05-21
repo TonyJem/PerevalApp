@@ -7,7 +7,7 @@ class AttachPhotoView: UIView {
         label.text = "Добавьте фото"
         
         label.font = .montserratItalic22()
-        label.textColor = .borderGray
+        label.textColor = .darkGray
         label.textAlignment = .center
         
         label.translatesAutoresizingMaskIntoConstraints = false

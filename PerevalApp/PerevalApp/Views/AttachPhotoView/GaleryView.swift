@@ -16,7 +16,7 @@ final class GaleryView: UIView {
         let label = UILabel()
         label.text = "из галереи"
         label.font = .dinCondensed19()
-        label.textColor = .borderGray
+        label.textColor = .darkGray
         label.textAlignment = .center
         
         label.translatesAutoresizingMaskIntoConstraints = false
