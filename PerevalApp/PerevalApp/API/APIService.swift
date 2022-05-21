@@ -133,7 +133,7 @@ class APIService {
     }
     
     // MARK: New post functionality prepared step by step:
-    func newTestPostMountainPass(date: String, user: User) {
+    func newTestPostMountainPass(title: String, date: String, user: User) {
         
         let coordinates = Coords(latitude: "test45.3842",
                                  longitude: "7.1525",
@@ -160,7 +160,7 @@ class APIService {
 //                        name: "01Arnold")
         
         let newMountainPass = MountainPass(beautyTitle: "пер.",
-                                           title: "MonkeyHereTest",
+                                           title: title,
                                            otherTitles: "Триев",
                                            connect: "",
                                            addTime: date,

@@ -213,7 +213,7 @@ class NewMountainPassVC: UIViewController {
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
         
-//        provideMountainPassDataToAPIService()
+        //        provideMountainPassDataToAPIService()
         
         sendNewPostRequest()
     }
@@ -247,11 +247,11 @@ class NewMountainPassVC: UIViewController {
     
     private func provideMountainPassDataToAPIService() {
         
-//        guard let title = textField.text,
-//              !title.isEmpty else {
-//            print("🔴 Providing data is stopped, due Title is Nil")
-//            return
-//        }
+        //        guard let title = textField.text,
+        //              !title.isEmpty else {
+        //            print("🔴 Providing data is stopped, due Title is Nil")
+        //            return
+        //        }
         
         let title = "перевал ЛохНесс"
         
@@ -266,7 +266,7 @@ class NewMountainPassVC: UIViewController {
             print("🔴 Providing data is stopped, due Category is Nil")
             return
         }
-
+        
         let image1 = Image(url: "http://...1",
                            title: "Подъём. Фото №1")
         let image2 = Image(url: "http://...2",
@@ -295,6 +295,12 @@ class NewMountainPassVC: UIViewController {
     
     private func sendNewPostRequest() {
         
+        guard let title = textField.text,
+              !title.isEmpty else {
+            print("🔴 Providing data is stopped, due Title is Nil")
+            return
+        }
+        
         let date = calendarView.getDate()
         
         guard let currentUser = UserSettings.currentUser else {
@@ -307,7 +313,9 @@ class NewMountainPassVC: UIViewController {
                         fam: currentUser.surname,
                         name: currentUser.name)
         
-        apiService.newTestPostMountainPass(date: date, user: user)
+        apiService.newTestPostMountainPass(title: title,
+                                           date: date,
+                                           user: user)
     }
 }
 
