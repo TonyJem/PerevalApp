@@ -225,6 +225,9 @@ class NewMountainPassVC: UIViewController {
         setConstraints()
         setDelegates()
         initializeHideKeyboard()
+        
+        let currentDate = calendarView.getDate()
+        model.setDate(currentDate)
     }
     
     override func viewDidLayoutSubviews() {

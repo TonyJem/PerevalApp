@@ -11,12 +11,14 @@ class CalendarView: UIView {
         return imageView
     }()
     
-    private let datePicker: UIDatePicker = {
+    private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.timeZone = NSTimeZone.local
         picker.locale = NSLocale(localeIdentifier: "ru") as Locale
         picker.backgroundColor = UIColor.white
         picker.translatesAutoresizingMaskIntoConstraints = false
+        
+        picker.addTarget(self, action: #selector(editingDidEndOnDatePicker), for: .editingDidEnd)
         return picker
     }()
     
@@ -30,6 +32,13 @@ class CalendarView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    @objc private func editingDidEndOnDatePicker() {
+        
+        let dateString = getDate()
+        print("🟩🟩🟩 editingDidEndOnDatePicker dateString: \(dateString)")
     }
     
     // MARK: - Public Methods

@@ -2,7 +2,7 @@ import Foundation
 
 class MountainPassModel {
     private var title: String?
-//    private var date: String?
+    private var date: String?
 //    private var currentUser: User?
 //    private var category = ""
 //    private var isMarkedWithStar = false
@@ -18,5 +18,16 @@ class MountainPassModel {
             return ""
         }
         return title
+    }
+    
+    func setDate(_ text: String?) {
+        date = text
+    }
+    
+    func getDate() -> String {
+        guard let date = date else {
+            return ""
+        }
+        return date
     }
 }
