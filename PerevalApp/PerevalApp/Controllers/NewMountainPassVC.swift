@@ -4,21 +4,20 @@ class NewMountainPassVC: UIViewController {
     
     // MARK: - Properties
     private let apiService = APIService()
-    
     private let model = MountainPassModel()
     
-    private var category: String? {
-        didSet {
-            guard let category = category else {
-                print("🔴 Category is Nil so all categoryButtons will be deactivated")
-                updateButtons(with: "")
-                return
-            }
-            
-            print("🟢🟢🟢 Category is set: \(category)")
-            updateButtons(with: category)
-        }
-    }
+//    private var category: String? {
+//        didSet {
+//            guard let category = category else {
+//                print("🔴 Category is Nil so all categoryButtons will be deactivated")
+//                updateButtons(with: "")
+//                return
+//            }
+//
+//            print("🟢🟢🟢 Category is set: \(category)")
+//            updateButtons(with: category)
+//        }
+//    }
     
     private var isCategoryWithStar = false {
         didSet {
@@ -238,7 +237,7 @@ class NewMountainPassVC: UIViewController {
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
         
-        sendNewPostRequest()
+//        sendNewPostRequest()
     }
     
     @objc private func dismissMyKeyboard(){
@@ -292,27 +291,32 @@ class NewMountainPassVC: UIViewController {
         
     }
     
-    private func updateCategory(with text: String) {
-        category = text
-    }
+//    private func updateCategory(with text: String) {
+//        category = text
+//    }
     
-    private func removeCategory() {
-        category = nil
-    }
-    
-    private func updateButtons(with title: String) {
+    private func updateCategoryButtons() {
+        
+        let category = model.getCategory()
+        
+        print("🟢🟢🟢 Category: \(String(describing: category))")
+        
         for view in stackView1.arrangedSubviews {
             guard let button = view as? CategoryButton else { return }
             let buttonTitle = button.getButtonTitle()
-            button.isActive = buttonTitle == title
+            button.isActive = buttonTitle == category
         }
         
         for view in stackView2.arrangedSubviews {
             guard let button = view as? CategoryButton else { return }
             let buttonTitle = button.getButtonTitle()
-            button.isActive = buttonTitle == title
+            button.isActive = buttonTitle == category
         }
     }
+    
+//    private func removeCategory() {
+//        category = nil
+//    }
     
     private func updateButtonsWithStar() {
         for view in stackView1.arrangedSubviews {
@@ -337,6 +341,7 @@ class NewMountainPassVC: UIViewController {
         }
     }
     
+    /*
     private func sendNewPostRequest() {
         
         guard let title = textField.text,
@@ -367,6 +372,7 @@ class NewMountainPassVC: UIViewController {
                                            user: user,
                                            category: category)
     }
+    */
     
     private func initializeHideKeyboard() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMyKeyboard))
@@ -381,16 +387,19 @@ extension NewMountainPassVC: CategoryButtonDelegate {
         
         print("🟢🟢 didTapCategoryButton with title \(title)")
         
-        guard let category = category else {
-            updateCategory(with: title)
-            return
-        }
+        model.setCategory(title)
+//        guard let category = category else {
+//            updateCategory(with: title)
+//            return
+//        }
+//
+//        if category == title {
+//            removeCategory()
+//        } else {
+//            updateCategory(with: title)
+//        }
         
-        if category == title {
-            removeCategory()
-        } else {
-            updateCategory(with: title)
-        }
+        updateCategoryButtons()
     }
 }
 
