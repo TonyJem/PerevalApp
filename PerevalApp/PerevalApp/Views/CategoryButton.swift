@@ -9,6 +9,7 @@ class CategoryButton: UIButton {
     var isActive = false {
         didSet {
             customButton.backgroundColor = isActive ? .mainBlue : .white
+            customButton.tintColor = isActive ? .white : .darkBlue
         }
     }
     
@@ -17,8 +18,6 @@ class CategoryButton: UIButton {
     // MARK: - Views
     private lazy var customButton: UIButton = {
         let button = UIButton(type: .system)
-        
-        button.tintColor = .darkBlue
         button.titleLabel?.font = .ptSans18()
         button.setTitle("", for: .normal)
         button.clipsToBounds = true
@@ -55,6 +54,11 @@ class CategoryButton: UIButton {
     // MARK: - Public Methods
     func setTitleWith(_ title: String) {
         customButton.setTitle(title, for: .normal)
+    }
+    
+    func getButtonTitle() -> String {
+        guard let buttonTitle = customButton.titleLabel?.text else { return "" }
+        return buttonTitle
     }
     
     // MARK: - Private Methods

@@ -271,14 +271,17 @@ class NewMountainPassVC: UIViewController {
     
     private func updateButtons(with title: String) {
         for view in stackView1.arrangedSubviews {
-            
             guard let button = view as? CategoryButton else { return }
-            print(button)
-            
-            button.isActive = true
+            let buttonTitle = button.getButtonTitle()
+            button.isActive = buttonTitle == title
         }
         
-
+        for view in stackView2.arrangedSubviews {
+            guard let button = view as? CategoryButton else { return }
+            let buttonTitle = button.getButtonTitle()
+            print(buttonTitle)
+            button.isActive = buttonTitle == title
+        }
     }
     
     private func sendNewPostRequest() {
