@@ -9,9 +9,9 @@ class NewMountainPassVC: UIViewController {
         didSet {
             
             guard let category = category else {
-                print("🔴 Can not set category, due Category is Nil")
+                print("🔴 Category is Nil so all categoryButtons will be deactivated")
+                updateButtons(with: "")
                 return
-                
             }
             
             print("🟢🟢🟢 Category is set: \(category)")
@@ -269,6 +269,10 @@ class NewMountainPassVC: UIViewController {
         category = text
     }
     
+    private func removeCategory() {
+        category = nil
+    }
+    
     private func updateButtons(with title: String) {
         for view in stackView1.arrangedSubviews {
             guard let button = view as? CategoryButton else { return }
@@ -321,7 +325,16 @@ extension NewMountainPassVC: CategoryButtonDelegate {
         
         print("🟢🟢 didTapCategoryButton with title \(title)")
         
-        updateCategory(with: title)
+        guard let category = category else {
+            updateCategory(with: title)
+            return
+        }
+        
+        if category == title {
+            removeCategory()
+        } else {
+            updateCategory(with: title)
+        }
     }
 }
 
