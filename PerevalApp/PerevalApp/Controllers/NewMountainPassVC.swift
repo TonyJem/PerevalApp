@@ -5,6 +5,8 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Properties
     private let apiService = APIService()
     
+    private let model = MountainPassModel()
+    
     private var category: String? {
         didSet {
             guard let category = category else {
