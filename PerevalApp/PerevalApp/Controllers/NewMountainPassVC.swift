@@ -211,9 +211,8 @@ class NewMountainPassVC: UIViewController {
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
         
-//        apiService.postMountainPass()
         
-        calendarView.getDate()
+        
     }
     
     @objc private func didTapCategoryButton() {
@@ -241,6 +240,42 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(altitudeView)
         contentView.addSubview(photoLabel)
         contentView.addSubview(attachPhotoView)
+    }
+    
+    private func provideMountainPassDataToAPIService() {
+        
+        guard let title = textField.text else { return }
+        
+        let date = calendarView.getDate()
+        
+        
+        let coordinates = Coords(latitude: "45.3842",
+                                 longitude: "7.1525",
+                                 height: "1200")
+        
+        let image1 = Image(url: "http://...1",
+                           title: "Подъём. Фото №1")
+        let image2 = Image(url: "http://...2",
+                           title: "Подъём. Фото №2")
+        let image3 = Image(url: "http://...3",
+                           title: "Подъём. Фото №3")
+        
+        let images = [image1, image2, image3]
+        
+        guard let currentUser = UserSettings.currentUser else { return }
+        
+        let user = User(id: 888,
+                        email: currentUser.email,
+                        phone: currentUser.phone,
+                        fam: currentUser.surname,
+                        name: currentUser.name)
+        
+        apiService.postMountainPass(title: title,
+                                    date: date,
+                                    user: user,
+                                    coordinates: coordinates,
+                                    category: "",
+                                    images: images)
     }
 }
 

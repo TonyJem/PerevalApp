@@ -1,43 +1,24 @@
 import Foundation
 
-
-
-
-
-
 class APIService {
     
-    func postMountainPass() {
-        
-        let coordinates = Coords(latitude: "45.3842",
-                                 longitude: "7.1525",
-                                 height: "1200")
+    func postMountainPass(title: String,
+                          date: String,
+                          user: User,
+                          coordinates: Coords,
+                          category: String,
+                          images: [Image]) {
         
         let level = Level(winter: "",
-                          summer: "1A",
-                          autumn: "1A",
+                          summer: category,
+                          autumn: category,
                           spring: "")
         
-        let image1 = Image(url: "http://...1",
-                           title: "Подъём. Фото №1")
-        let image2 = Image(url: "http://...2",
-                           title: "Подъём. Фото №2")
-        let image3 = Image(url: "http://...3",
-                           title: "Подъём. Фото №3")
-        
-        let images = [image1, image2, image3]
-        
-        let user = User(id: 0,
-                        email: "email@example.com",
-                        phone: "8-987-654-43-21",
-                        fam: "Schwarzenegger",
-                        name: "Arnold")
-        
         let newMountainPass = MountainPass(beautyTitle: "пер.",
-                                           title: "MonkeyHere",
-                                           otherTitles: "Триев",
+                                           title: title,
+                                           otherTitles: "",
                                            connect: "",
-                                           addTime: "2021-09-22 13:18:13",
+                                           addTime: date,
                                            user: user,
                                            coords: coordinates,
                                            type: "pass",

@@ -101,16 +101,16 @@ extension UserSettings {
     static func saveUser() {
         guard let surname = UserSettings.userSurname,
               let name = UserSettings.userName,
-              let patronymic = UserSettings.userPatronymic,
+              let phone = UserSettings.userPhone,
               let email = UserSettings.userEmail else {
             return
         }
         
         UserSettings.currentUser = UserModel(surname: surname,
                                         name: name,
-                                        patronymic: patronymic,
+                                        patronymic: UserSettings.userPatronymic,
                                         email: email,
-                                        phone: UserSettings.userPhone,
+                                        phone: phone,
                                         mediaLink: UserSettings.userMediaLink)
     }
     

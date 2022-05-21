@@ -4,16 +4,16 @@ struct UserModel: Codable {
     
     var surname: String
     var name: String
-    var patronymic: String
+    var patronymic: String?
     var email: String
-    var phone: String?
+    var phone: String
     var mediaLink: String?
     
     init(surname: String,
          name: String,
-         patronymic: String,
+         patronymic: String?,
          email: String,
-         phone: String?,
+         phone: String,
          mediaLink: String?) {
         self.surname = surname
         self.name = name
