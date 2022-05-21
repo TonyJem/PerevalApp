@@ -77,7 +77,10 @@ class APIService {
     func postRequestWith(mountainPass: MountainPass) {
         
         let url = URL(string: "https://pereval2602.herokuapp.com/api/v1/pereval/")
-        guard let requestUrl = url else { return }
+        guard let requestUrl = url else {
+            print("🔴 Can't create requestUrl")
+            return
+        }
         
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
@@ -86,7 +89,10 @@ class APIService {
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let jsonData = try? JSONEncoder().encode(mountainPass) else { return }
+        guard let jsonData = try? JSONEncoder().encode(mountainPass) else {
+            print("🔴 Can't create jsonData")
+            return
+        }
         
         request.httpBody = jsonData
         
@@ -99,7 +105,10 @@ class APIService {
                 print("🟢 Response: \(response)")
             }
             
-            guard let data = data else {return}
+            guard let data = data else {
+                print("🔴 Can't create ResponseData")
+                return
+            }
             
             do {
                 let mountainPass = try JSONDecoder().decode(MountainPass.self, from: data)
