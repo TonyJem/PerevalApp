@@ -76,7 +76,7 @@ class APIService {
     
     // MARK: - New post functionality prepared step by step:
     
-    func newTestPostMountainPass(title: String, date: String, user: User) {
+    func newTestPostMountainPass(title: String, date: String, user: User, category: String) {
         
         let coordinates = Coords(latitude: "test45.3842",
                                  longitude: "7.1525",

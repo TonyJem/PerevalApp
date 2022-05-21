@@ -313,9 +313,15 @@ class NewMountainPassVC: UIViewController {
                         fam: currentUser.surname,
                         name: currentUser.name)
         
+        guard let category = category else {
+            print("🔴 Providing data is stopped, due Category is Nil")
+            return
+        }
+        
         apiService.newTestPostMountainPass(title: title,
                                            date: date,
-                                           user: user)
+                                           user: user,
+                                           category: category)
     }
 }
 
