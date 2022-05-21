@@ -213,8 +213,6 @@ class NewMountainPassVC: UIViewController {
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
         
-        //        provideMountainPassDataToAPIService()
-        
         sendNewPostRequest()
     }
     
@@ -245,6 +243,7 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(attachPhotoView)
     }
     
+    /*
     private func provideMountainPassDataToAPIService() {
         
         //        guard let title = textField.text,
@@ -292,6 +291,7 @@ class NewMountainPassVC: UIViewController {
                                     category: category,
                                     images: images)
     }
+    */
     
     private func sendNewPostRequest() {
         
