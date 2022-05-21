@@ -6,19 +6,6 @@ class NewMountainPassVC: UIViewController {
     private let apiService = APIService()
     private let model = MountainPassModel()
     
-//    private var category: String? {
-//        didSet {
-//            guard let category = category else {
-//                print("🔴 Category is Nil so all categoryButtons will be deactivated")
-//                updateButtons(with: "")
-//                return
-//            }
-//
-//            print("🟢🟢🟢 Category is set: \(category)")
-//            updateButtons(with: category)
-//        }
-//    }
-    
     private var isCategoryWithStar = false {
         didSet {
             print("🟢🟢🟢 isCategoryWithStar = \(isCategoryWithStar)")
@@ -236,8 +223,6 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
-        
-//        sendNewPostRequest()
     }
     
     @objc private func dismissMyKeyboard(){
@@ -291,10 +276,6 @@ class NewMountainPassVC: UIViewController {
         
     }
     
-//    private func updateCategory(with text: String) {
-//        category = text
-//    }
-    
     private func updateCategoryButtons() {
         
         let category = model.getCategory()
@@ -313,10 +294,6 @@ class NewMountainPassVC: UIViewController {
             button.isActive = buttonTitle == category
         }
     }
-    
-//    private func removeCategory() {
-//        category = nil
-//    }
     
     private func updateButtonsWithStar() {
         for view in stackView1.arrangedSubviews {
@@ -384,21 +361,8 @@ class NewMountainPassVC: UIViewController {
 // MARK: - CategoryButtonDelegate
 extension NewMountainPassVC: CategoryButtonDelegate {
     func didTapCategoryButton(with title: String) {
-        
         print("🟢🟢 didTapCategoryButton with title \(title)")
-        
         model.setCategory(title)
-//        guard let category = category else {
-//            updateCategory(with: title)
-//            return
-//        }
-//
-//        if category == title {
-//            removeCategory()
-//        } else {
-//            updateCategory(with: title)
-//        }
-        
         updateCategoryButtons()
     }
 }
