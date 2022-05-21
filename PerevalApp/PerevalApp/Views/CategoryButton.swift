@@ -1,6 +1,18 @@
 import UIKit
 
+protocol CategoryButtonDelegate: AnyObject {
+    func didTapCategoryButton(with title: String)
+}
+
 class CategoryButton: UIButton {
+    
+    var isActive = false {
+        didSet {
+            customButton.backgroundColor = isActive ? .mainBlue : .white
+        }
+    }
+    
+    weak var delegate: CategoryButtonDelegate?
     
     // MARK: - Views
     private lazy var customButton: UIButton = {
@@ -8,11 +20,10 @@ class CategoryButton: UIButton {
         
         button.tintColor = .darkBlue
         button.titleLabel?.font = .ptSans18()
-        button.setTitle("Н/К", for: .normal)
+        button.setTitle("", for: .normal)
         button.clipsToBounds = true
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 8
-        button.backgroundColor = .white
         button.layer.borderColor = UIColor.mainBlue.cgColor
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +46,10 @@ class CategoryButton: UIButton {
     
     // MARK: - Actions
     @objc private func didTapCategoryButton() {
-        print("🟢🟢🟢 didTapCategoryButton in CategoryButton class!")
+        print("🟢 didTapCategoryButton in CategoryButton class!")
+        
+        guard let buttonTitle = customButton.titleLabel?.text else { return }
+        delegate?.didTapCategoryButton(with: buttonTitle)
     }
     
     // MARK: - Public Methods
@@ -45,6 +59,7 @@ class CategoryButton: UIButton {
     
     // MARK: - Private Methods
     private func setupViews() {
+        isActive = false
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(customButton)

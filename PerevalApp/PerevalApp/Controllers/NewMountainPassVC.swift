@@ -5,7 +5,19 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Properties
     private let apiService = APIService()
     
-    private var category: String?
+    private var category: String? {
+        didSet {
+            
+            guard let category = category else {
+                print("🔴 Can not set category, due Category is Nil")
+                return
+                
+            }
+            
+            print("🟢🟢🟢 Category is set: \(category)")
+            updateButtons(with: category)
+        }
+    }
     
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
@@ -203,6 +215,7 @@ class NewMountainPassVC: UIViewController {
         
         setupViews()
         setConstraints()
+        setDelegates()
     }
     
     override func viewDidLayoutSubviews() {
@@ -216,9 +229,6 @@ class NewMountainPassVC: UIViewController {
         sendNewPostRequest()
     }
     
-    @objc private func didTapCategoryButton() {
-        print("🟢 didTapCategoryButton in NewMountainPassVC")
-    }
     
     // MARK: - Private Methods
     private func setupViews() {
@@ -243,55 +253,33 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(attachPhotoView)
     }
     
-    /*
-    private func provideMountainPassDataToAPIService() {
-        
-        //        guard let title = textField.text,
-        //              !title.isEmpty else {
-        //            print("🔴 Providing data is stopped, due Title is Nil")
-        //            return
-        //        }
-        
-        let title = "перевал ЛохНесс"
-        
-        let date = calendarView.getDate()
-        
-        let coordinates = Coords(latitude: "45.3842",
-                                 longitude: "7.1525",
-                                 height: "1200")
-        
-        category = "A2*"
-        guard let category = self.category else {
-            print("🔴 Providing data is stopped, due Category is Nil")
-            return
+    private func setDelegates() {
+        for view in stackView1.arrangedSubviews {
+            guard let button = view as? CategoryButton else { return }
+            button.delegate = self
         }
         
-        let image1 = Image(url: "http://...1",
-                           title: "Подъём. Фото №1")
-        let image2 = Image(url: "http://...2",
-                           title: "Подъём. Фото №2")
-        let image3 = Image(url: "http://...3",
-                           title: "Подъём. Фото №3")
-        let images = [image1, image2, image3]
-        
-        guard let currentUser = UserSettings.currentUser else {
-            print("🔴 Providing data is stopped, due CurrentUser is Nil")
-            return
+        for view in stackView2.arrangedSubviews {
+            guard let button = view as? CategoryButton else { return }
+            button.delegate = self
         }
-        let user = User(id: 888,
-                        email: currentUser.email,
-                        phone: currentUser.phone,
-                        fam: currentUser.surname,
-                        name: currentUser.name)
-        
-        apiService.postMountainPass(title: title,
-                                    date: date,
-                                    user: user,
-                                    coordinates: coordinates,
-                                    category: category,
-                                    images: images)
     }
-    */
+    
+    private func updateCategory(with text: String) {
+        category = text
+    }
+    
+    private func updateButtons(with title: String) {
+        for view in stackView1.arrangedSubviews {
+            
+            guard let button = view as? CategoryButton else { return }
+            print(button)
+            
+            button.isActive = true
+        }
+        
+
+    }
     
     private func sendNewPostRequest() {
         
@@ -322,6 +310,16 @@ class NewMountainPassVC: UIViewController {
                                            date: date,
                                            user: user,
                                            category: category)
+    }
+}
+
+// MARK: - CategoryButtonDelegate
+extension NewMountainPassVC: CategoryButtonDelegate {
+    func didTapCategoryButton(with title: String) {
+        
+        print("🟢🟢 didTapCategoryButton with title \(title)")
+        
+        updateCategory(with: title)
     }
 }
 
