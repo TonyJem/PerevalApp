@@ -295,6 +295,8 @@ class NewMountainPassVC: UIViewController {
     
     private func sendNewPostRequest() {
         
+        let date = calendarView.getDate()
+        
         guard let currentUser = UserSettings.currentUser else {
             print("🔴 Providing data is stopped, due CurrentUser is Nil")
             return
@@ -305,7 +307,7 @@ class NewMountainPassVC: UIViewController {
                         fam: currentUser.surname,
                         name: currentUser.name)
         
-        apiService.newTestPostMountainPass(user: user)
+        apiService.newTestPostMountainPass(date: date, user: user)
     }
 }
 
