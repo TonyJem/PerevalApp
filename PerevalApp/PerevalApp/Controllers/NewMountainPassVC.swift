@@ -19,6 +19,12 @@ class NewMountainPassVC: UIViewController {
         }
     }
     
+    private var isCategoryWithStar = false {
+        didSet {
+            print("🟢🟢🟢 isCategoryWithStar = \(isCategoryWithStar)")
+        }
+    }
+    
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
     }
@@ -263,6 +269,11 @@ class NewMountainPassVC: UIViewController {
             guard let button = view as? CategoryButton else { return }
             button.delegate = self
         }
+        
+        for view in additionStackView.arrangedSubviews {
+            guard let button = view as? AdditionButton else { return }
+            button.delegate = self
+        }
     }
     
     private func updateCategory(with text: String) {
@@ -286,6 +297,18 @@ class NewMountainPassVC: UIViewController {
             button.isActive = buttonTitle == title
         }
     }
+    
+    private func updateAdditionButtons(with title: String) {
+        for view in additionStackView.arrangedSubviews {
+            
+            guard let button = view as? AdditionButton else { return }
+            let buttonTitle = button.getButtonTitle()
+            if buttonTitle == title {
+                button.isActive = !button.isActive
+            }
+        }
+    }
+    
     
     private func sendNewPostRequest() {
         
@@ -335,6 +358,19 @@ extension NewMountainPassVC: CategoryButtonDelegate {
         } else {
             updateCategory(with: title)
         }
+    }
+}
+
+// MARK: - AdditionButtonDelegate
+extension NewMountainPassVC: AdditionButtonDelegate {
+    func didTapAdditionButton(with title: String) {
+        print("🟢🟢 didTapAdditionButton with title \(title)")
+        
+        if title == "*" {
+            isCategoryWithStar = !isCategoryWithStar
+        }
+        
+        updateAdditionButtons(with: title)
     }
 }
 

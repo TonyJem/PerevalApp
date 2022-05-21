@@ -1,18 +1,29 @@
 import UIKit
 
+protocol AdditionButtonDelegate: AnyObject {
+    func didTapAdditionButton(with title: String)
+}
+
 class AdditionButton: UIView {
+    
+    var isActive = false {
+        didSet {
+            customButton.backgroundColor = isActive ? .mainBlue : .white
+            customButton.tintColor = isActive ? .white : .darkBlue
+        }
+    }
+    
+    weak var delegate: AdditionButtonDelegate?
+    
     // MARK: - Views
     
     private lazy var customButton: UIButton = {
         let button = UIButton(type: .system)
-        
-        button.tintColor = .darkBlue
         button.titleLabel?.font = .ptSans18()
         button.setTitle("", for: .normal)
         button.clipsToBounds = true
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 8
-        button.backgroundColor = .white
         button.layer.borderColor = UIColor.mainBlue.cgColor
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +60,7 @@ class AdditionButton: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
+        isActive = false
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(customButton)
@@ -58,6 +70,9 @@ class AdditionButton: UIView {
     // MARK: - Actions
     @objc private func didTapCustomButton() {
         print("🟢 didTapCustomButton in AdditionButton class!")
+        
+        guard let buttonTitle = customButton.titleLabel?.text else { return }
+        delegate?.didTapAdditionButton(with: buttonTitle)
     }
     
     // MARK: - Public Methods
@@ -67,6 +82,11 @@ class AdditionButton: UIView {
     
     func setButtonTitle(_ title: String) {
         customButton.setTitle(title, for: .normal)
+    }
+    
+    func getButtonTitle() -> String {
+        guard let buttonTitle = customButton.titleLabel?.text else { return "" }
+        return buttonTitle
     }
 }
 
