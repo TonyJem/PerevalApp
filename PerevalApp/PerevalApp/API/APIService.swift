@@ -74,42 +74,6 @@ class APIService {
         }.resume()
     }
     
-    // MARK: - New post functionality prepared step by step:
-    
-    func newTestPostMountainPass(title: String, date: String, user: User, category: String) {
-        
-        let coordinates = Coords(latitude: "45.3842",
-                                 longitude: "7.1525",
-                                 height: "1200")
-        
-        let level = Level(winter: "",
-                          summer: category,
-                          autumn: category,
-                          spring: "")
-        
-        let image1 = Image(url: "http://...1",
-                           title: "Подъём. Фото №1")
-        let image2 = Image(url: "http://...2",
-                           title: "Подъём. Фото №2")
-        let image3 = Image(url: "http://...3",
-                           title: "Подъём. Фото №3")
-        
-        let images = [image1, image2, image3]
-        
-        let newMountainPass = MountainPass(beautyTitle: "пер.",
-                                           title: title,
-                                           otherTitles: ".",
-                                           connect: "",
-                                           addTime: date,
-                                           user: user,
-                                           coords: coordinates,
-                                           type: "pass",
-                                           level: level,
-                                           images: images)
-        
-        postRequestWith(mountainPass: newMountainPass)
-    }
-    
     func postRequestWith(mountainPass: MountainPass) {
         
         let url = URL(string: "https://pereval2602.herokuapp.com/api/v1/pereval/")

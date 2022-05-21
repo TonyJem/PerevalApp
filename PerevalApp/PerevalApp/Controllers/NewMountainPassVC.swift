@@ -321,39 +321,6 @@ class NewMountainPassVC: UIViewController {
         }
     }
     
-    /*
-    private func sendNewPostRequest() {
-        
-        guard let title = textField.text,
-              !title.isEmpty else {
-            print("🔴 Providing data is stopped, due Title is Nil")
-            return
-        }
-        
-        let date = calendarView.getDate()
-        
-        guard let currentUser = UserSettings.currentUser else {
-            print("🔴 Providing data is stopped, due CurrentUser is Nil")
-            return
-        }
-        let user = User(id: 888,
-                        email: currentUser.email,
-                        phone: currentUser.phone,
-                        fam: currentUser.surname,
-                        name: currentUser.name)
-        
-        guard let category = category else {
-            print("🔴 Providing data is stopped, due Category is Nil")
-            return
-        }
-        
-        apiService.newTestPostMountainPass(title: title,
-                                           date: date,
-                                           user: user,
-                                           category: category)
-    }
-    */
-    
     private func sendAPIrequest() {
         
         guard let newMountainPass = createNewMountainPass(from: model) else {
