@@ -1,7 +1,37 @@
 import UIKit
 
+// MARK: - SetConstraints
+extension Coordinates {
+    private func setConstraints() {
+        
+        NSLayoutConstraint.activate([
+            separatorView.topAnchor.constraint(equalTo: modalView.topAnchor, constant: 58),
+            separatorView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1.5)
+        ])
+        
+    }
+}
+
 class Coordinates {
     
+    // MARK: - Views
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .coordinatesGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    // MARK: - Private Methods
+    private func setupViews() {
+        modalView.addSubview(separatorView)
+    }
+    
+    
+    
+    // MARK: - OLD code
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
@@ -9,7 +39,7 @@ class Coordinates {
         return view
     }()
     
-    private let alertView: UIView = {
+    private let modalView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 20
@@ -39,20 +69,20 @@ class Coordinates {
         backgroundView.frame = parentView.frame
         scrollView.addSubview(backgroundView)
         
-        alertView.frame = CGRect(x: 40,
+        modalView.frame = CGRect(x: 40,
                                  y: -420,
                                  width: parentView.frame.width - 80,
                                  height: 420)
-        scrollView.addSubview(alertView)
+        scrollView.addSubview(modalView)
         
         let editingLabel = UILabel(frame: CGRect(x: 10,
-                                                 y: alertView.frame.height * 0.4 + 50,
-                                                 width: alertView.frame.width - 20,
+                                                 y: modalView.frame.height * 0.4 + 50,
+                                                 width: modalView.frame.width - 20,
                                                  height: 25))
         editingLabel.text = "Editing"
         editingLabel.textAlignment = .center
-//        editingLabel.font = .robotoMedium22()
-        alertView.addSubview(editingLabel)
+        //        editingLabel.font = .robotoMedium22()
+        modalView.addSubview(editingLabel)
         
         let setsLabel = UILabel()
         setsLabel.text = "Sets"
@@ -60,62 +90,62 @@ class Coordinates {
         setsLabel.translatesAutoresizingMaskIntoConstraints = true
         setsLabel.frame = CGRect(x: 30,
                                  y: editingLabel.frame.maxY + 10,
-                                 width: alertView.frame.width - 60,
+                                 width: modalView.frame.width - 60,
                                  height: 20)
-        alertView.addSubview(setsLabel)
+        modalView.addSubview(setsLabel)
         
         setsTextField.frame = CGRect(x: 20,
                                      y: setsLabel.frame.maxY,
-                                     width: alertView.frame.width - 40,
+                                     width: modalView.frame.width - 40,
                                      height: 30)
         setsTextField.backgroundColor = .brown
         setsTextField.borderStyle = .none
         setsTextField.layer.cornerRadius = 10
         setsTextField.textColor = .specialGray
-//        setsTextField.font = .robotoBold20()
+        //        setsTextField.font = .robotoBold20()
         setsTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: setsTextField.frame.height))
         setsTextField.leftViewMode = .always
         setsTextField.clearButtonMode = .always
         setsTextField.returnKeyType = .done
         setsTextField.keyboardType = .numberPad
-        alertView.addSubview(setsTextField)
+        modalView.addSubview(setsTextField)
         
         let repsOrTimerLabel = UILabel()
         repsOrTimerLabel.text = "repsOrTimer"
         repsOrTimerLabel.translatesAutoresizingMaskIntoConstraints = true
         repsOrTimerLabel.frame = CGRect(x: 30,
-                                 y: setsTextField.frame.maxY + 3,
-                                 width: alertView.frame.width - 60,
-                                 height: 20)
-        alertView.addSubview(repsOrTimerLabel)
+                                        y: setsTextField.frame.maxY + 3,
+                                        width: modalView.frame.width - 60,
+                                        height: 20)
+        modalView.addSubview(repsOrTimerLabel)
         
         repsTextField.frame = CGRect(x: 20,
                                      y: repsOrTimerLabel.frame.maxY,
-                                     width: alertView.frame.width - 40,
+                                     width: modalView.frame.width - 40,
                                      height: 30)
         repsTextField.backgroundColor = .brown
         repsTextField.borderStyle = .none
         repsTextField.layer.cornerRadius = 10
         repsTextField.textColor = .specialGray
-//        repsTextField.font = .robotoBold20()
+        //        repsTextField.font = .robotoBold20()
         repsTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: repsTextField.frame.height))
         repsTextField.leftViewMode = .always
         repsTextField.clearButtonMode = .always
         repsTextField.returnKeyType = .done
         repsTextField.keyboardType = .numberPad
-        alertView.addSubview(repsTextField)
+        modalView.addSubview(repsTextField)
         
         let okButton = UIButton(frame: CGRect(x: 50,
                                               y: repsTextField.frame.maxY + 15,
-                                              width: alertView.frame.width - 100,
+                                              width: modalView.frame.width - 100,
                                               height: 35))
         okButton.backgroundColor = .green
         okButton.setTitle("OK", for: .normal)
         okButton.titleLabel?.textColor = .white
-//        okButton.titleLabel?.font = .robotoMedium18()
+        //        okButton.titleLabel?.font = .robotoMedium18()
         okButton.layer.cornerRadius = 10
         okButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
-        alertView.addSubview(okButton)
+        modalView.addSubview(okButton)
         
         buttonAction = completion
         
@@ -124,10 +154,15 @@ class Coordinates {
         } completion: { done in
             if done {
                 UIView.animate(withDuration: 0.3) {
-                    self.alertView.center = parentView.center
+                    self.modalView.center = parentView.center
                 }
             }
         }
+        
+        
+        
+        setupViews()
+        setConstraints()
     }
     
     @objc private func dismissAlert() {
@@ -138,7 +173,7 @@ class Coordinates {
         guard let targetView = mainView else { return }
         
         UIView.animate(withDuration: 0.3) {
-            self.alertView.frame = CGRect(x: 40, y: targetView.frame.height, width: targetView.frame.width - 80, height: 420)
+            self.modalView.frame = CGRect(x: 40, y: targetView.frame.height, width: targetView.frame.width - 80, height: 420)
         } completion: { done in
             if done {
                 UIView.animate(withDuration: 0.3) {
@@ -147,7 +182,7 @@ class Coordinates {
                 } completion: { [weak self] done in
                     guard let self = self else { return }
                     if done {
-                        self.alertView.removeFromSuperview()
+                        self.modalView.removeFromSuperview()
                         self.backgroundView.removeFromSuperview()
                         self.scrollView.removeFromSuperview()
                         self.removeForKeyboardNotification()
