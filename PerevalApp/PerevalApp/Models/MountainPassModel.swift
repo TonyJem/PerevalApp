@@ -9,7 +9,7 @@ class MountainPassModel {
 //    private var isNotSureSelected = false
 //    private var isEstimatedSelected = false
     
-    func setTitle(_ text: String) {
+    func setTitle(_ text: String?) {
         title = text
     }
     

@@ -388,6 +388,18 @@ extension NewMountainPassVC: AdditionButtonDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
+extension NewMountainPassVC: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("🟢 textFieldDidEndEditing in NewMountainPassVC")
+        
+        model.setTitle(textField.text)
+        
+        print("🟢🟢 Text from model: \(model.getTitle())")
+    }
+}
+
 // MARK: - SetConstraints
 extension NewMountainPassVC {
     private func setConstraints() {
