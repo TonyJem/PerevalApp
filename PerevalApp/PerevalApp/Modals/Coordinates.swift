@@ -11,6 +11,13 @@ extension Coordinates {
             separatorView.heightAnchor.constraint(equalToConstant: 1.5)
         ])
         
+        NSLayoutConstraint.activate([
+            iconView.topAnchor.constraint(equalTo: modalView.topAnchor, constant: 25),
+            iconView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 25),
+            iconView.widthAnchor.constraint(equalToConstant: 20),
+            iconView.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        
     }
 }
 
@@ -24,9 +31,18 @@ class Coordinates {
         return view
     }()
     
+    let iconView: UIImageView = {
+        let iconView = UIImageView()
+        iconView.image = UIImage(named: "coordinates")
+        iconView.contentMode = .scaleAspectFit
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        return iconView
+    }()
+    
     // MARK: - Private Methods
     private func setupViews() {
         modalView.addSubview(separatorView)
+        modalView.addSubview(iconView)
     }
     
     
