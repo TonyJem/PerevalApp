@@ -5,6 +5,7 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Properties
     private let apiService = APIService()
     private let model = MountainPassModel()
+    private let coordinatesModal = Coordinates()
     
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
@@ -218,7 +219,8 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
-        sendAPIrequest()
+//        sendAPIrequest()
+        openCoordinatesModal()
     }
     
     @objc private func dismissMyKeyboard(){
@@ -298,6 +300,12 @@ class NewMountainPassVC: UIViewController {
             let buttonTitle = button.getButtonTitle()
             button.isButtonWithStar = model.isMarkedWithStar
             button.isActive = buttonTitle == category
+        }
+    }
+    
+    func openCoordinatesModal() {
+        coordinatesModal.showCoordinatesModal(viewController: self,
+                                              repsOrTimer: "Reps") { _, _ in
         }
     }
     

@@ -45,14 +45,6 @@ class Coordinates {
                                  height: 420)
         scrollView.addSubview(alertView)
         
-        let sportsmanImageView = UIImageView(frame: CGRect(x: (alertView.frame.width - alertView.frame.height * 0.4) / 2,
-                                                           y: 30,
-                                                           width: alertView.frame.height * 0.4,
-                                                           height: alertView.frame.height * 0.4))
-        sportsmanImageView.image = UIImage(named: "sportsmanAlert")
-        sportsmanImageView.contentMode = .scaleAspectFit
-        alertView.addSubview(sportsmanImageView)
-        
         let editingLabel = UILabel(frame: CGRect(x: 10,
                                                  y: alertView.frame.height * 0.4 + 50,
                                                  width: alertView.frame.width - 20,
