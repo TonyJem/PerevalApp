@@ -83,8 +83,8 @@ class APIService {
                                  height: "1200")
         
         let level = Level(winter: "",
-                          summer: "1A",
-                          autumn: "1A",
+                          summer: category,
+                          autumn: category,
                           spring: "")
         
         let image1 = Image(url: "http://...1",

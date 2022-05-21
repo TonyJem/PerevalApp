@@ -279,7 +279,6 @@ class NewMountainPassVC: UIViewController {
         for view in stackView2.arrangedSubviews {
             guard let button = view as? CategoryButton else { return }
             let buttonTitle = button.getButtonTitle()
-            print(buttonTitle)
             button.isActive = buttonTitle == title
         }
     }
