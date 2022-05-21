@@ -13,7 +13,7 @@ struct MountainPass: Codable {
     var images: [Image]
 
     enum CodingKeys: String, CodingKey {
-        case beautyTitle
+        case beautyTitle = "beautyTitle"
         case title
         case otherTitles = "other_titles"
         case connect

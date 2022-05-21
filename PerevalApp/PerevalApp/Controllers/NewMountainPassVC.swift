@@ -213,7 +213,8 @@ class NewMountainPassVC: UIViewController {
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
         
-        provideMountainPassDataToAPIService()
+//        provideMountainPassDataToAPIService()
+        apiService.testPostMountainPass()
     }
     
     @objc private func didTapCategoryButton() {
@@ -245,7 +246,13 @@ class NewMountainPassVC: UIViewController {
     
     private func provideMountainPassDataToAPIService() {
         
-        guard let title = textField.text else { return }
+//        guard let title = textField.text,
+//              !title.isEmpty else {
+//            print("🔴 Providing data is stopped, due Title is Nil")
+//            return
+//        }
+        
+        let title = "перевал ЛохНесс"
         
         let date = calendarView.getDate()
         
@@ -253,7 +260,11 @@ class NewMountainPassVC: UIViewController {
                                  longitude: "7.1525",
                                  height: "1200")
         
-        guard let category = self.category else { return }
+        category = "A2*"
+        guard let category = self.category else {
+            print("🔴 Providing data is stopped, due Category is Nil")
+            return
+        }
 
         let image1 = Image(url: "http://...1",
                            title: "Подъём. Фото №1")
@@ -263,7 +274,10 @@ class NewMountainPassVC: UIViewController {
                            title: "Подъём. Фото №3")
         let images = [image1, image2, image3]
         
-        guard let currentUser = UserSettings.currentUser else { return }
+        guard let currentUser = UserSettings.currentUser else {
+            print("🔴 Providing data is stopped, due CurrentUser is Nil")
+            return
+        }
         let user = User(id: 888,
                         email: currentUser.email,
                         phone: currentUser.phone,
