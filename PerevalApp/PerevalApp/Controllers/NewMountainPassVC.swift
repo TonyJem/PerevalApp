@@ -22,6 +22,7 @@ class NewMountainPassVC: UIViewController {
     private var isCategoryWithStar = false {
         didSet {
             print("🟢🟢🟢 isCategoryWithStar = \(isCategoryWithStar)")
+            updateButtonsWithStar()
         }
     }
     
@@ -295,6 +296,18 @@ class NewMountainPassVC: UIViewController {
             guard let button = view as? CategoryButton else { return }
             let buttonTitle = button.getButtonTitle()
             button.isActive = buttonTitle == title
+        }
+    }
+    
+    private func updateButtonsWithStar() {
+        for view in stackView1.arrangedSubviews {
+            guard let button = view as? CategoryButton else { return }
+            button.isButtonWithStar = isCategoryWithStar
+        }
+        
+        for view in stackView2.arrangedSubviews {
+            guard let button = view as? CategoryButton else { return }
+            button.isButtonWithStar = isCategoryWithStar
         }
     }
     

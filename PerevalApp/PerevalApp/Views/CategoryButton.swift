@@ -13,6 +13,21 @@ class CategoryButton: UIButton {
         }
     }
     
+    var isButtonWithStar = false {
+        didSet {
+            if isButtonWithStar {
+                let title = getButtonTitle()
+                setTitleWith(title + "*")
+            } else {
+                var title = getButtonTitle()
+                if title.last == "*" {
+                    title.removeLast()
+                    setTitleWith(title)
+                }
+            }
+        }
+    }
+    
     weak var delegate: CategoryButtonDelegate?
     
     // MARK: - Views
@@ -68,7 +83,6 @@ class CategoryButton: UIButton {
         
         addSubview(customButton)
     }
-    
 }
 
 // MARK: - SetConstraints
