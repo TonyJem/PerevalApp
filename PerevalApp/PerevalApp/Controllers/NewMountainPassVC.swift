@@ -211,7 +211,9 @@ class NewMountainPassVC: UIViewController {
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
         
-        apiService.postMountainPass()
+//        apiService.postMountainPass()
+        
+        calendarView.getDate()
     }
     
     @objc private func didTapCategoryButton() {

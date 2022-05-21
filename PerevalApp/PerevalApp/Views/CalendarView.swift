@@ -32,6 +32,20 @@ class CalendarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    func getDate() -> String {
+        let date = datePicker.date
+        print("🟣 Date: \(date)")
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        
+        let dateString = formatter.string(from: date)
+        print("🟣🟣 DateString: \(dateString)")
+        
+        return dateString
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         layer.borderColor = UIColor.mainBlue.cgColor
