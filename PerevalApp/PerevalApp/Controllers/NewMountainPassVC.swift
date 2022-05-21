@@ -224,6 +224,7 @@ class NewMountainPassVC: UIViewController {
         setupViews()
         setConstraints()
         setDelegates()
+        initializeHideKeyboard()
     }
     
     override func viewDidLayoutSubviews() {
@@ -235,6 +236,10 @@ class NewMountainPassVC: UIViewController {
         print("🟢 didTapInfoButton in NewMountainPassVC")
         
         sendNewPostRequest()
+    }
+    
+    @objc private func dismissMyKeyboard(){
+        view.endEditing(true)
     }
     
     
@@ -262,6 +267,9 @@ class NewMountainPassVC: UIViewController {
     }
     
     private func setDelegates() {
+        
+        textField.delegate = self
+        
         for view in stackView1.arrangedSubviews {
             guard let button = view as? CategoryButton else { return }
             button.delegate = self
@@ -323,7 +331,6 @@ class NewMountainPassVC: UIViewController {
         }
     }
     
-    
     private func sendNewPostRequest() {
         
         guard let title = textField.text,
@@ -354,6 +361,12 @@ class NewMountainPassVC: UIViewController {
                                            user: user,
                                            category: category)
     }
+    
+    private func initializeHideKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
 }
 
 // MARK: - CategoryButtonDelegate
