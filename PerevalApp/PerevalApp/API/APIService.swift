@@ -78,7 +78,7 @@ class APIService {
     
     func newTestPostMountainPass(title: String, date: String, user: User, category: String) {
         
-        let coordinates = Coords(latitude: "test45.3842",
+        let coordinates = Coords(latitude: "45.3842",
                                  longitude: "7.1525",
                                  height: "1200")
         
@@ -145,10 +145,5 @@ class APIService {
                 print("🔴 Error: \(error)")
             }
         }.resume()
-        
     }
- 
 }
-
-
-
