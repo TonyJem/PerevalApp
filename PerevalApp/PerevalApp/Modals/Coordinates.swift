@@ -31,7 +31,8 @@ class Coordinates {
     
     
     
-    // MARK: - OLD code
+    // MARK: - OLD code below -
+    
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
@@ -71,8 +72,8 @@ class Coordinates {
         
         modalView.frame = CGRect(x: 40,
                                  y: -420,
-                                 width: parentView.frame.width - 80,
-                                 height: 420)
+                                 width: parentView.frame.width - 60,
+                                 height: parentView.frame.width - 60)
         scrollView.addSubview(modalView)
         
         let editingLabel = UILabel(frame: CGRect(x: 10,
