@@ -7,7 +7,6 @@ class NewMountainPassVC: UIViewController {
     
     private var category: String? {
         didSet {
-            
             guard let category = category else {
                 print("🔴 Category is Nil so all categoryButtons will be deactivated")
                 updateButtons(with: "")
