@@ -1,6 +1,12 @@
 import UIKit
 
+protocol CalendarViewDelegate: AnyObject {
+    func editingDidEndOnDatePicker(with date: String)
+}
+
 class CalendarView: UIView {
+    
+    weak var delegate: CalendarViewDelegate?
     
     // MARK: - Views
     private let calendarImageView: UIImageView = {
@@ -39,6 +45,8 @@ class CalendarView: UIView {
         
         let dateString = getDate()
         print("🟩🟩🟩 editingDidEndOnDatePicker dateString: \(dateString)")
+        
+        delegate?.editingDidEndOnDatePicker(with: dateString)
     }
     
     // MARK: - Public Methods

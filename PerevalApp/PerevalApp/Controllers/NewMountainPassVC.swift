@@ -287,6 +287,9 @@ class NewMountainPassVC: UIViewController {
             guard let button = view as? AdditionButton else { return }
             button.delegate = self
         }
+        
+        calendarView.delegate = self
+        
     }
     
     private func updateCategory(with text: String) {
@@ -413,6 +416,16 @@ extension NewMountainPassVC: UITextFieldDelegate {
         model.setTitle(textField.text)
         
         print("🟢🟢 Text from model: \(model.getTitle())")
+    }
+}
+
+// MARK: - CalendarViewDelegate
+extension NewMountainPassVC: CalendarViewDelegate {
+    func editingDidEndOnDatePicker(with date: String) {
+        print("🟢🟢 editingDidEndOnDatePicker in NewMountainPassVC")
+        model.setDate(date)
+        
+        print("🟢🟢🟢 Inserted to model date: \(model.getDate())")
     }
 }
 
