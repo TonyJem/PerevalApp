@@ -6,13 +6,6 @@ class NewMountainPassVC: UIViewController {
     private let apiService = APIService()
     private let model = MountainPassModel()
     
-//    private var isCategoryWithStar = false {
-//        didSet {
-//            print("🟢🟢🟢 isCategoryWithStar = \(isCategoryWithStar)")
-//            updateButtonsWithStar()
-//        }
-//    }
-    
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
     }
@@ -225,6 +218,7 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
+        sendAPIrequest()
     }
     
     @objc private func dismissMyKeyboard(){
@@ -359,6 +353,75 @@ class NewMountainPassVC: UIViewController {
                                            category: category)
     }
     */
+    
+    private func sendAPIrequest() {
+        
+        guard let newMountainPass = createNewMountainPass(from: model) else {
+            print("🔴🔴 newMountainPass is created Nil!")
+            return
+        }
+        apiService.postRequestWith(mountainPass: newMountainPass)
+    }
+    
+    private func createNewMountainPass(from model: MountainPassModel) -> MountainPass? {
+        
+        let title = model.getTitle()
+        guard !title.isEmpty else {
+            print("🔴 Creating NewMountainPass is stopped, due Title is Empty!")
+            return nil
+        }
+        
+        guard let category = model.getCategory() else {
+            print("🔴 Creating NewMountainPass is stopped, due Category is Nil!")
+            return nil
+        }
+        let level = Level(winter: "",
+                          summer: category,
+                          autumn: category,
+                          spring: "")
+        
+        let date = model.getDate()
+        guard !date.isEmpty else {
+            print("🔴 Creating NewMountainPass is stopped, due Date is Empty!")
+            return nil
+        }
+        
+        guard let currentUser = UserSettings.currentUser else {
+            print("🔴 Creating NewMountainPass is stopped, due currentUser is Nil!")
+            return nil
+        }
+        let user = User(id: 888,
+                        email: currentUser.email,
+                        phone: currentUser.phone,
+                        fam: currentUser.surname,
+                        name: currentUser.name)
+        
+        
+        let coordinates = Coords(latitude: "45.3842",
+                                 longitude: "7.1525",
+                                 height: "1200")
+
+        let image1 = Image(url: "http://...1",
+                           title: "Подъём. Фото №1")
+        let image2 = Image(url: "http://...2",
+                           title: "Подъём. Фото №2")
+        let image3 = Image(url: "http://...3",
+                           title: "Подъём. Фото №3")
+        
+        let images = [image1, image2, image3]
+        
+        let newMountainPass = MountainPass(beautyTitle: "пер.",
+                                           title: title,
+                                           otherTitles: ".",
+                                           connect: "",
+                                           addTime: date,
+                                           user: user,
+                                           coords: coordinates,
+                                           type: "pass",
+                                           level: level,
+                                           images: images)
+        return newMountainPass
+    }
     
     private func initializeHideKeyboard() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMyKeyboard))

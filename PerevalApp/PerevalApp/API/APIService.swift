@@ -110,7 +110,7 @@ class APIService {
         postRequestWith(mountainPass: newMountainPass)
     }
     
-    private func postRequestWith(mountainPass: MountainPass) {
+    func postRequestWith(mountainPass: MountainPass) {
         
         let url = URL(string: "https://pereval2602.herokuapp.com/api/v1/pereval/")
         guard let requestUrl = url else { return }
