@@ -307,28 +307,25 @@ class NewMountainPassVC: UIViewController {
         }
     }
     
-//    private func updateButtonsWithStar() {
-//        for view in stackView1.arrangedSubviews {
-//            guard let button = view as? CategoryButton else { return }
-//            button.isButtonWithStar = isCategoryWithStar
-//        }
-//
-//        for view in stackView2.arrangedSubviews {
-//            guard let button = view as? CategoryButton else { return }
-//            button.isButtonWithStar = isCategoryWithStar
-//        }
-//    }
-    
-//    private func updateAdditionButtons(with title: String) {
-//        for view in additionStackView.arrangedSubviews {
-//
-//            guard let button = view as? AdditionButton else { return }
-//            let buttonTitle = button.getButtonTitle()
-//            if buttonTitle == title {
-//                button.isActive = !button.isActive
-//            }
-//        }
-//    }
+    private func updateAdditionButtons() {
+        for view in additionStackView.arrangedSubviews {
+
+            guard let button = view as? AdditionButton else { return }
+            let buttonTitle = button.getButtonTitle()
+            
+            if buttonTitle == "*" {
+                button.isActive = model.isMarkedWithStar
+            }
+            
+            if buttonTitle == "не уверен" {
+                button.isActive = model.isNotSureSelected
+            }
+            
+            if buttonTitle == "оценочно" {
+                button.isActive = model.isEstimatedSelected
+            }
+        }
+    }
     
     /*
     private func sendNewPostRequest() {
@@ -381,14 +378,24 @@ extension NewMountainPassVC: CategoryButtonDelegate {
 
 // MARK: - AdditionButtonDelegate
 extension NewMountainPassVC: AdditionButtonDelegate {
-    func didTapAdditionButton(with title: String) {
+    
+    func didTapAdditionButton(with title: String, status: Bool) {
         print("🟢🟢 didTapAdditionButton with title \(title)")
         
-//        if title == "*" {
-//            isCategoryWithStar = !isCategoryWithStar
-//        }
-//
-//        updateAdditionButtons(with: title)
+        if title == "*" {
+            model.isMarkedWithStar = !status
+            updateCategoryButtons()
+        }
+        
+        if title == "не уверен" {
+            model.isNotSureSelected = !status
+        }
+        
+        if title == "оценочно" {
+            model.isEstimatedSelected = !status
+        }
+        
+        updateAdditionButtons()
     }
 }
 

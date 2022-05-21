@@ -5,9 +5,9 @@ class MountainPassModel {
     private var date = ""
     private var category: String?
     
-    var isMarkedWithStar = true
-    //    private var isNotSureSelected = false
-    //    private var isEstimatedSelected = false
+    var isMarkedWithStar = false
+    var isNotSureSelected = false
+    var isEstimatedSelected = false
     
     func setTitle(_ text: String?) {
         title = text

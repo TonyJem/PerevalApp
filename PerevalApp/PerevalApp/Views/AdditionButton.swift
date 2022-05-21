@@ -1,7 +1,7 @@
 import UIKit
 
 protocol AdditionButtonDelegate: AnyObject {
-    func didTapAdditionButton(with title: String)
+    func didTapAdditionButton(with title: String, status: Bool)
 }
 
 class AdditionButton: UIView {
@@ -72,7 +72,7 @@ class AdditionButton: UIView {
         print("🟢 didTapCustomButton in AdditionButton class!")
         
         guard let buttonTitle = customButton.titleLabel?.text else { return }
-        delegate?.didTapAdditionButton(with: buttonTitle)
+        delegate?.didTapAdditionButton(with: buttonTitle, status: isActive)
     }
     
     // MARK: - Public Methods
