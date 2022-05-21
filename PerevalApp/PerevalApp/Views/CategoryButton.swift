@@ -17,7 +17,9 @@ class CategoryButton: UIButton {
         didSet {
             if isButtonWithStar {
                 let title = getButtonTitle()
-                setTitleWith(title + "*")
+                if title.last != "*" {
+                    setTitleWith(title + "*")
+                }
             } else {
                 var title = getButtonTitle()
                 if title.last == "*" {

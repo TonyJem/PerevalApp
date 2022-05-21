@@ -6,12 +6,12 @@ class NewMountainPassVC: UIViewController {
     private let apiService = APIService()
     private let model = MountainPassModel()
     
-    private var isCategoryWithStar = false {
-        didSet {
-            print("🟢🟢🟢 isCategoryWithStar = \(isCategoryWithStar)")
-            updateButtonsWithStar()
-        }
-    }
+//    private var isCategoryWithStar = false {
+//        didSet {
+//            print("🟢🟢🟢 isCategoryWithStar = \(isCategoryWithStar)")
+//            updateButtonsWithStar()
+//        }
+//    }
     
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
@@ -214,6 +214,8 @@ class NewMountainPassVC: UIViewController {
         
         let currentDate = calendarView.getDate()
         model.setDate(currentDate)
+        
+        updateCategoryButtons()
     }
     
     override func viewDidLayoutSubviews() {
@@ -278,45 +280,55 @@ class NewMountainPassVC: UIViewController {
     
     private func updateCategoryButtons() {
         
-        let category = model.getCategory()
+        var category = ""
+        
+        if let unwrCategory = model.getCategory() {
+            category = unwrCategory
+        }
+        
+        if model.isMarkedWithStar {
+            category = category + "*"
+        }
         
         print("🟢🟢🟢 Category: \(String(describing: category))")
         
         for view in stackView1.arrangedSubviews {
             guard let button = view as? CategoryButton else { return }
             let buttonTitle = button.getButtonTitle()
+            button.isButtonWithStar = model.isMarkedWithStar
             button.isActive = buttonTitle == category
         }
         
         for view in stackView2.arrangedSubviews {
             guard let button = view as? CategoryButton else { return }
             let buttonTitle = button.getButtonTitle()
+            button.isButtonWithStar = model.isMarkedWithStar
             button.isActive = buttonTitle == category
         }
     }
     
-    private func updateButtonsWithStar() {
-        for view in stackView1.arrangedSubviews {
-            guard let button = view as? CategoryButton else { return }
-            button.isButtonWithStar = isCategoryWithStar
-        }
-        
-        for view in stackView2.arrangedSubviews {
-            guard let button = view as? CategoryButton else { return }
-            button.isButtonWithStar = isCategoryWithStar
-        }
-    }
+//    private func updateButtonsWithStar() {
+//        for view in stackView1.arrangedSubviews {
+//            guard let button = view as? CategoryButton else { return }
+//            button.isButtonWithStar = isCategoryWithStar
+//        }
+//
+//        for view in stackView2.arrangedSubviews {
+//            guard let button = view as? CategoryButton else { return }
+//            button.isButtonWithStar = isCategoryWithStar
+//        }
+//    }
     
-    private func updateAdditionButtons(with title: String) {
-        for view in additionStackView.arrangedSubviews {
-            
-            guard let button = view as? AdditionButton else { return }
-            let buttonTitle = button.getButtonTitle()
-            if buttonTitle == title {
-                button.isActive = !button.isActive
-            }
-        }
-    }
+//    private func updateAdditionButtons(with title: String) {
+//        for view in additionStackView.arrangedSubviews {
+//
+//            guard let button = view as? AdditionButton else { return }
+//            let buttonTitle = button.getButtonTitle()
+//            if buttonTitle == title {
+//                button.isActive = !button.isActive
+//            }
+//        }
+//    }
     
     /*
     private func sendNewPostRequest() {
@@ -372,11 +384,11 @@ extension NewMountainPassVC: AdditionButtonDelegate {
     func didTapAdditionButton(with title: String) {
         print("🟢🟢 didTapAdditionButton with title \(title)")
         
-        if title == "*" {
-            isCategoryWithStar = !isCategoryWithStar
-        }
-        
-        updateAdditionButtons(with: title)
+//        if title == "*" {
+//            isCategoryWithStar = !isCategoryWithStar
+//        }
+//
+//        updateAdditionButtons(with: title)
     }
 }
 

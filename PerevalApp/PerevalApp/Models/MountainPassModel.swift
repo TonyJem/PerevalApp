@@ -5,7 +5,7 @@ class MountainPassModel {
     private var date = ""
     private var category: String?
     
-    //    private var isMarkedWithStar = false
+    var isMarkedWithStar = true
     //    private var isNotSureSelected = false
     //    private var isEstimatedSelected = false
     
