@@ -214,7 +214,8 @@ class NewMountainPassVC: UIViewController {
         print("🟢 didTapInfoButton in NewMountainPassVC")
         
 //        provideMountainPassDataToAPIService()
-        apiService.testPostMountainPass()
+        
+        sendNewPostRequest()
     }
     
     @objc private func didTapCategoryButton() {
@@ -290,6 +291,10 @@ class NewMountainPassVC: UIViewController {
                                     coordinates: coordinates,
                                     category: category,
                                     images: images)
+    }
+    
+    private func sendNewPostRequest() {
+        apiService.newTestPostMountainPass()
     }
 }
 
