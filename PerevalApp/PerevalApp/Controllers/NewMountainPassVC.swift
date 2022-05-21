@@ -5,6 +5,8 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Properties
     private let apiService = APIService()
     
+    private var category: String?
+    
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
     }
@@ -211,8 +213,7 @@ class NewMountainPassVC: UIViewController {
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
         
-        
-        
+        provideMountainPassDataToAPIService()
     }
     
     @objc private func didTapCategoryButton() {
@@ -248,22 +249,21 @@ class NewMountainPassVC: UIViewController {
         
         let date = calendarView.getDate()
         
-        
         let coordinates = Coords(latitude: "45.3842",
                                  longitude: "7.1525",
                                  height: "1200")
         
+        guard let category = self.category else { return }
+
         let image1 = Image(url: "http://...1",
                            title: "Подъём. Фото №1")
         let image2 = Image(url: "http://...2",
                            title: "Подъём. Фото №2")
         let image3 = Image(url: "http://...3",
                            title: "Подъём. Фото №3")
-        
         let images = [image1, image2, image3]
         
         guard let currentUser = UserSettings.currentUser else { return }
-        
         let user = User(id: 888,
                         email: currentUser.email,
                         phone: currentUser.phone,
@@ -274,7 +274,7 @@ class NewMountainPassVC: UIViewController {
                                     date: date,
                                     user: user,
                                     coordinates: coordinates,
-                                    category: "",
+                                    category: category,
                                     images: images)
     }
 }
