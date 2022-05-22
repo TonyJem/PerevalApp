@@ -32,6 +32,15 @@ class LatitudeView: UIView {
         return textField
     }()
     
+    private let degreeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "degree")
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private let minutesTextField: UITextField = {
         let textField = UITextField()
         
@@ -80,6 +89,7 @@ class LatitudeView: UIView {
         
         addSubview(latitudePicker)
         addSubview(degreeTextField)
+        addSubview(degreeImageView)
         addSubview(minutesTextField)
         addSubview(minuteView)
     }
@@ -160,6 +170,13 @@ extension LatitudeView {
             degreeTextField.leadingAnchor.constraint(equalTo: latitudePicker.trailingAnchor),
             degreeTextField.widthAnchor.constraint(equalToConstant: 50),
             degreeTextField.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            degreeImageView.bottomAnchor.constraint(equalTo: degreeTextField.topAnchor, constant: -3),
+            degreeImageView.leadingAnchor.constraint(equalTo: degreeTextField.trailingAnchor, constant: 5),
+            degreeImageView.widthAnchor.constraint(equalToConstant: 6),
+            degreeImageView.heightAnchor.constraint(equalToConstant: 6)
         ])
         
         NSLayoutConstraint.activate([
