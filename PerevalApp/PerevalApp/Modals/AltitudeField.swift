@@ -60,6 +60,11 @@ class AltitudeField: UIView {
         textField.text = text
     }
     
+    func getHeight() -> String {
+        let height = textField.text ?? "0"
+        return height
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         translatesAutoresizingMaskIntoConstraints = false

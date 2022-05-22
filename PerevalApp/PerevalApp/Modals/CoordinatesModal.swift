@@ -83,6 +83,8 @@ class CoordinatesModal {
     @objc private func dismissModal() {
         guard let targetView = mainView else { return }
         
+//        let coordinates = getCoordinates()
+        
         UIView.animate(withDuration: 0.3) {
             self.modalView.frame = CGRect(x: 40,
                                           y: targetView.frame.height,
@@ -129,7 +131,7 @@ class CoordinatesModal {
         
         setupViews()
         setConstraints()
-        setFields(with: coordinates)
+        setCoordinates(with: coordinates)
         registerForKeyboardNotification()
         presentModalWithAnimation(in: parentView)
     }
@@ -158,10 +160,22 @@ class CoordinatesModal {
         }
     }
     
-    private func setFields(with coordinates: Coords) {
+    private func setCoordinates(with coordinates: Coords) {
         latitudeField.setInitialText(coordinates.latitude)
         longitudeField.setInitialText(coordinates.longitude)
         altitudeField.setInitialText(coordinates.height)
+    }
+    
+    private func getCoordinates() -> Coords {
+        
+        let latitude = latitudeField.getCoordinate()
+        let longitude = longitudeField.getCoordinate()
+        let height = altitudeField.getHeight()
+        
+        let coordinates = Coords(latitude: latitude,
+                                 longitude: longitude,
+                                 height: height)
+        return coordinates
     }
 }
 

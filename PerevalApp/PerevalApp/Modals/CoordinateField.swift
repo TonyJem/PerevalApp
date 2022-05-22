@@ -120,7 +120,16 @@ class CoordinateField: UIView {
         if components.count >= 3 {
             minutesTextField.text = components[2]
         }
+    }
+    
+    func getCoordinate() -> String {
+        let indexForSelectedLetter = picker.selectedRow(inComponent: 0)
+        let letter: String = pickerData[indexForSelectedLetter]
+        let degree: String = degreeTextField.text ?? "0"
+        let minutes: String = minutesTextField.text ?? "0"
         
+        let coordinate = "\(letter) \(degree) \(minutes)"
+        return coordinate
     }
     
     // MARK: - Private Methods
