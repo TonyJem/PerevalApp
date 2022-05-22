@@ -105,8 +105,7 @@ class Coordinates {
     
     private var mainView: UIView?
 
-    private let repsTextField = UITextField()
-    
+
     var buttonAction: ( (String, String) -> Void)?
     
     func showCoordinatesModal(viewController: UIViewController,
@@ -130,33 +129,9 @@ class Coordinates {
                                  height: parentView.frame.width - 60)
         scrollView.addSubview(modalView)
         
-        let repsOrTimerLabel = UILabel()
-        repsOrTimerLabel.text = "repsOrTimer"
-        repsOrTimerLabel.translatesAutoresizingMaskIntoConstraints = true
-        repsOrTimerLabel.frame = CGRect(x: 30,
-                                        y: 250,
-                                        width: modalView.frame.width - 60,
-                                        height: 20)
-        modalView.addSubview(repsOrTimerLabel)
-        
-        repsTextField.frame = CGRect(x: 20,
-                                     y: repsOrTimerLabel.frame.maxY,
-                                     width: modalView.frame.width - 40,
-                                     height: 30)
-        repsTextField.backgroundColor = .brown
-        repsTextField.borderStyle = .none
-        repsTextField.layer.cornerRadius = 10
-        repsTextField.textColor = .specialGray
-        //        repsTextField.font = .robotoBold20()
-        repsTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: repsTextField.frame.height))
-        repsTextField.leftViewMode = .always
-        repsTextField.clearButtonMode = .always
-        repsTextField.returnKeyType = .done
-        repsTextField.keyboardType = .numberPad
-        modalView.addSubview(repsTextField)
         
         let okButton = UIButton(frame: CGRect(x: 50,
-                                              y: repsTextField.frame.maxY + 15,
+                                              y: 300,
                                               width: modalView.frame.width - 100,
                                               height: 35))
         okButton.backgroundColor = .green
@@ -200,7 +175,6 @@ class Coordinates {
                         self.backgroundView.removeFromSuperview()
                         self.scrollView.removeFromSuperview()
                         self.removeForKeyboardNotification()
-                        self.repsTextField.text = ""
                     }
                 }
             }
