@@ -265,6 +265,8 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(altitudeView)
         contentView.addSubview(photoLabel)
         contentView.addSubview(attachPhotoView)
+        
+        updateCoordinates()
     }
     
     private func setDelegates() {
@@ -337,6 +339,13 @@ class NewMountainPassVC: UIViewController {
                 button.isActive = model.isEstimatedSelected
             }
         }
+    }
+    
+    private func updateCoordinates() {
+        let coordinates = model.getCoordinates()
+        coordinatesView.setLatitude(coordinates.latitude)
+        coordinatesView.setLongitude(coordinates.longitude)
+        altitudeView.setAltitude(coordinates.height)
     }
     
     private func sendAPIrequest() {

@@ -37,6 +37,11 @@ class AltitudeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    func setAltitude(_ altitude: String) {
+        valueLabel.text = "\(altitude) м"
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         layer.borderColor = UIColor.mainBlue.cgColor
@@ -47,11 +52,6 @@ class AltitudeView: UIView {
         
         addSubview(descriptionLabel)
         addSubview(valueLabel)
-    }
-    
-    // MARK: - Public Methods
-    func setAltitude(_ value: Int) {
-        valueLabel.text = "\(String(value)) м"
     }
 }
 
