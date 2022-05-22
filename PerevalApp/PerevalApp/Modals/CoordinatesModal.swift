@@ -2,6 +2,8 @@ import UIKit
 
 class CoordinatesModal {
     
+    private var buttonAction: ((Coords) -> Void)?
+    
     // MARK: - Views
     
     private var mainView: UIView?
@@ -83,7 +85,8 @@ class CoordinatesModal {
     @objc private func dismissModal() {
         guard let targetView = mainView else { return }
         
-//        let coordinates = getCoordinates()
+        let coordinates = getCoordinates()
+        buttonAction?(coordinates)
         
         UIView.animate(withDuration: 0.3) {
             self.modalView.frame = CGRect(x: 40,
@@ -109,7 +112,9 @@ class CoordinatesModal {
     }
     
     // MARK: - Public Methods
-    func show(in viewController: UIViewController, with coordinates: Coords) {
+    func show(in viewController: UIViewController,
+              with coordinates: Coords,
+              completion: @escaping (Coords) -> Void) {
         
         guard let parentView = viewController.view else { return }
         mainView = parentView
@@ -131,6 +136,7 @@ class CoordinatesModal {
         
         setupViews()
         setConstraints()
+        buttonAction = completion
         setCoordinates(with: coordinates)
         registerForKeyboardNotification()
         presentModalWithAnimation(in: parentView)
