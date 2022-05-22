@@ -52,6 +52,14 @@ class LatitudeView: UIView {
         return textField
     }()
     
+    private let minuteView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -73,6 +81,7 @@ class LatitudeView: UIView {
         addSubview(latitudePicker)
         addSubview(degreeTextField)
         addSubview(minutesTextField)
+        addSubview(minuteView)
     }
     
     private func setDelegates() {
@@ -158,6 +167,13 @@ extension LatitudeView {
             minutesTextField.leadingAnchor.constraint(equalTo: degreeTextField.trailingAnchor, constant: 20),
             minutesTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             minutesTextField.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            minuteView.bottomAnchor.constraint(equalTo: minutesTextField.topAnchor, constant: -3),
+            minuteView.trailingAnchor.constraint(equalTo: minutesTextField.trailingAnchor, constant: 5),
+            minuteView.widthAnchor.constraint(equalToConstant: 2),
+            minuteView.heightAnchor.constraint(equalToConstant: 6)
         ])
         
     }
