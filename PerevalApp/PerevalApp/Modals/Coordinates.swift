@@ -25,6 +25,13 @@ extension Coordinates {
             titleLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
+        NSLayoutConstraint.activate([
+            latitudeView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 30),
+            latitudeView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
+            latitudeView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
+            latitudeView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
     }
 }
 
@@ -57,11 +64,20 @@ class Coordinates {
         return label
     }()
     
+    private let latitudeView: UIView = {
+        let view = UILabel()
+        view.backgroundColor = .systemPink
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: - Private Methods
     private func setupViews() {
         modalView.addSubview(separatorView)
         modalView.addSubview(iconView)
         modalView.addSubview(titleLabel)
+        modalView.addSubview(latitudeView)
     }
     
     
