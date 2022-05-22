@@ -56,7 +56,7 @@ class AltitudeField: UIView {
     }
     
     // MARK: - Public Methods
-    func setText(_ text: String) {
+    func setInitialText(_ text: String) {
         textField.text = text
     }
     

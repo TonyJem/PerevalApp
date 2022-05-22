@@ -159,9 +159,9 @@ class CoordinatesModal {
     }
     
     private func setFields(with coordinates: Coords) {
-        latitudeField.setText(coordinates.latitude)
-        longitudeField.setText(coordinates.longitude)
-        altitudeField.setText(coordinates.height)
+        latitudeField.setInitialText(coordinates.latitude)
+        longitudeField.setInitialText(coordinates.longitude)
+        altitudeField.setInitialText(coordinates.height)
     }
 }
 

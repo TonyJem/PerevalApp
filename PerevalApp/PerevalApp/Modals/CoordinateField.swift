@@ -84,7 +84,7 @@ class CoordinateField: UIView {
     }
     
     // MARK: - Public Methods
-    func setText(_ text: String) {
+    func setInitialText(_ text: String) {
 
     }
     
