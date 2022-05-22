@@ -95,7 +95,7 @@ class Coordinates {
     private let scrollView = UIScrollView()
     
     private var mainView: UIView?
-    private let setsTextField = UITextField()
+
     private let repsTextField = UITextField()
     
     var buttonAction: ( (String, String) -> Void)?
@@ -121,46 +121,11 @@ class Coordinates {
                                  height: parentView.frame.width - 60)
         scrollView.addSubview(modalView)
         
-        let editingLabel = UILabel(frame: CGRect(x: 10,
-                                                 y: modalView.frame.height * 0.4 + 50,
-                                                 width: modalView.frame.width - 20,
-                                                 height: 25))
-        editingLabel.text = "Editing"
-        editingLabel.textAlignment = .center
-        //        editingLabel.font = .robotoMedium22()
-        modalView.addSubview(editingLabel)
-        
-        let setsLabel = UILabel()
-        setsLabel.text = "Sets"
-        
-        setsLabel.translatesAutoresizingMaskIntoConstraints = true
-        setsLabel.frame = CGRect(x: 30,
-                                 y: editingLabel.frame.maxY + 10,
-                                 width: modalView.frame.width - 60,
-                                 height: 20)
-        modalView.addSubview(setsLabel)
-        
-        setsTextField.frame = CGRect(x: 20,
-                                     y: setsLabel.frame.maxY,
-                                     width: modalView.frame.width - 40,
-                                     height: 30)
-        setsTextField.backgroundColor = .brown
-        setsTextField.borderStyle = .none
-        setsTextField.layer.cornerRadius = 10
-        setsTextField.textColor = .specialGray
-        //        setsTextField.font = .robotoBold20()
-        setsTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: setsTextField.frame.height))
-        setsTextField.leftViewMode = .always
-        setsTextField.clearButtonMode = .always
-        setsTextField.returnKeyType = .done
-        setsTextField.keyboardType = .numberPad
-        modalView.addSubview(setsTextField)
-        
         let repsOrTimerLabel = UILabel()
         repsOrTimerLabel.text = "repsOrTimer"
         repsOrTimerLabel.translatesAutoresizingMaskIntoConstraints = true
         repsOrTimerLabel.frame = CGRect(x: 30,
-                                        y: setsTextField.frame.maxY + 3,
+                                        y: 250,
                                         width: modalView.frame.width - 60,
                                         height: 20)
         modalView.addSubview(repsOrTimerLabel)
@@ -205,17 +170,11 @@ class Coordinates {
             }
         }
         
-        
-        
         setupViews()
         setConstraints()
     }
     
     @objc private func dismissAlert() {
-        guard let setsNumber = setsTextField.text else { return }
-        guard let repsNumber = repsTextField.text else { return }
-        buttonAction?(setsNumber, repsNumber)
-        
         guard let targetView = mainView else { return }
         
         UIView.animate(withDuration: 0.3) {
@@ -232,7 +191,6 @@ class Coordinates {
                         self.backgroundView.removeFromSuperview()
                         self.scrollView.removeFromSuperview()
                         self.removeForKeyboardNotification()
-                        self.setsTextField.text = ""
                         self.repsTextField.text = ""
                     }
                 }
