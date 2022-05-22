@@ -21,8 +21,15 @@ extension Coordinates {
         NSLayoutConstraint.activate([
             titleLabel.bottomAnchor.constraint(equalTo: iconView.bottomAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 15),
-            titleLabel.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -25),
+            titleLabel.trailingAnchor.constraint(equalTo: gpsButton.leadingAnchor, constant: -15),
             titleLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            gpsButton.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
+            gpsButton.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -25),
+            gpsButton.widthAnchor.constraint(lessThanOrEqualToConstant: 180),
+            gpsButton.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         NSLayoutConstraint.activate([
@@ -77,6 +84,17 @@ class Coordinates {
         return label
     }()
     
+    private lazy var gpsButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .mainBlue
+        button.titleLabel?.font = .ptSans16()
+        button.setTitle("ОПРЕДЕЛИТЬ С GPS", for: .normal)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapGpsButton), for: .touchUpInside)
+        return button
+    }()
+    
     private let latitudeView = LatitudeView()
     private let longitudeView = LongitudeView()
     private let altitudeField = AltitudeField()
@@ -86,10 +104,17 @@ class Coordinates {
         modalView.addSubview(separatorView)
         modalView.addSubview(iconView)
         modalView.addSubview(titleLabel)
+        modalView.addSubview(gpsButton)
         modalView.addSubview(latitudeView)
         modalView.addSubview(longitudeView)
         modalView.addSubview(altitudeField)
     }
+    
+    // MARK: - Actions
+    @objc private func didTapGpsButton() {
+        print("🟢 didTapGpsButton in Coordinates!")
+    }
+    
     
     
     
