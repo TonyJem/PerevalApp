@@ -25,14 +25,6 @@ extension Coordinates {
             titleLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
-        NSLayoutConstraint.activate([
-            systemPicker.bottomAnchor.constraint(equalTo: iconView.bottomAnchor),
-            systemPicker.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -25),
-            systemPicker.widthAnchor.constraint(equalToConstant: 100),
-            systemPicker.heightAnchor.constraint(equalToConstant: 20)
-        ])
-
-        
     }
 }
 
@@ -65,19 +57,11 @@ class Coordinates {
         return label
     }()
     
-    private let systemPicker: UIPickerView = {
-        let picker = UIPickerView()
-        
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        return picker
-    }()
-    
     // MARK: - Private Methods
     private func setupViews() {
         modalView.addSubview(separatorView)
         modalView.addSubview(iconView)
         modalView.addSubview(titleLabel)
-        modalView.addSubview(systemPicker)
     }
     
     
