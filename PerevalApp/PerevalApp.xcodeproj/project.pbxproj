@@ -48,6 +48,7 @@
 		3AC8A03F28390A6B005CEBFD /* MountainPassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A03E28390A6B005CEBFD /* MountainPassModel.swift */; };
 		3AC8A041283963BA005CEBFD /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A040283963B9005CEBFD /* Coordinates.swift */; };
 		3AC8A044283A1122005CEBFD /* LatitudeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A043283A1122005CEBFD /* LatitudeView.swift */; };
+		3AC8A046283A399E005CEBFD /* LongitudeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A045283A399E005CEBFD /* LongitudeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		3AC8A03E28390A6B005CEBFD /* MountainPassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPassModel.swift; sourceTree = "<group>"; };
 		3AC8A040283963B9005CEBFD /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		3AC8A043283A1122005CEBFD /* LatitudeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeView.swift; sourceTree = "<group>"; };
+		3AC8A045283A399E005CEBFD /* LongitudeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongitudeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +198,6 @@
 				3A2ED0DE28326A4E00285746 /* CalendarView.swift */,
 				3A2ED0E0283287D200285746 /* TodayView.swift */,
 				3A2ED0E22832991500285746 /* CoordinatesView.swift */,
-				3AC8A043283A1122005CEBFD /* LatitudeView.swift */,
 				3A2ED0E42832A04A00285746 /* AltitudeView.swift */,
 				3A2ED0E82832C4C800285746 /* AttachPhotoView */,
 			);
@@ -256,6 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				3AC8A040283963B9005CEBFD /* Coordinates.swift */,
+				3AC8A043283A1122005CEBFD /* LatitudeView.swift */,
+				3AC8A045283A399E005CEBFD /* LongitudeView.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC8A046283A399E005CEBFD /* LongitudeView.swift in Sources */,
 				3A1D4F2B282FCC61003C57D9 /* WelcomeVC.swift in Sources */,
 				3A1D4F40282FD013003C57D9 /* MountainPassListVC.swift in Sources */,
 				3A2ED0EA2832C4F500285746 /* GaleryView.swift in Sources */,

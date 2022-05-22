@@ -26,12 +26,18 @@ extension Coordinates {
         ])
         
         NSLayoutConstraint.activate([
-            latitudeView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 30),
+            latitudeView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20),
             latitudeView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
             latitudeView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
-            latitudeView.heightAnchor.constraint(equalToConstant: 80)
+            latitudeView.heightAnchor.constraint(equalToConstant: 70)
         ])
         
+        NSLayoutConstraint.activate([
+            longitudeView.topAnchor.constraint(equalTo: latitudeView.bottomAnchor),
+            longitudeView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
+            longitudeView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
+            longitudeView.heightAnchor.constraint(equalToConstant: 70)
+        ])
     }
 }
 
@@ -65,6 +71,7 @@ class Coordinates {
     }()
     
     private let latitudeView = LatitudeView()
+    private let longitudeView = LongitudeView()
     
     // MARK: - Private Methods
     private func setupViews() {
@@ -72,7 +79,9 @@ class Coordinates {
         modalView.addSubview(iconView)
         modalView.addSubview(titleLabel)
         modalView.addSubview(latitudeView)
+        modalView.addSubview(longitudeView)
     }
+    
     
     
     

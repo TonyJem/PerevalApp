@@ -1,8 +1,8 @@
 import UIKit
 
-class LatitudeView: UIView {
+class LongitudeView: UIView {
     
-    private let pickerData = ["N", "S"]
+    private let pickerData = ["E", "W"]
     
     // MARK: - Views
     private let latitudePicker: UIPickerView = {
@@ -84,7 +84,7 @@ class LatitudeView: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        backgroundColor = .systemPink
+        backgroundColor = .green
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(latitudePicker)
@@ -104,7 +104,7 @@ class LatitudeView: UIView {
 }
 
 // MARK: - UIPickerViewDataSource
-extension LatitudeView: UIPickerViewDataSource {
+extension LongitudeView: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -117,7 +117,7 @@ extension LatitudeView: UIPickerViewDataSource {
 }
 
 // MARK: - UIPickerViewDelegate
-extension LatitudeView: UIPickerViewDelegate {
+extension LongitudeView: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
@@ -129,7 +129,7 @@ extension LatitudeView: UIPickerViewDelegate {
 }
 
 // MARK: - UIPickerViewDelegate
-extension LatitudeView: UITextFieldDelegate {
+extension LongitudeView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
@@ -155,14 +155,14 @@ extension LatitudeView: UITextFieldDelegate {
 }
 
 // MARK: - SetConstraints
-extension LatitudeView {
+extension LongitudeView {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
             latitudePicker.centerYAnchor.constraint(equalTo: centerYAnchor),
             latitudePicker.leadingAnchor.constraint(equalTo: leadingAnchor),
             latitudePicker.widthAnchor.constraint(equalToConstant: 60),
-            latitudePicker.heightAnchor.constraint(equalTo: heightAnchor)
+            latitudePicker.heightAnchor.constraint(equalTo: heightAnchor, constant: 25)
         ])
         
         NSLayoutConstraint.activate([
