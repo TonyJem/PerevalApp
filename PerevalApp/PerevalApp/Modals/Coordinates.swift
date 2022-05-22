@@ -64,13 +64,7 @@ class Coordinates {
         return label
     }()
     
-    private let latitudeView: UIView = {
-        let view = UILabel()
-        view.backgroundColor = .systemPink
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let latitudeView = LatitudeView()
     
     // MARK: - Private Methods
     private func setupViews() {

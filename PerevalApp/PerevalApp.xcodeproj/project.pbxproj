@@ -47,6 +47,7 @@
 		3AC8A03B2837F414005CEBFD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A03A2837F414005CEBFD /* Models.swift */; };
 		3AC8A03F28390A6B005CEBFD /* MountainPassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A03E28390A6B005CEBFD /* MountainPassModel.swift */; };
 		3AC8A041283963BA005CEBFD /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A040283963B9005CEBFD /* Coordinates.swift */; };
+		3AC8A044283A1122005CEBFD /* LatitudeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A043283A1122005CEBFD /* LatitudeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		3AC8A03A2837F414005CEBFD /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		3AC8A03E28390A6B005CEBFD /* MountainPassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPassModel.swift; sourceTree = "<group>"; };
 		3AC8A040283963B9005CEBFD /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		3AC8A043283A1122005CEBFD /* LatitudeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				3A2ED0DE28326A4E00285746 /* CalendarView.swift */,
 				3A2ED0E0283287D200285746 /* TodayView.swift */,
 				3A2ED0E22832991500285746 /* CoordinatesView.swift */,
+				3AC8A043283A1122005CEBFD /* LatitudeView.swift */,
 				3A2ED0E42832A04A00285746 /* AltitudeView.swift */,
 				3A2ED0E82832C4C800285746 /* AttachPhotoView */,
 			);
@@ -354,6 +357,7 @@
 				3A2ED0F72835489F00285746 /* UserSettings.swift in Sources */,
 				3AC8A03F28390A6B005CEBFD /* MountainPassModel.swift in Sources */,
 				3AC8A0362836C75F005CEBFD /* MountainPass.swift in Sources */,
+				3AC8A044283A1122005CEBFD /* LatitudeView.swift in Sources */,
 				3A2ED0D92832253500285746 /* AdditionButton.swift in Sources */,
 				3A2ED0E52832A04A00285746 /* AltitudeView.swift in Sources */,
 				3A1D4F49282FFDF1003C57D9 /* UIFont + Extensions.swift in Sources */,
