@@ -2,6 +2,8 @@ import UIKit
 
 class LatitudeView: UIView {
     
+    private let pickerData = ["N", "S"]
+    
     // MARK: - Views
     private let latitudePicker: UIPickerView = {
         let picker = UIPickerView()
@@ -33,6 +35,7 @@ class LatitudeView: UIView {
         
         setupViews()
         setConstraints()
+        setDelegates()
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +51,37 @@ class LatitudeView: UIView {
         addSubview(latitudePicker)
     }
     
+    private func setDelegates() {
+        latitudePicker.dataSource = self
+        latitudePicker.delegate = self
+    }
+    
+}
+
+// MARK: - UIPickerViewDataSource
+extension LatitudeView: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        pickerData.count * 1000
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if row % 2 == 0 {
+            return pickerData[0]
+        } else {
+            return pickerData[1]
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        60
+    }
+    
+
 }
 
 // MARK: - SetConstraints
