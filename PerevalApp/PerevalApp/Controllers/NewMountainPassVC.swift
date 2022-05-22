@@ -393,10 +393,7 @@ class NewMountainPassVC: UIViewController {
                         fam: currentUser.surname,
                         name: currentUser.name)
         
-        
-        let coordinates = Coords(latitude: "45.3842",
-                                 longitude: "7.1525",
-                                 height: "1200")
+        let coordinates = model.getCoordinates()
         
         let image1 = Image(url: "http://...1",
                            title: "Подъём. Фото №1")
