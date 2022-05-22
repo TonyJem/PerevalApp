@@ -29,7 +29,7 @@ extension Coordinates {
             latitudeView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 30),
             latitudeView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
             latitudeView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
-            latitudeView.heightAnchor.constraint(equalToConstant: 50)
+            latitudeView.heightAnchor.constraint(equalToConstant: 80)
         ])
         
     }
@@ -72,6 +72,8 @@ class Coordinates {
         modalView.addSubview(iconView)
         modalView.addSubview(titleLabel)
         modalView.addSubview(latitudeView)
+        
+        latitudeView.selectMiddleRow()
     }
     
     

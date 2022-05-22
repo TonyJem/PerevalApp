@@ -7,7 +7,6 @@ class LatitudeView: UIView {
     // MARK: - Views
     private let latitudePicker: UIPickerView = {
         let picker = UIPickerView()
-        picker.backgroundColor = .green
         
         picker.translatesAutoresizingMaskIntoConstraints = false
         return picker
@@ -42,6 +41,11 @@ class LatitudeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    func selectMiddleRow() {
+        //        latitudePicker.selectRow(pickerData.count * 1000 / 2, inComponent: 0, animated: false)
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         backgroundColor = .systemPink
@@ -59,29 +63,28 @@ class LatitudeView: UIView {
 }
 
 // MARK: - UIPickerViewDataSource
-extension LatitudeView: UIPickerViewDataSource, UIPickerViewDelegate {
+extension LatitudeView: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        pickerData.count * 1000
+        pickerData.count
     }
     
+}
+
+// MARK: - UIPickerViewDelegate
+extension LatitudeView: UIPickerViewDelegate {
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if row % 2 == 0 {
-            return pickerData[0]
-        } else {
-            return pickerData[1]
-        }
+        return pickerData[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        60
+        25
     }
-    
-
 }
 
 // MARK: - SetConstraints
@@ -89,17 +92,17 @@ extension LatitudeView {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            topLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            topLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 100),
-            topLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            topLabel.heightAnchor.constraint(equalToConstant: 25)
+            latitudePicker.centerYAnchor.constraint(equalTo: centerYAnchor),
+            latitudePicker.leadingAnchor.constraint(equalTo: leadingAnchor),
+            latitudePicker.widthAnchor.constraint(equalToConstant: 60),
+            latitudePicker.heightAnchor.constraint(equalTo: heightAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            latitudePicker.centerYAnchor.constraint(equalTo: centerYAnchor),
-            latitudePicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            latitudePicker.trailingAnchor.constraint(equalTo: topLabel.leadingAnchor, constant: -12),
-            latitudePicker.heightAnchor.constraint(equalTo: heightAnchor)
+            topLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            topLabel.leadingAnchor.constraint(equalTo: latitudePicker.trailingAnchor, constant: 0),
+            topLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            topLabel.heightAnchor.constraint(equalToConstant: 25)
         ])
         
     }
