@@ -1,9 +1,23 @@
 import UIKit
 
+enum Coordinate {
+    case latitude
+    case longitude
+    
+    var pickerData: [String] {
+        switch self {
+
+        case .latitude:
+            return ["N", "S"]
+        case .longitude:
+            return ["E", "W"]
+        }
+    }
+}
+
 class CoordinateField: UIView {
     
-    private let pickerData = ["N", "S"]
-//    private let pickerData = ["E", "W"]
+    private var pickerData = [""]
     
     // MARK: - Views
     private let picker: UIPickerView = {
@@ -81,6 +95,12 @@ class CoordinateField: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(type: Coordinate) {
+        self.init()
+        
+        pickerData = type.pickerData
     }
     
     // MARK: - Public Methods
