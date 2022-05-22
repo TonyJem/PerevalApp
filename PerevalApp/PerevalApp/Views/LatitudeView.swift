@@ -23,10 +23,30 @@ class LatitudeView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 3
         
-        textField.setHorizontalInsets(5)
+        textField.setHorizontalInsets(8)
         
         textField.returnKeyType = .done
         textField.keyboardType = .numberPad
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private let minutesTextField: UITextField = {
+        let textField = UITextField()
+        
+        textField.font = .ptSans20()
+        textField.textColor = .black
+        textField.backgroundColor = .white
+        
+        textField.layer.borderColor = UIColor.mainBlue.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 3
+        
+        textField.setHorizontalInsets(10)
+        
+        textField.returnKeyType = .done
+        textField.keyboardType = .decimalPad
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -52,12 +72,14 @@ class LatitudeView: UIView {
         
         addSubview(latitudePicker)
         addSubview(degreeTextField)
+        addSubview(minutesTextField)
     }
     
     private func setDelegates() {
         latitudePicker.dataSource = self
         latitudePicker.delegate = self
         degreeTextField.delegate = self
+        minutesTextField.delegate = self
     }
     
 }
@@ -105,6 +127,8 @@ extension LatitudeView: UITextFieldDelegate {
         switch textField {
         case degreeTextField:
             return count <= 3
+        case minutesTextField:
+            return count <= 7
         default:
             return true
         }
@@ -127,6 +151,13 @@ extension LatitudeView {
             degreeTextField.leadingAnchor.constraint(equalTo: latitudePicker.trailingAnchor),
             degreeTextField.widthAnchor.constraint(equalToConstant: 50),
             degreeTextField.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            minutesTextField.centerYAnchor.constraint(equalTo: centerYAnchor),
+            minutesTextField.leadingAnchor.constraint(equalTo: degreeTextField.trailingAnchor, constant: 20),
+            minutesTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            minutesTextField.heightAnchor.constraint(equalToConstant: 30)
         ])
         
     }
