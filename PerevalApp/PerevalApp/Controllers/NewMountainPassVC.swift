@@ -181,7 +181,7 @@ class NewMountainPassVC: UIViewController {
     private let separatorView2 = SeparatorView()
     
     private lazy var coordinatesView: CoordinatesView = {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapCoordinates))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnCoordinatesView))
         let view = CoordinatesView()
         view.addGestureRecognizer(tap)
         view.isUserInteractionEnabled = true
@@ -189,7 +189,7 @@ class NewMountainPassVC: UIViewController {
     }()
     
     private lazy var altitudeView: AltitudeView = {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapCoordinates))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnCoordinatesView))
         let view = AltitudeView()
         view.addGestureRecognizer(tap)
         view.isUserInteractionEnabled = true
@@ -240,7 +240,7 @@ class NewMountainPassVC: UIViewController {
         view.endEditing(true)
     }
     
-    @objc private func didTapCoordinates() {
+    @objc private func didTapOnCoordinatesView() {
         coordinatesModal.showCoordinatesModal(viewController: self,
                                               repsOrTimer: "Reps") { _, _ in
         }
