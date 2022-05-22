@@ -38,6 +38,13 @@ extension Coordinates {
             longitudeView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
             longitudeView.heightAnchor.constraint(equalToConstant: 70)
         ])
+        
+        NSLayoutConstraint.activate([
+            altitudeField.topAnchor.constraint(equalTo: longitudeView.bottomAnchor),
+            altitudeField.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
+            altitudeField.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
+            altitudeField.heightAnchor.constraint(equalToConstant: 70)
+        ])
     }
 }
 
@@ -72,6 +79,7 @@ class Coordinates {
     
     private let latitudeView = LatitudeView()
     private let longitudeView = LongitudeView()
+    private let altitudeField = AltitudeField()
     
     // MARK: - Private Methods
     private func setupViews() {
@@ -80,6 +88,7 @@ class Coordinates {
         modalView.addSubview(titleLabel)
         modalView.addSubview(latitudeView)
         modalView.addSubview(longitudeView)
+        modalView.addSubview(altitudeField)
     }
     
     

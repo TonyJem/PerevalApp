@@ -49,6 +49,7 @@
 		3AC8A041283963BA005CEBFD /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A040283963B9005CEBFD /* Coordinates.swift */; };
 		3AC8A044283A1122005CEBFD /* LatitudeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A043283A1122005CEBFD /* LatitudeView.swift */; };
 		3AC8A046283A399E005CEBFD /* LongitudeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A045283A399E005CEBFD /* LongitudeView.swift */; };
+		3AC8A048283A3FC1005CEBFD /* AltitudeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A047283A3FC1005CEBFD /* AltitudeField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		3AC8A040283963B9005CEBFD /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		3AC8A043283A1122005CEBFD /* LatitudeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeView.swift; sourceTree = "<group>"; };
 		3AC8A045283A399E005CEBFD /* LongitudeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongitudeView.swift; sourceTree = "<group>"; };
+		3AC8A047283A3FC1005CEBFD /* AltitudeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltitudeField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 				3AC8A040283963B9005CEBFD /* Coordinates.swift */,
 				3AC8A043283A1122005CEBFD /* LatitudeView.swift */,
 				3AC8A045283A399E005CEBFD /* LongitudeView.swift */,
+				3AC8A047283A3FC1005CEBFD /* AltitudeField.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				3A2ED0EA2832C4F500285746 /* GaleryView.swift in Sources */,
 				3A2ED0E72832B43800285746 /* AttachPhotoView.swift in Sources */,
 				3AC8A02F28365238005CEBFD /* RootViewController.swift in Sources */,
+				3AC8A048283A3FC1005CEBFD /* AltitudeField.swift in Sources */,
 				3A2ED0E32832991600285746 /* CoordinatesView.swift in Sources */,
 				3A2ED0EC2832C7E800285746 /* PhotoView.swift in Sources */,
 				3AC8A041283963BA005CEBFD /* Coordinates.swift in Sources */,
