@@ -241,8 +241,9 @@ class NewMountainPassVC: UIViewController {
     }
     
     @objc private func didTapCoordinates() {
-        print("🟢 handleTap in NewMountainPassVC")
-        openCoordinatesModal()
+        coordinatesModal.showCoordinatesModal(viewController: self,
+                                              repsOrTimer: "Reps") { _, _ in
+        }
     }
     
     // MARK: - Private Methods
@@ -317,12 +318,6 @@ class NewMountainPassVC: UIViewController {
             let buttonTitle = button.getButtonTitle()
             button.isButtonWithStar = model.isMarkedWithStar
             button.isActive = buttonTitle == category
-        }
-    }
-    
-    func openCoordinatesModal() {
-        coordinatesModal.showCoordinatesModal(viewController: self,
-                                              repsOrTimer: "Reps") { _, _ in
         }
     }
     
