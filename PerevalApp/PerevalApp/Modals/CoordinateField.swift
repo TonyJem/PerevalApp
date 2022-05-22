@@ -105,7 +105,17 @@ class CoordinateField: UIView {
     
     // MARK: - Public Methods
     func setInitialText(_ text: String) {
-
+        guard !text.isEmpty else { return }
+        let components = text.components(separatedBy: " ")
+        
+        if components.count >= 2 {
+            degreeTextField.text = components[1]
+        }
+        
+        if components.count >= 3 {
+            minutesTextField.text = components[2]
+        }
+        
     }
     
     // MARK: - Private Methods
