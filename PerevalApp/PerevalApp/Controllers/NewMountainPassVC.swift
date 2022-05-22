@@ -5,7 +5,7 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Properties
     private let apiService = APIService()
     private let model = MountainPassModel()
-    private let coordinatesModal = Coordinates()
+    private let coordinatesModal = CoordinatesModal()
     
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 200)
@@ -241,7 +241,7 @@ class NewMountainPassVC: UIViewController {
     }
     
     @objc private func didTapOnCoordinatesView() {
-        coordinatesModal.showCoordinatesModal(viewController: self)
+        coordinatesModal.show(in: self)
     }
     
     // MARK: - Private Methods

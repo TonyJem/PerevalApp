@@ -1,6 +1,6 @@
 import UIKit
 
-class Coordinates {
+class CoordinatesModal {
     
     // MARK: - Views
     
@@ -63,6 +63,18 @@ class Coordinates {
     private let longitudeView = LongitudeView()
     private let altitudeField = AltitudeField()
     
+    private lazy var okButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .white
+        button.titleLabel?.font = .ptSans18()
+        button.setTitle("OK", for: .normal)
+        button.backgroundColor = .mainBlue
+        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Private Methods
     private func setupViews() {
         modalView.addSubview(separatorView)
@@ -72,6 +84,7 @@ class Coordinates {
         modalView.addSubview(latitudeView)
         modalView.addSubview(longitudeView)
         modalView.addSubview(altitudeField)
+        modalView.addSubview(okButton)
     }
     
     // MARK: - Actions
@@ -82,12 +95,8 @@ class Coordinates {
     
     
     // MARK: - OLD code below -
-
     
-    
-    func showCoordinatesModal(viewController: UIViewController) {
-        
-        registerForKeyboardNotification()
+    func show(in viewController: UIViewController) {
         
         guard let parentView = viewController.view else { return }
         mainView = parentView
@@ -102,22 +111,12 @@ class Coordinates {
                                  y: -420,
                                  width: parentView.frame.width - 60,
                                  height: parentView.frame.width - 60)
+        
         scrollView.addSubview(modalView)
         
-        
-        let okButton = UIButton(frame: CGRect(x: 50,
-                                              y: 300,
-                                              width: modalView.frame.width - 100,
-                                              height: 35))
-        okButton.backgroundColor = .green
-        okButton.setTitle("OK", for: .normal)
-        okButton.titleLabel?.textColor = .white
-        //        okButton.titleLabel?.font = .robotoMedium18()
-        okButton.layer.cornerRadius = 10
-        okButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
-        modalView.addSubview(okButton)
-        
-
+        setupViews()
+        setConstraints()
+        registerForKeyboardNotification()
         
         UIView.animate(withDuration: 0.3) {
             self.backgroundView.alpha = 0.8
@@ -128,21 +127,20 @@ class Coordinates {
                 }
             }
         }
-        
-        setupViews()
-        setConstraints()
     }
     
-    @objc private func dismissAlert() {
+    @objc private func dismissModal() {
         guard let targetView = mainView else { return }
         
         UIView.animate(withDuration: 0.3) {
-            self.modalView.frame = CGRect(x: 40, y: targetView.frame.height, width: targetView.frame.width - 80, height: 420)
+            self.modalView.frame = CGRect(x: 40,
+                                          y: targetView.frame.height,
+                                          width: targetView.frame.width - 60,
+                                          height: 420)
         } completion: { done in
             if done {
                 UIView.animate(withDuration: 0.3) {
                     self.backgroundView.alpha = 0
-                    // TODO: need to reado ARC - Automatic Reference Counting and why do we need weak self here
                 } completion: { [weak self] done in
                     guard let self = self else { return }
                     if done {
@@ -155,12 +153,11 @@ class Coordinates {
             }
         }
     }
-    
 }
 
 
 // MARK: - Handle Keyboard Show and Hide
-extension Coordinates {
+extension CoordinatesModal {
     private func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(kbWillShow),
@@ -187,9 +184,8 @@ extension Coordinates {
     }
 }
 
-
 // MARK: - SetConstraints
-extension Coordinates {
+extension CoordinatesModal {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
@@ -239,6 +235,13 @@ extension Coordinates {
             altitudeField.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
             altitudeField.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
             altitudeField.heightAnchor.constraint(equalToConstant: 70)
+        ])
+        
+        NSLayoutConstraint.activate([
+            okButton.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -20),
+            okButton.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
+            okButton.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
+            okButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
