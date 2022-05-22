@@ -10,8 +10,8 @@ class MountainPassModel {
     var isNotSureSelected = false
     var isEstimatedSelected = false
     
-    private var coordinates = Coords(latitude: "N 55 36.4999",  // format example latitude: "N 55 36.4999"
-                             longitude: "E 37 18.2332",         // format example longitude: "E 37 18.2332"
+    private var coordinates = Coords(latitude: "S 55 36.4999",  // format example latitude: "N 55 36.4999" or S
+                             longitude: "W 37 18.2332",         // format example longitude: "E 37 18.2332" or W
                              height: "1800")            // format example height: "1800"
     
     // MARK: - Public Methods

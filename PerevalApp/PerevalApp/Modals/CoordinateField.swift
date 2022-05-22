@@ -108,6 +108,11 @@ class CoordinateField: UIView {
         guard !text.isEmpty else { return }
         let components = text.components(separatedBy: " ")
         
+        let coordinateLetter = components[0]
+        let indexOfCoordinateLetter = pickerData.firstIndex(of: coordinateLetter) ?? 0
+        
+        picker.selectRow(indexOfCoordinateLetter, inComponent: 0, animated: false)
+        
         if components.count >= 2 {
             degreeTextField.text = components[1]
         }
