@@ -4,7 +4,7 @@ class APIService {
     
     func testPostMountainPass() {
         
-        let coordinates = Coords(latitude: "test45.3842",
+        let coordinates = Coords(latitude: "45.3842",
                                  longitude: "7.1525",
                                  height: "1200")
         

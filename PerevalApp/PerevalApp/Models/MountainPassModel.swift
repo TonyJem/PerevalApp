@@ -1,6 +1,7 @@
 import Foundation
 
 class MountainPassModel {
+    // MARK: - Properties
     private var title: String?
     private var date = ""
     private var category: String?
@@ -9,6 +10,11 @@ class MountainPassModel {
     var isNotSureSelected = false
     var isEstimatedSelected = false
     
+    private var coordinates = Coords(latitude: "",  // format example latitude: "N 55 36.4999"
+                             longitude: "",         // format example longitude: "E 37 18.2332"
+                             height: "")            // format example height: "1800"
+    
+    // MARK: - Public Methods
     func setTitle(_ text: String?) {
         title = text
     }
@@ -47,5 +53,13 @@ class MountainPassModel {
     
     func getCategory() -> String? {
         return category
+    }
+    
+    func setCoordinates(coords: Coords) {
+        coordinates = coords
+    }
+    
+    func getCoordinates() -> Coords {
+        return coordinates
     }
 }
