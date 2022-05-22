@@ -32,6 +32,16 @@ class AltitudeField: UIView {
         return textField
     }()
     
+    private let label: UILabel = {
+        let label = UILabel()
+        label.text = "м"
+        label.font = .ptSans18()
+        label.textColor = .black
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,11 +57,12 @@ class AltitudeField: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        backgroundColor = .green
+        backgroundColor = .cyan
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(altitudePicker)
         addSubview(textField)
+        addSubview(label)
     }
     
     private func setDelegates() {
@@ -122,6 +133,13 @@ extension AltitudeField {
             textField.leadingAnchor.constraint(equalTo: altitudePicker.trailingAnchor),
             textField.widthAnchor.constraint(equalToConstant: 70),
             textField.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: textField.trailingAnchor, constant: 5),
+            label.widthAnchor.constraint(equalToConstant: 20),
+            label.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
 }
