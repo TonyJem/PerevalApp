@@ -3,6 +3,14 @@ import UIKit
 class LatitudeView: UIView {
     
     // MARK: - Views
+    private let latitudePicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.backgroundColor = .green
+        
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
+    
     private let topLabel: UILabel = {
         let label = UILabel()
         label.text = "N 55 36.4999"
@@ -37,6 +45,7 @@ class LatitudeView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(topLabel)
+        addSubview(latitudePicker)
     }
     
 }
@@ -47,9 +56,16 @@ extension LatitudeView {
         
         NSLayoutConstraint.activate([
             topLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            topLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 80),
+            topLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 100),
             topLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
             topLabel.heightAnchor.constraint(equalToConstant: 25)
+        ])
+        
+        NSLayoutConstraint.activate([
+            latitudePicker.centerYAnchor.constraint(equalTo: centerYAnchor),
+            latitudePicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            latitudePicker.trailingAnchor.constraint(equalTo: topLabel.leadingAnchor, constant: -12),
+            latitudePicker.heightAnchor.constraint(equalTo: heightAnchor)
         ])
         
     }
