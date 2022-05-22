@@ -233,7 +233,7 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
-//        sendAPIrequest()
+        //        sendAPIrequest()
     }
     
     @objc private func dismissMyKeyboard() {
@@ -241,9 +241,7 @@ class NewMountainPassVC: UIViewController {
     }
     
     @objc private func didTapOnCoordinatesView() {
-        coordinatesModal.showCoordinatesModal(viewController: self,
-                                              repsOrTimer: "Reps") { _, _ in
-        }
+        coordinatesModal.showCoordinatesModal(viewController: self)
     }
     
     // MARK: - Private Methods
@@ -323,7 +321,7 @@ class NewMountainPassVC: UIViewController {
     
     private func updateAdditionButtons() {
         for view in additionStackView.arrangedSubviews {
-
+            
             guard let button = view as? AdditionButton else { return }
             let buttonTitle = button.getButtonTitle()
             
@@ -387,7 +385,7 @@ class NewMountainPassVC: UIViewController {
         let coordinates = Coords(latitude: "45.3842",
                                  longitude: "7.1525",
                                  height: "1200")
-
+        
         let image1 = Image(url: "http://...1",
                            title: "Подъём. Фото №1")
         let image2 = Image(url: "http://...2",
