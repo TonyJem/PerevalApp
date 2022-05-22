@@ -241,7 +241,7 @@ class NewMountainPassVC: UIViewController {
     }
     
     @objc private func didTapOnCoordinatesView() {
-        coordinatesModal.show(in: self)
+        coordinatesModal.show(in: self, with: model.getCoordinates())
     }
     
     // MARK: - Private Methods

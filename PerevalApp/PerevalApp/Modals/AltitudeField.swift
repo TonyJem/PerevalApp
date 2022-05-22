@@ -55,6 +55,11 @@ class AltitudeField: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    func setText(_ text: String) {
+        textField.text = text
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         translatesAutoresizingMaskIntoConstraints = false

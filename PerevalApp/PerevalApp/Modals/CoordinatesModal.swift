@@ -107,10 +107,12 @@ class CoordinatesModal {
     }
     
     // MARK: - Public Methods
-    func show(in viewController: UIViewController) {
+    func show(in viewController: UIViewController, with coordinates: Coords) {
         
         guard let parentView = viewController.view else { return }
         mainView = parentView
+        
+        
         
         scrollView.frame = parentView.frame
         parentView.addSubview(scrollView)
@@ -127,17 +129,9 @@ class CoordinatesModal {
         
         setupViews()
         setConstraints()
+        setFields(with: coordinates)
         registerForKeyboardNotification()
-        
-        UIView.animate(withDuration: 0.3) {
-            self.backgroundView.alpha = 0.8
-        } completion: { done in
-            if done {
-                UIView.animate(withDuration: 0.3) {
-                    self.modalView.center = parentView.center
-                }
-            }
-        }
+        presentModalWithAnimation(in: parentView)
     }
     
     // MARK: - Private Methods
@@ -150,6 +144,24 @@ class CoordinatesModal {
         modalView.addSubview(longitudeField)
         modalView.addSubview(altitudeField)
         modalView.addSubview(okButton)
+    }
+    
+    private func presentModalWithAnimation(in parent: UIView) {
+        UIView.animate(withDuration: 0.3) {
+            self.backgroundView.alpha = 0.8
+        } completion: { done in
+            if done {
+                UIView.animate(withDuration: 0.3) {
+                    self.modalView.center = parent.center
+                }
+            }
+        }
+    }
+    
+    private func setFields(with coordinates: Coords) {
+        latitudeField.setText(coordinates.latitude)
+        longitudeField.setText(coordinates.longitude)
+        altitudeField.setText(coordinates.height)
     }
 }
 
