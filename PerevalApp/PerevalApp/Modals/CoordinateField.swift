@@ -1,11 +1,12 @@
 import UIKit
 
-class LatitudeField: UIView {
+class CoordinateField: UIView {
     
     private let pickerData = ["N", "S"]
+//    private let pickerData = ["E", "W"]
     
     // MARK: - Views
-    private let latitudePicker: UIPickerView = {
+    private let picker: UIPickerView = {
         let picker = UIPickerView()
         
         picker.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +92,7 @@ class LatitudeField: UIView {
     private func setupViews() {
         translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(latitudePicker)
+        addSubview(picker)
         addSubview(degreeTextField)
         addSubview(degreeImageView)
         addSubview(minutesTextField)
@@ -99,8 +100,8 @@ class LatitudeField: UIView {
     }
     
     private func setDelegates() {
-        latitudePicker.dataSource = self
-        latitudePicker.delegate = self
+        picker.dataSource = self
+        picker.delegate = self
         degreeTextField.delegate = self
         minutesTextField.delegate = self
     }
@@ -108,7 +109,7 @@ class LatitudeField: UIView {
 }
 
 // MARK: - UIPickerViewDataSource
-extension LatitudeField: UIPickerViewDataSource {
+extension CoordinateField: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -121,7 +122,7 @@ extension LatitudeField: UIPickerViewDataSource {
 }
 
 // MARK: - UIPickerViewDelegate
-extension LatitudeField: UIPickerViewDelegate {
+extension CoordinateField: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
@@ -133,7 +134,7 @@ extension LatitudeField: UIPickerViewDelegate {
 }
 
 // MARK: - UIPickerViewDelegate
-extension LatitudeField: UITextFieldDelegate {
+extension CoordinateField: UITextFieldDelegate {
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
@@ -159,19 +160,19 @@ extension LatitudeField: UITextFieldDelegate {
 }
 
 // MARK: - SetConstraints
-extension LatitudeField {
+extension CoordinateField {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            latitudePicker.centerYAnchor.constraint(equalTo: centerYAnchor),
-            latitudePicker.leadingAnchor.constraint(equalTo: leadingAnchor),
-            latitudePicker.widthAnchor.constraint(equalToConstant: 60),
-            latitudePicker.heightAnchor.constraint(equalTo: heightAnchor, constant: 25)
+            picker.centerYAnchor.constraint(equalTo: centerYAnchor),
+            picker.leadingAnchor.constraint(equalTo: leadingAnchor),
+            picker.widthAnchor.constraint(equalToConstant: 60),
+            picker.heightAnchor.constraint(equalTo: heightAnchor, constant: 25)
         ])
         
         NSLayoutConstraint.activate([
             degreeTextField.centerYAnchor.constraint(equalTo: centerYAnchor),
-            degreeTextField.leadingAnchor.constraint(equalTo: latitudePicker.trailingAnchor),
+            degreeTextField.leadingAnchor.constraint(equalTo: picker.trailingAnchor),
             degreeTextField.widthAnchor.constraint(equalToConstant: 50),
             degreeTextField.heightAnchor.constraint(equalToConstant: 30)
         ])
@@ -196,6 +197,5 @@ extension LatitudeField {
             minuteView.widthAnchor.constraint(equalToConstant: 2),
             minuteView.heightAnchor.constraint(equalToConstant: 6)
         ])
-        
     }
 }

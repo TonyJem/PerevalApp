@@ -59,8 +59,8 @@ class CoordinatesModal {
         return button
     }()
     
-    private let latitudeField = LatitudeField()
-    private let longitudeField = LongitudeField()
+    private let latitudeField = CoordinateField()
+    private let longitudeField = CoordinateField()
     private let altitudeField = AltitudeField()
     
     private lazy var okButton: UIButton = {
