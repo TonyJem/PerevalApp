@@ -72,8 +72,6 @@ class Coordinates {
         modalView.addSubview(iconView)
         modalView.addSubview(titleLabel)
         modalView.addSubview(latitudeView)
-        
-        latitudeView.selectMiddleRow()
     }
     
     

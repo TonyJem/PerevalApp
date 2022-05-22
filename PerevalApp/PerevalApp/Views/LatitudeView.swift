@@ -12,20 +12,24 @@ class LatitudeView: UIView {
         return picker
     }()
     
-    private let topLabel: UILabel = {
-        let label = UILabel()
-        label.text = "N 55 36.4999"
-        label.font = .ptSans20()
-        label.textColor = .darkBlue
-        label.textAlignment = .center
-        label.backgroundColor = .white
+    private let degreeTextField: UITextField = {
+        let textField = UITextField()
         
-        label.layer.borderColor = UIColor.mainBlue.cgColor
-        label.layer.borderWidth = 1
-        label.layer.cornerRadius = 3
+        textField.font = .ptSans20()
+        textField.textColor = .black
+        textField.backgroundColor = .white
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        textField.layer.borderColor = UIColor.mainBlue.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 3
+        
+        textField.setHorizontalInsets(5)
+        
+        textField.returnKeyType = .done
+        textField.keyboardType = .numberPad
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
     }()
     
     // MARK: - Init
@@ -41,23 +45,19 @@ class LatitudeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public Methods
-    func selectMiddleRow() {
-        //        latitudePicker.selectRow(pickerData.count * 1000 / 2, inComponent: 0, animated: false)
-    }
-    
     // MARK: - Private Methods
     private func setupViews() {
         backgroundColor = .systemPink
         translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(topLabel)
         addSubview(latitudePicker)
+        addSubview(degreeTextField)
     }
     
     private func setDelegates() {
         latitudePicker.dataSource = self
         latitudePicker.delegate = self
+        degreeTextField.delegate = self
     }
     
 }
@@ -87,6 +87,30 @@ extension LatitudeView: UIPickerViewDelegate {
     }
 }
 
+// MARK: - UIPickerViewDelegate
+extension LatitudeView: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        
+        guard let textFieldText = textField.text,
+              let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+            return false
+        }
+        
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        
+        switch textField {
+        case degreeTextField:
+            return count <= 3
+        default:
+            return true
+        }
+    }
+}
+
 // MARK: - SetConstraints
 extension LatitudeView {
     private func setConstraints() {
@@ -99,10 +123,10 @@ extension LatitudeView {
         ])
         
         NSLayoutConstraint.activate([
-            topLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            topLabel.leadingAnchor.constraint(equalTo: latitudePicker.trailingAnchor, constant: 0),
-            topLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            topLabel.heightAnchor.constraint(equalToConstant: 25)
+            degreeTextField.centerYAnchor.constraint(equalTo: centerYAnchor),
+            degreeTextField.leadingAnchor.constraint(equalTo: latitudePicker.trailingAnchor),
+            degreeTextField.widthAnchor.constraint(equalToConstant: 50),
+            degreeTextField.heightAnchor.constraint(equalToConstant: 30)
         ])
         
     }
