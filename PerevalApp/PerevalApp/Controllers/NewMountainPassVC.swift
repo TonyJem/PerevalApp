@@ -179,8 +179,22 @@ class NewMountainPassVC: UIViewController {
     }()
     
     private let separatorView2 = SeparatorView()
-    private let coordinatesView = CoordinatesView()
-    private let altitudeView = AltitudeView()
+    
+    private lazy var coordinatesView: CoordinatesView = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapCoordinates))
+        let view = CoordinatesView()
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    private lazy var altitudeView: AltitudeView = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapCoordinates))
+        let view = AltitudeView()
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
     
     private let photoLabel: UILabel = {
         let label = UILabel()
@@ -220,13 +234,16 @@ class NewMountainPassVC: UIViewController {
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
 //        sendAPIrequest()
-        openCoordinatesModal()
     }
     
-    @objc private func dismissMyKeyboard(){
+    @objc private func dismissMyKeyboard() {
         view.endEditing(true)
     }
     
+    @objc private func didTapCoordinates() {
+        print("🟢 handleTap in NewMountainPassVC")
+        openCoordinatesModal()
+    }
     
     // MARK: - Private Methods
     private func setupViews() {
