@@ -1,8 +1,8 @@
 import UIKit
 
-class LongitudeView: UIView {
+class LatitudeField: UIView {
     
-    private let pickerData = ["E", "W"]
+    private let pickerData = ["N", "S"]
     
     // MARK: - Views
     private let latitudePicker: UIPickerView = {
@@ -103,7 +103,7 @@ class LongitudeView: UIView {
 }
 
 // MARK: - UIPickerViewDataSource
-extension LongitudeView: UIPickerViewDataSource {
+extension LatitudeField: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -116,7 +116,7 @@ extension LongitudeView: UIPickerViewDataSource {
 }
 
 // MARK: - UIPickerViewDelegate
-extension LongitudeView: UIPickerViewDelegate {
+extension LatitudeField: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
@@ -128,7 +128,7 @@ extension LongitudeView: UIPickerViewDelegate {
 }
 
 // MARK: - UIPickerViewDelegate
-extension LongitudeView: UITextFieldDelegate {
+extension LatitudeField: UITextFieldDelegate {
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
@@ -154,7 +154,7 @@ extension LongitudeView: UITextFieldDelegate {
 }
 
 // MARK: - SetConstraints
-extension LongitudeView {
+extension LatitudeField {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([

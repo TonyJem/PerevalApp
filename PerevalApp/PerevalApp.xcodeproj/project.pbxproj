@@ -47,8 +47,8 @@
 		3AC8A03B2837F414005CEBFD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A03A2837F414005CEBFD /* Models.swift */; };
 		3AC8A03F28390A6B005CEBFD /* MountainPassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A03E28390A6B005CEBFD /* MountainPassModel.swift */; };
 		3AC8A041283963BA005CEBFD /* CoordinatesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A040283963B9005CEBFD /* CoordinatesModal.swift */; };
-		3AC8A044283A1122005CEBFD /* LatitudeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A043283A1122005CEBFD /* LatitudeView.swift */; };
-		3AC8A046283A399E005CEBFD /* LongitudeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A045283A399E005CEBFD /* LongitudeView.swift */; };
+		3AC8A044283A1122005CEBFD /* LatitudeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A043283A1122005CEBFD /* LatitudeField.swift */; };
+		3AC8A046283A399E005CEBFD /* LongitudeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A045283A399E005CEBFD /* LongitudeField.swift */; };
 		3AC8A048283A3FC1005CEBFD /* AltitudeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A047283A3FC1005CEBFD /* AltitudeField.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,8 +95,8 @@
 		3AC8A03A2837F414005CEBFD /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		3AC8A03E28390A6B005CEBFD /* MountainPassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPassModel.swift; sourceTree = "<group>"; };
 		3AC8A040283963B9005CEBFD /* CoordinatesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesModal.swift; sourceTree = "<group>"; };
-		3AC8A043283A1122005CEBFD /* LatitudeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeView.swift; sourceTree = "<group>"; };
-		3AC8A045283A399E005CEBFD /* LongitudeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongitudeView.swift; sourceTree = "<group>"; };
+		3AC8A043283A1122005CEBFD /* LatitudeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeField.swift; sourceTree = "<group>"; };
+		3AC8A045283A399E005CEBFD /* LongitudeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongitudeField.swift; sourceTree = "<group>"; };
 		3AC8A047283A3FC1005CEBFD /* AltitudeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltitudeField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,8 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				3AC8A040283963B9005CEBFD /* CoordinatesModal.swift */,
-				3AC8A043283A1122005CEBFD /* LatitudeView.swift */,
-				3AC8A045283A399E005CEBFD /* LongitudeView.swift */,
+				3AC8A043283A1122005CEBFD /* LatitudeField.swift */,
+				3AC8A045283A399E005CEBFD /* LongitudeField.swift */,
 				3AC8A047283A3FC1005CEBFD /* AltitudeField.swift */,
 			);
 			path = Modals;
@@ -343,7 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC8A046283A399E005CEBFD /* LongitudeView.swift in Sources */,
+				3AC8A046283A399E005CEBFD /* LongitudeField.swift in Sources */,
 				3A1D4F2B282FCC61003C57D9 /* WelcomeVC.swift in Sources */,
 				3A1D4F40282FD013003C57D9 /* MountainPassListVC.swift in Sources */,
 				3A2ED0EA2832C4F500285746 /* GaleryView.swift in Sources */,
@@ -365,7 +365,7 @@
 				3A2ED0F72835489F00285746 /* UserSettings.swift in Sources */,
 				3AC8A03F28390A6B005CEBFD /* MountainPassModel.swift in Sources */,
 				3AC8A0362836C75F005CEBFD /* MountainPass.swift in Sources */,
-				3AC8A044283A1122005CEBFD /* LatitudeView.swift in Sources */,
+				3AC8A044283A1122005CEBFD /* LatitudeField.swift in Sources */,
 				3A2ED0D92832253500285746 /* AdditionButton.swift in Sources */,
 				3A2ED0E52832A04A00285746 /* AltitudeView.swift in Sources */,
 				3A1D4F49282FFDF1003C57D9 /* UIFont + Extensions.swift in Sources */,

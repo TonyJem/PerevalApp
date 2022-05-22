@@ -59,8 +59,8 @@ class CoordinatesModal {
         return button
     }()
     
-    private let latitudeView = LatitudeView()
-    private let longitudeView = LongitudeView()
+    private let latitudeField = LatitudeField()
+    private let longitudeField = LongitudeField()
     private let altitudeField = AltitudeField()
     
     private lazy var okButton: UIButton = {
@@ -146,8 +146,8 @@ class CoordinatesModal {
         modalView.addSubview(iconView)
         modalView.addSubview(titleLabel)
         modalView.addSubview(gpsButton)
-        modalView.addSubview(latitudeView)
-        modalView.addSubview(longitudeView)
+        modalView.addSubview(latitudeField)
+        modalView.addSubview(longitudeField)
         modalView.addSubview(altitudeField)
         modalView.addSubview(okButton)
     }
@@ -214,21 +214,21 @@ extension CoordinatesModal {
         ])
         
         NSLayoutConstraint.activate([
-            latitudeView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20),
-            latitudeView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
-            latitudeView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
-            latitudeView.heightAnchor.constraint(equalToConstant: 70)
+            latitudeField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20),
+            latitudeField.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
+            latitudeField.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
+            latitudeField.heightAnchor.constraint(equalToConstant: 70)
         ])
         
         NSLayoutConstraint.activate([
-            longitudeView.topAnchor.constraint(equalTo: latitudeView.bottomAnchor),
-            longitudeView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
-            longitudeView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
-            longitudeView.heightAnchor.constraint(equalToConstant: 70)
+            longitudeField.topAnchor.constraint(equalTo: latitudeField.bottomAnchor),
+            longitudeField.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
+            longitudeField.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
+            longitudeField.heightAnchor.constraint(equalToConstant: 70)
         ])
         
         NSLayoutConstraint.activate([
-            altitudeField.topAnchor.constraint(equalTo: longitudeView.bottomAnchor),
+            altitudeField.topAnchor.constraint(equalTo: longitudeField.bottomAnchor),
             altitudeField.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
             altitudeField.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
             altitudeField.heightAnchor.constraint(equalToConstant: 70)
@@ -236,8 +236,8 @@ extension CoordinatesModal {
         
         NSLayoutConstraint.activate([
             okButton.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -20),
-            okButton.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 50),
-            okButton.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -50),
+            okButton.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 70),
+            okButton.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -70),
             okButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
