@@ -75,27 +75,38 @@ class CoordinatesModal {
         return button
     }()
     
-    // MARK: - Private Methods
-    private func setupViews() {
-        modalView.addSubview(separatorView)
-        modalView.addSubview(iconView)
-        modalView.addSubview(titleLabel)
-        modalView.addSubview(gpsButton)
-        modalView.addSubview(latitudeView)
-        modalView.addSubview(longitudeView)
-        modalView.addSubview(altitudeField)
-        modalView.addSubview(okButton)
-    }
-    
     // MARK: - Actions
     @objc private func didTapGpsButton() {
         print("🟢 didTapGpsButton in Coordinates!")
     }
     
+    @objc private func dismissModal() {
+        guard let targetView = mainView else { return }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.modalView.frame = CGRect(x: 40,
+                                          y: targetView.frame.height,
+                                          width: targetView.frame.width - 60,
+                                          height: 420)
+        } completion: { done in
+            if done {
+                UIView.animate(withDuration: 0.3) {
+                    self.backgroundView.alpha = 0
+                } completion: { [weak self] done in
+                    guard let self = self else { return }
+                    if done {
+                        self.modalView.removeFromSuperview()
+                        self.backgroundView.removeFromSuperview()
+                        self.scrollView.removeFromSuperview()
+                        self.removeForKeyboardNotification()
+                        print("🟢🟢🟢🟢 dismiss CoordinatesModal - ok")
+                    }
+                }
+            }
+        }
+    }
     
-    
-    // MARK: - OLD code below -
-    
+    // MARK: - Public Methods
     func show(in viewController: UIViewController) {
         
         guard let parentView = viewController.view else { return }
@@ -129,32 +140,18 @@ class CoordinatesModal {
         }
     }
     
-    @objc private func dismissModal() {
-        guard let targetView = mainView else { return }
-        
-        UIView.animate(withDuration: 0.3) {
-            self.modalView.frame = CGRect(x: 40,
-                                          y: targetView.frame.height,
-                                          width: targetView.frame.width - 60,
-                                          height: 420)
-        } completion: { done in
-            if done {
-                UIView.animate(withDuration: 0.3) {
-                    self.backgroundView.alpha = 0
-                } completion: { [weak self] done in
-                    guard let self = self else { return }
-                    if done {
-                        self.modalView.removeFromSuperview()
-                        self.backgroundView.removeFromSuperview()
-                        self.scrollView.removeFromSuperview()
-                        self.removeForKeyboardNotification()
-                    }
-                }
-            }
-        }
+    // MARK: - Private Methods
+    private func setupViews() {
+        modalView.addSubview(separatorView)
+        modalView.addSubview(iconView)
+        modalView.addSubview(titleLabel)
+        modalView.addSubview(gpsButton)
+        modalView.addSubview(latitudeView)
+        modalView.addSubview(longitudeView)
+        modalView.addSubview(altitudeField)
+        modalView.addSubview(okButton)
     }
 }
-
 
 // MARK: - Handle Keyboard Show and Hide
 extension CoordinatesModal {
