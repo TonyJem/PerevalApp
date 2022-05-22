@@ -57,7 +57,6 @@ class AltitudeField: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        backgroundColor = .cyan
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(altitudePicker)

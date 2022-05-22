@@ -84,7 +84,6 @@ class LatitudeView: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        backgroundColor = .systemPink
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(latitudePicker)
