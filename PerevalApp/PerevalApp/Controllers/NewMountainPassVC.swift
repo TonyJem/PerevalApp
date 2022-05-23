@@ -1,19 +1,21 @@
-/*
- Подъём
-    Перевальный взлёт
-    Середина подъёма
- 
- Седловина
-    Тур
-    Записка
-    Группа на перевале
- 
- Спуск
-    Перевальный взлёт (обратно)
-    Середина спуска
- */
-
 import UIKit
+
+enum tableSection: String, CaseIterable {
+    case goUp = "Подъём"
+    case passPoint = "Седловина"
+    case goDown = "Спуск"
+    
+    var rows: [String] {
+        switch self {
+        case .goUp:
+            return ["Перевальный взлёт", "Середина подъёма"]
+        case .passPoint:
+            return ["Тур", "Записка", "Группа на перевале"]
+        case .goDown:
+            return ["Перевальный взлёт (обратно)", "Середина спуска"]
+        }
+    }
+}
 
 class NewMountainPassVC: UIViewController {
     
@@ -349,6 +351,8 @@ class NewMountainPassVC: UIViewController {
         
         calendarView.delegate = self
         
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func updateCategoryButtons() {
@@ -532,6 +536,28 @@ extension NewMountainPassVC: CalendarViewDelegate {
         
         print("🟢🟢🟢 Inserted to model date: \(model.getDate())")
     }
+}
+
+// MARK: - UITableViewDataSource
+extension NewMountainPassVC: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableSection.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell()
+        
+        cell.textLabel?.text = "Hello"
+        
+        
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension NewMountainPassVC: UITableViewDelegate {
 }
 
 // MARK: - SetConstraints
