@@ -23,7 +23,7 @@ class NewMountainPassVC: UIViewController {
     private let coordinatesModal = CoordinatesModal()
     
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 200)
+        CGSize(width: view.frame.width, height: view.frame.height + 500)
     }
     
     // MARK: - Views
@@ -222,6 +222,14 @@ class NewMountainPassVC: UIViewController {
         return label
     }()
     
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
+    
     private let attachPhotoView = AttachPhotoView()
     
     private lazy var bottomSaveButton: UIButton = {
@@ -313,6 +321,7 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(coordinatesView)
         contentView.addSubview(altitudeView)
         contentView.addSubview(photoLabel)
+        contentView.addSubview(tableView)
         contentView.addSubview(attachPhotoView)
         contentView.addSubview(bottomSaveButton)
         
@@ -642,7 +651,14 @@ extension NewMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            attachPhotoView.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 20),
+            tableView.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
+            tableView.heightAnchor.constraint(equalToConstant: 140)
+        ])
+        
+        NSLayoutConstraint.activate([
+            attachPhotoView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 20),
             attachPhotoView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             attachPhotoView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             attachPhotoView.heightAnchor.constraint(equalToConstant: 140)
