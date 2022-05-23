@@ -28,6 +28,17 @@ class NewMountainPassVC: UIViewController {
         CGSize(width: view.frame.width, height: view.frame.height + 500)
     }
     
+    private lazy var menuRows: [String] = {
+        var menuRows: [String] = []
+        for section in tableSection.allCases {
+            menuRows.append(section.rawValue)
+            section.rows.forEach { row in
+                menuRows.append(row)
+            }
+        }
+        return menuRows
+    }()
+    
     // MARK: - Views
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -540,18 +551,14 @@ extension NewMountainPassVC: CalendarViewDelegate {
 
 // MARK: - UITableViewDataSource
 extension NewMountainPassVC: UITableViewDataSource {
-
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableSection.allCases.count
+        return menuRows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = UITableViewCell()
-        
-        cell.textLabel?.text = "Hello"
-        
-        
+        cell.textLabel?.text = menuRows[indexPath.row]
         return cell
     }
 }
