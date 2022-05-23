@@ -209,6 +209,21 @@ class NewMountainPassVC: UIViewController {
     
     private let attachPhotoView = AttachPhotoView()
     
+    private lazy var bottomSaveButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.tintColor = .white
+        button.titleLabel?.font = .ptSans22()
+        button.setTitle("Сохранить".uppercased(), for: .normal)
+        
+        button.backgroundColor = .mainBlue
+        button.clipsToBounds = true
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapBottomSaveButton), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -234,6 +249,7 @@ class NewMountainPassVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         infoButton.layer.cornerRadius = infoButton.frame.height / 2
+        bottomSaveButton.layer.cornerRadius = bottomSaveButton.frame.height / 2
     }
     
     // MARK: - Actions
@@ -258,6 +274,10 @@ class NewMountainPassVC: UIViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    @objc private func didTapBottomSaveButton() {
+        print("🟢 didTapBottomSaveButton in NewMountainPassVC")
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(scrollView)
@@ -279,6 +299,7 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(altitudeView)
         contentView.addSubview(photoLabel)
         contentView.addSubview(attachPhotoView)
+        contentView.addSubview(bottomSaveButton)
         
         updateCoordinates()
     }
@@ -610,6 +631,13 @@ extension NewMountainPassVC {
             attachPhotoView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             attachPhotoView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             attachPhotoView.heightAnchor.constraint(equalToConstant: 140)
+        ])
+        
+        NSLayoutConstraint.activate([
+            bottomSaveButton.topAnchor.constraint(equalTo: attachPhotoView.bottomAnchor, constant: 60),
+            bottomSaveButton.leadingAnchor.constraint(equalTo: attachPhotoView.leadingAnchor, constant: 30),
+            bottomSaveButton.trailingAnchor.constraint(equalTo: attachPhotoView.trailingAnchor, constant: -30),
+            bottomSaveButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
