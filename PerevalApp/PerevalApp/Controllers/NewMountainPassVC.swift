@@ -213,6 +213,12 @@ class NewMountainPassVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let saveButton = UIBarButtonItem(title: "Сохранить",
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(didTapSave))
+        navigationItem.setRightBarButton(saveButton, animated: true)
+
         view.backgroundColor = .white
         
         setupViews()
@@ -245,6 +251,11 @@ class NewMountainPassVC: UIViewController {
             model.setCoordinates(coordinates)
             updateCoordinates()
         }
+    }
+    
+    @objc private func didTapSave() {
+        print("🟢 didTapRemoveUser")
+        navigationController?.popToRootViewController(animated: true)
     }
     
     // MARK: - Private Methods
