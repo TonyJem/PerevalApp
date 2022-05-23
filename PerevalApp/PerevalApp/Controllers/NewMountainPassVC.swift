@@ -1,3 +1,18 @@
+/*
+ Подъём
+    Перевальный взлёт
+    Середина подъёма
+ 
+ Седловина
+    Тур
+    Записка
+    Группа на перевале
+ 
+ Спуск
+    Перевальный взлёт (обратно)
+    Середина спуска
+ */
+
 import UIKit
 
 class NewMountainPassVC: UIViewController {
@@ -201,7 +216,7 @@ class NewMountainPassVC: UIViewController {
         label.font = .ptSans22()
         label.textColor = .black
         label.textAlignment = .left
-        label.text = "Фото"
+        label.text = "Фото №1"
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
