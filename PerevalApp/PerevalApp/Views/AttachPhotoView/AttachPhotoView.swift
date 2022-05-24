@@ -14,7 +14,15 @@ class AttachPhotoView: UIView {
         return label
     }()
     
-    private let galeryView = GaleryView()
+    private lazy var galeryView: GaleryView = {
+        let galeryView = GaleryView()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnGaleryView))
+        galeryView.addGestureRecognizer(tap)
+        galeryView.isUserInteractionEnabled = true
+        
+        return galeryView
+    }()
     
     private let photoView = PhotoView()
     
@@ -28,6 +36,11 @@ class AttachPhotoView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    @objc private func didTapOnGaleryView() {
+        print("🟢 didTapOnGaleryView in AttachPhotoView")
     }
     
     // MARK: - Private Methods
