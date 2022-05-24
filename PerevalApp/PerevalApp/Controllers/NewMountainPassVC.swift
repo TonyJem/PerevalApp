@@ -196,7 +196,7 @@ class NewMountainPassVC: UIViewController {
         return view
     }()
     
-    private let photoContainer = PhotoContainer()
+    private let photoContainer = PhotoContainer(photoIndex: 1)
     
     private lazy var bottomSaveButton: UIButton = {
         let button = UIButton(type: .system)

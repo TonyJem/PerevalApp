@@ -2,7 +2,7 @@ import UIKit
 
 class PhotoContainer: UIView {
     
-    let photoIndex = 1
+    private var photoIndex = 0
     
     private lazy var menuRows: [String] = {
         var menuRows: [String] = []
@@ -49,6 +49,13 @@ class PhotoContainer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    convenience init(photoIndex: Int) {
+        self.init()
+        
+        self.photoIndex = photoIndex
+        updatePhotoNumLabel()
+    }
+    
     // MARK: - Actions
     
     
@@ -64,8 +71,6 @@ class PhotoContainer: UIView {
         addSubview(photoNumLabel)
         addSubview(tableView)
         addSubview(attachPhotoView)
-        
-        updatePhotoNumLabel()
     }
     
     private func setupDelegates() {
