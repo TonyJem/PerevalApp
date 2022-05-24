@@ -39,6 +39,17 @@ class PhotoContainer: UIView {
         return view
     }()
     
+    private let frameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .ptSans22()
+        label.textColor = .black
+        label.textAlignment = .left
+        label.text = "Что на фото?"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         
@@ -82,6 +93,7 @@ class PhotoContainer: UIView {
         
         addSubview(photoNumLabel)
         addSubview(frameView)
+        addSubview(frameLabel)
         addSubview(tableView)
         addSubview(attachPhotoView)
     }
@@ -130,6 +142,13 @@ extension PhotoContainer {
             frameView.leadingAnchor.constraint(equalTo: leadingAnchor),
             frameView.trailingAnchor.constraint(equalTo: trailingAnchor),
             frameView.heightAnchor.constraint(equalToConstant: 60)
+        ])
+        
+        NSLayoutConstraint.activate([
+            frameLabel.centerYAnchor.constraint(equalTo: frameView.centerYAnchor),
+            frameLabel.leadingAnchor.constraint(equalTo: frameView.leadingAnchor, constant: 15),
+            frameLabel.trailingAnchor.constraint(lessThanOrEqualTo: frameView.trailingAnchor, constant: -15),
+            frameLabel.heightAnchor.constraint(equalToConstant: 25)
         ])
         
         NSLayoutConstraint.activate([
