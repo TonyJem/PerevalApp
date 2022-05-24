@@ -2,11 +2,23 @@ import UIKit
 
 class PhotoContainer: UIView {
     
+    private let initialText: String = "Что на фото?"
+    
     private var photoIndex = 0
+    private var selectedRowIndex: Int?
     
-    var HeightConstraint: NSLayoutConstraint?
+    private var HeightConstraint: NSLayoutConstraint?
     
-    private var isTableViewShown = false
+    private var isTableViewShown = false {
+        didSet {
+            let menuHeight: CGFloat = isTableViewShown ? 200 : 0
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                self.HeightConstraint?.constant = menuHeight
+                self.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
     
     private lazy var menuRows: [String] = {
         var menuRows: [String] = []
@@ -52,7 +64,6 @@ class PhotoContainer: UIView {
         label.font = .ptSans22()
         label.textColor = .black
         label.textAlignment = .left
-        label.text = "Что на фото?"
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -99,12 +110,6 @@ class PhotoContainer: UIView {
     // MARK: - Actions
     @objc private func didTapOnFrameView() {
         isTableViewShown = !isTableViewShown
-        let menuHeight: CGFloat = isTableViewShown ? 200 : 0
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            self.HeightConstraint?.constant = menuHeight
-            self.layoutIfNeeded()
-        }, completion: nil)
     }
     
     // MARK: - Public Methods
@@ -122,6 +127,8 @@ class PhotoContainer: UIView {
         addSubview(frameImageView)
         addSubview(tableView)
         addSubview(attachPhotoView)
+        
+        setFrameLabel(with: initialText)
     }
     
     private func setupDelegates() {
@@ -131,6 +138,10 @@ class PhotoContainer: UIView {
     
     private func updatePhotoNumLabel() {
         photoNumLabel.text = "Фото № \(String(photoIndex))"
+    }
+    
+    private func setFrameLabel(with text: String) {
+        frameLabel.text = text
     }
 }
 
@@ -144,12 +155,30 @@ extension PhotoContainer: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = menuRows[indexPath.row]
+        
+        if indexPath.row == selectedRowIndex {
+            cell.backgroundColor = .mainBlue
+        }
+        
         return cell
     }
 }
 
 // MARK: - UITableViewDelegate
 extension PhotoContainer: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if selectedRowIndex == indexPath.row {
+            setFrameLabel(with: initialText)
+            selectedRowIndex = nil
+            tableView.reloadData()
+        } else {
+            selectedRowIndex = indexPath.row
+            tableView.reloadData()
+            setFrameLabel(with: menuRows[indexPath.row])
+            isTableViewShown = false
+        }
+    }
 }
 
 // MARK: - SetConstraints
@@ -183,7 +212,7 @@ extension PhotoContainer {
             frameImageView.widthAnchor.constraint(equalToConstant: 12),
             frameImageView.heightAnchor.constraint(equalToConstant: 8)
         ])
-
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: frameView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
