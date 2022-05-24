@@ -2,6 +2,8 @@ import UIKit
 
 class PhotoContainer: UIView {
     
+    let photoIndex = 1
+    
     private lazy var menuRows: [String] = {
         var menuRows: [String] = []
         for section in TableSection.allCases {
@@ -14,12 +16,12 @@ class PhotoContainer: UIView {
     }()
     
     // MARK: - Views
-    private let photoLabel: UILabel = {
+    private let photoNumLabel: UILabel = {
         let label = UILabel()
         label.font = .ptSans22()
         label.textColor = .black
         label.textAlignment = .left
-        label.text = "Фото №1"
+        label.text = ""
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -59,14 +61,20 @@ class PhotoContainer: UIView {
         backgroundColor = .systemGray6
         translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(photoLabel)
+        addSubview(photoNumLabel)
         addSubview(tableView)
         addSubview(attachPhotoView)
+        
+        updatePhotoNumLabel()
     }
     
     private func setupDelegates() {
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    private func updatePhotoNumLabel() {
+        photoNumLabel.text = "Фото №\(String(photoIndex))"
     }
 }
 
@@ -93,14 +101,14 @@ extension PhotoContainer {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            photoLabel.topAnchor.constraint(equalTo: topAnchor),
-            photoLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            photoLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            photoLabel.heightAnchor.constraint(equalToConstant: 35)
+            photoNumLabel.topAnchor.constraint(equalTo: topAnchor),
+            photoNumLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            photoNumLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            photoNumLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 20),
+            tableView.topAnchor.constraint(equalTo: photoNumLabel.bottomAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.heightAnchor.constraint(equalToConstant: 140)
