@@ -224,6 +224,8 @@ class NewMountainPassVC: UIViewController {
         return view
     }()
     
+    private let photoContainer = PhotoContainer()
+    
     private let photoLabel: UILabel = {
         let label = UILabel()
         label.font = .ptSans22()
@@ -333,6 +335,9 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(separatorView2)
         contentView.addSubview(coordinatesView)
         contentView.addSubview(altitudeView)
+        
+        contentView.addSubview(photoContainer)
+        
         contentView.addSubview(photoLabel)
         contentView.addSubview(tableView)
         contentView.addSubview(attachPhotoView)
@@ -674,6 +679,13 @@ extension NewMountainPassVC {
             altitudeView.leadingAnchor.constraint(equalTo: coordinatesView.trailingAnchor, constant: 25),
             altitudeView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             altitudeView.heightAnchor.constraint(equalTo: coordinatesView.heightAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            photoContainer.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
+            photoContainer.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            photoContainer.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
+            photoContainer.heightAnchor.constraint(equalToConstant: 150)
         ])
         
         NSLayoutConstraint.activate([
