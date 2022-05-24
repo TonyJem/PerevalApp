@@ -299,9 +299,9 @@ class NewMountainPassVC: UIViewController {
     }
     
     @objc private func didTapOnCoordinatesView() {
-        coordinatesModal.show(in: self, with: model.getCoordinates()) { [self] coordinates in
-            model.setCoordinates(coordinates)
-            updateCoordinates()
+        coordinatesModal.show(in: self, with: model.getCoordinates()) { [weak self] coordinates in
+            self?.model.setCoordinates(coordinates)
+            self?.updateCoordinates()
         }
     }
     
