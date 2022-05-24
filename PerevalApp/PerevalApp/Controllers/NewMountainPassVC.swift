@@ -11,17 +11,6 @@ class NewMountainPassVC: UIViewController {
         CGSize(width: view.frame.width, height: view.frame.height + 1000)
     }
     
-    private lazy var menuRows: [String] = {
-        var menuRows: [String] = []
-        for section in TableSection.allCases {
-            menuRows.append(section.rawValue)
-            section.rows.forEach { row in
-                menuRows.append(row)
-            }
-        }
-        return menuRows
-    }()
-    
     // MARK: - Views
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -209,28 +198,6 @@ class NewMountainPassVC: UIViewController {
     
     private let photoContainer = PhotoContainer()
     
-    
-    private let photoLabel: UILabel = {
-        let label = UILabel()
-        label.font = .ptSans22()
-        label.textColor = .black
-        label.textAlignment = .left
-        label.text = "Фото №1"
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
-    
-    private let attachPhotoView = AttachPhotoView()
-    
-    
     private lazy var bottomSaveButton: UIButton = {
         let button = UIButton(type: .system)
         
@@ -319,12 +286,7 @@ class NewMountainPassVC: UIViewController {
         contentView.addSubview(separatorView2)
         contentView.addSubview(coordinatesView)
         contentView.addSubview(altitudeView)
-        
         contentView.addSubview(photoContainer)
-        
-        contentView.addSubview(photoLabel)
-        contentView.addSubview(tableView)
-        contentView.addSubview(attachPhotoView)
         contentView.addSubview(bottomSaveButton)
         
         updateCoordinates()
@@ -350,9 +312,6 @@ class NewMountainPassVC: UIViewController {
         }
         
         calendarView.delegate = self
-        
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
     private func updateCategoryButtons() {
@@ -538,24 +497,6 @@ extension NewMountainPassVC: CalendarViewDelegate {
     }
 }
 
-// MARK: - UITableViewDataSource
-extension NewMountainPassVC: UITableViewDataSource {
-        
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuRows.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = menuRows[indexPath.row]
-        return cell
-    }
-}
-
-// MARK: - UITableViewDelegate
-extension NewMountainPassVC: UITableViewDelegate {
-}
-
 // MARK: - SetConstraints
 extension NewMountainPassVC {
     private func setConstraints() {
@@ -666,39 +607,16 @@ extension NewMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            photoContainer.topAnchor.constraint(equalTo: bottomSaveButton.bottomAnchor, constant: 20),
+            photoContainer.topAnchor.constraint(equalTo: altitudeView.bottomAnchor, constant: 20),
             photoContainer.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             photoContainer.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             photoContainer.heightAnchor.constraint(equalToConstant: 500)
         ])
         
-        
         NSLayoutConstraint.activate([
-            photoLabel.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
-            photoLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-            photoLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            photoLabel.heightAnchor.constraint(equalToConstant: 35)
-        ])
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 20),
-            tableView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: 140)
-        ])
-        
-        NSLayoutConstraint.activate([
-            attachPhotoView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 20),
-            attachPhotoView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-            attachPhotoView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            attachPhotoView.heightAnchor.constraint(equalToConstant: 140)
-        ])
-        
-        
-        NSLayoutConstraint.activate([
-            bottomSaveButton.topAnchor.constraint(equalTo: attachPhotoView.bottomAnchor, constant: 60),
-            bottomSaveButton.leadingAnchor.constraint(equalTo: attachPhotoView.leadingAnchor, constant: 30),
-            bottomSaveButton.trailingAnchor.constraint(equalTo: attachPhotoView.trailingAnchor, constant: -30),
+            bottomSaveButton.topAnchor.constraint(equalTo: photoContainer.bottomAnchor, constant: 60),
+            bottomSaveButton.leadingAnchor.constraint(equalTo: photoContainer.leadingAnchor, constant: 30),
+            bottomSaveButton.trailingAnchor.constraint(equalTo: photoContainer.trailingAnchor, constant: -30),
             bottomSaveButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
