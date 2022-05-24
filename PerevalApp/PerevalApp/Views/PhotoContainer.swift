@@ -27,13 +27,17 @@ class PhotoContainer: UIView {
         return label
     }()
     
-    private let frameView: UIView = {
+    private lazy var frameView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
         view.layer.borderColor = UIColor.darkGray.cgColor
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnFrameView))
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -89,7 +93,9 @@ class PhotoContainer: UIView {
     }
     
     // MARK: - Actions
-    
+    @objc private func didTapOnFrameView() {
+        print("🟢 didTapOnFrameView in PhotoContainer")
+    }
     
     // MARK: - Public Methods
     
