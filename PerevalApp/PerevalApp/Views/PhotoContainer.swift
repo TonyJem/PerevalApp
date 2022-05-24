@@ -50,6 +50,15 @@ class PhotoContainer: UIView {
         return label
     }()
     
+    private let frameImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Triangle")
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         
@@ -94,6 +103,7 @@ class PhotoContainer: UIView {
         addSubview(photoNumLabel)
         addSubview(frameView)
         addSubview(frameLabel)
+        addSubview(frameImageView)
         addSubview(tableView)
         addSubview(attachPhotoView)
     }
@@ -146,9 +156,16 @@ extension PhotoContainer {
         
         NSLayoutConstraint.activate([
             frameLabel.centerYAnchor.constraint(equalTo: frameView.centerYAnchor),
-            frameLabel.leadingAnchor.constraint(equalTo: frameView.leadingAnchor, constant: 15),
-            frameLabel.trailingAnchor.constraint(lessThanOrEqualTo: frameView.trailingAnchor, constant: -15),
+            frameLabel.leadingAnchor.constraint(equalTo: frameView.leadingAnchor, constant: 25),
+            frameLabel.trailingAnchor.constraint(lessThanOrEqualTo: frameImageView.leadingAnchor, constant: -15),
             frameLabel.heightAnchor.constraint(equalToConstant: 25)
+        ])
+        
+        NSLayoutConstraint.activate([
+            frameImageView.centerYAnchor.constraint(equalTo: frameView.centerYAnchor, constant: 3),
+            frameImageView.trailingAnchor.constraint(equalTo: frameView.trailingAnchor, constant: -25),
+            frameImageView.widthAnchor.constraint(equalToConstant: 12),
+            frameImageView.heightAnchor.constraint(equalToConstant: 8)
         ])
         
         NSLayoutConstraint.activate([
