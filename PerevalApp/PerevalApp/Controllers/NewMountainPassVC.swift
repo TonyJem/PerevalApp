@@ -1,22 +1,5 @@
 import UIKit
 
-enum tableSection: String, CaseIterable {
-    case goUp = "Подъём"
-    case passPoint = "Седловина"
-    case goDown = "Спуск"
-    
-    var rows: [String] {
-        switch self {
-        case .goUp:
-            return ["Перевальный взлёт", "Середина подъёма"]
-        case .passPoint:
-            return ["Тур", "Записка", "Группа на перевале"]
-        case .goDown:
-            return ["Перевальный взлёт (обратно)", "Середина спуска"]
-        }
-    }
-}
-
 class NewMountainPassVC: UIViewController {
     
     // MARK: - Properties
@@ -30,7 +13,7 @@ class NewMountainPassVC: UIViewController {
     
     private lazy var menuRows: [String] = {
         var menuRows: [String] = []
-        for section in tableSection.allCases {
+        for section in TableSection.allCases {
             menuRows.append(section.rawValue)
             section.rows.forEach { row in
                 menuRows.append(row)

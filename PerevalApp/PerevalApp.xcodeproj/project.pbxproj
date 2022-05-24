@@ -50,6 +50,7 @@
 		3AC8A048283A3FC1005CEBFD /* AltitudeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A047283A3FC1005CEBFD /* AltitudeField.swift */; };
 		3AC8A04A283A9947005CEBFD /* CoordinateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A049283A9947005CEBFD /* CoordinateField.swift */; };
 		3AC8A04C283D0EFE005CEBFD /* PhotoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A04B283D0EFE005CEBFD /* PhotoContainer.swift */; };
+		3AC8A04E283D175B005CEBFD /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A04D283D175B005CEBFD /* TableSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		3AC8A047283A3FC1005CEBFD /* AltitudeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltitudeField.swift; sourceTree = "<group>"; };
 		3AC8A049283A9947005CEBFD /* CoordinateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateField.swift; sourceTree = "<group>"; };
 		3AC8A04B283D0EFE005CEBFD /* PhotoContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoContainer.swift; sourceTree = "<group>"; };
+		3AC8A04D283D175B005CEBFD /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				3AC8A042283963C5005CEBFD /* Modals */,
 				3A9BCE3328301BAF00C510FD /* Extensions */,
 				3A1D4F3C282FCF6B003C57D9 /* Resources */,
+				3AC8A04D283D175B005CEBFD /* TableSection.swift */,
 			);
 			path = PerevalApp;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				3A2ED0E1283287D200285746 /* TodayView.swift in Sources */,
 				3A2ED0F72835489F00285746 /* UserSettings.swift in Sources */,
 				3AC8A03F28390A6B005CEBFD /* MountainPassModel.swift in Sources */,
+				3AC8A04E283D175B005CEBFD /* TableSection.swift in Sources */,
 				3AC8A0362836C75F005CEBFD /* MountainPass.swift in Sources */,
 				3A2ED0D92832253500285746 /* AdditionButton.swift in Sources */,
 				3A2ED0E52832A04A00285746 /* AltitudeView.swift in Sources */,
