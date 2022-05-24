@@ -2,6 +2,17 @@ import UIKit
 
 class PhotoContainer: UIView {
     
+    private lazy var menuRows: [String] = {
+        var menuRows: [String] = []
+        for section in TableSection.allCases {
+            menuRows.append(section.rawValue)
+            section.rows.forEach { row in
+                menuRows.append(row)
+            }
+        }
+        return menuRows
+    }()
+    
     // MARK: - Views
     private let photoLabel: UILabel = {
         let label = UILabel()
@@ -29,6 +40,7 @@ class PhotoContainer: UIView {
         
         setupViews()
         setConstraints()
+        setupDelegates()
     }
     
     required init?(coder: NSCoder) {
@@ -51,6 +63,29 @@ class PhotoContainer: UIView {
         addSubview(tableView)
         addSubview(attachPhotoView)
     }
+    
+    private func setupDelegates() {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension PhotoContainer: UITableViewDataSource {
+        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuRows.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = menuRows[indexPath.row]
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension PhotoContainer: UITableViewDelegate {
 }
 
 // MARK: - SetConstraints
