@@ -27,6 +27,18 @@ class PhotoContainer: UIView {
         return label
     }()
     
+    private let frameView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 10
+        view.layer.borderColor = UIColor.darkGray.cgColor
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         
@@ -69,6 +81,7 @@ class PhotoContainer: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(photoNumLabel)
+        addSubview(frameView)
         addSubview(tableView)
         addSubview(attachPhotoView)
     }
@@ -85,7 +98,7 @@ class PhotoContainer: UIView {
 
 // MARK: - UITableViewDataSource
 extension PhotoContainer: UITableViewDataSource {
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuRows.count
     }
@@ -113,7 +126,14 @@ extension PhotoContainer {
         ])
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: photoNumLabel.bottomAnchor, constant: 20),
+            frameView.topAnchor.constraint(equalTo: photoNumLabel.bottomAnchor, constant: 10),
+            frameView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            frameView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            frameView.heightAnchor.constraint(equalToConstant: 60)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: frameView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.heightAnchor.constraint(equalToConstant: 140)
