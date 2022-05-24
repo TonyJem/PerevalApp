@@ -25,7 +25,7 @@ class NewMountainPassVC: UIViewController {
     private let coordinatesModal = CoordinatesModal()
     
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 500)
+        CGSize(width: view.frame.width, height: view.frame.height + 1000)
     }
     
     private lazy var menuRows: [String] = {
@@ -226,6 +226,7 @@ class NewMountainPassVC: UIViewController {
     
     private let photoContainer = PhotoContainer()
     
+    
     private let photoLabel: UILabel = {
         let label = UILabel()
         label.font = .ptSans22()
@@ -244,8 +245,8 @@ class NewMountainPassVC: UIViewController {
         return tableView
     }()
     
-    
     private let attachPhotoView = AttachPhotoView()
+    
     
     private lazy var bottomSaveButton: UIButton = {
         let button = UIButton(type: .system)
@@ -682,11 +683,12 @@ extension NewMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            photoContainer.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
+            photoContainer.topAnchor.constraint(equalTo: bottomSaveButton.bottomAnchor, constant: 20),
             photoContainer.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             photoContainer.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            photoContainer.heightAnchor.constraint(equalToConstant: 150)
+            photoContainer.heightAnchor.constraint(equalToConstant: 500)
         ])
+        
         
         NSLayoutConstraint.activate([
             photoLabel.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
@@ -708,6 +710,7 @@ extension NewMountainPassVC {
             attachPhotoView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             attachPhotoView.heightAnchor.constraint(equalToConstant: 140)
         ])
+        
         
         NSLayoutConstraint.activate([
             bottomSaveButton.topAnchor.constraint(equalTo: attachPhotoView.bottomAnchor, constant: 60),
