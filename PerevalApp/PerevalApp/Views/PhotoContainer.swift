@@ -4,16 +4,9 @@ class PhotoContainer: UIView {
     
     private var photoIndex = 0
     
-    var flowHeightConstraint: NSLayoutConstraint?
+    var HeightConstraint: NSLayoutConstraint?
     
-    private var isTableViewShown = true {
-        didSet {
-            let menuHeight: CGFloat = isTableViewShown ? 140 : 0
-            print("🟢🟢 menuHeight : \(menuHeight)")
-            flowHeightConstraint?.constant = menuHeight
-            layoutIfNeeded()
-        }
-    }
+    private var isTableViewShown = false
     
     private lazy var menuRows: [String] = {
         var menuRows: [String] = []
@@ -105,8 +98,13 @@ class PhotoContainer: UIView {
     
     // MARK: - Actions
     @objc private func didTapOnFrameView() {
-        print("🟢 didTapOnFrameView in PhotoContainer")
         isTableViewShown = !isTableViewShown
+        let menuHeight: CGFloat = isTableViewShown ? 200 : 0
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+            self.HeightConstraint?.constant = menuHeight
+            self.layoutIfNeeded()
+        }, completion: nil)
     }
     
     // MARK: - Public Methods
@@ -132,7 +130,7 @@ class PhotoContainer: UIView {
     }
     
     private func updatePhotoNumLabel() {
-        photoNumLabel.text = "Фото №\(String(photoIndex))"
+        photoNumLabel.text = "Фото № \(String(photoIndex))"
     }
 }
 
@@ -185,22 +183,15 @@ extension PhotoContainer {
             frameImageView.widthAnchor.constraint(equalToConstant: 12),
             frameImageView.heightAnchor.constraint(equalToConstant: 8)
         ])
-        
-        tableView.topAnchor.constraint(equalTo: frameView.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        flowHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: 140)
-        flowHeightConstraint?.isActive = true
-        
-        
-/*
+
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: frameView.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: 140)
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         ])
- */
+        
+        HeightConstraint = tableView.heightAnchor.constraint(equalToConstant: 0)
+        HeightConstraint?.isActive = true
         
         NSLayoutConstraint.activate([
             attachPhotoView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 20),
