@@ -4,6 +4,17 @@ class PhotoContainer: UIView {
     
     private var photoIndex = 0
     
+    var flowHeightConstraint: NSLayoutConstraint?
+    
+    private var isTableViewShown = true {
+        didSet {
+            let menuHeight: CGFloat = isTableViewShown ? 140 : 0
+            print("🟢🟢 menuHeight : \(menuHeight)")
+            flowHeightConstraint?.constant = menuHeight
+            layoutIfNeeded()
+        }
+    }
+    
     private lazy var menuRows: [String] = {
         var menuRows: [String] = []
         for section in TableSection.allCases {
@@ -95,6 +106,7 @@ class PhotoContainer: UIView {
     // MARK: - Actions
     @objc private func didTapOnFrameView() {
         print("🟢 didTapOnFrameView in PhotoContainer")
+        isTableViewShown = !isTableViewShown
     }
     
     // MARK: - Public Methods
@@ -174,12 +186,21 @@ extension PhotoContainer {
             frameImageView.heightAnchor.constraint(equalToConstant: 8)
         ])
         
+        tableView.topAnchor.constraint(equalTo: frameView.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        flowHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: 140)
+        flowHeightConstraint?.isActive = true
+        
+        
+/*
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: frameView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.heightAnchor.constraint(equalToConstant: 140)
         ])
+ */
         
         NSLayoutConstraint.activate([
             attachPhotoView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 20),
