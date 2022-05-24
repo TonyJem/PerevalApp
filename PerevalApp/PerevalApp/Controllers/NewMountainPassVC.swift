@@ -309,7 +309,7 @@ class NewMountainPassVC: UIViewController {
     }
     
     @objc private func didTapSave() {
-        print("🟢 didTapRemoveUser")
+        print("🟢 didTapSave in NewMountainPassVC")
         navigationController?.popToRootViewController(animated: true)
     }
     
