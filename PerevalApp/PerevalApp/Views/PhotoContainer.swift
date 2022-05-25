@@ -120,7 +120,9 @@ class PhotoContainer: UIView {
         textView.backgroundColor = .white
         textView.font = .ptSans18()
         textView.textColor = .dimedBlack
+        textView.textAlignment = .justified
         textView.layer.borderColor = UIColor.mainBlue.cgColor
+        textView.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 0, right: 15)
         
         textView.text = "Перевал соединяет долину реки Тихая и озера Верхнее Крепкое. При подъёме открываются красивые виды на разлив р. Тихая. После подъема более плоский участок."
         
@@ -310,7 +312,7 @@ extension PhotoContainer {
             photoImageView.topAnchor.constraint(equalTo: photoNumLabel.bottomAnchor, constant: 5),
             photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            photoImageView.heightAnchor.constraint(equalToConstant: 140)
+            photoImageView.heightAnchor.constraint(equalToConstant: 250)
         ])
         
         NSLayoutConstraint.activate([

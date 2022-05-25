@@ -638,7 +638,7 @@ extension NewMountainPassVC {
             photoContainer.topAnchor.constraint(equalTo: altitudeView.bottomAnchor, constant: 20),
             photoContainer.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             photoContainer.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            photoContainer.heightAnchor.constraint(equalToConstant: 1000)
+            photoContainer.heightAnchor.constraint(equalToConstant: 500)
         ])
         
         NSLayoutConstraint.activate([
