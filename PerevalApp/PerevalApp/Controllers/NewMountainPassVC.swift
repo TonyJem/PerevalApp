@@ -521,6 +521,7 @@ extension NewMountainPassVC: PhotoContainerDelegate {
     func didTapOnGaleryView() {
         print("🟢🟢🟢 didTapOnGaleryView in NewMountainPassVC")
         importPictureFromGallery()
+        photoContainer.hideEntriesAndShowPicture()
     }
 }
 

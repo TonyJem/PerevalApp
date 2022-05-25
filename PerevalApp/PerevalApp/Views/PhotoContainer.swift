@@ -95,7 +95,6 @@ class PhotoContainer: UIView {
     
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo")
         imageView.contentMode = .scaleAspectFit
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -128,9 +127,17 @@ class PhotoContainer: UIView {
     }
     
     // MARK: - Public Methods
-    
     func setPhotoImageWith(image: UIImage?) {
         photoImageView.image = image
+    }
+    
+    func hideEntriesAndShowPicture() {
+        photoImageView.isHidden = false
+        frameView.isHidden = true
+        frameLabel.isHidden = true
+        frameImageView.isHidden = true
+        tableView.isHidden = true
+        attachPhotoView.isHidden = true
     }
     
     // MARK: - Private Methods
@@ -148,6 +155,7 @@ class PhotoContainer: UIView {
         addSubview(photoImageView)
         
         setFrameLabel(with: initialText)
+        photoImageView.isHidden = true
     }
     
     private func setupDelegates() {
@@ -258,7 +266,7 @@ extension PhotoContainer {
         ])
         
         NSLayoutConstraint.activate([
-            photoImageView.topAnchor.constraint(equalTo: attachPhotoView.bottomAnchor, constant: 50),
+            photoImageView.topAnchor.constraint(equalTo: photoNumLabel.bottomAnchor, constant: 10),
             photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             photoImageView.heightAnchor.constraint(equalToConstant: 140)
