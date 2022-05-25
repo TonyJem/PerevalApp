@@ -1,6 +1,13 @@
 import UIKit
 
+protocol AttachPhotoViewDelegate: AnyObject {
+    func didTapOnGaleryView()
+}
+
 class AttachPhotoView: UIView {
+    
+    weak var delegate: AttachPhotoViewDelegate?
+    
     // MARK: - Views
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -41,6 +48,7 @@ class AttachPhotoView: UIView {
     // MARK: - Actions
     @objc private func didTapOnGaleryView() {
         print("🟢 didTapOnGaleryView in AttachPhotoView")
+        delegate?.didTapOnGaleryView()
     }
     
     // MARK: - Private Methods

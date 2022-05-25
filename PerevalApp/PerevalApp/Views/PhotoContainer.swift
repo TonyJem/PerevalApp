@@ -1,6 +1,12 @@
 import UIKit
 
+protocol PhotoContainerDelegate: AnyObject {
+    func didTapOnGaleryView()
+}
+
 class PhotoContainer: UIView {
+    
+    weak var delegate: PhotoContainerDelegate?
     
     private let initialText: String = "Что на фото?"
     
@@ -147,6 +153,7 @@ class PhotoContainer: UIView {
     private func setupDelegates() {
         tableView.dataSource = self
         tableView.delegate = self
+        attachPhotoView.delegate = self
     }
     
     private func updatePhotoNumLabel() {
@@ -191,6 +198,14 @@ extension PhotoContainer: UITableViewDelegate {
             setFrameLabel(with: menuRows[indexPath.row])
             isTableViewShown = false
         }
+    }
+}
+
+// MARK: - AttachPhotoViewDelegate
+extension PhotoContainer: AttachPhotoViewDelegate {
+    func didTapOnGaleryView() {
+        print("🟢🟢 didTapOnGaleryView in PhotoContainer")
+        delegate?.didTapOnGaleryView()
     }
 }
 

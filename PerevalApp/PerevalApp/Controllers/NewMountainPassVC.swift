@@ -244,8 +244,6 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
-        importPictureFromGallery()
-        
         //        sendAPIrequest()
     }
     
@@ -321,6 +319,7 @@ class NewMountainPassVC: UIViewController {
         }
         
         calendarView.delegate = self
+        photoContainer.delegate = self
     }
     
     private func updateCategoryButtons() {
@@ -514,6 +513,14 @@ extension NewMountainPassVC: UIImagePickerControllerDelegate, UINavigationContro
         guard let image = info[.editedImage] as? UIImage else { return }
         dismiss(animated: true)
         photoContainer.setPhotoImageWith(image: image)
+    }
+}
+
+// MARK: - PhotoContainerDelegate
+extension NewMountainPassVC: PhotoContainerDelegate {
+    func didTapOnGaleryView() {
+        print("🟢🟢🟢 didTapOnGaleryView in NewMountainPassVC")
+        importPictureFromGallery()
     }
 }
 
