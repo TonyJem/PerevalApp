@@ -9,6 +9,7 @@ class PhotoContainer: UIView {
     weak var delegate: PhotoContainerDelegate?
     
     private let initialText: String = "Что на фото?"
+    private var selectedPictureTitle: String?
     
     private var photoIndex = 0
     private var selectedRowIndex: Int?
@@ -165,7 +166,7 @@ class PhotoContainer: UIView {
     }
     
     private func updatePhotoNumLabel() {
-        photoNumLabel.text = "Фото № \(String(photoIndex))"
+        photoNumLabel.text = "Фото №\(String(photoIndex))"
     }
     
     private func setFrameLabel(with text: String) {
@@ -199,11 +200,13 @@ extension PhotoContainer: UITableViewDelegate {
         if selectedRowIndex == indexPath.row {
             setFrameLabel(with: initialText)
             selectedRowIndex = nil
+            selectedPictureTitle = nil
             tableView.reloadData()
         } else {
             selectedRowIndex = indexPath.row
             tableView.reloadData()
             setFrameLabel(with: menuRows[indexPath.row])
+            selectedPictureTitle = menuRows[indexPath.row]
             isTableViewShown = false
         }
     }
@@ -213,6 +216,12 @@ extension PhotoContainer: UITableViewDelegate {
 extension PhotoContainer: AttachPhotoViewDelegate {
     func didTapOnGaleryView() {
         print("🟢🟢 didTapOnGaleryView in PhotoContainer")
+        
+        guard let pictureTitle = selectedPictureTitle else {
+            print("🟠 Picture title is not selected!")
+            return
+        }
+        photoNumLabel.text = "Фото №\(String(photoIndex)). \(pictureTitle)"
         delegate?.didTapOnGaleryView()
     }
 }
