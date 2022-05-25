@@ -8,7 +8,7 @@ class NewMountainPassVC: UIViewController {
     private let coordinatesModal = CoordinatesModal()
     
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 1000)
+        CGSize(width: view.frame.width, height: view.frame.height + 2000)
     }
     
     // MARK: - Views
@@ -222,7 +222,7 @@ class NewMountainPassVC: UIViewController {
                                          target: self,
                                          action: #selector(didTapSave))
         navigationItem.setRightBarButton(saveButton, animated: true)
-
+        
         view.backgroundColor = .white
         
         setupViews()
@@ -244,7 +244,16 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
+        importPictureFromGallery()
+        
         //        sendAPIrequest()
+    }
+    
+    @objc func importPictureFromGallery() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
     }
     
     @objc private func dismissMyKeyboard() {
@@ -497,6 +506,17 @@ extension NewMountainPassVC: CalendarViewDelegate {
     }
 }
 
+// MARK: - UIImage PickerController Delegate
+extension NewMountainPassVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.editedImage] as? UIImage else { return }
+        dismiss(animated: true)
+        photoContainer.setPhotoImageWith(image: image)
+    }
+}
+
 // MARK: - SetConstraints
 extension NewMountainPassVC {
     private func setConstraints() {
@@ -610,7 +630,7 @@ extension NewMountainPassVC {
             photoContainer.topAnchor.constraint(equalTo: altitudeView.bottomAnchor, constant: 20),
             photoContainer.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             photoContainer.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            photoContainer.heightAnchor.constraint(equalToConstant: 500)
+            photoContainer.heightAnchor.constraint(equalToConstant: 1000)
         ])
         
         NSLayoutConstraint.activate([

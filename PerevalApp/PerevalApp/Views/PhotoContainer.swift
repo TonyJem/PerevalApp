@@ -87,6 +87,15 @@ class PhotoContainer: UIView {
     
     private let attachPhotoView = AttachPhotoView()
     
+    private let photoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "logo")
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -114,6 +123,9 @@ class PhotoContainer: UIView {
     
     // MARK: - Public Methods
     
+    func setPhotoImageWith(image: UIImage?) {
+        photoImageView.image = image
+    }
     
     // MARK: - Private Methods
     private func setupViews() {
@@ -127,6 +139,7 @@ class PhotoContainer: UIView {
         addSubview(frameImageView)
         addSubview(tableView)
         addSubview(attachPhotoView)
+        addSubview(photoImageView)
         
         setFrameLabel(with: initialText)
     }
@@ -228,5 +241,13 @@ extension PhotoContainer {
             attachPhotoView.trailingAnchor.constraint(equalTo: trailingAnchor),
             attachPhotoView.heightAnchor.constraint(equalToConstant: 140)
         ])
+        
+        NSLayoutConstraint.activate([
+            photoImageView.topAnchor.constraint(equalTo: attachPhotoView.bottomAnchor, constant: 50),
+            photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            photoImageView.heightAnchor.constraint(equalToConstant: 140)
+        ])
+        
     }
 }
