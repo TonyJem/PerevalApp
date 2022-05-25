@@ -113,6 +113,21 @@ class PhotoContainer: UIView {
         return label
     }()
     
+    private let textView: UITextView = {
+        let textView = UITextView()
+        textView.layer.borderWidth = 3
+        textView.layer.cornerRadius = 20
+        textView.backgroundColor = .white
+        textView.font = .ptSans18()
+        textView.textColor = .dimedBlack
+        textView.layer.borderColor = UIColor.mainBlue.cgColor
+        
+        textView.text = "Перевал соединяет долину реки Тихая и озера Верхнее Крепкое. При подъёме открываются красивые виды на разлив р. Тихая. После подъема более плоский участок."
+        
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -146,6 +161,7 @@ class PhotoContainer: UIView {
     func hideEntriesAndShowPicture() {
         photoImageView.isHidden = false
         descriptionLabel.isHidden = false
+        textView.isHidden = false
         frameView.isHidden = true
         frameLabel.isHidden = true
         frameImageView.isHidden = true
@@ -167,10 +183,12 @@ class PhotoContainer: UIView {
         addSubview(attachPhotoView)
         addSubview(photoImageView)
         addSubview(descriptionLabel)
+        addSubview(textView)
         
         setFrameLabel(with: initialText)
         photoImageView.isHidden = true
         descriptionLabel.isHidden = true
+        textView.isHidden = true
     }
     
     private func setupDelegates() {
@@ -300,6 +318,13 @@ extension PhotoContainer {
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             descriptionLabel.heightAnchor.constraint(equalToConstant: 35)
+        ])
+        
+        NSLayoutConstraint.activate([
+            textView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            textView.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
 }

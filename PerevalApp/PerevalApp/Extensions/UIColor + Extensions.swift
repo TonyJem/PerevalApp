@@ -12,4 +12,5 @@ extension UIColor {
     static let brownGray = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)          // #333333
     static let darkGray = #colorLiteral(red: 0.4509803922, green: 0.4588235294, blue: 0.4666666667, alpha: 1)         // #737577
     static let categoryGray = #colorLiteral(red: 0.4509803922, green: 0.4588235294, blue: 0.4666666667, alpha: 1)       // #CECFD0
+    static let dimedBlack = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5952908345)       // #000000 alfa 0.6
 }
