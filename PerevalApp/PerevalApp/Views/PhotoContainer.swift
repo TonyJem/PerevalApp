@@ -102,6 +102,17 @@ class PhotoContainer: UIView {
         return imageView
     }()
     
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Поясните, что на фото"
+        label.font = .ptSans22()
+        label.textColor = .black
+        label.textAlignment = .left
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -134,6 +145,7 @@ class PhotoContainer: UIView {
     
     func hideEntriesAndShowPicture() {
         photoImageView.isHidden = false
+        descriptionLabel.isHidden = false
         frameView.isHidden = true
         frameLabel.isHidden = true
         frameImageView.isHidden = true
@@ -154,9 +166,11 @@ class PhotoContainer: UIView {
         addSubview(tableView)
         addSubview(attachPhotoView)
         addSubview(photoImageView)
+        addSubview(descriptionLabel)
         
         setFrameLabel(with: initialText)
         photoImageView.isHidden = true
+        descriptionLabel.isHidden = true
     }
     
     private func setupDelegates() {
@@ -275,11 +289,17 @@ extension PhotoContainer {
         ])
         
         NSLayoutConstraint.activate([
-            photoImageView.topAnchor.constraint(equalTo: photoNumLabel.bottomAnchor, constant: 10),
+            photoImageView.topAnchor.constraint(equalTo: photoNumLabel.bottomAnchor, constant: 5),
             photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             photoImageView.heightAnchor.constraint(equalToConstant: 140)
         ])
         
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 5),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 35)
+        ])
     }
 }
