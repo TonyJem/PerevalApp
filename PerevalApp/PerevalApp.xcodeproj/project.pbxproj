@@ -145,9 +145,9 @@
 				3A2ED0CA2830E34E00285746 /* Views */,
 				3A1D4F3B282FCF4F003C57D9 /* Controllers */,
 				3AC8A042283963C5005CEBFD /* Modals */,
+				3A8F45AE2840107A00D0ECA7 /* Enums */,
 				3A9BCE3328301BAF00C510FD /* Extensions */,
 				3A1D4F3C282FCF6B003C57D9 /* Resources */,
-				3AC8A04D283D175B005CEBFD /* TableSection.swift */,
 			);
 			path = PerevalApp;
 			sourceTree = "<group>";
@@ -245,6 +245,14 @@
 				3A2ED0F62835489F00285746 /* UserSettings.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		3A8F45AE2840107A00D0ECA7 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				3AC8A04D283D175B005CEBFD /* TableSection.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		3A9BCE3328301BAF00C510FD /* Extensions */ = {

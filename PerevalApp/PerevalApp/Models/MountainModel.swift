@@ -1,13 +1,5 @@
 import Foundation
 
-enum StatusType {
-    case template       // черновик или тот, что уже готово, но ни разу не пробовали высылать
-    case new            // находящийся в очереди на отправку
-    case pending        // принято - если модератор взял в работу
-    case accepted       // опубликовано - resolved с сообщением
-    case rejected       // отклонено - resolved с сообщением
-}
-
 struct Mountain {
     var isSelected: Bool
     var name: String
@@ -37,6 +29,15 @@ struct Mountain {
 }
 
 struct Status {
+    enum StatusType {
+        case template       // черновик или тот, что уже готово, но ни разу не пробовали высылать
+        case new            // находящийся в очереди на отправку
+        case pending        // принято - если модератор взял в работу
+        case accepted       // опубликовано - resolved с сообщением
+        case rejected       // отклонено - resolved с сообщением
+    }
+    
+    // MARK: - Properties
     var type: StatusType
     var lastUpdateDate: String?
     var message: String?
