@@ -31,6 +31,7 @@ class MountainPassListVC: UIViewController {
         
         setupViews()
         setConstraints()
+        setupDelegates()
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,6 +53,19 @@ class MountainPassListVC: UIViewController {
     private func setupViews() {
         view.addSubview(emptyViewContainer)
         view.addSubview(addButton)
+    }
+    
+    private func setupDelegates() {
+        emptyViewContainer.delegate = self
+    }
+}
+
+// MARK: - EmptyViewContainerDelegate
+extension MountainPassListVC: EmptyViewContainerDelegate {
+    func didTapLinkButton() {
+        guard let url = URL(string: "https://tssr.ru/pereval") else { return }
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true, completion: nil)
     }
 }
 

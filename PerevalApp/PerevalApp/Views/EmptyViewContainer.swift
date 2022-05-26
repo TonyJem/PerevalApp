@@ -1,7 +1,12 @@
 import UIKit
 
+protocol EmptyViewContainerDelegate: AnyObject {
+    func didTapLinkButton()
+}
 
 class EmptyViewContainer: UIView {
+    
+    weak var delegate: EmptyViewContainerDelegate?
     
     // MARK: - Views
     private let imageView: UIImageView = {
@@ -56,9 +61,7 @@ class EmptyViewContainer: UIView {
     
     // MARK: - Actions
     @objc private func didTapLinkButton() {
-//        guard let url = URL(string: "https://tssr.ru/pereval") else { return }
-//        let safariVC = SFSafariViewController(url: url)
-//        present(safariVC, animated: true, completion: nil)
+        delegate?.didTapLinkButton()
     }
     
     // MARK: - Private Methods
