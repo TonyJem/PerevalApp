@@ -42,6 +42,7 @@
 		3A8F45A9283FD52700D0ECA7 /* EmptyViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45A8283FD52700D0ECA7 /* EmptyViewContainer.swift */; };
 		3A8F45AB283FD99500D0ECA7 /* MountainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45AA283FD99500D0ECA7 /* MountainModel.swift */; };
 		3A8F45AD283FF59F00D0ECA7 /* TableViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45AC283FF59F00D0ECA7 /* TableViewContainer.swift */; };
+		3A8F45B02840113900D0ECA7 /* MountainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45AF2840113900D0ECA7 /* MountainTableViewCell.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 		3AC8A02D283651CE005CEBFD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A02C283651CD005CEBFD /* SplashViewController.swift */; };
 		3AC8A02F28365238005CEBFD /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A02E28365238005CEBFD /* RootViewController.swift */; };
@@ -94,6 +95,7 @@
 		3A8F45A8283FD52700D0ECA7 /* EmptyViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewContainer.swift; sourceTree = "<group>"; };
 		3A8F45AA283FD99500D0ECA7 /* MountainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainModel.swift; sourceTree = "<group>"; };
 		3A8F45AC283FF59F00D0ECA7 /* TableViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewContainer.swift; sourceTree = "<group>"; };
+		3A8F45AF2840113900D0ECA7 /* MountainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainTableViewCell.swift; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 		3AC8A02C283651CD005CEBFD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		3AC8A02E28365238005CEBFD /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				3A8F45AE2840107A00D0ECA7 /* Enums */,
 				3A9BCE3328301BAF00C510FD /* Extensions */,
 				3A1D4F3C282FCF6B003C57D9 /* Resources */,
+				3A8F45AF2840113900D0ECA7 /* MountainTableViewCell.swift */,
 			);
 			path = PerevalApp;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				3A2ED0EC2832C7E800285746 /* PhotoView.swift in Sources */,
 				3AC8A041283963BA005CEBFD /* CoordinatesModal.swift in Sources */,
 				3A2ED0DF28326A4E00285746 /* CalendarView.swift in Sources */,
+				3A8F45B02840113900D0ECA7 /* MountainTableViewCell.swift in Sources */,
 				3A8F45AB283FD99500D0ECA7 /* MountainModel.swift in Sources */,
 				3A2ED0D028311FCA00285746 /* UILabel + Extensions.swift in Sources */,
 				3A2ED0F52835435600285746 /* UserModel.swift in Sources */,
