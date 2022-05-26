@@ -52,35 +52,35 @@ class MountainModel {
                              message: "2020-09-01")
     
     private var mountain1 = Mountain(isSelected: false,
-                             name: "Mountain0",
+                             name: "Mountain1",
                              upPictureCount: 0,
                              middlePictureCount: 0,
                              downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain2 = Mountain(isSelected: false,
-                             name: "Mountain0",
+                             name: "Mountain2",
                              upPictureCount: 0,
                              middlePictureCount: 0,
                              downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain3 = Mountain(isSelected: false,
-                             name: "Mountain0",
+                             name: "Mountain3",
                              upPictureCount: 0,
                              middlePictureCount: 0,
                              downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain4 = Mountain(isSelected: false,
-                             name: "Mountain0",
+                             name: "Mountain4",
                              upPictureCount: 0,
                              middlePictureCount: 0,
                              downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain5 = Mountain(isSelected: false,
-                             name: "Mountain0",
+                             name: "Mountain5",
                              upPictureCount: 0,
                              middlePictureCount: 0,
                              downPictureCount: 0,

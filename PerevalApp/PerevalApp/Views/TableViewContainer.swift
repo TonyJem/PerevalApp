@@ -2,6 +2,8 @@ import UIKit
 
 class TableViewContainer: UIView {
     
+    var model: MountainModel?
+    
     // MARK: - Views
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -9,7 +11,6 @@ class TableViewContainer: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -20,6 +21,7 @@ class TableViewContainer: UIView {
         
         setupViews()
         setConstraints()
+        setDelegates()
     }
     
     required init?(coder: NSCoder) {
@@ -32,6 +34,35 @@ class TableViewContainer: UIView {
     private func setupViews() {
         addSubview(tableView)
     }
+    
+    private func setDelegates() {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension TableViewContainer: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        guard let model = self.model else { return 0 }
+        
+        return model.mountains.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let model = self.model else { return UITableViewCell() }
+        let cell = UITableViewCell()
+        cell.textLabel?.text = model.mountains[indexPath.row].name
+        
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension TableViewContainer: UITableViewDelegate {
 }
 
 // MARK: - SetConstraints

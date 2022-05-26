@@ -8,7 +8,8 @@ class MountainPassListVC: UIViewController {
     
     // MARK: - Views
     private let emptyViewContainer = EmptyViewContainer()
-    private let tableViewContainer = TableViewContainer()
+    
+    private var tableViewContainer = TableViewContainer()
     
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
@@ -61,6 +62,8 @@ class MountainPassListVC: UIViewController {
         
         addButton.layer.zPosition = 5
         showEmptyViewContainer(for: model.mountains.isEmpty)
+        
+        tableViewContainer.model = model
     }
     
     private func setupDelegates() {
