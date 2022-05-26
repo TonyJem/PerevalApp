@@ -4,50 +4,7 @@ import SafariServices
 class MountainPassListVC: UIViewController {
     
     // MARK: - Views
-    
-    private let emptyViewContainer: UIView = {
-        let view = UIView()
-        
-        view.backgroundColor = .systemGray6
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "explore")
-        imageView.contentMode = .scaleAspectFit
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let callToActionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Нажмите на +\nчтобы добавить перевал"
-        label.numberOfLines = 0
-        label.font = .ptSans27()
-        label.textColor = .black
-        label.textAlignment = .center
-        label.lineBreakMode = .byWordWrapping
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var linkButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .mainBlue
-        button.titleLabel?.font = .dinProMedium19()
-        button.setTitle("Посмотреть базу перевалов", for: .normal)
-        button.backgroundColor = .clear
-        button.underline()
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapLinkButton), for: .touchUpInside)
-        return button
-    }()
+    private let emptyViewContainer = EmptyViewContainer()
     
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
@@ -86,12 +43,6 @@ class MountainPassListVC: UIViewController {
         self.navigationController?.pushViewController(newMountainPassVC, animated: true)
     }
     
-    @objc private func didTapLinkButton() {
-        guard let url = URL(string: "https://tssr.ru/pereval") else { return }
-        let safariVC = SFSafariViewController(url: url)
-        present(safariVC, animated: true, completion: nil)
-    }
-    
     @objc private func didTapRemoveUser() {
         UserSettings.removeUser()
         SceneDelegate.shared.rootViewController.switchToShowWelcomeScreen()
@@ -100,9 +51,6 @@ class MountainPassListVC: UIViewController {
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(emptyViewContainer)
-        view.addSubview(imageView)
-        view.addSubview(callToActionLabel)
-        view.addSubview(linkButton)
         view.addSubview(addButton)
     }
 }
@@ -116,27 +64,6 @@ extension MountainPassListVC {
             emptyViewContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             emptyViewContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             emptyViewContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: emptyViewContainer.topAnchor, constant: 120),
-            imageView.centerXAnchor.constraint(equalTo: emptyViewContainer.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 300 * 1.15),
-            imageView.heightAnchor.constraint(equalToConstant: 206 * 1.15)
-        ])
-        
-        NSLayoutConstraint.activate([
-            callToActionLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-            callToActionLabel.leadingAnchor.constraint(equalTo: emptyViewContainer.leadingAnchor),
-            callToActionLabel.trailingAnchor.constraint(equalTo: emptyViewContainer.trailingAnchor),
-            callToActionLabel.heightAnchor.constraint(equalToConstant: 100)
-        ])
-        
-        NSLayoutConstraint.activate([
-            linkButton.topAnchor.constraint(equalTo: callToActionLabel.bottomAnchor, constant: 15),
-            linkButton.centerXAnchor.constraint(equalTo: emptyViewContainer.centerXAnchor),
-            linkButton.widthAnchor.constraint(equalToConstant: 270),
-            linkButton.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         NSLayoutConstraint.activate([
