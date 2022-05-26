@@ -14,6 +14,8 @@ class MountainPassModel {
                              longitude: "",         // format example longitude: "E 37 18.2332" or W
                              height: "")            // format example height: "1800"
     
+    private var images: [Image]?
+    
     // MARK: - Public Methods
     func setTitle(_ text: String?) {
         title = text
@@ -61,5 +63,13 @@ class MountainPassModel {
     
     func getCoordinates() -> Coords {
         return coordinates
+    }
+    
+    func addImage(_ image: Image) {
+        images?.append(image)
+    }
+    
+    func getImages() -> [Image]? {
+        return images
     }
 }

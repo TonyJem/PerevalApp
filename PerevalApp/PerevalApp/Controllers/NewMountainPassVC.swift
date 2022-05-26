@@ -512,16 +512,21 @@ extension NewMountainPassVC: UIImagePickerControllerDelegate, UINavigationContro
         
         guard let image = info[.editedImage] as? UIImage else { return }
         dismiss(animated: true)
-        photoContainer.setPhotoImageWith(image: image)
+        photoContainer.setAndSavePhotoImage(image: image)
     }
 }
 
 // MARK: - PhotoContainerDelegate
 extension NewMountainPassVC: PhotoContainerDelegate {
+
     func didTapOnGaleryView() {
         print("🟢🟢🟢 didTapOnGaleryView in NewMountainPassVC")
         importPictureFromGallery()
         photoContainer.hideEntriesAndShowPicture()
+    }
+    
+    func didAddImage(image: Image) {
+        model.addImage(image)
     }
 }
 

@@ -2,6 +2,7 @@ import UIKit
 
 protocol PhotoContainerDelegate: AnyObject {
     func didTapOnGaleryView()
+    func didAddImage(image: Image)
 }
 
 class PhotoContainer: UIView {
@@ -156,9 +157,29 @@ class PhotoContainer: UIView {
     }
     
     // MARK: - Public Methods
-    func setPhotoImageWith(image: UIImage?) {
-        photoImageView.image = image
+    func setAndSavePhotoImage(image: UIImage?) {
+        guard let unwrImage = image else {
+            print("🔴 Picture is Nil!")
+            return }
+        
+        guard let pictureTitle = selectedPictureTitle,
+              let pictureDescription = textView.text else {
+            print("🔴 Can't set picture. Check code!")
+            return
+        }
+        
+        let imageData: NSData = unwrImage.pngData()! as NSData
+        
+        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        print("🟢🟢🟢🟢🟢 strBase64: \(strBase64)")
+        
+        let title = "\(pictureTitle) - \(pictureDescription)"
+        let imageObject = Image(url: strBase64, title: title)
+        
+        photoImageView.image = unwrImage
+        delegate?.didAddImage(image: imageObject)
     }
+    
     
     func hideEntriesAndShowPicture() {
         photoImageView.isHidden = false
