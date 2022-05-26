@@ -4,6 +4,16 @@ import SafariServices
 class MountainPassListVC: UIViewController {
     
     // MARK: - Views
+    
+    private let emptyViewContainer: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = .systemGray6
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "explore")
@@ -89,6 +99,7 @@ class MountainPassListVC: UIViewController {
     
     // MARK: - Private Methods
     private func setupViews() {
+        view.addSubview(emptyViewContainer)
         view.addSubview(imageView)
         view.addSubview(callToActionLabel)
         view.addSubview(linkButton)
@@ -101,22 +112,29 @@ extension MountainPassListVC {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyViewContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            emptyViewContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            emptyViewContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            emptyViewContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: emptyViewContainer.topAnchor, constant: 120),
+            imageView.centerXAnchor.constraint(equalTo: emptyViewContainer.centerXAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 300 * 1.15),
             imageView.heightAnchor.constraint(equalToConstant: 206 * 1.15)
         ])
         
         NSLayoutConstraint.activate([
             callToActionLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-            callToActionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            callToActionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            callToActionLabel.leadingAnchor.constraint(equalTo: emptyViewContainer.leadingAnchor),
+            callToActionLabel.trailingAnchor.constraint(equalTo: emptyViewContainer.trailingAnchor),
             callToActionLabel.heightAnchor.constraint(equalToConstant: 100)
         ])
         
         NSLayoutConstraint.activate([
             linkButton.topAnchor.constraint(equalTo: callToActionLabel.bottomAnchor, constant: 15),
-            linkButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            linkButton.centerXAnchor.constraint(equalTo: emptyViewContainer.centerXAnchor),
             linkButton.widthAnchor.constraint(equalToConstant: 270),
             linkButton.heightAnchor.constraint(equalToConstant: 40)
         ])
