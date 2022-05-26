@@ -3,8 +3,12 @@ import SafariServices
 
 class MountainPassListVC: UIViewController {
     
+    // MARK: - Properties
+    private let model = MountainModel()
+    
     // MARK: - Views
     private let emptyViewContainer = EmptyViewContainer()
+    private let tableViewContainer = TableViewContainer()
     
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
@@ -52,11 +56,20 @@ class MountainPassListVC: UIViewController {
     // MARK: - Private Methods
     private func setupViews() {
         view.addSubview(emptyViewContainer)
+        view.addSubview(tableViewContainer)
         view.addSubview(addButton)
+        
+        addButton.layer.zPosition = 5
+        showEmptyViewContainer(for: model.mountains.isEmpty)
     }
     
     private func setupDelegates() {
         emptyViewContainer.delegate = self
+    }
+    
+    private func showEmptyViewContainer(for isEmpty: Bool) {
+        emptyViewContainer.isHidden = !isEmpty
+        tableViewContainer.isHidden = isEmpty
     }
 }
 
@@ -85,6 +98,13 @@ extension MountainPassListVC {
             addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             addButton.widthAnchor.constraint(equalToConstant: 70),
             addButton.heightAnchor.constraint(equalTo: addButton.widthAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableViewContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableViewContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            tableViewContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            tableViewContainer.bottomAnchor.constraint(equalTo: addButton.centerYAnchor)
         ])
     }
 }
