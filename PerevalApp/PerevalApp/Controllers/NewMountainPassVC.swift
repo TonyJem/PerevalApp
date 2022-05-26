@@ -203,7 +203,7 @@ class NewMountainPassVC: UIViewController {
         
         button.tintColor = .white
         button.titleLabel?.font = .ptSans22()
-        button.setTitle("Сохранить".uppercased(), for: .normal)
+        button.setTitle("ОТПРАВИТЬ".uppercased(), for: .normal)
         
         button.backgroundColor = .mainBlue
         button.clipsToBounds = true
@@ -244,7 +244,6 @@ class NewMountainPassVC: UIViewController {
     // MARK: - Actions
     @objc private func didTapInfoButton() {
         print("🟢 didTapInfoButton in NewMountainPassVC")
-        //        sendAPIrequest()
     }
     
     @objc func importPictureFromGallery() {
@@ -267,11 +266,18 @@ class NewMountainPassVC: UIViewController {
     
     @objc private func didTapSave() {
         print("🟢 didTapSave in NewMountainPassVC")
+        /*
+         TODO:
+         it should save currently entered changes, even if
+         add save to model or to DB functionality here
+         need to decide, should we go back or stay in current ViewController
+         */
         navigationController?.popToRootViewController(animated: true)
     }
     
     @objc private func didTapBottomSaveButton() {
         print("🟢 didTapBottomSaveButton in NewMountainPassVC")
+        sendAPIrequest()
     }
     
     // MARK: - Private Methods
@@ -421,15 +427,18 @@ class NewMountainPassVC: UIViewController {
                         name: currentUser.name)
         
         let coordinates = model.getCoordinates()
+        guard !coordinates.longitude.isEmpty,
+              !coordinates.latitude.isEmpty,
+              !coordinates.height.isEmpty else {
+            print("🔴 Creating NewMountainPass is stopped, due some Coordinates are Empty!")
+            return nil
+        }
         
-        let image1 = Image(url: "http://...1",
-                           title: "Подъём. Фото №1")
-        let image2 = Image(url: "http://...2",
-                           title: "Подъём. Фото №2")
-        let image3 = Image(url: "http://...3",
-                           title: "Подъём. Фото №3")
-        
-        let images = [image1, image2, image3]
+        let images = model.getImages()
+        guard !images.isEmpty else {
+            print("🔴 Creating NewMountainPass is stopped, due Images are Empty!")
+            return nil
+        }
         
         let newMountainPass = MountainPass(beautyTitle: "пер.",
                                            title: title,
@@ -518,7 +527,7 @@ extension NewMountainPassVC: UIImagePickerControllerDelegate, UINavigationContro
 
 // MARK: - PhotoContainerDelegate
 extension NewMountainPassVC: PhotoContainerDelegate {
-
+    
     func didTapOnGaleryView() {
         print("🟢🟢🟢 didTapOnGaleryView in NewMountainPassVC")
         importPictureFromGallery()
@@ -526,6 +535,7 @@ extension NewMountainPassVC: PhotoContainerDelegate {
     }
     
     func didAddImage(image: Image) {
+        print("🟢🟢🟢 didAddImage in NewMountainPassVC")
         model.addImage(image)
     }
 }

@@ -14,7 +14,12 @@ class MountainPassModel {
                              longitude: "",         // format example longitude: "E 37 18.2332" or W
                              height: "")            // format example height: "1800"
     
-    private var images: [Image]?
+    private var images: [Image] = [] {
+        didSet {
+            print("🟢 Imgages didSet in MountainPassModel")
+            print(images[0].title)
+        }
+    }
     
     // MARK: - Public Methods
     func setTitle(_ text: String?) {
@@ -66,10 +71,11 @@ class MountainPassModel {
     }
     
     func addImage(_ image: Image) {
-        images?.append(image)
+        print("addImage in MountainPassModel")
+        images.append(image)
     }
     
-    func getImages() -> [Image]? {
+    func getImages() -> [Image] {
         return images
     }
 }

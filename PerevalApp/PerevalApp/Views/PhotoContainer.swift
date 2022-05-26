@@ -177,6 +177,8 @@ class PhotoContainer: UIView {
         let imageObject = Image(url: strBase64, title: title)
         
         photoImageView.image = unwrImage
+        
+        print("🟢🟢🟢🟢🟢🟢 Will call delegate?.didAddImage(image: imageObject)")
         delegate?.didAddImage(image: imageObject)
     }
     
