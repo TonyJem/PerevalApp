@@ -2,6 +2,11 @@ import UIKit
 
 class TableViewContainer: UIView {
     
+    enum CellIdentifiers: String {
+        case cell
+    }
+    
+    // MARK: - Properties
     var model: MountainModel?
     
     // MARK: - Views
@@ -31,7 +36,8 @@ class TableViewContainer: UIView {
     private func setupViews() {
         addSubview(tableView)
         
-        tableView.register(MountainTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(MountainTableViewCell.self,
+                           forCellReuseIdentifier: CellIdentifiers.cell.rawValue)
     }
     
     private func setDelegates() {
@@ -53,7 +59,8 @@ extension TableViewContainer: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let model = self.model else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MountainTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cell.rawValue,
+                                                 for: indexPath) as! MountainTableViewCell
         cell.mountain = model.mountains[indexPath.row]
         
         return cell
