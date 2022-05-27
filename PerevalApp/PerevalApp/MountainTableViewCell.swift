@@ -52,6 +52,14 @@ class MountainTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let editToolsContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .green
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -70,6 +78,7 @@ class MountainTableViewCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(statisticLabel)
         contentView.addSubview(descriptionLabel)
+        contentView.addSubview(editToolsContainer)
     }
     
     private func updateCell(with mountain: Mountain) {
@@ -84,31 +93,38 @@ extension MountainTableViewCell {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            checkImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            checkImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             checkImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             checkImageView.widthAnchor.constraint(equalToConstant: 18),
             checkImageView.heightAnchor.constraint(equalToConstant: 18)
         ])
         
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 55),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             nameLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         NSLayoutConstraint.activate([
-            statisticLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            statisticLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2),
             statisticLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 55),
             statisticLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             statisticLabel.heightAnchor.constraint(equalToConstant: 15)
         ])
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: statisticLabel.bottomAnchor, constant: 5),
+            descriptionLabel.topAnchor.constraint(equalTo: statisticLabel.bottomAnchor, constant: 2),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 55),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             descriptionLabel.heightAnchor.constraint(equalToConstant: 15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            editToolsContainer.topAnchor.constraint(equalTo: topAnchor),
+            editToolsContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            editToolsContainer.widthAnchor.constraint(equalToConstant: 100),
+            editToolsContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
