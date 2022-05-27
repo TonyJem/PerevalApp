@@ -117,7 +117,7 @@ extension MountainTableViewCell {
         NSLayoutConstraint.activate([
             editToolsContainer.topAnchor.constraint(equalTo: topAnchor),
             editToolsContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            editToolsContainer.widthAnchor.constraint(equalToConstant: 100),
+            editToolsContainer.widthAnchor.constraint(equalToConstant: 110),
             editToolsContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }

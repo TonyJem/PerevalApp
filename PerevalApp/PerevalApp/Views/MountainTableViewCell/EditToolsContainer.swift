@@ -6,7 +6,7 @@ class EditToolsContainer: UIView {
     private let addDescriptionView: UIView = {
         let view = UIView()
         view.backgroundColor = .mainBlue
-        view.layer.cornerRadius = 23.0
+        view.layer.cornerRadius = 21.0
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -14,11 +14,15 @@ class EditToolsContainer: UIView {
     
     private let addDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "добавить описание"
+        label.text = "добавить\nописание"
         label.font = .ptSans12()
         label.textColor = .textGray
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.setLineSpacing(lineSpacing: 1.0,
+                             lineHeightMultiple: 0.5)
+        
+        label.backgroundColor = .systemPink
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -51,17 +55,17 @@ extension EditToolsContainer {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            addDescriptionView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            addDescriptionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            addDescriptionView.widthAnchor.constraint(equalToConstant: 46),
-            addDescriptionView.heightAnchor.constraint(equalToConstant: 46)
+            addDescriptionView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            addDescriptionView.centerXAnchor.constraint(equalTo: addDescriptionLabel.centerXAnchor, constant: 0),
+            addDescriptionView.widthAnchor.constraint(equalToConstant: 42),
+            addDescriptionView.heightAnchor.constraint(equalToConstant: 42)
         ])
         
         NSLayoutConstraint.activate([
-            addDescriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            addDescriptionLabel.topAnchor.constraint(equalTo: addDescriptionView.bottomAnchor, constant: 5),
             addDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            addDescriptionLabel.widthAnchor.constraint(equalToConstant: 46),
-            addDescriptionLabel.heightAnchor.constraint(equalToConstant: 30)
+            addDescriptionLabel.widthAnchor.constraint(equalToConstant: 50),
+            addDescriptionLabel.heightAnchor.constraint(equalToConstant: 26)
         ])
     }
 }
