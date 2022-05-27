@@ -30,6 +30,17 @@ class MountainTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let statisticLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Подъём 0/3   Седловина 1/5   Спуск 0/3"
+        label.font = .ptSans11()
+        label.textColor = .darkGray
+        label.textAlignment = .left
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,6 +57,7 @@ class MountainTableViewCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(checkImageView)
         contentView.addSubview(nameLabel)
+        contentView.addSubview(statisticLabel)
     }
     
     private func updateCell(with mountain: Mountain) {
@@ -67,10 +79,17 @@ extension MountainTableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 55),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             nameLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            statisticLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            statisticLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 55),
+            statisticLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            statisticLabel.heightAnchor.constraint(equalToConstant: 15)
         ])
     }
 }
