@@ -38,6 +38,7 @@ class TableViewContainer: UIView {
         
         tableView.register(MountainTableViewCell.self,
                            forCellReuseIdentifier: CellIdentifiers.cell.rawValue)
+        tableView.rowHeight = 80.0
     }
     
     private func setDelegates() {

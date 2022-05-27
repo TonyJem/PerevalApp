@@ -22,7 +22,7 @@ class MountainTableViewCell: UITableViewCell {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = .ptSans14()
+        label.font = .ptSans16()
         label.textColor = .black
         label.textAlignment = .left
         
@@ -60,16 +60,16 @@ extension MountainTableViewCell {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            checkImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            checkImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            checkImageView.widthAnchor.constraint(equalToConstant: 15),
-            checkImageView.heightAnchor.constraint(equalToConstant: 15)
+            checkImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            checkImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            checkImageView.widthAnchor.constraint(equalToConstant: 18),
+            checkImageView.heightAnchor.constraint(equalToConstant: 18)
         ])
         
         NSLayoutConstraint.activate([
-            nameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 10),
-            nameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            nameLabel.widthAnchor.constraint(equalToConstant: 100),
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 55),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             nameLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
