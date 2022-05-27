@@ -52,13 +52,7 @@ class MountainTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let editToolsContainer: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let editToolsContainer = EditToolsContainer()
     
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
