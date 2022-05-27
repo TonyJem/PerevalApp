@@ -19,10 +19,6 @@ class EditToolsContainer: UIView {
         label.textColor = .textGray
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.setLineSpacing(lineSpacing: 1.0,
-                             lineHeightMultiple: 0.5)
-        
-        label.backgroundColor = .systemPink
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -44,10 +40,6 @@ class EditToolsContainer: UIView {
         label.textColor = .textGray
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.setLineSpacing(lineSpacing: 1.0,
-                             lineHeightMultiple: 0.5)
-        
-        label.backgroundColor = .systemPink
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -67,7 +59,6 @@ class EditToolsContainer: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        backgroundColor = .green
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(leftView)
@@ -82,10 +73,10 @@ extension EditToolsContainer {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            leftLabel.topAnchor.constraint(equalTo: leftView.bottomAnchor, constant: 5),
+            leftLabel.topAnchor.constraint(equalTo: leftView.bottomAnchor, constant: -1),
             leftLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             leftLabel.widthAnchor.constraint(equalToConstant: 50),
-            leftLabel.heightAnchor.constraint(equalToConstant: 26)
+            leftLabel.heightAnchor.constraint(equalToConstant: 32)
         ])
         
         NSLayoutConstraint.activate([
@@ -96,10 +87,10 @@ extension EditToolsContainer {
         ])
         
         NSLayoutConstraint.activate([
-            rightLabel.topAnchor.constraint(equalTo: leftView.bottomAnchor, constant: 5),
+            rightLabel.topAnchor.constraint(equalTo: rightView.bottomAnchor, constant: -1),
             rightLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             rightLabel.widthAnchor.constraint(equalToConstant: 50),
-            rightLabel.heightAnchor.constraint(equalToConstant: 26)
+            rightLabel.heightAnchor.constraint(equalToConstant: 32)
         ])
         
         NSLayoutConstraint.activate([
