@@ -16,7 +16,6 @@ class TableViewContainer: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .green
         translatesAutoresizingMaskIntoConstraints = false
         
         setupViews()
@@ -28,11 +27,11 @@ class TableViewContainer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Actions
-    
     // MARK: - Private Methods
     private func setupViews() {
         addSubview(tableView)
+        
+        tableView.register(MountainTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     private func setDelegates() {
@@ -54,8 +53,8 @@ extension TableViewContainer: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let model = self.model else { return UITableViewCell() }
-        let cell = UITableViewCell()
-        cell.textLabel?.text = model.mountains[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MountainTableViewCell
+        cell.mountain = model.mountains[indexPath.row]
         
         return cell
     }
@@ -63,6 +62,7 @@ extension TableViewContainer: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension TableViewContainer: UITableViewDelegate {
+    
 }
 
 // MARK: - SetConstraints

@@ -10,7 +10,6 @@ class MountainTableViewCell: UITableViewCell {
     }
     
     // MARK: - Views
-    
     private let checkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "selected")
@@ -31,15 +30,17 @@ class MountainTableViewCell: UITableViewCell {
         return label
     }()
     
-    
     // MARK: - Init
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupViews()
         setConstraints()
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Private Methods
     private func setupViews() {
@@ -48,6 +49,7 @@ class MountainTableViewCell: UITableViewCell {
     }
     
     private func updateCell(with mountain: Mountain) {
+        print("🟡 Will UpdateCell...")
         nameLabel.text = mountain.name
     }
 
