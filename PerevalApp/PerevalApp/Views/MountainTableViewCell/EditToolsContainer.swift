@@ -3,7 +3,7 @@ import UIKit
 class EditToolsContainer: UIView {
     
     // MARK: - Views
-    private let addLeftDescriptionView: UIView = {
+    private let leftView: UIView = {
         let view = UIView()
         view.backgroundColor = .mainBlue
         view.layer.cornerRadius = 21.0
@@ -12,9 +12,34 @@ class EditToolsContainer: UIView {
         return view
     }()
     
-    private let addLeftDescriptionLabel: UILabel = {
+    private let leftLabel: UILabel = {
         let label = UILabel()
         label.text = "добавить\nописание"
+        label.font = .ptSans12()
+        label.textColor = .textGray
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.setLineSpacing(lineSpacing: 1.0,
+                             lineHeightMultiple: 0.5)
+        
+        label.backgroundColor = .systemPink
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let rightView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .mainBlue
+        view.layer.cornerRadius = 21.0
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let rightLabel: UILabel = {
+        let label = UILabel()
+        label.text = "редакти\nровать"
         label.font = .ptSans12()
         label.textColor = .textGray
         label.textAlignment = .center
@@ -45,8 +70,10 @@ class EditToolsContainer: UIView {
         backgroundColor = .green
         translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(addLeftDescriptionView)
-        addSubview(addLeftDescriptionLabel)
+        addSubview(leftView)
+        addSubview(leftLabel)
+        addSubview(rightView)
+        addSubview(rightLabel)
     }
 }
 
@@ -55,17 +82,31 @@ extension EditToolsContainer {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            addLeftDescriptionView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            addLeftDescriptionView.centerXAnchor.constraint(equalTo: addLeftDescriptionLabel.centerXAnchor, constant: 0),
-            addLeftDescriptionView.widthAnchor.constraint(equalToConstant: 42),
-            addLeftDescriptionView.heightAnchor.constraint(equalToConstant: 42)
+            leftLabel.topAnchor.constraint(equalTo: leftView.bottomAnchor, constant: 5),
+            leftLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            leftLabel.widthAnchor.constraint(equalToConstant: 50),
+            leftLabel.heightAnchor.constraint(equalToConstant: 26)
         ])
         
         NSLayoutConstraint.activate([
-            addLeftDescriptionLabel.topAnchor.constraint(equalTo: addLeftDescriptionView.bottomAnchor, constant: 5),
-            addLeftDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            addLeftDescriptionLabel.widthAnchor.constraint(equalToConstant: 50),
-            addLeftDescriptionLabel.heightAnchor.constraint(equalToConstant: 26)
+            leftView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            leftView.centerXAnchor.constraint(equalTo: leftLabel.centerXAnchor, constant: 0),
+            leftView.widthAnchor.constraint(equalToConstant: 42),
+            leftView.heightAnchor.constraint(equalToConstant: 42)
+        ])
+        
+        NSLayoutConstraint.activate([
+            rightLabel.topAnchor.constraint(equalTo: leftView.bottomAnchor, constant: 5),
+            rightLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            rightLabel.widthAnchor.constraint(equalToConstant: 50),
+            rightLabel.heightAnchor.constraint(equalToConstant: 26)
+        ])
+        
+        NSLayoutConstraint.activate([
+            rightView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            rightView.centerXAnchor.constraint(equalTo: rightLabel.centerXAnchor, constant: 0),
+            rightView.widthAnchor.constraint(equalToConstant: 42),
+            rightView.heightAnchor.constraint(equalToConstant: 42)
         ])
     }
 }
