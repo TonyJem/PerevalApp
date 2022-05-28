@@ -78,8 +78,11 @@ class MountainTableViewCell: UITableViewCell {
     private func updateCell(with mountain: Mountain) {
         print("🟡 Will UpdateCell...")
         nameLabel.text = mountain.name
+        
+        let isSelected = mountain.isSelected
+        let imageName = isSelected ? "selected" : "notSelected"
+        checkImageView.image = UIImage(named: imageName)
     }
-
 }
 
 // MARK: - SetConstraints
