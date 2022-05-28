@@ -3,25 +3,49 @@ import Foundation
 class Mountain {
     // MARK: - Properties
     var isSelected: Bool
-    var name: String
+    var title: String
     var message: String
     var status: Status
     
-    var images: [Image] = []
+    private var goUpPhotos: [[Photo]] = [[],[],[]]          // [["Подъём"], ["Перевальный взлёт"], ["Середина подъёма"]]
+    private var passPointPhotos: [[Photo]] = [[],[],[],[]]  // [["Седловина"], ["Тур"], ["Записка"], ["Группа на перевале"]
+    private var goDownPhotos: [[Photo]] = [[],[],[]]        // [["Спуск"], ["Перевальный взлёт (обратно)"], ["Середина спуска"]]
     
-    private var goUpImages: [[Photo]] = [[],[],[]]          // [["Подъём"], ["Перевальный взлёт"], ["Середина подъёма"]]
-    private var passPointImages: [[Photo]] = [[],[],[],[]]  // [["Седловина"], ["Тур"], ["Записка"], ["Группа на перевале"]
-    private var goDownImages: [[Photo]] = [[],[],[]]        // [["Спуск"], ["Перевальный взлёт (обратно)"], ["Середина спуска"]]
+    var statisticText: String {
+        return "\(goUpPhotosCountText) \(passPointPhotosCountText) \(goDownPhotosCountText)"
+    }
+    
+    private var goUpPhotosCountText: String {
+        var count = 0
+        goUpPhotos.forEach { count += $0.count }
+        let text = "Подъём \(count)/\(goUpPhotos.count)"
+        return text
+    }
+    
+    private var passPointPhotosCountText: String {
+        var count = 0
+        passPointPhotos.forEach { count += $0.count }
+        let text = "Седловина \(count)/\(passPointPhotos.count)"
+        return text
+    }
+    
+    private var goDownPhotosCountText: String {
+        var count = 0
+        goDownPhotos.forEach { count += $0.count }
+        let text = "Спуск \(count)/\(goDownPhotos.count)"
+        return text
+    }
+    
     
     // MARK: - Init
     init(isSelected: Bool = false,
-         name: String,
+         title: String,
          message: String,
          status: Status = Status(type: .template,
                                  lastUpdateDate: nil,
                                  message: nil)) {
         self.isSelected = isSelected
-        self.name = name
+        self.title = title
         self.message = message
         self.status = status
     }
@@ -31,25 +55,25 @@ class Mountain {
         print("🟠 Will set photoIndex: \(photo.index)")
         switch photo.index {
         case 0:
-            goUpImages[0].append(photo) // ["Подъём"]
+            goUpPhotos[0].append(photo) // ["Подъём"]
         case 1:
-            goUpImages[1].append(photo) // ["Перевальный взлёт"]
+            goUpPhotos[1].append(photo) // ["Перевальный взлёт"]
         case 2:
-            goUpImages[2].append(photo) // ["Середина подъёма"]
+            goUpPhotos[2].append(photo) // ["Середина подъёма"]
         case 3:
-            passPointImages[0].append(photo) // ["Седловина"]
+            passPointPhotos[0].append(photo) // ["Седловина"]
         case 4:
-            passPointImages[1].append(photo) // ["Тур"]
+            passPointPhotos[1].append(photo) // ["Тур"]
         case 5:
-            passPointImages[2].append(photo) // ["Записка"]
+            passPointPhotos[2].append(photo) // ["Записка"]
         case 6:
-            passPointImages[3].append(photo) // ["Группа на перевале"]
+            passPointPhotos[3].append(photo) // ["Группа на перевале"]
         case 7:
-            goDownImages[0].append(photo) // ["Спуск"]
+            goDownPhotos[0].append(photo) // ["Спуск"]
         case 8:
-            goDownImages[1].append(photo) // ["Перевальный взлёт (обратно)"]
+            goDownPhotos[1].append(photo) // ["Перевальный взлёт (обратно)"]
         case 9:
-            goDownImages[2].append(photo) // ["Середина спуска"]
+            goDownPhotos[2].append(photo) // ["Середина спуска"]
         default:
             break
         }
@@ -83,56 +107,56 @@ struct Photo {
 class MountainModel {
     // MARK: - Mock Data:
     private var mountain0 = Mountain(isSelected: false,
-                             name: "Mountain0",
-                             message: "2020-09-01")
+                                     title: "Mountain0",
+                                     message: "2020-09-01")
     
     private var mountain1 = Mountain(isSelected: false,
-                             name: "Mountain1",
-                             message: "2020-09-01")
+                                     title: "Mountain1",
+                                     message: "2020-09-01")
     
     private var mountain2 = Mountain(isSelected: false,
-                             name: "Mountain2",
-                             message: "2020-09-01")
+                                     title: "Mountain2",
+                                     message: "2020-09-01")
     
     private var mountain3 = Mountain(isSelected: false,
-                             name: "Mountain3",
-                             message: "2020-09-01")
+                                     title: "Mountain3",
+                                     message: "2020-09-01")
     
     private var mountain4 = Mountain(isSelected: false,
-                             name: "Mountain4",
-                             message: "2020-09-01")
+                                     title: "Mountain4",
+                                     message: "2020-09-01")
     
     private var mountain5 = Mountain(isSelected: false,
-                             name: "Mountain5",
-                             message: "2020-09-01")
+                                     title: "Mountain5",
+                                     message: "2020-09-01")
     
     private var mountain6 = Mountain(isSelected: false,
-                             name: "Mountain6",
-                             message: "2020-09-01")
+                                     title: "Mountain6",
+                                     message: "2020-09-01")
     
     private var mountain7 = Mountain(isSelected: false,
-                             name: "Mountain7",
-                             message: "2020-09-01")
+                                     title: "Mountain7",
+                                     message: "2020-09-01")
     
     private var mountain8 = Mountain(isSelected: false,
-                             name: "Mountain8",
-                             message: "2020-09-01")
+                                     title: "Mountain8",
+                                     message: "2020-09-01")
     
     private var mountain9 = Mountain(isSelected: false,
-                             name: "Mountain9",
-                             message: "2020-09-01")
+                                     title: "Mountain9",
+                                     message: "2020-09-01")
     
     private var mountain10 = Mountain(isSelected: false,
-                             name: "Mountain10",
-                             message: "2020-09-01")
+                                      title: "Mountain10",
+                                      message: "2020-09-01")
     
     private var mountain11 = Mountain(isSelected: false,
-                             name: "Mountain11",
-                             message: "2020-09-01")
+                                      title: "Mountain11",
+                                      message: "2020-09-01")
     
     private var mountain12 = Mountain(isSelected: false,
-                             name: "Mountain12",
-                             message: "2020-09-01")
+                                      title: "Mountain12",
+                                      message: "2020-09-01")
     
     // MARK: - Properties
     var mountains: [Mountain] = []

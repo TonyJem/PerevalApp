@@ -89,7 +89,8 @@ class MountainTableViewCell: UITableViewCell {
     }
     
     private func updateCell(with mountain: Mountain) {
-        nameLabel.text = mountain.name
+        nameLabel.text = mountain.title
+        statisticLabel.text = mountain.statisticText
         
         let isSelected = mountain.isSelected
         let imageName = isSelected ? "selected" : "notSelected"
