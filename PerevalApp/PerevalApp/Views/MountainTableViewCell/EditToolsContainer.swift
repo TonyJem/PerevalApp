@@ -1,12 +1,23 @@
 import UIKit
 
+protocol EditToolsContainerDelegate: AnyObject {
+    func didTapOnLeftView()
+    func didTapOnRightView()
+}
+
 class EditToolsContainer: UIView {
+    weak var delegate: EditToolsContainerDelegate?
     
     // MARK: - Views
-    private let leftView: UIView = {
+    private lazy var leftView: UIView = {
         let view = UIView()
         view.backgroundColor = .mainBlue
         view.layer.cornerRadius = 21.0
+        
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(didTapOnLeftView))
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -42,10 +53,15 @@ class EditToolsContainer: UIView {
         return label
     }()
     
-    private let rightView: UIView = {
+    private lazy var rightView: UIView = {
         let view = UIView()
         view.backgroundColor = .mainBlue
         view.layer.cornerRadius = 21.0
+        
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(didTapOnRightView))
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -82,6 +98,15 @@ class EditToolsContainer: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    @objc private func didTapOnLeftView() {
+        delegate?.didTapOnLeftView()
+    }
+    
+    @objc private func didTapOnRightView() {
+        delegate?.didTapOnRightView()
     }
     
     // MARK: - Private Methods

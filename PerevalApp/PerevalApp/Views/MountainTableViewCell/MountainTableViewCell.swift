@@ -1,8 +1,15 @@
 import UIKit
 
+protocol MountainTableViewCellDelegate: AnyObject {
+    func didTapOnAddDescription()
+    func didTapOnEdit()
+}
+
 class MountainTableViewCell: UITableViewCell {
-    // MARK: - Properties
     
+    weak var mountainTableViewCellDelegate: MountainTableViewCellDelegate?
+    
+    // MARK: - Properties
     var isSelectionModeOn = false
     
     var mountain: Mountain? {
@@ -63,6 +70,7 @@ class MountainTableViewCell: UITableViewCell {
         
         setupViews()
         setConstraints()
+        setupDelegates()
     }
     
     required init?(coder: NSCoder) {
@@ -78,13 +86,29 @@ class MountainTableViewCell: UITableViewCell {
         contentView.addSubview(editToolsContainer)
     }
     
-    func updateCell(with mountain: Mountain) {
+    private func updateCell(with mountain: Mountain) {
         nameLabel.text = mountain.name
         
         let isSelected = mountain.isSelected
         let imageName = isSelected ? "selected" : "notSelected"
         checkImageView.image = UIImage(named: imageName)
         checkImageView.isHidden = !isSelectionModeOn
+    }
+    
+    private func setupDelegates() {
+        editToolsContainer.delegate = self
+    }
+}
+
+// MARK: - EditToolsContainerDelegate
+extension MountainTableViewCell: EditToolsContainerDelegate {
+
+    func didTapOnLeftView() {
+        mountainTableViewCellDelegate?.didTapOnAddDescription()
+    }
+    
+    func didTapOnRightView() {
+        mountainTableViewCellDelegate?.didTapOnEdit()
     }
 }
 

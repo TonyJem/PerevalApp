@@ -2,6 +2,8 @@ import UIKit
 
 protocol TableViewContainerDelegate: AnyObject {
     func didSelectRowFor(item: Int)
+    func didTapOnAddDescription()
+    func didTapOnEdit()
 }
 
 class TableViewContainer: UIView {
@@ -62,6 +64,7 @@ class TableViewContainer: UIView {
     private func setDelegates() {
         tableView.dataSource = self
         tableView.delegate = self
+        
     }
 }
 
@@ -80,6 +83,7 @@ extension TableViewContainer: UITableViewDataSource {
         guard let model = self.model else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cell.rawValue,
                                                  for: indexPath) as! MountainTableViewCell
+        cell.mountainTableViewCellDelegate = self
         cell.isSelectionModeOn = isSelectionModeOn
         cell.mountain = model.mountains[indexPath.row]
         return cell
@@ -90,6 +94,17 @@ extension TableViewContainer: UITableViewDataSource {
 extension TableViewContainer: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelectRowFor(item: indexPath.row)
+    }
+}
+
+// MARK: - MountainTableViewCellDelegate
+extension TableViewContainer: MountainTableViewCellDelegate {
+    func didTapOnAddDescription() {
+        delegate?.didTapOnAddDescription()
+    }
+    
+    func didTapOnEdit() {
+        delegate?.didTapOnEdit()
     }
 }
 

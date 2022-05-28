@@ -121,6 +121,7 @@ extension MountainPassListVC: EmptyViewContainerDelegate {
 
 // MARK: - TableViewContainerDelegate
 extension MountainPassListVC: TableViewContainerDelegate {
+    
     func didSelectRowFor(item: Int) {
         
         if tableViewContainer.isSelectionModeOn {
@@ -136,6 +137,14 @@ extension MountainPassListVC: TableViewContainerDelegate {
         }
         
         updateSendButtonTitle()
+    }
+    
+    func didTapOnAddDescription() {
+        print("🟢 didTapOnAddDescription via delegates to MountainPassListVC")
+    }
+    
+    func didTapOnEdit() {
+        print("🟢 didTapOnEdit via delegates to MountainPassListVC")
     }
 }
 
