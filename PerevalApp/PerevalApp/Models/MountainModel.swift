@@ -1,6 +1,6 @@
 import Foundation
 
-struct Mountain {
+class Mountain {
     var isSelected: Bool
     var name: String
     var upPictureCount: Int
@@ -165,5 +165,12 @@ class MountainModel {
     // MARK: - Public Methods
     func setSelectionFor(item: Int, isSelected: Bool) {
         mountains[item].isSelected = isSelected
+    }
+    
+    func removeAllSelections() {
+        let selectedMountains = mountains.filter { $0.isSelected == true }
+        for i in selectedMountains.indices {
+            selectedMountains[i].isSelected = false
+        }
     }
 }

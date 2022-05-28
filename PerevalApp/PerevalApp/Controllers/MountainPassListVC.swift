@@ -71,6 +71,7 @@ class MountainPassListVC: UIViewController {
     private func setupDelegates() {
         emptyViewContainer.delegate = self
         tableViewContainer.delegate = self
+        bottomPanel.delegate = self
     }
     
     private func showEmptyViewContainer(for isEmpty: Bool) {
@@ -111,6 +112,17 @@ extension MountainPassListVC: TableViewContainerDelegate {
             tableViewContainer.reloadMountainPassList()
         }
         
+        updateSendButtonTitle()
+    }
+}
+
+// MARK: - TableViewContainerDelegate
+extension MountainPassListVC: BottomPanelDelegate {
+    func didTapCancelButton() {
+        print("🟢🟢 didTapCancelButton BottomPanelDelegate in MountainPassListVC")
+        
+        model.removeAllSelections()
+        tableViewContainer.reloadMountainPassList()
         updateSendButtonTitle()
     }
 }

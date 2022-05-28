@@ -1,6 +1,12 @@
 import UIKit
 
+protocol BottomPanelDelegate: AnyObject {
+    func didTapCancelButton()
+}
+
 class BottomPanel: UIView {
+    
+    weak var delegate: BottomPanelDelegate?
     
     // MARK: - Views
     private let separatorView: UIView = {
@@ -65,6 +71,7 @@ class BottomPanel: UIView {
     // MARK: - Actions
     @objc private func didTapCancelButton() {
         print("🟢 didTapCancelButton in BottomPanel")
+        delegate?.didTapCancelButton()
     }
     
     @objc private func didTapSendButton() {
