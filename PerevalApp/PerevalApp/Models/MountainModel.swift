@@ -40,25 +40,25 @@ class Mountain {
         print("🟠 Will set photoIndex: \(photo.index)")
         switch photo.index {
         case 0:
-            goUpImages[0].append(photo)
+            goUpImages[0].append(photo) // ["Подъём"]
         case 1:
-            goUpImages[1].append(photo)
+            goUpImages[1].append(photo) // ["Перевальный взлёт"]
         case 2:
-            goUpImages[2].append(photo)
+            goUpImages[2].append(photo) // ["Середина подъёма"]
         case 3:
-            passPointImages[0].append(photo)
+            passPointImages[0].append(photo) // ["Седловина"]
         case 4:
-            passPointImages[1].append(photo)
+            passPointImages[1].append(photo) // ["Тур"]
         case 5:
-            passPointImages[2].append(photo)
+            passPointImages[2].append(photo) // ["Записка"]
         case 6:
-            passPointImages[3].append(photo)
+            passPointImages[3].append(photo) // ["Группа на перевале"]
         case 7:
-            goDownImages[0].append(photo)
+            goDownImages[0].append(photo) // ["Спуск"]
         case 8:
-            goDownImages[1].append(photo)
+            goDownImages[1].append(photo) // ["Перевальный взлёт (обратно)"]
         case 9:
-            goDownImages[2].append(photo)
+            goDownImages[2].append(photo) // ["Середина спуска"]
         default:
             break
         }
