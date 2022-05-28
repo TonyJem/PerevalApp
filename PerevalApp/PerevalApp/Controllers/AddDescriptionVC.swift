@@ -3,7 +3,9 @@ import UIKit
 class AddDescriptionVC: UIViewController {
     
     // MARK: - Properties
-    private let model = MountainPassModel()
+    
+    private var mountainPass: Mountain?
+    private var image: Image?
     
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 500)
@@ -65,10 +67,6 @@ class AddDescriptionVC: UIViewController {
         present(picker, animated: true)
     }
     
-    @objc private func dismissMyKeyboard() {
-        view.endEditing(true)
-    }
-    
     @objc private func didTapSaveButton() {
         print("🟢 didTapSaveButton in AddDescriptionVC")
         navigationController?.popToRootViewController(animated: true)
@@ -110,14 +108,12 @@ extension AddDescriptionVC: UIImagePickerControllerDelegate, UINavigationControl
 extension AddDescriptionVC: PhotoContainerDelegate {
     
     func didTapOnGaleryView() {
-        print("🟢🟢🟢 didTapOnGaleryView in AddDescriptionVC")
         importPictureFromGallery()
         photoContainer.hideEntriesAndShowPicture()
     }
     
     func didAddImage(image: Image) {
-        print("🟢🟢🟢 didAddImage in AddDescriptionVC")
-        model.addImage(image)
+        self.image = image
     }
 }
 
