@@ -168,9 +168,6 @@ class MountainModel {
     }
     
     func removeAllSelections() {
-        let selectedMountains = mountains.filter { $0.isSelected == true }
-        for i in selectedMountains.indices {
-            selectedMountains[i].isSelected = false
-        }
+        selectedMountains.forEach { $0.isSelected = false }
     }
 }
