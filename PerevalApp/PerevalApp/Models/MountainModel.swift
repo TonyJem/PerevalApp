@@ -4,9 +4,6 @@ class Mountain {
     // MARK: - Properties
     var isSelected: Bool
     var name: String
-    var upPictureCount: Int
-    var middlePictureCount: Int
-    var downPictureCount: Int
     var message: String
     var status: Status
     
@@ -19,18 +16,12 @@ class Mountain {
     // MARK: - Init
     init(isSelected: Bool = false,
          name: String,
-         upPictureCount: Int = 0,
-         middlePictureCount: Int = 0,
-         downPictureCount: Int = 0,
          message: String,
          status: Status = Status(type: .template,
                                  lastUpdateDate: nil,
                                  message: nil)) {
         self.isSelected = isSelected
         self.name = name
-        self.upPictureCount = upPictureCount
-        self.middlePictureCount = middlePictureCount
-        self.downPictureCount = downPictureCount
         self.message = message
         self.status = status
     }
@@ -93,93 +84,54 @@ class MountainModel {
     // MARK: - Mock Data:
     private var mountain0 = Mountain(isSelected: false,
                              name: "Mountain0",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain1 = Mountain(isSelected: false,
                              name: "Mountain1",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain2 = Mountain(isSelected: false,
                              name: "Mountain2",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain3 = Mountain(isSelected: false,
                              name: "Mountain3",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain4 = Mountain(isSelected: false,
                              name: "Mountain4",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain5 = Mountain(isSelected: false,
                              name: "Mountain5",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain6 = Mountain(isSelected: false,
                              name: "Mountain6",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain7 = Mountain(isSelected: false,
                              name: "Mountain7",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain8 = Mountain(isSelected: false,
                              name: "Mountain8",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain9 = Mountain(isSelected: false,
                              name: "Mountain9",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain10 = Mountain(isSelected: false,
                              name: "Mountain10",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain11 = Mountain(isSelected: false,
                              name: "Mountain11",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     private var mountain12 = Mountain(isSelected: false,
                              name: "Mountain12",
-                             upPictureCount: 0,
-                             middlePictureCount: 0,
-                             downPictureCount: 0,
                              message: "2020-09-01")
     
     // MARK: - Properties
