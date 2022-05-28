@@ -6,6 +6,19 @@ class MountainPassListVC: UIViewController {
     // MARK: - Properties
     private let model = MountainModel()
     
+    private var heightConstraint: NSLayoutConstraint?
+    
+    private var isBottomPanelVisible = false {
+        didSet {
+            let menuHeight: CGFloat = isBottomPanelVisible ? 75 : 0
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                self.heightConstraint?.constant = menuHeight
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
+    
     // MARK: - Views
     private let emptyViewContainer = EmptyViewContainer()
     private let tableViewContainer = TableViewContainer()
@@ -115,6 +128,8 @@ extension MountainPassListVC: TableViewContainerDelegate {
             model.setSelectionFor(item: item, isSelected: !isSelected)
             tableViewContainer.reloadMountainPassListAt(item)
         } else {
+            isBottomPanelVisible = true
+            bottomPanel.showButtons()
             model.setSelectionFor(item: item, isSelected: true)
             tableViewContainer.isSelectionModeOn = true
             tableViewContainer.reloadMountainPassList()
@@ -130,6 +145,8 @@ extension MountainPassListVC: BottomPanelDelegate {
         print("🟢🟢 didTapCancelButton BottomPanelDelegate in MountainPassListVC")
         
         model.removeAllSelections()
+        bottomPanel.hideButtons()
+        isBottomPanelVisible = false
         tableViewContainer.isSelectionModeOn = false
         tableViewContainer.reloadMountainPassList()
         updateSendButtonTitle()
@@ -155,12 +172,13 @@ extension MountainPassListVC {
         ])
         
         NSLayoutConstraint.activate([
-            bottomPanel.heightAnchor.constraint(equalToConstant: 75),
             bottomPanel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             bottomPanel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             bottomPanel.bottomAnchor.constraint(equalTo: addButton.centerYAnchor)
         ])
-        
+        heightConstraint = bottomPanel.heightAnchor.constraint(equalToConstant: 0)
+        heightConstraint?.isActive = true
+
         NSLayoutConstraint.activate([
             tableViewContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableViewContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),

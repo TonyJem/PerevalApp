@@ -66,6 +66,8 @@ class BottomPanel: UIView {
         addSubview(separatorView)
         addSubview(cancelButton)
         addSubview(sendButton)
+        
+        hideButtons()
     }
     
     // MARK: - Actions
@@ -81,6 +83,16 @@ class BottomPanel: UIView {
     // MARK: - Public Methods
     func updateSendButton(with count: Int ) {
         sendButton.setTitle("ОТПРАВИТЬ (\(count))", for: .normal)
+    }
+    
+    func showButtons() {
+        cancelButton.isHidden = false
+        sendButton.isHidden = false
+    }
+    
+    func hideButtons() {
+        cancelButton.isHidden = true
+        sendButton.isHidden = true
     }
 }
 
