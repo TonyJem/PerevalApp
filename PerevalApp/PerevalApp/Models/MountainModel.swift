@@ -8,6 +8,7 @@ class Mountain {
     var downPictureCount: Int
     var message: String
     var status: Status
+    var images: [Image] = []
     
     init(isSelected: Bool = false,
          name: String,

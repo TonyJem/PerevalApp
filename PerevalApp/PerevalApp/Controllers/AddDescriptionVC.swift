@@ -3,8 +3,8 @@ import UIKit
 class AddDescriptionVC: UIViewController {
     
     // MARK: - Properties
+    var mountainPass: Mountain?
     
-    private var mountainPass: Mountain?
     private var image: Image?
     
     private var contentSize: CGSize {
@@ -68,7 +68,9 @@ class AddDescriptionVC: UIViewController {
     }
     
     @objc private func didTapSaveButton() {
-        print("🟢 didTapSaveButton in AddDescriptionVC")
+        if let image = self.image {
+            mountainPass?.images.append(image)
+        }
         navigationController?.popToRootViewController(animated: true)
     }
     

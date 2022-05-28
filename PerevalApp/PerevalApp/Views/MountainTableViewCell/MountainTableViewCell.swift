@@ -1,11 +1,13 @@
 import UIKit
 
 protocol MountainTableViewCellDelegate: AnyObject {
-    func didTapOnAddDescription()
+    func didTapOnAddDescription(with idIndex: Int)
     func didTapOnEdit()
 }
 
 class MountainTableViewCell: UITableViewCell {
+    
+    var idIndex: Int?
     
     weak var mountainTableViewCellDelegate: MountainTableViewCellDelegate?
     
@@ -102,11 +104,12 @@ class MountainTableViewCell: UITableViewCell {
 
 // MARK: - EditToolsContainerDelegate
 extension MountainTableViewCell: EditToolsContainerDelegate {
-
-    func didTapOnLeftView() {
-        mountainTableViewCellDelegate?.didTapOnAddDescription()
-    }
     
+    func didTapOnLeftView() {
+        guard let idIndex = self.idIndex else { return }
+        mountainTableViewCellDelegate?.didTapOnAddDescription(with: idIndex)
+    }
+
     func didTapOnRightView() {
         mountainTableViewCellDelegate?.didTapOnEdit()
     }
