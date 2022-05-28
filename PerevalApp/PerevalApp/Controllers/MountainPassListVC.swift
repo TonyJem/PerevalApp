@@ -180,7 +180,7 @@ extension MountainPassListVC {
         NSLayoutConstraint.activate([
             tableViewContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableViewContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            tableViewContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            tableViewContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableViewContainer.bottomAnchor.constraint(equalTo: bottomPanel.topAnchor)
         ])
     }
