@@ -51,6 +51,15 @@ class EditToolsContainer: UIView {
         return view
     }()
     
+    private let pencilImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "pencil")
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private let rightLabel: UILabel = {
         let label = UILabel()
         label.text = "редакти\nровать"
@@ -84,6 +93,7 @@ class EditToolsContainer: UIView {
         addSubview(plusImageView)
         addSubview(leftLabel)
         addSubview(rightView)
+        addSubview(pencilImageView)
         addSubview(rightLabel)
     }
 }
@@ -132,6 +142,13 @@ extension EditToolsContainer {
             rightView.centerXAnchor.constraint(equalTo: rightLabel.centerXAnchor),
             rightView.widthAnchor.constraint(equalToConstant: 42),
             rightView.heightAnchor.constraint(equalToConstant: 42)
+        ])
+        
+        NSLayoutConstraint.activate([
+            pencilImageView.centerXAnchor.constraint(equalTo: rightView.centerXAnchor, constant: 1),
+            pencilImageView.centerYAnchor.constraint(equalTo: rightView.centerYAnchor),
+            pencilImageView.widthAnchor.constraint(equalToConstant: 20),
+            pencilImageView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 }
