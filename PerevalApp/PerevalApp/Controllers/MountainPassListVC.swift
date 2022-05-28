@@ -6,6 +6,12 @@ class MountainPassListVC: UIViewController {
     // MARK: - Properties
     private let model = MountainModel()
     
+    private var isBottomPanelVisible = false {
+        didSet {
+            bottomPanel.isHidden = !isBottomPanelVisible
+        }
+    }
+    
     // MARK: - Views
     private let emptyViewContainer = EmptyViewContainer()
     private let tableViewContainer = TableViewContainer()
