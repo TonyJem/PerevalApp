@@ -60,6 +60,12 @@ class MountainPassListVC: UIViewController {
         setupDelegates()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableViewContainer.reloadMountainPassList()
+    }
+    
     override func viewDidLayoutSubviews() {
         addButton.layer.cornerRadius = addButton.frame.height / 2
     }

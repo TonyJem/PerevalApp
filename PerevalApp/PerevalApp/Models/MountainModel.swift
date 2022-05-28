@@ -15,6 +15,14 @@ class Mountain {
         return "\(goUpPhotosCountText) \(passPointPhotosCountText) \(goDownPhotosCountText)"
     }
     
+    var photosCount: Int {
+        var count = 0
+        goUpPhotos.forEach { count += $0.count }
+        passPointPhotos.forEach { count += $0.count }
+        goDownPhotos.forEach { count += $0.count }
+        return count
+    }
+    
     private var goUpPhotosCountText: String {
         var count = 0
         goUpPhotos.forEach { count += $0.count }

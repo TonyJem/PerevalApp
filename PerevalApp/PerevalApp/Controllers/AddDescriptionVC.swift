@@ -92,6 +92,10 @@ class AddDescriptionVC: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(photoContainer)
         contentView.addSubview(bottomSaveButton)
+        
+        guard let photosCount = mountainPass?.photosCount else { return }
+        let nextNumber = photosCount + 1
+        photoContainer.updatePhotoNumLabel(with: nextNumber)
     }
     
     private func setDelegates() {

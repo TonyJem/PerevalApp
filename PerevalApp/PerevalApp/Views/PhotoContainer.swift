@@ -149,7 +149,7 @@ class PhotoContainer: UIView {
         self.init()
         
         self.photoIndex = photoIndex
-        updatePhotoNumLabel()
+        updatePhotoNumLabel(with: photoIndex)
     }
     
     // MARK: - Actions
@@ -188,7 +188,6 @@ class PhotoContainer: UIView {
         delegate?.didAddPhoto(photo: photoObject)
     }
     
-    
     func hideEntriesAndShowPicture() {
         photoImageView.isHidden = false
         descriptionLabel.isHidden = false
@@ -198,6 +197,10 @@ class PhotoContainer: UIView {
         frameImageView.isHidden = true
         tableView.isHidden = true
         attachPhotoView.isHidden = true
+    }
+    
+    func updatePhotoNumLabel(with number: Int) {
+        photoNumLabel.text = "Фото №\(String(number))"
     }
     
     // MARK: - Private Methods
@@ -226,10 +229,6 @@ class PhotoContainer: UIView {
         tableView.dataSource = self
         tableView.delegate = self
         attachPhotoView.delegate = self
-    }
-    
-    private func updatePhotoNumLabel() {
-        photoNumLabel.text = "Фото №\(String(photoIndex))"
     }
     
     private func setFrameLabel(with text: String) {
