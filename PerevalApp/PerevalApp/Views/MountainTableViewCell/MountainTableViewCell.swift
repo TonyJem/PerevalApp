@@ -2,6 +2,9 @@ import UIKit
 
 class MountainTableViewCell: UITableViewCell {
     // MARK: - Properties
+    
+    var isSelectionModeOn = false
+    
     var mountain: Mountain? {
         didSet {
             guard let mountain = self.mountain else { return }
@@ -81,6 +84,7 @@ class MountainTableViewCell: UITableViewCell {
         let isSelected = mountain.isSelected
         let imageName = isSelected ? "selected" : "notSelected"
         checkImageView.image = UIImage(named: imageName)
+        checkImageView.isHidden = !isSelectionModeOn
     }
 }
 

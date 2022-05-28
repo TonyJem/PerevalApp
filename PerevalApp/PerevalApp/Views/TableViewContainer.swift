@@ -12,6 +12,7 @@ class TableViewContainer: UIView {
     
     // MARK: - Properties
     var model: MountainModel?
+    var isSelectionModeOn = false
     
     weak var delegate: TableViewContainerDelegate?
     
@@ -74,6 +75,7 @@ extension TableViewContainer: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cell.rawValue,
                                                  for: indexPath) as! MountainTableViewCell
         cell.mountain = model.mountains[indexPath.row]
+        cell.isSelectionModeOn = isSelectionModeOn
         
         return cell
     }

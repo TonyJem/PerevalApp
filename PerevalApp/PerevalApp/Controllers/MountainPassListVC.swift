@@ -6,9 +6,11 @@ class MountainPassListVC: UIViewController {
     // MARK: - Properties
     private let model = MountainModel()
     
-    private var isBottomPanelVisible = false {
+    private var isSelectionModeOn = false {
         didSet {
-            bottomPanel.isHidden = !isBottomPanelVisible
+            tableViewContainer.isSelectionModeOn = isSelectionModeOn
+            tableViewContainer.reloadMountainPassList()
+            shouldShowBottomPanel(isSelectionModeOn)
         }
     }
     
@@ -51,8 +53,9 @@ class MountainPassListVC: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapAddButton() {
-        let newMountainPassVC = NewMountainPassVC()
-        self.navigationController?.pushViewController(newMountainPassVC, animated: true)
+//        let newMountainPassVC = NewMountainPassVC()
+//        self.navigationController?.pushViewController(newMountainPassVC, animated: true)
+        isSelectionModeOn = !isSelectionModeOn
     }
     
     @objc private func didTapRemoveUser() {
@@ -83,6 +86,10 @@ class MountainPassListVC: UIViewController {
         emptyViewContainer.isHidden = !isEmpty
         tableViewContainer.isHidden = isEmpty
     }
+    
+    private func shouldShowBottomPanel(_ isShown: Bool) {
+        print("🟢 shouldShowBottomPanel: \(isShown)")
+    }
 }
 
 // MARK: - EmptyViewContainerDelegate
@@ -97,9 +104,16 @@ extension MountainPassListVC: EmptyViewContainerDelegate {
 // MARK: - TableViewContainerDelegate
 extension MountainPassListVC: TableViewContainerDelegate {
     func didSelectRowFor(item: Int) {
-        let isSelected = !model.mountains[item].isSelected
-        model.setSelectionFor(item: item, isSelected: isSelected)
-        tableViewContainer.reloadMountainPassList()
+        
+        if isSelectionModeOn {
+            let isSelected = !model.mountains[item].isSelected
+            model.setSelectionFor(item: item, isSelected: isSelected)
+//            TODO: change to reload one item only, not all list
+            tableViewContainer.reloadMountainPassList()
+        } else {
+            isSelectionModeOn = true
+            model.setSelectionFor(item: item, isSelected: true)
+        }
     }
 }
 
