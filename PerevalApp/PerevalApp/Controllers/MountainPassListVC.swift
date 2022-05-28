@@ -76,6 +76,7 @@ class MountainPassListVC: UIViewController {
     
     private func setupDelegates() {
         emptyViewContainer.delegate = self
+        tableViewContainer.delegate = self
     }
     
     private func showEmptyViewContainer(for isEmpty: Bool) {
@@ -90,6 +91,15 @@ extension MountainPassListVC: EmptyViewContainerDelegate {
         guard let url = URL(string: "https://tssr.ru/pereval") else { return }
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true, completion: nil)
+    }
+}
+
+// MARK: - TableViewContainerDelegate
+extension MountainPassListVC: TableViewContainerDelegate {
+    func didSelectRowFor(item: Int) {
+        let isSelected = !model.mountains[item].isSelected
+        model.setSelectionFor(item: item, isSelected: isSelected)
+        tableViewContainer.reloadMountainPassList()
     }
 }
 

@@ -12,7 +12,7 @@ class MountainTableViewCell: UITableViewCell {
     // MARK: - Views
     private let checkImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "selected")
+        imageView.image = UIImage(named: "")
         imageView.contentMode = .scaleAspectFit
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +76,6 @@ class MountainTableViewCell: UITableViewCell {
     }
     
     private func updateCell(with mountain: Mountain) {
-        print("🟡 Will UpdateCell...")
         nameLabel.text = mountain.name
         
         let isSelected = mountain.isSelected

@@ -1,5 +1,9 @@
 import UIKit
 
+protocol TableViewContainerDelegate: AnyObject {
+    func didSelectRowFor(item: Int)
+}
+
 class TableViewContainer: UIView {
     
     enum CellIdentifiers: String {
@@ -8,6 +12,8 @@ class TableViewContainer: UIView {
     
     // MARK: - Properties
     var model: MountainModel?
+    
+    weak var delegate: TableViewContainerDelegate?
     
     // MARK: - Views
     private let tableView: UITableView = {
@@ -30,6 +36,11 @@ class TableViewContainer: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    func reloadMountainPassList() {
+        tableView.reloadData()
     }
     
     // MARK: - Private Methods
@@ -70,7 +81,9 @@ extension TableViewContainer: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension TableViewContainer: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelectRowFor(item: indexPath.row)
+    }
 }
 
 // MARK: - SetConstraints

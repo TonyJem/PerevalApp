@@ -103,4 +103,7 @@ class MountainModel {
     }
     
     // MARK: - Public Methods
+    func setSelectionFor(item: Int, isSelected: Bool) {
+        mountains[item].isSelected = isSelected
+    }
 }
