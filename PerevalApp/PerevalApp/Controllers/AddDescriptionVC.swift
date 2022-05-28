@@ -3,11 +3,10 @@ import UIKit
 class AddDescriptionVC: UIViewController {
     
     // MARK: - Properties
-    private let apiService = APIService()
     private let model = MountainPassModel()
     
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 1000)
+        CGSize(width: view.frame.width, height: view.frame.height + 500)
     }
     
     // MARK: - Views
@@ -28,20 +27,20 @@ class AddDescriptionVC: UIViewController {
         return contentView
     }()
     
-    private let photoContainer = PhotoContainer(photoIndex: 1)
+    private let photoContainer = PhotoContainer()
     
     private lazy var bottomSaveButton: UIButton = {
         let button = UIButton(type: .system)
         
         button.tintColor = .white
         button.titleLabel?.font = .ptSans22()
-        button.setTitle("ОТПРАВИТЬ".uppercased(), for: .normal)
+        button.setTitle("СОХРАНИТЬ", for: .normal)
         
         button.backgroundColor = .mainBlue
         button.clipsToBounds = true
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapBottomSaveButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         return button
     }()
     
@@ -49,19 +48,9 @@ class AddDescriptionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let saveButton = UIBarButtonItem(title: "Сохранить",
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(didTapSave))
-        navigationItem.setRightBarButton(saveButton, animated: true)
-        
-        view.backgroundColor = .white
-        
         setupViews()
         setConstraints()
         setDelegates()
-        initializeHideKeyboard()
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,7 +58,7 @@ class AddDescriptionVC: UIViewController {
     }
     
     // MARK: - Actions
-    @objc func importPictureFromGallery() {
+    @objc private func importPictureFromGallery() {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
@@ -80,25 +69,21 @@ class AddDescriptionVC: UIViewController {
         view.endEditing(true)
     }
     
-    
-    @objc private func didTapSave() {
-        print("🟢 didTapSave in AddDescriptionVC")
-        /*
-         TODO:
-         it should save currently entered changes, even if
-         add save to model or to DB functionality here
-         need to decide, should we go back or stay in current ViewController
-         */
+    @objc private func didTapSaveButton() {
+        print("🟢 didTapSaveButton in AddDescriptionVC")
         navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @objc private func didTapBottomSaveButton() {
-        print("🟢 didTapBottomSaveButton in AddDescriptionVC")
-
     }
     
     // MARK: - Private Methods
     private func setupViews() {
+        
+        let saveButton = UIBarButtonItem(title: "Сохранить",
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(didTapSaveButton))
+        navigationItem.setRightBarButton(saveButton, animated: true)
+        
+        view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(photoContainer)
@@ -108,12 +93,6 @@ class AddDescriptionVC: UIViewController {
     private func setDelegates() {
         photoContainer.delegate = self
     }
-    
-    private func initializeHideKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMyKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
 }
 
 // MARK: - UIImage PickerController Delegate
