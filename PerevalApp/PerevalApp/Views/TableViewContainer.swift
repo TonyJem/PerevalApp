@@ -12,6 +12,7 @@ class TableViewContainer: UIView {
     
     // MARK: - Properties
     var model: MountainModel?
+    
     var isSelectionModeOn = false
     
     weak var delegate: TableViewContainerDelegate?
@@ -44,6 +45,11 @@ class TableViewContainer: UIView {
         tableView.reloadData()
     }
     
+    func reloadMountainPassListAt(_ item: Int) {
+        let indexPath = IndexPath(row: item, section: .zero)
+        tableView.reloadRows(at: [indexPath], with: .fade)
+    }
+    
     // MARK: - Private Methods
     private func setupViews() {
         addSubview(tableView)
@@ -74,9 +80,8 @@ extension TableViewContainer: UITableViewDataSource {
         guard let model = self.model else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cell.rawValue,
                                                  for: indexPath) as! MountainTableViewCell
-        cell.mountain = model.mountains[indexPath.row]
         cell.isSelectionModeOn = isSelectionModeOn
-        
+        cell.mountain = model.mountains[indexPath.row]
         return cell
     }
 }

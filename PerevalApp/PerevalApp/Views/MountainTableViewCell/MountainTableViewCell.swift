@@ -78,7 +78,7 @@ class MountainTableViewCell: UITableViewCell {
         contentView.addSubview(editToolsContainer)
     }
     
-    private func updateCell(with mountain: Mountain) {
+    func updateCell(with mountain: Mountain) {
         nameLabel.text = mountain.name
         
         let isSelected = mountain.isSelected

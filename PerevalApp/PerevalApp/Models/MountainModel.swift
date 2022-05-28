@@ -45,7 +45,7 @@ struct Status {
 
 class MountainModel {
     // MARK: - Mock Data:
-    private var mountain0 = Mountain(isSelected: true,
+    private var mountain0 = Mountain(isSelected: false,
                              name: "Mountain0",
                              upPictureCount: 0,
                              middlePictureCount: 0,
@@ -59,7 +59,7 @@ class MountainModel {
                              downPictureCount: 0,
                              message: "2020-09-01")
     
-    private var mountain2 = Mountain(isSelected: true,
+    private var mountain2 = Mountain(isSelected: false,
                              name: "Mountain2",
                              upPictureCount: 0,
                              middlePictureCount: 0,
