@@ -3,6 +3,14 @@ import UIKit
 class BottomPanel: UIView {
     
     // MARK: - Views
+    private let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -49,6 +57,7 @@ class BottomPanel: UIView {
         backgroundColor = .systemGray5
         translatesAutoresizingMaskIntoConstraints = false
         
+        addSubview(separatorView)
         addSubview(cancelButton)
         addSubview(sendButton)
     }
@@ -68,6 +77,13 @@ class BottomPanel: UIView {
 // MARK: - SetConstraints
 extension BottomPanel {
     private func setConstraints() {
+        
+        NSLayoutConstraint.activate([
+            separatorView.topAnchor.constraint(equalTo: topAnchor),
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1.5)
+        ])
         
         NSLayoutConstraint.activate([
             cancelButton.centerYAnchor.constraint(equalTo: centerYAnchor),
