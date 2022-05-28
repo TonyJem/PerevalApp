@@ -87,6 +87,55 @@ class MountainModel {
                              downPictureCount: 0,
                              message: "2020-09-01")
     
+    private var mountain6 = Mountain(isSelected: false,
+                             name: "Mountain6",
+                             upPictureCount: 0,
+                             middlePictureCount: 0,
+                             downPictureCount: 0,
+                             message: "2020-09-01")
+    
+    private var mountain7 = Mountain(isSelected: false,
+                             name: "Mountain7",
+                             upPictureCount: 0,
+                             middlePictureCount: 0,
+                             downPictureCount: 0,
+                             message: "2020-09-01")
+    
+    private var mountain8 = Mountain(isSelected: false,
+                             name: "Mountain8",
+                             upPictureCount: 0,
+                             middlePictureCount: 0,
+                             downPictureCount: 0,
+                             message: "2020-09-01")
+    
+    private var mountain9 = Mountain(isSelected: false,
+                             name: "Mountain9",
+                             upPictureCount: 0,
+                             middlePictureCount: 0,
+                             downPictureCount: 0,
+                             message: "2020-09-01")
+    
+    private var mountain10 = Mountain(isSelected: false,
+                             name: "Mountain10",
+                             upPictureCount: 0,
+                             middlePictureCount: 0,
+                             downPictureCount: 0,
+                             message: "2020-09-01")
+    
+    private var mountain11 = Mountain(isSelected: false,
+                             name: "Mountain11",
+                             upPictureCount: 0,
+                             middlePictureCount: 0,
+                             downPictureCount: 0,
+                             message: "2020-09-01")
+    
+    private var mountain12 = Mountain(isSelected: false,
+                             name: "Mountain12",
+                             upPictureCount: 0,
+                             middlePictureCount: 0,
+                             downPictureCount: 0,
+                             message: "2020-09-01")
+    
     // MARK: - Properties
     var mountains: [Mountain] = []
     
@@ -104,6 +153,13 @@ class MountainModel {
         self.mountains.append(mountain3)
         self.mountains.append(mountain4)
         self.mountains.append(mountain5)
+        self.mountains.append(mountain6)
+        self.mountains.append(mountain7)
+        self.mountains.append(mountain8)
+        self.mountains.append(mountain9)
+        self.mountains.append(mountain10)
+        self.mountains.append(mountain11)
+        self.mountains.append(mountain12)
     }
     
     // MARK: - Public Methods
