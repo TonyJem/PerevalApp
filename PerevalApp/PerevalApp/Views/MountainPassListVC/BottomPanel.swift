@@ -29,7 +29,7 @@ class BottomPanel: UIView {
         let button = UIButton(type: .system)
         button.tintColor = .white
         button.titleLabel?.font = .ptSans16()
-        button.setTitle("ОТПРАВИТЬ (1)", for: .normal)
+        button.setTitle("", for: .normal)
         button.layer.cornerRadius = 20
         button.backgroundColor = .mainBlue
         button.clipsToBounds = true
@@ -72,6 +72,9 @@ class BottomPanel: UIView {
     }
     
     // MARK: - Public Methods
+    func updateSendButton(with count: Int ) {
+        sendButton.setTitle("ОТПРАВИТЬ (\(count))", for: .normal)
+    }
 }
 
 // MARK: - SetConstraints

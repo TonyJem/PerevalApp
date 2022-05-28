@@ -81,6 +81,11 @@ class MountainPassListVC: UIViewController {
     private func shouldShowBottomPanel(_ isShown: Bool) {
         print("🟢 shouldShowBottomPanel: \(isShown)")
     }
+    
+    private func updateSendButtonTitle() {
+        let count = model.selectedMountains.count
+        bottomPanel.updateSendButton(with: count)
+    }
 }
 
 // MARK: - EmptyViewContainerDelegate
@@ -95,18 +100,18 @@ extension MountainPassListVC: EmptyViewContainerDelegate {
 // MARK: - TableViewContainerDelegate
 extension MountainPassListVC: TableViewContainerDelegate {
     func didSelectRowFor(item: Int) {
-        print("🟢 didSelectRowFor: \(item)")
+
         if tableViewContainer.isSelectionModeOn {
-            print("🟢🟢 tableViewContainer.isSelectionModeOn")
             let isSelected = model.mountains[item].isSelected
             model.setSelectionFor(item: item, isSelected: !isSelected)
             tableViewContainer.reloadMountainPassListAt(item)
         } else {
-            print("🟢🟢 tableViewContainer.isSelectionModeOn = FALSE")
             model.setSelectionFor(item: item, isSelected: true)
             tableViewContainer.isSelectionModeOn = true
             tableViewContainer.reloadMountainPassList()
         }
+        
+        updateSendButtonTitle()
     }
 }
 

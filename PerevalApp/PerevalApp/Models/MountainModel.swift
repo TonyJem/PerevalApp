@@ -90,6 +90,10 @@ class MountainModel {
     // MARK: - Properties
     var mountains: [Mountain] = []
     
+    var selectedMountains: [Mountain] {
+        return mountains.filter { $0.isSelected == true }
+    }
+    
     // MARK: - Init
     init(mountains: [Mountain] = []) {
         self.mountains = mountains
