@@ -44,6 +44,7 @@
 		3A8F45AD283FF59F00D0ECA7 /* TableViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45AC283FF59F00D0ECA7 /* TableViewContainer.swift */; };
 		3A8F45B02840113900D0ECA7 /* MountainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45AF2840113900D0ECA7 /* MountainTableViewCell.swift */; };
 		3A8F45B32840EEC600D0ECA7 /* EditToolsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45B22840EEC600D0ECA7 /* EditToolsContainer.swift */; };
+		3A8F45B52842145F00D0ECA7 /* BottomPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45B42842145E00D0ECA7 /* BottomPanel.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 		3AC8A02D283651CE005CEBFD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A02C283651CD005CEBFD /* SplashViewController.swift */; };
 		3AC8A02F28365238005CEBFD /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A02E28365238005CEBFD /* RootViewController.swift */; };
@@ -98,6 +99,7 @@
 		3A8F45AC283FF59F00D0ECA7 /* TableViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewContainer.swift; sourceTree = "<group>"; };
 		3A8F45AF2840113900D0ECA7 /* MountainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainTableViewCell.swift; sourceTree = "<group>"; };
 		3A8F45B22840EEC600D0ECA7 /* EditToolsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToolsContainer.swift; sourceTree = "<group>"; };
+		3A8F45B42842145E00D0ECA7 /* BottomPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPanel.swift; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 		3AC8A02C283651CD005CEBFD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		3AC8A02E28365238005CEBFD /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		3A2ED0CA2830E34E00285746 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A8F45B62842147800D0ECA7 /* MountainPassListVC */,
 				3A8F45A8283FD52700D0ECA7 /* EmptyViewContainer.swift */,
 				3A8F45AC283FF59F00D0ECA7 /* TableViewContainer.swift */,
 				3A2ED0CB2830E3A300285746 /* InputField.swift */,
@@ -267,6 +270,14 @@
 				3A8F45B22840EEC600D0ECA7 /* EditToolsContainer.swift */,
 			);
 			path = MountainTableViewCell;
+			sourceTree = "<group>";
+		};
+		3A8F45B62842147800D0ECA7 /* MountainPassListVC */ = {
+			isa = PBXGroup;
+			children = (
+				3A8F45B42842145E00D0ECA7 /* BottomPanel.swift */,
+			);
+			path = MountainPassListVC;
 			sourceTree = "<group>";
 		};
 		3A9BCE3328301BAF00C510FD /* Extensions */ = {
@@ -404,6 +415,7 @@
 				3A2ED0F72835489F00285746 /* UserSettings.swift in Sources */,
 				3AC8A03F28390A6B005CEBFD /* MountainPassModel.swift in Sources */,
 				3AC8A04E283D175B005CEBFD /* TableSection.swift in Sources */,
+				3A8F45B52842145F00D0ECA7 /* BottomPanel.swift in Sources */,
 				3AC8A0362836C75F005CEBFD /* MountainPass.swift in Sources */,
 				3A2ED0D92832253500285746 /* AdditionButton.swift in Sources */,
 				3A2ED0E52832A04A00285746 /* AltitudeView.swift in Sources */,

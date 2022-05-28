@@ -8,17 +8,8 @@ class MountainPassListVC: UIViewController {
     
     // MARK: - Views
     private let emptyViewContainer = EmptyViewContainer()
-    
     private let tableViewContainer = TableViewContainer()
-    
-    private let bottomPanel: UIView = {
-        let view = UIView()
-        
-        view.backgroundColor = .systemGray5
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let bottomPanel = BottomPanel()
     
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
@@ -125,7 +116,7 @@ extension MountainPassListVC {
             tableViewContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableViewContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             tableViewContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-            tableViewContainer.bottomAnchor.constraint(equalTo: addButton.centerYAnchor)
+            tableViewContainer.bottomAnchor.constraint(equalTo: bottomPanel.topAnchor)
         ])
     }
 }
