@@ -9,7 +9,16 @@ class MountainPassListVC: UIViewController {
     // MARK: - Views
     private let emptyViewContainer = EmptyViewContainer()
     
-    private var tableViewContainer = TableViewContainer()
+    private let tableViewContainer = TableViewContainer()
+    
+    private let bottomPanel: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = .systemGray5
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
@@ -58,7 +67,9 @@ class MountainPassListVC: UIViewController {
     private func setupViews() {
         view.addSubview(emptyViewContainer)
         view.addSubview(tableViewContainer)
+        view.addSubview(bottomPanel)
         view.addSubview(addButton)
+        
         
         addButton.layer.zPosition = 5
         showEmptyViewContainer(for: model.mountains.isEmpty)
@@ -101,6 +112,13 @@ extension MountainPassListVC {
             addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             addButton.widthAnchor.constraint(equalToConstant: 70),
             addButton.heightAnchor.constraint(equalTo: addButton.widthAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            bottomPanel.heightAnchor.constraint(equalToConstant: 75),
+            bottomPanel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomPanel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomPanel.bottomAnchor.constraint(equalTo: addButton.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
