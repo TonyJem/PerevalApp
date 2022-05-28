@@ -12,6 +12,24 @@ class EditToolsContainer: UIView {
         return view
     }()
     
+    private let cameraImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "camera2")
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let plusImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "plus")
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private let leftLabel: UILabel = {
         let label = UILabel()
         label.text = "добавить\nописание"
@@ -62,6 +80,8 @@ class EditToolsContainer: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(leftView)
+        addSubview(cameraImageView)
+        addSubview(plusImageView)
         addSubview(leftLabel)
         addSubview(rightView)
         addSubview(rightLabel)
@@ -74,28 +94,42 @@ extension EditToolsContainer {
         
         NSLayoutConstraint.activate([
             leftLabel.topAnchor.constraint(equalTo: leftView.bottomAnchor, constant: -1),
-            leftLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            leftLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             leftLabel.widthAnchor.constraint(equalToConstant: 50),
             leftLabel.heightAnchor.constraint(equalToConstant: 32)
         ])
         
         NSLayoutConstraint.activate([
             leftView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            leftView.centerXAnchor.constraint(equalTo: leftLabel.centerXAnchor, constant: 0),
+            leftView.centerXAnchor.constraint(equalTo: leftLabel.centerXAnchor),
             leftView.widthAnchor.constraint(equalToConstant: 42),
             leftView.heightAnchor.constraint(equalToConstant: 42)
         ])
         
         NSLayoutConstraint.activate([
+            cameraImageView.centerXAnchor.constraint(equalTo: leftView.centerXAnchor),
+            cameraImageView.centerYAnchor.constraint(equalTo: leftView.centerYAnchor),
+            cameraImageView.widthAnchor.constraint(equalToConstant: 20),
+            cameraImageView.heightAnchor.constraint(equalToConstant: 15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            plusImageView.centerXAnchor.constraint(equalTo: cameraImageView.centerXAnchor, constant: 0.5),
+            plusImageView.centerYAnchor.constraint(equalTo: cameraImageView.centerYAnchor, constant: 0.5),
+            plusImageView.widthAnchor.constraint(equalToConstant: 5),
+            plusImageView.heightAnchor.constraint(equalToConstant: 5)
+        ])
+        
+        NSLayoutConstraint.activate([
             rightLabel.topAnchor.constraint(equalTo: rightView.bottomAnchor, constant: -1),
-            rightLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            rightLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             rightLabel.widthAnchor.constraint(equalToConstant: 50),
             rightLabel.heightAnchor.constraint(equalToConstant: 32)
         ])
         
         NSLayoutConstraint.activate([
             rightView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            rightView.centerXAnchor.constraint(equalTo: rightLabel.centerXAnchor, constant: 0),
+            rightView.centerXAnchor.constraint(equalTo: rightLabel.centerXAnchor),
             rightView.widthAnchor.constraint(equalToConstant: 42),
             rightView.heightAnchor.constraint(equalToConstant: 42)
         ])
