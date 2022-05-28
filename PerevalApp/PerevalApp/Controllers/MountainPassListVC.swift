@@ -122,6 +122,7 @@ extension MountainPassListVC: BottomPanelDelegate {
         print("🟢🟢 didTapCancelButton BottomPanelDelegate in MountainPassListVC")
         
         model.removeAllSelections()
+        tableViewContainer.isSelectionModeOn = false
         tableViewContainer.reloadMountainPassList()
         updateSendButtonTitle()
     }
