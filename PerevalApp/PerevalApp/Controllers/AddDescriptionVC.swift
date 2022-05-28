@@ -81,6 +81,8 @@ class AddDescriptionVC: UIViewController {
     // MARK: - Private Methods
     private func setupViews() {
         
+        title = "Добавление описания"
+        
         let saveButton = UIBarButtonItem(title: "Сохранить",
                                          style: .plain,
                                          target: self,

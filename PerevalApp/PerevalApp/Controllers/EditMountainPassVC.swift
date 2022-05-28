@@ -282,6 +282,9 @@ class EditMountainPassVC: UIViewController {
     
     // MARK: - Private Methods
     private func setupViews() {
+        
+        title = "Редактирование перевала"
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(textField)
