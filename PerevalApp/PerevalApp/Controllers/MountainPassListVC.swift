@@ -30,8 +30,16 @@ class MountainPassListVC: UIViewController {
         
         view.backgroundColor = .white
         
-        title = "Лоханкин Васисуалий"
-        let logoutButton = UIBarButtonItem(title: "Remove User", style: .plain, target: self, action: #selector(didTapRemoveUser))
+        if let name = UserSettings.currentUser?.name,
+           let surname = UserSettings.currentUser?.surname {
+            title = "\(surname) \(name)"
+        }
+        
+        let logoutButtonImage = UIImage(named: "logOut")
+        let logoutButton = UIBarButtonItem(image: logoutButtonImage,
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(didTapRemoveUser))
         navigationItem.setRightBarButton(logoutButton, animated: true)
         
         setupViews()
@@ -101,7 +109,7 @@ extension MountainPassListVC: EmptyViewContainerDelegate {
 // MARK: - TableViewContainerDelegate
 extension MountainPassListVC: TableViewContainerDelegate {
     func didSelectRowFor(item: Int) {
-
+        
         if tableViewContainer.isSelectionModeOn {
             let isSelected = model.mountains[item].isSelected
             model.setSelectionFor(item: item, isSelected: !isSelected)
