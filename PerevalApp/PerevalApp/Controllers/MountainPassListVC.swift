@@ -142,8 +142,6 @@ extension MountainPassListVC: TableViewContainerDelegate {
 // MARK: - TableViewContainerDelegate
 extension MountainPassListVC: BottomPanelDelegate {
     func didTapCancelButton() {
-        print("🟢🟢 didTapCancelButton BottomPanelDelegate in MountainPassListVC")
-        
         model.removeAllSelections()
         bottomPanel.hideButtons()
         isBottomPanelVisible = false

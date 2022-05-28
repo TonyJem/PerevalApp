@@ -59,8 +59,6 @@ class BottomPanel: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        
-        backgroundColor = .systemGray5
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(separatorView)
@@ -72,7 +70,6 @@ class BottomPanel: UIView {
     
     // MARK: - Actions
     @objc private func didTapCancelButton() {
-        print("🟢 didTapCancelButton in BottomPanel")
         delegate?.didTapCancelButton()
     }
     
