@@ -144,7 +144,8 @@ extension MountainPassListVC: TableViewContainerDelegate {
     }
     
     func didTapOnEdit() {
-        print("🟢 didTapOnEdit via delegates to MountainPassListVC")
+        let editMountainPassVC = EditMountainPassVC()
+        self.navigationController?.pushViewController(editMountainPassVC, animated: true)
     }
 }
 
