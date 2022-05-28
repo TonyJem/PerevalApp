@@ -3,6 +3,7 @@ import UIKit
 protocol PhotoContainerDelegate: AnyObject {
     func didTapOnGaleryView()
     func didAddImage(image: Image)
+    func didAddPhoto(photo: Photo)
 }
 
 class PhotoContainer: UIView {
@@ -168,18 +169,23 @@ class PhotoContainer: UIView {
             return
         }
         
+        guard let selectedRowIndex = selectedRowIndex else {
+            print("🔴 Can't set selectedRowIndex for picture. Check code!")
+            return
+        }
+
+        
         let imageData: NSData = unwrImage.pngData()! as NSData
         
         let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-        print("🟢🟢🟢🟢🟢 strBase64: \(strBase64)")
         
         let title = "\(pictureTitle) - \(pictureDescription)"
-        let imageObject = Image(url: strBase64, title: title)
+        
+        let photoObject = Photo(index: selectedRowIndex, url: strBase64, title: title)
         
         photoImageView.image = unwrImage
         
-        print("🟢🟢🟢🟢🟢🟢 Will call delegate?.didAddImage(image: imageObject)")
-        delegate?.didAddImage(image: imageObject)
+        delegate?.didAddPhoto(photo: photoObject)
     }
     
     

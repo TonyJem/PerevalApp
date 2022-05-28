@@ -527,16 +527,23 @@ extension EditMountainPassVC: UIImagePickerControllerDelegate, UINavigationContr
 
 // MARK: - PhotoContainerDelegate
 extension EditMountainPassVC: PhotoContainerDelegate {
+    func didAddImage(image: Image) {
+        print("🔴 didAddImage is not implemented yet")
+    }
+    
+    func didAddPhoto(photo: Photo) {
+        print("🔴 didAddPhoto is not implemented yet")
+    }
+    
+//    func didAddImage(image: Image, with index: Int) {
+//        print("🟢🟢🟢 didAddImage in NewMountainPassVC")
+//        model.addImage(image)
+//    }
     
     func didTapOnGaleryView() {
         print("🟢🟢🟢 didTapOnGaleryView in NewMountainPassVC")
         importPictureFromGallery()
         photoContainer.hideEntriesAndShowPicture()
-    }
-    
-    func didAddImage(image: Image) {
-        print("🟢🟢🟢 didAddImage in NewMountainPassVC")
-        model.addImage(image)
     }
 }
 

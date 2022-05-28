@@ -1,6 +1,7 @@
 import Foundation
 
 class Mountain {
+    // MARK: - Properties
     var isSelected: Bool
     var name: String
     var upPictureCount: Int
@@ -8,8 +9,14 @@ class Mountain {
     var downPictureCount: Int
     var message: String
     var status: Status
+    
     var images: [Image] = []
     
+    private var goUpImages: [[Photo]] = [[],[],[]]          // [["Подъём"], ["Перевальный взлёт"], ["Середина подъёма"]]
+    private var passPointImages: [[Photo]] = [[],[],[],[]]  // [["Седловина"], ["Тур"], ["Записка"], ["Группа на перевале"]
+    private var goDownImages: [[Photo]] = [[],[],[]]        // [["Спуск"], ["Перевальный взлёт (обратно)"], ["Середина спуска"]]
+    
+    // MARK: - Init
     init(isSelected: Bool = false,
          name: String,
          upPictureCount: Int = 0,
@@ -27,8 +34,38 @@ class Mountain {
         self.message = message
         self.status = status
     }
+    
+    // MARK: - Public Methods
+    func setPhoto(photo: Photo) {
+        print("🟠 Will set photoIndex: \(photo.index)")
+        switch photo.index {
+        case 0:
+            goUpImages[0].append(photo)
+        case 1:
+            goUpImages[1].append(photo)
+        case 2:
+            goUpImages[2].append(photo)
+        case 3:
+            passPointImages[0].append(photo)
+        case 4:
+            passPointImages[1].append(photo)
+        case 5:
+            passPointImages[2].append(photo)
+        case 6:
+            passPointImages[3].append(photo)
+        case 7:
+            goDownImages[0].append(photo)
+        case 8:
+            goDownImages[1].append(photo)
+        case 9:
+            goDownImages[2].append(photo)
+        default:
+            break
+        }
+    }
 }
 
+// MARK: - Status
 struct Status {
     enum StatusType {
         case template       // черновик или тот, что уже готово, но ни разу не пробовали высылать
@@ -44,6 +81,14 @@ struct Status {
     var message: String?
 }
 
+// MARK: - Photo
+struct Photo {
+    var index: Int
+    var url: String
+    var title: String
+}
+
+// MARK: - MountainModel
 class MountainModel {
     // MARK: - Mock Data:
     private var mountain0 = Mountain(isSelected: false,

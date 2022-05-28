@@ -5,7 +5,7 @@ class AddDescriptionVC: UIViewController {
     // MARK: - Properties
     var mountainPass: Mountain?
     
-    private var image: Image?
+    private var photo: Photo?
     
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 500)
@@ -68,9 +68,13 @@ class AddDescriptionVC: UIViewController {
     }
     
     @objc private func didTapSaveButton() {
-        if let image = self.image {
-            mountainPass?.images.append(image)
+        
+        guard let photo = self.photo else {
+            print("🔴 Photo is nil in AddDescriptionVC")
+            return
         }
+
+        mountainPass?.setPhoto(photo: photo)
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -108,14 +112,17 @@ extension AddDescriptionVC: UIImagePickerControllerDelegate, UINavigationControl
 
 // MARK: - PhotoContainerDelegate
 extension AddDescriptionVC: PhotoContainerDelegate {
+    func didAddImage(image: Image) {
+        print("🔴 didAddImage is not implemented yet")
+    }
+    
+    func didAddPhoto(photo: Photo) {
+        self.photo = photo
+    }
     
     func didTapOnGaleryView() {
         importPictureFromGallery()
         photoContainer.hideEntriesAndShowPicture()
-    }
-    
-    func didAddImage(image: Image) {
-        self.image = image
     }
 }
 
