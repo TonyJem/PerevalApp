@@ -29,6 +29,19 @@ class AddDescriptionVC: UIViewController {
         return contentView
     }()
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .ptSans22()
+        label.textColor = .black
+        label.textAlignment = .left
+        label.text = "titleLabel Text Here"
+        
+        label.backgroundColor = .systemGray6
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let photoContainer = PhotoContainer()
     
     private lazy var bottomSaveButton: UIButton = {
@@ -92,6 +105,7 @@ class AddDescriptionVC: UIViewController {
         view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        contentView.addSubview(titleLabel)
         contentView.addSubview(photoContainer)
         contentView.addSubview(bottomSaveButton)
         
@@ -137,7 +151,14 @@ extension AddDescriptionVC {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            photoContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            titleLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            photoContainer.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             photoContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             photoContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             photoContainer.heightAnchor.constraint(equalToConstant: 500)
