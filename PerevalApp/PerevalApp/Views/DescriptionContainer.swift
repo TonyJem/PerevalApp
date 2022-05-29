@@ -74,6 +74,7 @@ class DescriptionContainer: UIView {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemPink
+//        tableView.separatorStyle = .none
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
