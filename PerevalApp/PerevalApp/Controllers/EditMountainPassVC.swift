@@ -195,13 +195,7 @@ class EditMountainPassVC: UIViewController {
         return view
     }()
     
-    private var descriptionView: UIView = {
-       let view = UIView()
-        view.backgroundColor = .systemGray6
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private var descriptionView = DescriptionContainer()
     
     private lazy var bottomSaveButton: UIButton = {
         let button = UIButton(type: .system)
