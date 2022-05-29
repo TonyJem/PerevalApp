@@ -73,8 +73,7 @@ class DescriptionContainer: UIView {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .systemPink
-//        tableView.separatorStyle = .none
+        tableView.separatorStyle = .none
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -95,7 +94,6 @@ class DescriptionContainer: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        backgroundColor = .systemGray6
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(separatorView1)
@@ -179,7 +177,7 @@ extension DescriptionContainer {
             tableView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
