@@ -128,8 +128,6 @@ extension MountainPassListVC: EmptyViewContainerDelegate {
 // MARK: - TableViewContainerDelegate
 extension MountainPassListVC: TableViewContainerDelegate {
     
-    
-    
     func didSelectRowFor(item: Int) {
         
         if tableViewContainer.isSelectionModeOn {
@@ -153,10 +151,9 @@ extension MountainPassListVC: TableViewContainerDelegate {
         self.navigationController?.pushViewController(addDescriptionVC, animated: true)
     }
     
-    func didTapOnEdit() {
+    func didTapOnEdit(with idIndex: Int) {
         let editMountainPassVC = EditMountainPassVC()
-        
-        
+        editMountainPassVC.mountainPass = model.mountains[idIndex]
         self.navigationController?.pushViewController(editMountainPassVC, animated: true)
     }
 }

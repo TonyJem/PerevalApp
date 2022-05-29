@@ -2,7 +2,7 @@ import UIKit
 
 protocol MountainTableViewCellDelegate: AnyObject {
     func didTapOnAddDescription(with idIndex: Int)
-    func didTapOnEdit()
+    func didTapOnEdit(with idIndex: Int)
 }
 
 class MountainTableViewCell: UITableViewCell {
@@ -112,7 +112,8 @@ extension MountainTableViewCell: EditToolsContainerDelegate {
     }
 
     func didTapOnRightView() {
-        mountainTableViewCellDelegate?.didTapOnEdit()
+        guard let idIndex = self.idIndex else { return }
+        mountainTableViewCellDelegate?.didTapOnEdit(with: idIndex)
     }
 }
 

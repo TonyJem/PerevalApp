@@ -3,7 +3,7 @@ import UIKit
 protocol TableViewContainerDelegate: AnyObject {
     func didSelectRowFor(item: Int)
     func didTapOnAddDescription(with idIndex: Int)
-    func didTapOnEdit()
+    func didTapOnEdit(with idIndex: Int)
 }
 
 class TableViewContainer: UIView {
@@ -100,12 +100,13 @@ extension TableViewContainer: UITableViewDelegate {
 
 // MARK: - MountainTableViewCellDelegate
 extension TableViewContainer: MountainTableViewCellDelegate {
+    
     func didTapOnAddDescription(with idIndex: Int) {
         delegate?.didTapOnAddDescription(with: idIndex)
     }
     
-    func didTapOnEdit() {
-        delegate?.didTapOnEdit()
+    func didTapOnEdit(with idIndex: Int) {
+        delegate?.didTapOnEdit(with: idIndex)
     }
 }
 
