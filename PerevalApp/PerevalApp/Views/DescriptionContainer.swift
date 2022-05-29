@@ -2,8 +2,21 @@ import UIKit
 
 class DescriptionContainer: UIView {
     
+    // MARK: - Properties
+    
+    //Todo need to transform into clases and subclause
+    private lazy var menuRows: [String] = {
+        var menuRows: [String] = []
+        for section in TableSection.allCases {
+            menuRows.append(section.rawValue)
+            section.rows.forEach { row in
+                menuRows.append(row)
+            }
+        }
+        return menuRows
+    }()
+    
     // MARK: - Views
-
     private let separatorView1 = SeparatorView()
     
     private let titleLabel: UILabel = {
@@ -45,6 +58,7 @@ class DescriptionContainer: UIView {
         
         setupViews()
         setConstraints()
+        setupDelegates()
     }
     
     required init?(coder: NSCoder) {
@@ -61,10 +75,28 @@ class DescriptionContainer: UIView {
         addSubview(separatorView2)
         addSubview(subTitleLabel)
         addSubview(tableView)
-        
+    }
+    
+    private func setupDelegates() {
+        tableView.dataSource = self
     }
     
     // MARK: - Public Methods
+}
+
+// MARK: - UITableViewDataSource
+extension DescriptionContainer: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuRows.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = menuRows[indexPath.row]
+        
+        return cell
+    }
 }
 
 // MARK: - SetConstraints
