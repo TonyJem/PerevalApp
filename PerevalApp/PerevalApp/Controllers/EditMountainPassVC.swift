@@ -3,6 +3,9 @@ import UIKit
 class EditMountainPassVC: UIViewController {
     
     // MARK: - Properties
+    
+    var mountainPass: Mountain?
+    
     private let model = MountainPassModel()
     private let coordinatesModal = CoordinatesModal()
     
@@ -287,6 +290,8 @@ class EditMountainPassVC: UIViewController {
         contentView.addSubview(bottomSaveButton)
         
         updateCoordinates()
+        
+        descriptionView.mountainPass = mountainPass
     }
     
     private func setDelegates() {

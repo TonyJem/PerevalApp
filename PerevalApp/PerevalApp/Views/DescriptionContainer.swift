@@ -15,8 +15,9 @@ struct MenuCellData {
 class DescriptionContainer: UIView {
     
     // MARK: - Properties
+    var mountainPass: Mountain?
     
-    private lazy var menuRows: [MenuCellData] = {
+    private lazy var MenuCellDatas: [MenuCellData] = {
         
         var menuRows: [MenuCellData] = []
         
@@ -119,13 +120,24 @@ class DescriptionContainer: UIView {
 extension DescriptionContainer: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuRows.count
+        return MenuCellDatas.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = menuRows[indexPath.row].title
         
+        
+        guard let mountain = self.mountainPass else {
+            print("🔴 mountain is nil in DescriptionContainer")
+            return cell
+        }
+        let section = MenuCellDatas[indexPath.row].section
+        let row = MenuCellDatas[indexPath.row].row
+        
+        let count = mountain.getCountFor(section: section,
+                                         row: row)
+        let text = "\(MenuCellDatas[indexPath.row].title) --> \(count)"
+        cell.textLabel?.text = text
         return cell
     }
 }
