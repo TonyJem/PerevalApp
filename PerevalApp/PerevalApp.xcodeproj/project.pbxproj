@@ -47,7 +47,6 @@
 		3A8F45B52842145F00D0ECA7 /* BottomPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45B42842145E00D0ECA7 /* BottomPanel.swift */; };
 		3A8F45B82842A1BC00D0ECA7 /* EditMountainPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45B72842A1BC00D0ECA7 /* EditMountainPassVC.swift */; };
 		3A8F45BA2842A32100D0ECA7 /* AddDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45B92842A32100D0ECA7 /* AddDescriptionVC.swift */; };
-		3A8F45BC284340C100D0ECA7 /* BlackSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F45BB284340C100D0ECA7 /* BlackSeparatorView.swift */; };
 		3A9BCE352830D14E00C510FD /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */; };
 		3AC8A02D283651CE005CEBFD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A02C283651CD005CEBFD /* SplashViewController.swift */; };
 		3AC8A02F28365238005CEBFD /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A02E28365238005CEBFD /* RootViewController.swift */; };
@@ -105,7 +104,6 @@
 		3A8F45B42842145E00D0ECA7 /* BottomPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPanel.swift; sourceTree = "<group>"; };
 		3A8F45B72842A1BC00D0ECA7 /* EditMountainPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMountainPassVC.swift; sourceTree = "<group>"; };
 		3A8F45B92842A32100D0ECA7 /* AddDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionVC.swift; sourceTree = "<group>"; };
-		3A8F45BB284340C100D0ECA7 /* BlackSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackSeparatorView.swift; sourceTree = "<group>"; };
 		3A9BCE342830D14E00C510FD /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 		3AC8A02C283651CD005CEBFD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		3AC8A02E28365238005CEBFD /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 				3A2ED0D5283178D200285746 /* CategoryButton.swift */,
 				3A2ED0D82832253300285746 /* AdditionButton.swift */,
 				3A2ED0DA2832612800285746 /* SeparatorView.swift */,
-				3A8F45BB284340C100D0ECA7 /* BlackSeparatorView.swift */,
 				3A2ED0DE28326A4E00285746 /* CalendarView.swift */,
 				3A2ED0E0283287D200285746 /* TodayView.swift */,
 				3A2ED0E22832991500285746 /* CoordinatesView.swift */,
@@ -406,7 +403,6 @@
 				3A8F45B32840EEC600D0ECA7 /* EditToolsContainer.swift in Sources */,
 				3AC8A02F28365238005CEBFD /* RootViewController.swift in Sources */,
 				3AC8A048283A3FC1005CEBFD /* AltitudeField.swift in Sources */,
-				3A8F45BC284340C100D0ECA7 /* BlackSeparatorView.swift in Sources */,
 				3A2ED0E32832991600285746 /* CoordinatesView.swift in Sources */,
 				3A2ED0EC2832C7E800285746 /* PhotoView.swift in Sources */,
 				3AC8A041283963BA005CEBFD /* CoordinatesModal.swift in Sources */,
