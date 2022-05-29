@@ -9,13 +9,7 @@ class BottomPanel: UIView {
     weak var delegate: BottomPanelDelegate?
     
     // MARK: - Views
-    private let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let blackSeparatorView = BlackSeparatorView()
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
@@ -61,7 +55,7 @@ class BottomPanel: UIView {
     private func setupViews() {
         translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(separatorView)
+        addSubview(blackSeparatorView)
         addSubview(cancelButton)
         addSubview(sendButton)
         
@@ -98,10 +92,10 @@ extension BottomPanel {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: topAnchor),
-            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 1.5)
+            blackSeparatorView.topAnchor.constraint(equalTo: topAnchor),
+            blackSeparatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            blackSeparatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            blackSeparatorView.heightAnchor.constraint(equalToConstant: 1.5)
         ])
         
         NSLayoutConstraint.activate([
