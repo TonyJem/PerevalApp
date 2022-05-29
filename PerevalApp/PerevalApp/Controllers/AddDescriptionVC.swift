@@ -34,9 +34,7 @@ class AddDescriptionVC: UIViewController {
         label.font = .ptSans22()
         label.textColor = .black
         label.textAlignment = .left
-        label.text = "titleLabel Text Here"
-        
-        label.backgroundColor = .systemGray6
+        label.text = ""
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -86,7 +84,7 @@ class AddDescriptionVC: UIViewController {
             print("🔴 Photo is nil in AddDescriptionVC")
             return
         }
-
+        
         mountainPass?.setPhoto(photo: photo)
         navigationController?.popToRootViewController(animated: true)
     }
@@ -109,9 +107,11 @@ class AddDescriptionVC: UIViewController {
         contentView.addSubview(photoContainer)
         contentView.addSubview(bottomSaveButton)
         
-        guard let photosCount = mountainPass?.photosCount else { return }
-        let nextNumber = photosCount + 1
-        photoContainer.updatePhotoNumLabel(with: nextNumber)
+        guard let mountainPass = self.mountainPass else { return }
+        
+        let nextPhotoNumber = mountainPass.photosCount + 1
+        photoContainer.updatePhotoNumLabel(with: nextPhotoNumber)
+        titleLabel.text = mountainPass.title
     }
     
     private func setDelegates() {
