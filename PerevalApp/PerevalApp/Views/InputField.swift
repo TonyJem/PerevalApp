@@ -25,6 +25,23 @@ enum InputFieldType {
         }
     }
     
+    var placeHolder: String {
+        switch self {
+        case .surname:
+            return ""
+        case .name:
+            return ""
+        case .patronymic:
+            return ""
+        case .email:
+            return "yourname@mail.ru"
+        case .phone:
+            return "+7_"
+        case .mediaLink:
+            return "ссылка на соцсети"
+        }
+    }
+    
     var userSettingsText: String? {
         switch self {
         case .surname:
@@ -93,6 +110,10 @@ class InputField: UIView {
     // MARK: - Public Methods
     func setTitle(_ title: String) {
         descriptionLabel.text = title
+    }
+    
+    func setPlaceHolder(placeholderText: String) {
+        textField.placeholder = placeholderText
     }
     
     func update(_ text: String?) {
