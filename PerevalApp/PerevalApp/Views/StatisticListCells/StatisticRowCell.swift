@@ -3,9 +3,13 @@ import UIKit
 class StatisticRowCell: UITableViewCell {
     
     // MARK: - Properties
-    var cellData: MenuCellData?
+    var cellData: MenuCellData? {
+        didSet {
+            updateCellUI()
+        }
+    }
     
-    var leadingInset: CGFloat {
+    private var leadingInset: CGFloat {
         guard let cellData = self.cellData else {
             return 0.0
         }
@@ -54,20 +58,17 @@ class StatisticRowCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(counterLabel)
-        
-        updateCellUI()
     }
     
     private func updateCellUI() {
         
         guard let cellData = self.cellData else {
-            print("🔴 mountain is nil in DescriptionContainer")
+            print("🔴 cellData is nil in StatisticRowCell")
             return
         }
         titleLabel.text = cellData.title
         counterLabel.text = String(cellData.counter)
     }
-    
 }
 
 // MARK: - SetConstraints

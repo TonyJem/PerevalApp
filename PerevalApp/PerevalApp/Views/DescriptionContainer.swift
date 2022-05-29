@@ -13,6 +13,10 @@ struct MenuCellData {
 
 class DescriptionContainer: UIView {
     
+    enum CellIdentifiers: String {
+        case cell
+    }
+    
     // MARK: - Properties
     var mountainPass: Mountain?
     
@@ -98,6 +102,10 @@ class DescriptionContainer: UIView {
         addSubview(separatorView2)
         addSubview(subTitleLabel)
         addSubview(tableView)
+        
+        tableView.register(StatisticRowCell.self,
+                           forCellReuseIdentifier: CellIdentifiers.cell.rawValue)
+        tableView.rowHeight = 40.0
     }
     
     private func setupDelegates() {
@@ -123,9 +131,13 @@ extension DescriptionContainer: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let text = "\(MenuCellDatas[indexPath.row].title) --> \(MenuCellDatas[indexPath.row].counter)"
-        cell.textLabel?.text = text
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cell.rawValue,
+                                                 for: indexPath) as! StatisticRowCell
+        
+//        let text = "\(MenuCellDatas[indexPath.row].title) --> \(MenuCellDatas[indexPath.row].counter)"
+//        cell.textLabel?.text = text
+        
+        cell.cellData = MenuCellDatas[indexPath.row]
         return cell
     }
 }
