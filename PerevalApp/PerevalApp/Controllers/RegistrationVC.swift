@@ -88,7 +88,7 @@ class RegistrationVC: UIViewController {
         button.titleLabel?.font = .ptSans22()
         button.setTitle("Войти", for: .normal)
         
-        button.backgroundColor = .dimedBlue
+        button.backgroundColor = .mainBlue
         button.clipsToBounds = true
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -182,11 +182,11 @@ extension RegistrationVC {
             stackView.topAnchor.constraint(equalTo: bulletLabel.bottomAnchor, constant: 18),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-            stackView.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -18)
+            stackView.heightAnchor.constraint(equalToConstant: 380)
         ])
         
         NSLayoutConstraint.activate([
-            enterButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100),
+            enterButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             enterButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             enterButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             enterButton.heightAnchor.constraint(equalToConstant: 56)
