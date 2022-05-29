@@ -86,21 +86,6 @@ class Mountain {
             break
         }
     }
-    
-    func getPhotoCountFor(section: Int, row: Int) -> String {
-        var count = 0
-        switch section {
-        case 0:
-            count = goUpPhotos[row].count
-        case 1:
-            count = passPointPhotos[row].count
-        case 2:
-            count = goDownPhotos[row].count
-        default:
-            break
-        }
-        return String(count)
-    }
 }
 
 // MARK: - Status

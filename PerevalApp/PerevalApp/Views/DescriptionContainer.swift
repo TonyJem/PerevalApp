@@ -1,42 +1,33 @@
 import UIKit
 
-enum MenuCellType {
-    case clause
-    case subclause
-}
-
-struct MenuCell {
-    let title: String
-    let type: MenuCellType
-    let count: String
-}
-
 class DescriptionContainer: UIView {
+    
+    enum MenuCell {
+        case clause
+        case subclause
+    }
     
     // MARK: - Properties
     
-    var mountain: Mountain?
-    
-    private lazy var menuCells: [MenuCell] = {
+    private lazy var menuRows: [(title: String, type: MenuCell, section: Int, row: Int)] = {
         
-        var menuCells: [MenuCell] = []
-        
-        guard let mountain = self.mountain else { return menuCells }
+        var menuRows: [(title: String, type: MenuCell, section: Int, row: Int)] = []
         
         for (sectionIndex, section) in TableSection.allCases.enumerated() {
-            let clauseCell = MenuCell(title: section.rawValue,
-                                      type: .clause,
-                                      count: mountain.getPhotoCountFor(section: sectionIndex, row: 0))
-            menuCells.append(clauseCell)
+            
+            let createClauseRow = createClauseRow(entryTitle: section.rawValue,
+                                                  section: sectionIndex,
+                                                  row: 0)
+            menuRows.append(createClauseRow)
             
             for (rowIndex, row) in section.rows.enumerated() {
-                let subClauseCell = MenuCell(title: section.rawValue,
-                                             type: .subclause,
-                                             count: mountain.getPhotoCountFor(section: sectionIndex, row: 0))
-                menuCells.append(subClauseCell)
+                let subClauseRow = createSubClauseRow(entryTitle: row,
+                                                      section: sectionIndex,
+                                                      row: rowIndex + 1)
+                menuRows.append(subClauseRow)
             }
         }
-        return menuCells
+        return menuRows
     }()
     
     // MARK: - Views
@@ -104,6 +95,14 @@ class DescriptionContainer: UIView {
         tableView.dataSource = self
     }
     
+    private func createClauseRow(entryTitle: String, section: Int, row: Int) -> (title: String, type: MenuCell, section: Int, row: Int) {
+        return (title: entryTitle, type: .clause, section: section, row: row)
+    }
+    
+    private func createSubClauseRow(entryTitle: String, section: Int, row: Int) -> (title: String, type: MenuCell, section: Int, row: Int) {
+        return (title: entryTitle, type: .subclause, section: section, row: row)
+    }
+    
     // MARK: - Public Methods
 }
 
@@ -111,12 +110,12 @@ class DescriptionContainer: UIView {
 extension DescriptionContainer: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuCells.count
+        return menuRows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = menuCells[indexPath.row].title
+        cell.textLabel?.text = menuRows[indexPath.row].title
         
         return cell
     }
