@@ -9,15 +9,6 @@ class StatisticRowCell: UITableViewCell {
         }
     }
     
-    private var leadingInset: CGFloat {
-        guard let cellData = self.cellData else {
-            return 0.0
-        }
-
-        return cellData.type == .clause ? 0.0 : 10.0
-    }
-    
-    
     // MARK: - Views
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -66,7 +57,9 @@ class StatisticRowCell: UITableViewCell {
             print("🔴 cellData is nil in StatisticRowCell")
             return
         }
-        titleLabel.text = cellData.title
+        
+        let text = cellData.type == .clause ? cellData.title : "   \(cellData.title)"
+        titleLabel.text = text
         counterLabel.text = String(cellData.counter)
     }
 }
@@ -77,7 +70,7 @@ extension StatisticRowCell {
         
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25 + leadingInset),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             titleLabel.trailingAnchor.constraint(equalTo: counterLabel.leadingAnchor, constant: -15),
             titleLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
