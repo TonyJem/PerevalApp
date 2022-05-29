@@ -8,8 +8,7 @@ enum MenuCellType {
 struct MenuCellData {
     let title: String
     let type: MenuCellType
-    let section: Int
-    let row: Int
+    let counter: Int
 }
 
 class DescriptionContainer: UIView {
@@ -20,20 +19,20 @@ class DescriptionContainer: UIView {
     private lazy var MenuCellDatas: [MenuCellData] = {
         
         var menuRows: [MenuCellData] = []
+        guard let mountain = self.mountainPass else {
+            print("🔴 mountain is nil in DescriptionContainer")
+            return menuRows
+        }
         
         for (sectionIndex, section) in TableSection.allCases.enumerated() {
+            let counter = mountain.getCountFor(section: sectionIndex, row: 0)
             let clauseCellData = MenuCellData(title: section.rawValue,
-                                                    type: .clause,
-                                                    section: sectionIndex,
-                                                    row: 0)
+                                              type: .clause,
+                                              counter: counter)
             menuRows.append(clauseCellData)
-            
             for (rowIndex, row) in section.rows.enumerated() {
-                
-                let subClauseCellData = MenuCellData(title: row,
-                                                           type: .subclause,
-                                                           section: sectionIndex,
-                                                           row: rowIndex + 1)
+                let counter = mountain.getCountFor(section: sectionIndex, row: rowIndex + 1)
+                let subClauseCellData = MenuCellData(title: row, type: .subclause, counter: counter)
                 menuRows.append(subClauseCellData)
             }
         }
@@ -125,18 +124,7 @@ extension DescriptionContainer: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        
-        
-        guard let mountain = self.mountainPass else {
-            print("🔴 mountain is nil in DescriptionContainer")
-            return cell
-        }
-        let section = MenuCellDatas[indexPath.row].section
-        let row = MenuCellDatas[indexPath.row].row
-        
-        let count = mountain.getCountFor(section: section,
-                                         row: row)
-        let text = "\(MenuCellDatas[indexPath.row].title) --> \(count)"
+        let text = "\(MenuCellDatas[indexPath.row].title) --> \(MenuCellDatas[indexPath.row].counter)"
         cell.textLabel?.text = text
         return cell
     }
