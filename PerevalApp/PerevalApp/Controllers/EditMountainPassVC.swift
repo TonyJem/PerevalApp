@@ -195,6 +195,14 @@ class EditMountainPassVC: UIViewController {
         return view
     }()
     
+    private var descriptionView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .systemGray6
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var bottomSaveButton: UIButton = {
         let button = UIButton(type: .system)
         
@@ -281,6 +289,7 @@ class EditMountainPassVC: UIViewController {
         contentView.addSubview(separatorView2)
         contentView.addSubview(coordinatesView)
         contentView.addSubview(altitudeView)
+        contentView.addSubview(descriptionView)
         contentView.addSubview(bottomSaveButton)
         
         updateCoordinates()
@@ -535,9 +544,17 @@ extension EditMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            bottomSaveButton.topAnchor.constraint(equalTo: altitudeView.bottomAnchor, constant: 60),
-            bottomSaveButton.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 30),
-            bottomSaveButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -30),
+            descriptionView.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
+            descriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            descriptionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionView.heightAnchor.constraint(equalToConstant: 500)
+        ])
+        
+        
+        NSLayoutConstraint.activate([
+            bottomSaveButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 15),
+            bottomSaveButton.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            bottomSaveButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             bottomSaveButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
