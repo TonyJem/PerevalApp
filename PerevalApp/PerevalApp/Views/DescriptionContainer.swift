@@ -132,10 +132,6 @@ extension DescriptionContainer: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cell.rawValue,
                                                  for: indexPath) as! StatisticRowCell
-        
-//        let text = "\(MenuCellDatas[indexPath.row].title) --> \(MenuCellDatas[indexPath.row].counter)"
-//        cell.textLabel?.text = text
-        
         cell.cellData = MenuCellDatas[indexPath.row]
         return cell
     }

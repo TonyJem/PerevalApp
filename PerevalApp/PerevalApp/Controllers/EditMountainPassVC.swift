@@ -10,7 +10,7 @@ class EditMountainPassVC: UIViewController {
     private let coordinatesModal = CoordinatesModal()
     
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 700)
+        CGSize(width: view.frame.width, height: view.frame.height + 550)
     }
     
     // MARK: - Views
@@ -200,6 +200,24 @@ class EditMountainPassVC: UIViewController {
     
     private var descriptionView = DescriptionContainer()
     
+    private lazy var addDescriptionButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.tintColor = .mainBlue
+        button.titleLabel?.font = .ptSans22()
+        button.setTitle("ДОБАВИТЬ ОПИСАНИЕ", for: .normal)
+        
+        button.layer.borderColor = UIColor.mainBlue.cgColor
+        button.layer.borderWidth = 1.0
+        
+        button.backgroundColor = .white
+        button.clipsToBounds = true
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapAddDescriptionButton), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var bottomSaveButton: UIButton = {
         let button = UIButton(type: .system)
         
@@ -240,6 +258,7 @@ class EditMountainPassVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         infoButton.layer.cornerRadius = infoButton.frame.height / 2
+        addDescriptionButton.layer.cornerRadius = addDescriptionButton.frame.height / 2
         bottomSaveButton.layer.cornerRadius = bottomSaveButton.frame.height / 2
     }
     
@@ -257,6 +276,10 @@ class EditMountainPassVC: UIViewController {
             self?.model.setCoordinates(coordinates)
             self?.updateCoordinates()
         }
+    }
+    
+    @objc private func didTapAddDescriptionButton() {
+        print("🟢 didTapAddDescriptionButton in EditMountainPassVC")
     }
     
     @objc private func didTapSaveButton() {
@@ -287,6 +310,7 @@ class EditMountainPassVC: UIViewController {
         contentView.addSubview(coordinatesView)
         contentView.addSubview(altitudeView)
         contentView.addSubview(descriptionView)
+        contentView.addSubview(addDescriptionButton)
         contentView.addSubview(bottomSaveButton)
         
         updateCoordinates()
@@ -432,7 +456,6 @@ extension EditMountainPassVC: CalendarViewDelegate {
     }
 }
 
-
 // MARK: - SetConstraints
 extension EditMountainPassVC {
     private func setConstraints() {
@@ -549,9 +572,15 @@ extension EditMountainPassVC {
             descriptionView.heightAnchor.constraint(equalToConstant: 511)
         ])
         
+        NSLayoutConstraint.activate([
+            addDescriptionButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 15),
+            addDescriptionButton.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            addDescriptionButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
+            addDescriptionButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
         
         NSLayoutConstraint.activate([
-            bottomSaveButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 15),
+            bottomSaveButton.topAnchor.constraint(equalTo: addDescriptionButton.bottomAnchor, constant: 15),
             bottomSaveButton.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             bottomSaveButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
             bottomSaveButton.heightAnchor.constraint(equalToConstant: 50)
