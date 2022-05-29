@@ -7,7 +7,7 @@ class EditMountainPassVC: UIViewController {
     private let coordinatesModal = CoordinatesModal()
     
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 500)
+        CGSize(width: view.frame.width, height: view.frame.height + 700)
     }
     
     // MARK: - Views

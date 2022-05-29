@@ -2,15 +2,29 @@ import UIKit
 
 class DescriptionContainer: UIView {
     
+    enum MenuCell {
+        case clause
+        case subclause
+    }
+    
     // MARK: - Properties
     
-    //Todo need to transform into clases and subclause
-    private lazy var menuRows: [String] = {
-        var menuRows: [String] = []
-        for section in TableSection.allCases {
-            menuRows.append(section.rawValue)
-            section.rows.forEach { row in
-                menuRows.append(row)
+    private lazy var menuRows: [(title: String, type: MenuCell, section: Int, row: Int)] = {
+        
+        var menuRows: [(title: String, type: MenuCell, section: Int, row: Int)] = []
+        
+        for (sectionIndex, section) in TableSection.allCases.enumerated() {
+            
+            let createClauseRow = createClauseRow(entryTitle: section.rawValue,
+                                                  section: sectionIndex,
+                                                  row: 0)
+            menuRows.append(createClauseRow)
+            
+            for (rowIndex, row) in section.rows.enumerated() {
+                let subClauseRow = createSubClauseRow(entryTitle: row,
+                                                      section: sectionIndex,
+                                                      row: rowIndex + 1)
+                menuRows.append(subClauseRow)
             }
         }
         return menuRows
@@ -81,6 +95,14 @@ class DescriptionContainer: UIView {
         tableView.dataSource = self
     }
     
+    private func createClauseRow(entryTitle: String, section: Int, row: Int) -> (title: String, type: MenuCell, section: Int, row: Int) {
+        return (title: entryTitle, type: .clause, section: section, row: row)
+    }
+    
+    private func createSubClauseRow(entryTitle: String, section: Int, row: Int) -> (title: String, type: MenuCell, section: Int, row: Int) {
+        return (title: entryTitle, type: .subclause, section: section, row: row)
+    }
+    
     // MARK: - Public Methods
 }
 
@@ -93,7 +115,7 @@ extension DescriptionContainer: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = menuRows[indexPath.row]
+        cell.textLabel?.text = menuRows[indexPath.row].title
         
         return cell
     }
