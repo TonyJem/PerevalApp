@@ -205,8 +205,6 @@ class PhotoContainer: UIView {
     
     // MARK: - Private Methods
     private func setupViews() {
-        
-        backgroundColor = .systemGray6
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(photoNumLabel)
