@@ -5,7 +5,7 @@ enum MenuCellType {
     case subclause
 }
 
-struct MenuCellDate {
+struct MenuCellData {
     let title: String
     let type: MenuCellType
     let section: Int
@@ -16,22 +16,24 @@ class DescriptionContainer: UIView {
     
     // MARK: - Properties
     
-    private lazy var menuRows: [(title: String, type: MenuCellType, section: Int, row: Int)] = {
+    private lazy var menuRows: [MenuCellData] = {
         
-        var menuRows: [(title: String, type: MenuCellType, section: Int, row: Int)] = []
+        var menuRows: [MenuCellData] = []
         
         for (sectionIndex, section) in TableSection.allCases.enumerated() {
-            
-            let createClauseRow = createClauseRow(entryTitle: section.rawValue,
-                                                  section: sectionIndex,
-                                                  row: 0)
-            menuRows.append(createClauseRow)
+            let clauseCellData = MenuCellData(title: section.rawValue,
+                                                    type: .clause,
+                                                    section: sectionIndex,
+                                                    row: 0)
+            menuRows.append(clauseCellData)
             
             for (rowIndex, row) in section.rows.enumerated() {
-                let subClauseRow = createSubClauseRow(entryTitle: row,
-                                                      section: sectionIndex,
-                                                      row: rowIndex + 1)
-                menuRows.append(subClauseRow)
+                
+                let subClauseCellData = MenuCellData(title: row,
+                                                           type: .subclause,
+                                                           section: sectionIndex,
+                                                           row: rowIndex + 1)
+                menuRows.append(subClauseCellData)
             }
         }
         return menuRows
