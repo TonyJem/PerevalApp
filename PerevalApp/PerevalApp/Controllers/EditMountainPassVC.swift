@@ -541,7 +541,7 @@ extension EditMountainPassVC {
             descriptionView.topAnchor.constraint(equalTo: coordinatesView.bottomAnchor, constant: 20),
             descriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             descriptionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            descriptionView.heightAnchor.constraint(equalToConstant: 500)
+            descriptionView.heightAnchor.constraint(equalToConstant: 600)
         ])
         
         

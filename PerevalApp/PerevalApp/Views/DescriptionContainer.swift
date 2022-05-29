@@ -27,10 +27,16 @@ class DescriptionContainer: UIView {
         label.text = "Для каждой фото можно указать\nкоординаты и направление съёмки"
         label.numberOfLines = 0
         
-        label.backgroundColor = .green
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .systemPink
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
     
     // MARK: - Init
@@ -54,6 +60,7 @@ class DescriptionContainer: UIView {
         addSubview(titleLabel)
         addSubview(separatorView2)
         addSubview(subTitleLabel)
+        addSubview(tableView)
         
     }
     
@@ -90,6 +97,13 @@ extension DescriptionContainer {
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             subTitleLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         ])
     }
 }
