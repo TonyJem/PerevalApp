@@ -1,17 +1,24 @@
 import UIKit
 
+enum MenuCellType {
+    case clause
+    case subclause
+}
+
+struct MenuCellDate {
+    let title: String
+    let type: MenuCellType
+    let section: Int
+    let row: Int
+}
+
 class DescriptionContainer: UIView {
-    
-    enum MenuCell {
-        case clause
-        case subclause
-    }
     
     // MARK: - Properties
     
-    private lazy var menuRows: [(title: String, type: MenuCell, section: Int, row: Int)] = {
+    private lazy var menuRows: [(title: String, type: MenuCellType, section: Int, row: Int)] = {
         
-        var menuRows: [(title: String, type: MenuCell, section: Int, row: Int)] = []
+        var menuRows: [(title: String, type: MenuCellType, section: Int, row: Int)] = []
         
         for (sectionIndex, section) in TableSection.allCases.enumerated() {
             
@@ -95,11 +102,11 @@ class DescriptionContainer: UIView {
         tableView.dataSource = self
     }
     
-    private func createClauseRow(entryTitle: String, section: Int, row: Int) -> (title: String, type: MenuCell, section: Int, row: Int) {
+    private func createClauseRow(entryTitle: String, section: Int, row: Int) -> (title: String, type: MenuCellType, section: Int, row: Int) {
         return (title: entryTitle, type: .clause, section: section, row: row)
     }
     
-    private func createSubClauseRow(entryTitle: String, section: Int, row: Int) -> (title: String, type: MenuCell, section: Int, row: Int) {
+    private func createSubClauseRow(entryTitle: String, section: Int, row: Int) -> (title: String, type: MenuCellType, section: Int, row: Int) {
         return (title: entryTitle, type: .subclause, section: section, row: row)
     }
     
