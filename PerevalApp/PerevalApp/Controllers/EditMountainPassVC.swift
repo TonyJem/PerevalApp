@@ -3,12 +3,11 @@ import UIKit
 class EditMountainPassVC: UIViewController {
     
     // MARK: - Properties
-    private let apiService = APIService()
     private let model = MountainPassModel()
     private let coordinatesModal = CoordinatesModal()
     
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 2000)
+        CGSize(width: view.frame.width, height: view.frame.height + 500)
     }
     
     // MARK: - Views
@@ -196,20 +195,18 @@ class EditMountainPassVC: UIViewController {
         return view
     }()
     
-    private let photoContainer = PhotoContainer(photoIndex: 1)
-    
     private lazy var bottomSaveButton: UIButton = {
         let button = UIButton(type: .system)
         
         button.tintColor = .white
         button.titleLabel?.font = .ptSans22()
-        button.setTitle("ОТПРАВИТЬ".uppercased(), for: .normal)
+        button.setTitle("СОХРАНИТЬ", for: .normal)
         
         button.backgroundColor = .mainBlue
         button.clipsToBounds = true
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapBottomSaveButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         return button
     }()
     
@@ -220,7 +217,7 @@ class EditMountainPassVC: UIViewController {
         let saveButton = UIBarButtonItem(title: "Сохранить",
                                          style: .plain,
                                          target: self,
-                                         action: #selector(didTapSave))
+                                         action: #selector(didTapSaveButton))
         navigationItem.setRightBarButton(saveButton, animated: true)
         
         view.backgroundColor = .white
@@ -243,14 +240,7 @@ class EditMountainPassVC: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapInfoButton() {
-        print("🟢 didTapInfoButton in NewMountainPassVC")
-    }
-    
-    @objc func importPictureFromGallery() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.delegate = self
-        present(picker, animated: true)
+        print("🟢 didTapInfoButton in EditMountainPassVC")
     }
     
     @objc private func dismissMyKeyboard() {
@@ -264,20 +254,9 @@ class EditMountainPassVC: UIViewController {
         }
     }
     
-    @objc private func didTapSave() {
-        print("🟢 didTapSave in NewMountainPassVC")
-        /*
-         TODO:
-         it should save currently entered changes, even if
-         add save to model or to DB functionality here
-         need to decide, should we go back or stay in current ViewController
-         */
+    @objc private func didTapSaveButton() {
+        print("🟢 didTapSave in EditMountainPassVC")
         navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @objc private func didTapBottomSaveButton() {
-        print("🟢 didTapBottomSaveButton in NewMountainPassVC")
-        sendAPIrequest()
     }
     
     // MARK: - Private Methods
@@ -302,7 +281,6 @@ class EditMountainPassVC: UIViewController {
         contentView.addSubview(separatorView2)
         contentView.addSubview(coordinatesView)
         contentView.addSubview(altitudeView)
-        contentView.addSubview(photoContainer)
         contentView.addSubview(bottomSaveButton)
         
         updateCoordinates()
@@ -328,7 +306,6 @@ class EditMountainPassVC: UIViewController {
         }
         
         calendarView.delegate = self
-        photoContainer.delegate = self
     }
     
     private func updateCategoryButtons() {
@@ -387,80 +364,10 @@ class EditMountainPassVC: UIViewController {
         altitudeView.setAltitude(coordinates.height)
     }
     
-    private func sendAPIrequest() {
-        
-        guard let newMountainPass = createNewMountainPass(from: model) else {
-            print("🔴🔴 newMountainPass is created Nil!")
-            return
-        }
-        apiService.postRequestWith(mountainPass: newMountainPass)
-    }
-    
-    private func createNewMountainPass(from model: MountainPassModel) -> MountainPass? {
-        
-        let title = model.getTitle()
-        guard !title.isEmpty else {
-            print("🔴 Creating NewMountainPass is stopped, due Title is Empty!")
-            return nil
-        }
-        
-        guard let category = model.getCategory() else {
-            print("🔴 Creating NewMountainPass is stopped, due Category is Nil!")
-            return nil
-        }
-        let level = Level(winter: "",
-                          summer: category,
-                          autumn: category,
-                          spring: "")
-        
-        let date = model.getDate()
-        guard !date.isEmpty else {
-            print("🔴 Creating NewMountainPass is stopped, due Date is Empty!")
-            return nil
-        }
-        
-        guard let currentUser = UserSettings.currentUser else {
-            print("🔴 Creating NewMountainPass is stopped, due currentUser is Nil!")
-            return nil
-        }
-        let user = User(id: 888,
-                        email: currentUser.email,
-                        phone: currentUser.phone,
-                        fam: currentUser.surname,
-                        name: currentUser.name)
-        
-        let coordinates = model.getCoordinates()
-        guard !coordinates.longitude.isEmpty,
-              !coordinates.latitude.isEmpty,
-              !coordinates.height.isEmpty else {
-            print("🔴 Creating NewMountainPass is stopped, due some Coordinates are Empty!")
-            return nil
-        }
-        
-        let images = model.getImages()
-        guard !images.isEmpty else {
-            print("🔴 Creating NewMountainPass is stopped, due Images are Empty!")
-            return nil
-        }
-        
-        let newMountainPass = MountainPass(beautyTitle: "пер.",
-                                           title: title,
-                                           otherTitles: ".",
-                                           connect: "",
-                                           addTime: date,
-                                           user: user,
-                                           coords: coordinates,
-                                           type: "pass",
-                                           level: level,
-                                           images: images)
-        return newMountainPass
-    }
-    
     private func initializeHideKeyboard() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMyKeyboard))
         view.addGestureRecognizer(tap)
     }
-    
 }
 
 // MARK: - CategoryButtonDelegate
@@ -499,7 +406,7 @@ extension EditMountainPassVC: AdditionButtonDelegate {
 extension EditMountainPassVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("🟢 textFieldDidEndEditing in NewMountainPassVC")
+        print("🟢 textFieldDidEndEditing in EditMountainPassVC")
         
         model.setTitle(textField.text)
         
@@ -510,45 +417,13 @@ extension EditMountainPassVC: UITextFieldDelegate {
 // MARK: - CalendarViewDelegate
 extension EditMountainPassVC: CalendarViewDelegate {
     func editingDidEndOnDatePicker(with date: String) {
-        print("🟢🟢 editingDidEndOnDatePicker in NewMountainPassVC")
+        print("🟢🟢 editingDidEndOnDatePicker in EditMountainPassVC")
         model.setDate(date)
         
         print("🟢🟢🟢 Inserted to model date: \(model.getDate())")
     }
 }
 
-// MARK: - UIImage PickerController Delegate
-extension EditMountainPassVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard let image = info[.editedImage] as? UIImage else { return }
-        dismiss(animated: true)
-        photoContainer.setAndSavePhotoImage(image: image)
-    }
-}
-
-// MARK: - PhotoContainerDelegate
-extension EditMountainPassVC: PhotoContainerDelegate {
-    func didAddImage(image: Image) {
-        print("🔴 didAddImage is not implemented yet")
-    }
-    
-    func didAddPhoto(photo: Photo) {
-        print("🔴 didAddPhoto is not implemented yet")
-    }
-    
-//    func didAddImage(image: Image, with index: Int) {
-//        print("🟢🟢🟢 didAddImage in NewMountainPassVC")
-//        model.addImage(image)
-//    }
-    
-    func didTapOnGaleryView() {
-        print("🟢🟢🟢 didTapOnGaleryView in NewMountainPassVC")
-        importPictureFromGallery()
-        photoContainer.hideEntriesAndShowPicture()
-    }
-}
 
 // MARK: - SetConstraints
 extension EditMountainPassVC {
@@ -660,16 +535,9 @@ extension EditMountainPassVC {
         ])
         
         NSLayoutConstraint.activate([
-            photoContainer.topAnchor.constraint(equalTo: altitudeView.bottomAnchor, constant: 20),
-            photoContainer.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-            photoContainer.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            photoContainer.heightAnchor.constraint(equalToConstant: 500)
-        ])
-        
-        NSLayoutConstraint.activate([
-            bottomSaveButton.topAnchor.constraint(equalTo: photoContainer.bottomAnchor, constant: 60),
-            bottomSaveButton.leadingAnchor.constraint(equalTo: photoContainer.leadingAnchor, constant: 30),
-            bottomSaveButton.trailingAnchor.constraint(equalTo: photoContainer.trailingAnchor, constant: -30),
+            bottomSaveButton.topAnchor.constraint(equalTo: altitudeView.bottomAnchor, constant: 60),
+            bottomSaveButton.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 30),
+            bottomSaveButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -30),
             bottomSaveButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
