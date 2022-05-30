@@ -22,21 +22,27 @@
   Далее прилагаются скриншоты:
   
   01Стартовый экран:
+  
   <img src="/readMeImages/01.png" width="25%">
   
   02Регистрация:
+  
   <img src="/readMeImages/02.png" width="25%">
   
   03Список переалов (если список пуст, то показыем пустоц экран)
+  
   <img src="/readMeImages/03.png" width="25%">
   
   04Карточка Нового перевала:
+  
   <img src="/readMeImages/04-01.png" width="25%">
   <img src="/readMeImages/04-02.png" width="25%">
   
   05Редактирование карточки сохраненного перевала:
+  
   <img src="/readMeImages/05-01.png" width="25%">
   <img src="/readMeImages/05-02.png" width="25%">
   
   06Добавление фотографии:
+  
   <img src="/readMeImages/06.png" width="25%">
