@@ -532,7 +532,12 @@ extension NewMountainPassVC: PhotoContainerDelegate {
     }
     
     func didAddPhoto(photo: Photo) {
-        print("🔴 didAddPhoto is not implemented yet")
+//        print("🔴 didAddPhoto is not implemented yet")
+        // Такая картинка лишь Временно для демонстрации отправки в АПИ
+        print("🟢🟢🟢 didAddImage in NewMountainPassVC")
+        
+        let image = Image(url: photo.url, title: photo.title)
+        model.addImage(image)
     }
     
 //    func didAddImage(image: Image, with index: Int) {
