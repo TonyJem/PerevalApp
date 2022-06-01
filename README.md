@@ -76,9 +76,6 @@ MVP2 версия актуальная на момент 2022-05-29 предст
 <br>
 <br>
   
-  
-    Work in progress...
-  
  Экран 3 (когда список пустой)
  
  <img src="/readMeVideos/Video03.gif" width="50%">
